@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>ZoharAI — Next‑Gen Website Builder</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- כאן תשאיר את אותם קישורי CSS, פונט, GTM וכו' כמו בקובץ המקורי -->
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Background -->
+<canvas id="space-canvas" aria-hidden="true"></canvas>
+<div class="nebula" aria-hidden="true"></div>
+<div class="earth-glow" aria-hidden="true"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+
+<!-- Side code decorations -->
+<div class="side-deco side-deco--end" aria-hidden="true">
+  <span>{ "model": "claude-3" }</span>
+  <span>const edge = true;</span>
+  <span>AWS::Serverless</span>
+  <span>deploy --region il</span>
+  <span>uptime: 99.9%</span>
+</div>
+<div class="side-deco side-deco--start" aria-hidden="true">
+  <span>import { AI } from "@core"</span>
+  <span>ssl: TLS_AES_256</span>
+  <span>clean_code: true</span>
+  <span>return &lt;Experience /&gt;</span>
+</div>
+
+<!-- NAVIGATION -->
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#home" class="nav-logo">
+      <span class="nav-logo-text">Zohar AI</span>
+      <img src="logo.svg" alt="ZoharAI" />
+    </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="nav-cta" href="https://wa.me/972777297072">📱 Talk to us</a>
+
+    <!-- Language Selector -->
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Choose language">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span class="lang-current">EN</span>
+        <svg class="lang-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="menu">
+        <li role="menuitem"><a href="index.html" data-lang="HE" data-gt-lang="he">🇮🇱 עברית</a></li>
+        <li role="menuitem"><a href="index-en.html" data-lang="EN" data-gt-lang="en">🇬🇧 English</a></li>
+        <!-- שאר השפות יכולות להישאר # או להפנות לגרסאות נוספות כשתיצור אותן -->
+        <li role="menuitem"><a href="#" data-lang="FR" data-gt-lang="fr">🇫🇷 Français</a></li>
+        <li role="menuitem"><a href="#" data-lang="ES" data-gt-lang="es">🇪🇸 Español</a></li>
+        <li role="menuitem"><a href="#" data-lang="PT" data-gt-lang="pt">🇧🇷 Português</a></li>
+        <li role="menuitem"><a href="#" data-lang="RU" data-gt-lang="ru">🇷🇺 Русский</a></li>
+        <li role="menuitem"><a href="#" data-lang="ZH" data-gt-lang="zh-CN">🇨🇳 中文</a></li>
+        <li role="menuitem"><a href="#" data-lang="AR" data-gt-lang="ar">🇸🇦 العربية</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main class="site-main">
+
+<!-- HERO -->
+<section id="home" style="scroll-margin-top:4rem;">
+<div class="hero">
+
+  <div class="hero-tag reveal">
+    <span class="tag">⚡ The next generation of digital websites — in two tracks</span>
+  </div>
+
+  <h1 class="hero-title reveal" data-d="1">ZoharAI</h1>
+  <h2 class="hero-subtitle reveal" data-d="1">
+    Build a professional website<br>
+    ready for marketing — in minutes
+  </h2>
+
+  <p class="hero-text reveal" data-d="1">
+    <span class="hero-tagline-desktop">
+      Smart websites with real code, ultra‑fast hosting on AWS, and easy editing via AI.
+    </span>
+    <span class="hero-tagline-mobile">
+      Smart websites with real code,<br>fast AWS hosting and easy editing<br>powered by AI.
+    </span>
+  </p>
+
+  <p class="hero-typing reveal" data-d="2" style="margin-bottom:0.9rem;">
+    A real website, your own code, deployed on <span class="typing-target" id="typeTarget"></span><span class="typing-cursor"></span>
+  </p>
+
+  <div class="reveal" data-d="2" style="margin-bottom:1.5rem;">
+    <p style="font-size:12.5px;color:#7ab8ff;margin-bottom:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">
+      Hybrid AI engine powered by Claude + GPT
+    </p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+      <li style="font-size:13.5px;color:#94a3b8;display:flex;align-items:center;gap:10px;">
+        <span style="color:#0070f3;font-weight:900;font-size:15px;">✓</span> Real code — yours forever
+      </li>
+      <li style="font-size:13.5px;color:#94a3b8;display:flex;align-items:center;gap:10px;">
+        <span style="color:#0070f3;font-weight:900;font-size:15px;">✓</span> Fast hosting on Amazon AWS
+      </li>
+      <li style="font-size:13.5px;color:#94a3b8;display:flex;align-items:center;gap:10px;">
+        <span style="color:#0070f3;font-weight:900;font-size:15px;">✓</span> Full ownership of your code
+      </li>
+    </ul>
+  </div>
+
+  <div class="hero-prompt reveal" data-d="3" style="display:flex;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap;">
+    <input id="prompt" placeholder="Describe the website you want..." style="flex:1;min-width:220px;padding:12px 16px;border-radius:999px;border:1px solid rgba(0,112,243,0.35);background:rgba(10,14,28,0.7);color:#e2e8f0;font-size:14px;font-family:'Heebo',sans-serif;outline:none;backdrop-filter:blur(12px);">
+    <button onclick="go()" style="padding:12px 22px;border-radius:999px;background:linear-gradient(135deg,#0070f3,#0058d0);color:#fff;font-size:13.5px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;box-shadow:0 4px 18px rgba(0,112,243,0.4);font-family:'Heebo',sans-serif;">
+      Create my website now
+    </button>
+  </div>
+
+  <div class="reveal" data-d="3" style="margin-bottom:1.5rem;font-size:12.5px;color:#6b7280;text-align:left;">
+    ✔ Preview before payment &nbsp;·&nbsp; ✔ No commitment &nbsp;·&nbsp; ✔ Built for real businesses
+  </div>
+
+  <div class="hero-dual reveal" data-d="4">
+    <!-- Self-Service -->
+    <div class="dual-card dual-card--ai">
+      <span class="dual-badge dual-badge--ai">🤖 Self-Service</span>
+      <h3>You build with AI</h3>
+      <p>Describe your business → AI generates a full website with real code in minutes. Fast AWS hosting, full ownership.</p>
+      <a class="dual-btn dual-btn--ai" href="https://wa.me/972777297072">
+        ⚡ Build a site with AI — in minutes
+      </a>
+    </div>
+    <!-- DFY -->
+    <div class="dual-card dual-card--dfy">
+      <span class="dual-badge dual-badge--dfy">👑 Done For You</span>
+      <h3>We build it for you</h3>
+      <p>A premium website from A to Z — design, copy, SEO, support. You don’t deal with anything.</p>
+      <a class="dual-btn dual-btn--dfy" href="https://wa.me/972777297072">
+        🏆 I want full peace of mind
+      </a>
+    </div>
+  </div>
+
+  <div class="stats-bar reveal" data-d="4">
+    <div class="stat"><div class="stat-num">100</div><div class="stat-lbl">Google speed score</div></div>
+    <div class="stat"><div class="stat-num">99.9%</div><div class="stat-lbl">AWS uptime</div></div>
+    <div class="stat"><div class="stat-num">3–7</div><div class="stat-lbl">Delivery days</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-lbl">WordPress plugins</div></div>
+  </div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT WE DO -->
+<section id="about" style="scroll-margin-top:4rem;">
+<div class="section">
+  <div class="tag reveal">Our manifesto</div>
+  <h2 class="sec-title reveal" data-d="1">Why ZoharAI is different from anything you know</h2>
+  <div class="manifesto reveal" data-d="2">
+    <p>
+      Most platforms build you a “standard” website on a closed template, drag‑and‑drop and cheap hosting.<br>
+      <strong>ZoharAI does the opposite:</strong><br><br>
+      You describe your business — and AI generates a unique website with
+      <strong>world‑class clean code</strong>,
+      powered by the most advanced AI models (Claude / GPT),
+      loading fast on <span class="hi">Amazon AWS</span> cloud,
+      fully responsive and SEO‑ready,
+      with no plugins, no updates and no hacks.
+    </p>
+    <div class="manifesto-pills">
+      <span class="pill"><span class="pill-dot"></span>Claude AI</span>
+      <span class="pill"><span class="pill-dot"></span>OpenAI</span>
+      <span class="pill"><span class="pill-dot"></span>Amazon AWS</span>
+      <span class="pill"><span class="pill-dot"></span>Enterprise‑grade security</span>
+      <span class="pill"><span class="pill-dot"></span>No‑WordPress clean code</span>
+      <span class="pill"><span class="pill-dot"></span>Full ownership</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="tag reveal">Advantages</div>
+  <h2 class="sec-title reveal" data-d="1">Technology built to win</h2>
+  <p class="sec-sub reveal" data-d="2">Maximum performance, full security, clean code — for every business.</p>
+  <div class="adv-grid">
+    <div class="adv-card reveal" data-d="0">
+      <div class="adv-icon">⚡</div>
+      <div class="adv-title">High‑tech speed</div>
+      <div class="adv-desc">Score 100 on Google. Load time under 0.5 seconds. Google loves it — and so do your customers.</div>
+    </div>
+    <div class="adv-card reveal" data-d="1">
+      <div class="adv-icon">🔒</div>
+      <div class="adv-title">Enterprise security</div>
+      <div class="adv-desc">Serverless architecture with no WordPress. No plugins, no hacks, no headaches.</div>
+    </div>
+    <div class="adv-card reveal" data-d="2">
+      <div class="adv-icon">☁️</div>
+      <div class="adv-title">Amazon AWS</div>
+      <div class="adv-desc">Fast hosting on AWS — 99.9% uptime, global CDN, edge network. Fast, secure, reliable.</div>
+    </div>
+    <div class="adv-card reveal" data-d="3">
+      <div class="adv-icon">✦</div>
+      <div class="adv-title">Advanced AI</div>
+      <div class="adv-desc">Claude + OpenAI generate clean, modern, unique code — not a recycled template.</div>
+    </div>
+    <div class="adv-card reveal" data-d="4">
+      <div class="adv-icon">📋</div>
+      <div class="adv-title">Full ownership</div>
+      <div class="adv-desc">You get all source files. Your code forever — portable to any server.</div>
+    </div>
+    <div class="adv-card reveal" data-d="5">
+      <div class="adv-icon">🚀</div>
+      <div class="adv-title">Advanced SEO</div>
+      <div class="adv-desc">Clean code = Google’s best friend. Semantic structure, speed, meta tags — all built‑in.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services" style="scroll-margin-top:4rem;">
+<div class="section">
+  <div class="tag reveal">Services</div>
+  <h2 class="sec-title reveal" data-d="1">Two tracks</h2>
+  <p class="sec-sub reveal" data-d="2">You choose: build with AI, or we build everything for you.</p>
+
+  <div class="services-split">
+    <!-- Self Service -->
+    <div class="service-col reveal" data-d="1">
+      <div class="service-col-header">
+        <span class="service-col-badge badge--ai">🤖 Self-Service</span>
+        <h3>You build with AI</h3>
+        <p class="service-col-sub">Describe your business — AI builds a full website with real code in minutes.</p>
+      </div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-item-icon">🏗️</div>
+          <div class="service-item-body">
+            <div class="service-item-name">AI Builder — Landing / Website</div>
+            <div class="service-item-desc">Describe, and AI builds a complete site in minutes. Clean code, not a template.</div>
+            <div class="service-price">149$ / 490₪</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">✏️</div>
+          <div class="service-item-body">
+            <div class="service-item-name">AI Editor</div>
+            <div class="service-item-desc">Edit and upgrade your site using AI — fast and easy.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">🔄</div>
+          <div class="service-item-body">
+            <div class="service-item-name">WordPress Conversion</div>
+            <div class="service-item-desc">Convert an existing site to clean, fast, secure AWS‑based code.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">🛒</div>
+          <div class="service-item-body">
+            <div class="service-item-name">Smart store</div>
+            <div class="service-item-desc">Smart e‑commerce with ready‑to‑use payments — no WooCommerce.</div>
+            <div class="service-price">349$ / 1,190₪</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">📦</div>
+          <div class="service-item-body">
+            <div class="service-item-name">3‑site bundle</div>
+            <div class="service-item-desc">3 full business sites — save around 30%.</div>
+            <div class="service-price">400$</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">⚙️</div>
+          <div class="service-item-body">
+            <div class="service-item-name">Web apps / CRM</div>
+            <div class="service-item-desc">Dashboards, portals, internal tools — real code. In DFY track (custom).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DFY -->
+    <div class="service-col service-col--dfy reveal" data-d="2">
+      <div class="service-col-header">
+        <span class="service-col-badge badge--dfy">👑 Done For You</span>
+        <h3>We build it for you</h3>
+        <p class="service-col-sub">Design, copy, SEO, support — you don’t touch a thing.</p>
+      </div>
+      <div class="service-items">
+        <div class="service-item">
+          <div class="service-item-icon">🌐</div>
+          <div class="service-item-body">
+            <div class="service-item-name">Premium business website</div>
+            <div class="service-item-desc">Custom design, professional copy, SEO.</div>
+            <div class="service-price">900$ (≈ 2,800 ₪)</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">🛒</div>
+          <div class="service-item-body">
+            <div class="service-item-name">Online store</div>
+            <div class="service-item-desc">Full store with payments, products, management.</div>
+            <div class="service-price">4,500₪+ / 1,400$+</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">⚙️</div>
+          <div class="service-item-body">
+            <div class="service-item-name">System / application</div>
+            <div class="service-item-desc">CRM, dashboard, portal — full business solution.</div>
+            <div class="service-price">2,500$ (≈ 7,000+ ₪)</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">🛡️</div>
+          <div class="service-item-body">
+            <div class="service-item-name">Peace of Mind — VIP</div>
+            <div class="service-item-desc">24/7 monitoring, daily backups, content updates, full support.</div>
+            <div class="service-price">149₪ / month</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-icon">🔧</div>
+          <div class="service-item-body">
+            <div class="service-item-name">Changes & add‑ons</div>
+            <div class="service-item-desc">Small change 50₪ | New page 150–250₪ | Feature 500–2,000₪</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing" style="scroll-margin-top:4rem;">
+<div class="section section--wide">
+  <div class="tag reveal">Transparent pricing</div>
+  <h2 class="sec-title reveal" data-d="1">Clear prices — no surprises</h2>
+  <p class="sec-sub reveal" data-d="2">All prices + VAT. Full ownership of the code forever.</p>
+
+  <div class="pricing-tabs reveal" data-d="3">
+    <button class="pricing-tab active" onclick="switchTab(this,'self')">🤖 Self-Service</button>
+    <button class="pricing-tab" onclick="switchTab(this,'dfy')">👑 Done For You (DFY)</button>
+  </div>
+
+  <!-- Self Service Panel -->
+  <div class="pricing-panel active" id="panel-self">
+    <div class="pricing-grid">
+      <!-- Plan 1 -->
+      <div class="plan-card popular reveal" data-d="0">
+        <div class="popular-badge">Most popular</div>
+        <div class="plan-name">Self-Service</div>
+        <div class="plan-title">Business website</div>
+        <div class="plan-price">149$ / 490₪</div>
+        <div class="plan-sub">One‑time payment. Your asset forever.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span> Full site with clean code</li>
+          <li><span class="ck">✓</span> AI‑driven custom design</li>
+          <li><span class="ck">✓</span> Mobile & SEO optimized</li>
+          <li><span class="ck">✓</span> 10 AI edit actions</li>
+          <li><span class="ck">✓</span> First month of hosting included</li>
+        </ul>
+        <div class="plan-hosting">AWS hosting: 49₪ / month (optional)</div>
+        <a class="plan-cta" href="https://wa.me/972777297072">Start now ←</a>
+      </div>
+      <!-- Plan 2 -->
+      <div class="plan-card reveal" data-d="1">
+        <div class="plan-name">Self-Service</div>
+        <div class="plan-title">Smart store</div>
+        <div class="plan-price">349$ / 1,190₪</div>
+        <div class="plan-sub">Full store with payments and product management.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span> Full store + cart</li>
+          <li><span class="ck">✓</span> Payments (Stripe / PayPal)</li>
+          <li><span class="ck">✓</span> Product & category management</li>
+          <li><span class="ck">✓</span> 20 AI edit actions</li>
+          <li><span class="ck">✓</span> SEO + AWS speed</li>
+        </ul>
+        <div class="plan-hosting">AWS hosting: 99₪ / month (optional)</div>
+        <a class="plan-cta" href="https://wa.me/972777297072">Build a store ←</a>
+      </div>
+      <!-- Plan 3 -->
+      <div class="plan-card reveal" data-d="2">
+        <div class="plan-name">Self-Service</div>
+        <div class="plan-title">3‑site bundle</div>
+        <div class="plan-price">400$</div>
+        <div class="plan-sub">Save 30% — perfect for agencies and small businesses.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span> 3 full business sites</li>
+          <li><span class="ck">✓</span> 30 AI actions (10 per site)</li>
+          <li><span class="ck">✓</span> 3 initial hosting months</li>
+          <li><span class="ck">✓</span> AI design for each site</li>
+          <li><span class="ck">✓</span> Save around 100$</li>
+        </ul>
+        <div class="plan-hosting">Hosting: 49₪ / month per site</div>
+        <a class="plan-cta" href="https://wa.me/972777297072">Get started ←</a>
+      </div>
+      <!-- Plan 4 - Peace of Mind -->
+      <div class="plan-card reveal" data-d="3">
+        <div class="plan-name">Self-Service</div>
+        <div class="plan-title">Peace of Mind</div>
+        <div class="plan-price" style="font-size:22px;">49₪ / 99₪<span style="font-size:14px;color:#6b7280;font-weight:400;"> per month</span></div>
+        <div class="plan-sub">Hosting + support + monthly AI actions.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck">✓</span> AWS hosting + SSL</li>
+          <li><span class="ck">✓</span> Ongoing content updates</li>
+          <li><span class="ck">✓</span> Basic support</li>
+          <li><span class="ck">✓</span> 10–20 AI actions per month</li>
+        </ul>
+        <div class="plan-hosting">49₪ for business site | 99₪ for store</div>
+        <a class="plan-cta" href="https://wa.me/972777297072">Join now ←</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DFY Panel -->
+  <div class="pricing-panel" id="panel-dfy">
+    <div class="pricing-grid">
+      <!-- DFY 1 -->
+      <div class="plan-card dfy-card popular reveal" data-d="0">
+        <div class="popular-badge" style="background:linear-gradient(135deg,#D4AF37,#a07c20);color:#000;">Most requested</div>
+        <div class="plan-name">Done For You</div>
+        <div class="plan-title">Premium business website</div>
+        <div class="plan-price gold">2,800₪ / 900$</div>
+        <div class="plan-sub">We build everything — you review and launch.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck gold">✓</span> Custom design</li>
+          <li><span class="ck gold">✓</span> Professional marketing copy</li>
+          <li><span class="ck gold">✓</span> Full SEO + speed</li>
+          <li><span class="ck gold">✓</span> Integrations: WhatsApp, IG, FB</li>
+          <li><span class="ck gold">✓</span> Delivery in 3–7 business days</li>
+        </ul>
+        <div class="plan-hosting" style="background:rgba(212,175,55,0.07);border-color:rgba(212,175,55,0.2);color:rgba(255,220,150,0.85);">Peace of Mind: 149₪ / month</div>
+        <a class="plan-cta gold-btn" href="https://wa.me/972777297072">Build my site ←</a>
+      </div>
+      <!-- DFY 2 -->
+      <div class="plan-card dfy-card reveal" data-d="1">
+        <div class="plan-name">Done For You</div>
+        <div class="plan-title">Online store</div>
+        <div class="plan-price gold">4,500₪+ / 1,400$+</div>
+        <div class="plan-sub">A professional store from A to Z — ready to sell.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck gold">✓</span> Premium store design</li>
+          <li><span class="ck gold">✓</span> Secure payments</li>
+          <li><span class="ck gold">✓</span> Full product management</li>
+          <li><span class="ck gold">✓</span> SEO for store + categories</li>
+          <li><span class="ck gold">✓</span> Conversion optimization</li>
+        </ul>
+        <div class="plan-hosting" style="background:rgba(212,175,55,0.07);border-color:rgba(212,175,55,0.2);color:rgba(255,220,150,0.85);">Peace of Mind: 149₪ / month</div>
+        <a class="plan-cta gold-btn" href="https://wa.me/972777297072">Build my store ←</a>
+      </div>
+      <!-- DFY 3 -->
+      <div class="plan-card dfy-card reveal" data-d="2">
+        <div class="plan-name">Done For You</div>
+        <div class="plan-title">System / application</div>
+        <div class="plan-price gold" style="font-size:22px;">7,000₪+ / 2,500$+</div>
+        <div class="plan-sub">CRM, dashboard, portal — full business solution.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck gold">✓</span> Full needs analysis</li>
+          <li><span class="ck gold">✓</span> Professional architecture</li>
+          <li><span class="ck gold">✓</span> Advanced UI</li>
+          <li><span class="ck gold">✓</span> External integrations</li>
+          <li><span class="ck gold">✓</span> Personal VIP support</li>
+        </ul>
+        <div class="plan-hosting" style="background:rgba(212,175,55,0.07);border-color:rgba(212,175,55,0.2);color:rgba(255,220,150,0.85);">Peace of Mind: 149₪ / month</div>
+        <a class="plan-cta gold-btn" href="https://wa.me/972777297072">Let’s talk about the project ←</a>
+      </div>
+      <!-- DFY 4 - Peace of Mind -->
+      <div class="plan-card dfy-card reveal" data-d="3">
+        <div class="plan-name">Done For You</div>
+        <div class="plan-title">Peace of Mind VIP</div>
+        <div class="plan-price gold">149₪<span style="font-size:16px;color:#6b7280;font-weight:400;"> per month</span></div>
+        <div class="plan-sub">Real peace of mind — we take care of everything.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="ck gold">✓</span> Daily backups</li>
+          <li><span class="ck gold">✓</span> 24/7 monitoring</li>
+          <li><span class="ck gold">✓</span> 2–3 content updates per month</li>
+          <li><span class="ck gold">✓</span> Up to 20 AI updates per month</li>
+          <li><span class="ck gold">✓</span> Full support + incident handling</li>
+        </ul>
+        <div class="plan-hosting" style="background:rgba(212,175,55,0.07);border-color:rgba(212,175,55,0.2);color:rgba(255,220,150,0.85);">Enterprise‑grade security included</div>
+        <a class="plan-cta gold-btn" href="https://wa.me/972777297072">I want peace of mind ←</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="scroll-margin-top:4rem;">
+<div class="section section--wide">
+  <div class="tag reveal">Portfolio</div>
+  <h2 class="sec-title reveal" data-d="1">Sample sites we’ve built</h2>
+  <p class="sec-sub reveal" data-d="2">Every site is built with clean code on AWS — fast, secure, precise.</p>
+
+  <div class="portfolio-grid">
+    <!-- השארתי את שמות האתרים כמו שהם, רק תיאורים באנגלית -->
+    <a class="portfolio-card reveal" data-d="0" href="http://lemondesepharade.co.il/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=http%3A%2F%2Flemondesepharade.co.il%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Le Monde Séfarade" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#1a2e1a,#2d5a27,#f5d060)'"><div class="portfolio-thumb-badges"><span class="p-badge">Business site</span><span class="p-badge">🏆 Premium</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Le Monde Séfarade</div>
+        <div class="portfolio-type">Culture & community</div>
+        <div class="portfolio-desc">Rich, respectful design blending heritage and modernity.</div>
+        <div class="portfolio-link">lemondesepharade.co.il →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="1" href="https://ecot.co.il/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Fecot.co.il%2F&screenshot=true&meta=false&embed=screenshot.url&force=true" alt="Eco-Tech Israel" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#0a1628,#0d4f3c,#00c896)'"><div class="portfolio-thumb-badges"><span class="p-badge">Tech</span><span class="p-badge">♻️ Green</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Eco-Tech Israel</div>
+        <div class="portfolio-type">Tech company</div>
+        <div class="portfolio-desc">Futuristic branding for an Israeli Cleantech company.</div>
+        <div class="portfolio-link">ecot.co.il →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="2" href="https://tability.io/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Ftability.io%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Tability" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#1a0a28,#4a1060,#e040fb)'"><div class="portfolio-thumb-badges"><span class="p-badge">SaaS</span><span class="p-badge">📊 OKR</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Tability</div>
+        <div class="portfolio-type">OKR platform</div>
+        <div class="portfolio-desc">Goal‑management platform for teams — modern design.</div>
+        <div class="portfolio-link">tability.io →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="3" href="https://typedream.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Ftypedream.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Typedream" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#0a1020,#1a3060,#4080ff)'"><div class="portfolio-thumb-badges"><span class="p-badge">Site builder</span><span class="p-badge">✨ AI</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Typedream</div>
+        <div class="portfolio-type">Website platform</div>
+        <div class="portfolio-desc">Fast, no‑code website builder.</div>
+        <div class="portfolio-link">typedream.com →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="4" href="https://typedesk.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Ftypedesk.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Typedesk" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#201020,#502040,#c060a0)'"><div class="portfolio-thumb-badges"><span class="p-badge">Productivity</span><span class="p-badge">⌨️ Text</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Typedesk</div>
+        <div class="portfolio-type">Productivity tool</div>
+        <div class="portfolio-desc">Smart text templates for teams.</div>
+        <div class="portfolio-link">typedesk.com →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="5" href="https://arcstudiopro.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Farcstudiopro.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Arc Studio Pro" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#102010,#204040,#40a080)'"><div class="portfolio-thumb-badges"><span class="p-badge">Creative</span><span class="p-badge">🎬 Writing</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Arc Studio Pro</div>
+        <div class="portfolio-type">Screenwriting software</div>
+        <div class="portfolio-desc">The professional tool for screenwriters in Hollywood.</div>
+        <div class="portfolio-link">arcstudiopro.com →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="6" href="https://superlist.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Fsuperlist.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Superlist" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#200a10,#601020,#f04060)'"><div class="portfolio-thumb-badges"><span class="p-badge">SaaS</span><span class="p-badge">📋 Tasks</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Superlist</div>
+        <div class="portfolio-type">Task management</div>
+        <div class="portfolio-desc">Advanced task app for teams and individuals.</div>
+        <div class="portfolio-link">superlist.com →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="7" href="https://cal.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Fcal.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Cal.com" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#101028,#202860,#5060e0)'"><div class="portfolio-thumb-badges"><span class="p-badge">Open Source</span><span class="p-badge">📅 Scheduling</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Cal.com</div>
+        <div class="portfolio-type">Scheduling platform</div>
+        <div class="portfolio-desc">Open‑source scheduling — an alternative to Calendly.</div>
+        <div class="portfolio-link">cal.com →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="8" href="https://supernotes.app/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Fsupernotes.app%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Supernotes" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#102010,#284028,#60c080)'"><div class="portfolio-thumb-badges"><span class="p-badge">Productivity</span><span class="p-badge">📝 Notes</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Supernotes</div>
+        <div class="portfolio-type">Knowledge management</div>
+        <div class="portfolio-desc">Smart note‑taking with links between ideas.</div>
+        <div class="portfolio-link">supernotes.app →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="9" href="https://height.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Fheight.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Height" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#181028,#402858,#a060d0)'"><div class="portfolio-thumb-badges"><span class="p-badge">SaaS</span><span class="p-badge">🚀 Projects</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Height</div>
+        <div class="portfolio-type">Project management</div>
+        <div class="portfolio-desc">Advanced project management for dev teams.</div>
+        <div class="portfolio-link">height.com →</div>
+      </div>
+    </a>
+    <a class="portfolio-card reveal" data-d="10" href="https://cron.com/" target="_blank" rel="noopener">
+      <div class="portfolio-thumb"><img src="https://api.microlink.io/?url=https%3A%2F%2Fcron.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Cron" loading="lazy" width="400" height="160" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#201010,#502010,#e08040)'"><div class="portfolio-thumb-badges"><span class="p-badge">Productivity</span><span class="p-badge">⏰ Calendar</span></div></div>
+      <div class="portfolio-body">
+        <div class="portfolio-title">Cron</div>
+        <div class="portfolio-type">Next‑gen calendar</div>
+        <div class="portfolio-desc">A next‑generation calendar for professionals.</div>
+        <div class="portfolio-link">cron.com →</div>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPARE -->
+<section id="compare" style="scroll-margin-top:4rem;">
+<div class="section">
+  <div class="tag reveal">Comparison</div>
+  <h2 class="sec-title reveal" data-d="1">ZoharAI vs. the competition</h2>
+  <p class="sec-sub reveal" data-d="2">The numbers don’t lie.</p>
+  <div class="compare-outer reveal" data-d="3">
+    <p class="compare-mobile-hint">← Scroll sideways to see all data →</p>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Wix / Squarespace / Zi5</th>
+            <th>WordPress</th>
+            <th class="zohar-th">ZoharAI ✓</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-label">How the site is built</td><td class="bad">Templates & drag‑and‑drop</td><td class="bad">Plugins & manual code</td><td class="good">Advanced AI — clean, unique code</td></tr>
+          <tr><td class="col-label">Load speed</td><td class="bad">2–5 seconds</td><td class="bad">Depends on plugins</td><td class="good">Under 0.5 seconds (AWS)</td></tr>
+          <tr><td class="col-label">Security</td><td class="bad">Closed system</td><td class="bad">Hacks & updates</td><td class="good">Serverless — zero exposure</td></tr>
+          <tr><td class="col-label">Code ownership</td><td class="bad">❌ None</td><td class="bad">Partial</td><td class="good">✔ 100% yours forever</td></tr>
+          <tr><td class="col-label">Self‑Service track</td><td class="bad">❌</td><td class="bad">❌</td><td class="good">✔ AI Builder + Editor</td></tr>
+          <tr><td class="col-label">DFY track</td><td class="bad">❌</td><td class="bad">❌</td><td class="good">✔ We build everything</td></tr>
+          <tr><td class="col-label">Google score</td><td class="bad">40–70</td><td class="bad">50–75</td><td class="good">100 ✦</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="scroll-margin-top:4rem;">
+<div class="section section--wide">
+  <div class="tag reveal">Success stories</div>
+  <h2 class="sec-title reveal" data-d="1">What our clients say —<br>real results from real businesses.</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal" data-d="0">
+      <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+      <p class="testi-quote">I moved from a slow WordPress site to a new one in a week. Leads doubled within a month. I was skeptical — now I recommend them to every colleague.</p>
+      <div class="testi-result">📈 +112% leads in 30 days</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🏢</div>
+        <div><div class="testi-name">David Levi</div><div class="testi-role">Real Estate Manager · Tel Aviv</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal" data-d="1">
+      <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+      <p class="testi-quote">My clinic reached the first page on Google within three weeks. The booking system saves me hours every week.</p>
+      <div class="testi-result">🥇 Page 1 on Google · 8 hours saved/week</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🏥</div>
+        <div><div class="testi-name">Dr. Michal Cohen</div><div class="testi-role">Clinic Owner · Jerusalem</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal" data-d="2">
+      <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+      <p class="testi-quote">My store loads in under half a second. Bounce rate dropped by 60% and out of every 100 visitors — 38 buy. That’s engineered revenue.</p>
+      <div class="testi-result">🛒 +38% conversion · −60% bounce</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🛍️</div>
+        <div><div class="testi-name">Yossi Avraham</div><div class="testi-role">E‑commerce Founder · Haifa</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal" data-d="3">
+      <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+      <p class="testi-quote">I ordered a DFY business site. Within 5 days I got something that looks like an international SaaS. Clients keep asking who designed it.</p>
+      <div class="testi-result">⭐ 5/5 full satisfaction</div>
+      <div class="testi-author">
+        <div class="testi-avatar">💼</div>
+        <div><div class="testi-name">Sarah Mizrahi</div><div class="testi-role">Attorney · Ramat Gan</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal" data-d="4">
+      <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+      <p class="testi-quote">I built my site myself with AI Builder. I honestly didn’t believe it would look this professional. An hour and a half and I have a site I’m proud of.</p>
+      <div class="testi-result">⚡ Full site in 1.5 hours</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🎨</div>
+        <div><div class="testi-name">Amir Nachmani</div><div class="testi-role">Freelance graphic designer</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal" data-d="5">
+      <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+      <p class="testi-quote">Their Peace of Mind plan is worth every shekel. They handle everything, I focus on my business. Hosting, backups, updates — all covered.</p>
+      <div class="testi-result">🛡️ Full peace of mind 24/7</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🏪</div>
+        <div><div class="testi-name">Nadav Katz</div><div class="testi-role">Small business owner · Be’er Sheva</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq" style="scroll-margin-top:4rem;">
+<div class="section">
+  <div class="tag reveal">FAQ</div>
+  <h2 class="sec-title reveal" data-d="1">Got questions? We’ve got answers.</h2>
+  <div class="faq-list reveal" data-d="2">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How does it work exactly?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Choose a track: Self‑Service (you describe your business, AI builds a real‑code site in minutes) or DFY (we build everything for you). In both cases you get a clean‑code site on Amazon AWS.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Who is this for?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Any business that wants a professional digital presence: small business, clinic, lawyer, store, startup, agency, freelancer. Anyone who wants a fast, secure site with full ownership.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>What’s the difference between Self‑Service and DFY?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Self‑Service: you describe your business and AI builds for you — lower price, very fast. DFY: our team builds everything end‑to‑end — design, copy, SEO, support. You don’t touch a thing.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>What about support?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Self‑Service clients get basic support. DFY clients get full support. With Peace of Mind you get 24/7 monitoring, daily backups, content updates and up to 20 AI actions per month.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Which languages do you support?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Hebrew, English, Arabic, French, Spanish, Russian and German. The site supports RTL for right‑to‑left languages.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Who owns the code?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">You own the code completely. You get all source files at the end of the project. You can move to any server in the world at any time.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>What about hosting?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">Hosting on Amazon AWS — 49₪/month for a business site, 99₪/month for a store. Optional — you can host anywhere. Peace of Mind at 149₪/month includes everything.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How many AI Actions do I get?</span>
+        <span class="faq-arrow">▼</span>
+      </button>
+      <div class="faq-a">One‑time: 10 actions for a business site, 20 for a store. Monthly: 10–20 additional actions. Peace of Mind: up to 20 AI actions per month (rate‑limited to one action every 30 seconds).</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- כאן תוסיף את הפוטר והסקריפטים בדיוק כמו בקובץ העברי -->
+<script src="script.js"></script>
+<!-- CONTACT -->
+<section id="contact" style="scroll-margin-top:4rem;">
+<div class="section">
+  <div class="tag reveal">Contact</div>
+  <div class="contact-box reveal" data-d="1">
+    <h2 style="font-size:clamp(22px,4vw,34px);font-weight:900;letter-spacing:-0.02em;margin-bottom:1rem;">
+      Ready to upgrade your digital presence?
+    </h2>
+    <p style="font-size:15px;color:#6b7280;line-height:1.65;max-width:520px;margin:0 auto 0.5rem;">
+      First consultation call — free, no commitment.
+    </p>
+    <div class="contact-btns">
+      <a class="contact-btn contact-btn--wa" href="https://wa.me/972777297072">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp — Send a message
+      </a>
+      <a class="contact-btn contact-btn--mail" href="/cdn-cgi/l/email-protection#dbb6f5abb7aea8ececeb9bbcb6bab2b7f5b8b4b6">
+        ✉️ Send Email
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div style="margin-bottom:0.5rem;">
+    <span style="font-family:'Montserrat',sans-serif;font-weight:900;background:linear-gradient(90deg,#D4AF37,#F2D06B,#D4AF37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+      ZoharAI
+    </span>
+    &nbsp;— AI‑powered website creation
+  </div>
+
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#630e4d130f161054545323040e020a0f4d000c0e">Privacy</a>
+  </div>
+
+  <div style="margin-top:0.75rem;font-size:11px;color:#1f2937;">
+    © 2024–2025 ZoharAI. All rights reserved.
+  </div>
+</footer>
+
+</main>
+
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/972777297072" title="WhatsApp" aria-label="Send WhatsApp message">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</main>
+</body>
+</html>
