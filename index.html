@@ -896,6 +896,17 @@ body {
     transform: none !important;
   }
 }
+@media (max-width: 720px) {
+  .lang-menu {
+    position: fixed !important;
+    top: 68px !important;      /* גובה ההדר שלך במובייל */
+    right: 12px !important;    /* מרחק נעים מהקצה */
+    left: auto !important;
+    transform: none !important;
+    z-index: 99999 !important;
+    min-width: 170px !important; /* שלא ייחתך */
+  }
+}
 </style>
 </head>
 <body>
