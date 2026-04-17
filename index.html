@@ -844,6 +844,13 @@ body {
   padding:6px; z-index:1000;
   box-shadow:0 12px 48px rgba(0,0,0,0.7);
 }
+/* מאפשר לתפריט השפות לא להיחתך */
+.site-header,
+.site-nav,
+.lang-selector {
+  overflow: visible !important;
+  z-index: 9999 !important;
+}
 .lang-selector.open .lang-menu { display:block; }
 .lang-menu li a {
   display:block; padding:8px 12px; border-radius:8px;
