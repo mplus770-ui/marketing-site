@@ -906,6 +906,22 @@ body {
     z-index: 99999 !important;
     min-width: 170px !important; /* שלא ייחתך */
   }
+  /* הסרת Google Translate מהפוטר */
+#google_translate_element,
+.goog-te-banner-frame,
+.goog-te-gadget,
+.goog-te-menu-frame,
+.goog-te-menu2,
+.goog-te-balloon-frame,
+.goog-te-menu-value,
+.goog-te-combo,
+iframe.goog-te-menu-frame {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  pointer-events: none !important;
 }
 </style>
 </head>
@@ -968,15 +984,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg class="lang-arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true"><path d="M2 3.5l3 3 3-3"/></svg>
       </button>
       <ul class="lang-menu" id="langMenu" role="menu">
-        <li role="menuitem"><a href="#" data-lang="HE" data-gt-lang="he">🇮🇱 עברית</a></li>
-        <li role="menuitem"><a href="#" data-lang="EN" data-gt-lang="en">🇬🇧 English</a></li>
-        <li role="menuitem"><a href="#" data-lang="FR" data-gt-lang="fr">🇫🇷 Français</a></li>
-        <li role="menuitem"><a href="#" data-lang="ES" data-gt-lang="es">🇪🇸 Español</a></li>
-        <li role="menuitem"><a href="#" data-lang="PT" data-gt-lang="pt">🇧🇷 Português</a></li>
-        <li role="menuitem"><a href="#" data-lang="RU" data-gt-lang="ru">🇷🇺 Русский</a></li>
-        <li role="menuitem"><a href="#" data-lang="ZH" data-gt-lang="zh-CN">🇨🇳 中文</a></li>
-        <li role="menuitem"><a href="#" data-lang="AR" data-gt-lang="ar">🇸🇦 العربية</a></li>
-      </ul>
+  <li role="menuitem"><a href="/index.html">🇮🇱 עברית — אתר מקצועי בעברית</a></li>
+  <li role="menuitem"><a href="/en/index.html">🇬🇧 English — Build a premium website</a></li>
+  <li role="menuitem"><a href="/fr/index.html">🇫🇷 Français — Créez un site web professionnel</a></li>
+  <li role="menuitem"><a href="/es/index.html">🇪🇸 Español — Crea tu sitio web de alto nivel</a></li>
+  <li role="menuitem"><a href="/pt/index.html">🇧🇷 Português — Construa um site moderno e rápido</a></li>
+  <li role="menuitem"><a href="/ru/index.html">🇷🇺 Русский — Создайте профессиональный сайт</a></li>
+  <li role="menuitem"><a href="/zh/index.html">🇨🇳 中文 — 创建高端专业网站</a></li>
+  <li role="menuitem"><a href="/ar/index.html">🇸🇦 العربية — أنشئ موقعًا احترافيًا بسهولة</a></li>
+  <li role="menuitem"><a href="/de/index.html">🇩🇪 Deutsch — Erstellen Sie eine professionelle Website</a></li>
+</ul>
     </div>
   </nav>
 </header>
@@ -1943,39 +1960,35 @@ function switchTab(btn, panel){
   document.getElementById('panel-'+panel).classList.add('active');
 }
 
-// ── LANGUAGE SELECTOR ──
+// ── LANGUAGE SELECTOR (חדש) ──
 (function(){
   const selector = document.getElementById('langSelector');
   const btn = document.getElementById('langBtn');
   const menu = document.getElementById('langMenu');
   const currentLabel = btn && btn.querySelector('.lang-current');
-  if(!selector||!btn||!menu) return;
 
+  if(!selector || !btn || !menu) return;
+
+  // פתיחה/סגירה של התפריט
   btn.addEventListener('click', e => {
     e.stopPropagation();
     const open = selector.classList.toggle('open');
     btn.setAttribute('aria-expanded', open);
   });
 
-  menu.querySelectorAll('a[data-lang]').forEach(a => {
+  // בחירת שפה
+  menu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', e => {
-      e.preventDefault();
-      const gtLang = a.dataset.gtLang;
-      if(currentLabel) currentLabel.textContent = a.dataset.lang;
-      menu.querySelectorAll('a').forEach(x => x.classList.remove('active'));
-      a.classList.add('active');
+      // עדכון הטקסט בכפתור
+      const flag = a.textContent.trim().split(' ')[0];
+      currentLabel.textContent = flag;
+
       selector.classList.remove('open');
       btn.setAttribute('aria-expanded','false');
-
-      // הפעלת Google Translate דרך select
-      if(gtLang === 'he') {
-        triggerGoogleTranslate('he');
-      } else {
-        triggerGoogleTranslate(gtLang);
-      }
     });
   });
 
+  // סגירה בלחיצה בחוץ
   document.addEventListener('click', e => {
     if(!selector.contains(e.target)){
       selector.classList.remove('open');
@@ -1983,17 +1996,6 @@ function switchTab(btn, panel){
     }
   });
 })();
-
-
-document.querySelectorAll('.faq-q').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const item=btn.closest('.faq-item');
-    const wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!wasOpen) item.classList.add('open');
-    btn.setAttribute('aria-expanded', !wasOpen);
-  });
-});
 
 // ── HERO PROMPT → BUILDER ──
 function go() {
@@ -2005,34 +2007,8 @@ function go() {
 document.getElementById("prompt") && document.getElementById("prompt").addEventListener("keydown", function(e){
   if(e.key === "Enter") go();
 });
-</script>
 
-<!-- ── GOOGLE TRANSLATE ── -->
-<!-- ── GOOGLE TRANSLATE ── -->
-<div id="google_translate_element"></div>
-<script>
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-    {pageLanguage: 'he', includedLanguages: 'he,en,fr,es,ru,ar,de'},
-    'google_translate_element'
-  );
-}
-
-function triggerGoogleTranslate(lang) {
-  var attempts = 0;
-  var interval = setInterval(function(){
-    var sel = document.querySelector('#google_translate_element select');
-    if(sel) {
-      clearInterval(interval);
-      sel.value = lang;
-      sel.dispatchEvent(new Event('change'));
-    } else if(++attempts > 20) {
-      clearInterval(interval);
-    }
-  }, 200);
-}
 </script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
