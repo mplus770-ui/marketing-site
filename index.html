@@ -854,11 +854,6 @@ body {
 }
 .lang-menu li a:hover { background:rgba(0,112,243,0.15); color:#fff; }
 .lang-menu li a.active { color:#7ab8ff; font-weight:700; }
-@media(max-width:720px){
-  .lang-btn .lang-current { display:none; }
-  .lang-menu { left:auto; right:0; transform:none; }
-}
-
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;}
@@ -886,6 +881,14 @@ body {
   }
 }
 
+/* max-width 720px */
+@media (max-width: 720px) {
+  .lang-menu {
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+  }
+}
 </style>
 </head>
 <body>
