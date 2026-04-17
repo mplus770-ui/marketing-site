@@ -252,6 +252,23 @@ body {
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 @media(max-width:720px){
+  /* תיקון תפריט שפות במובייל */
+  .lang-selector {
+    position: relative;
+  }
+
+  .lang-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 6px;
+    background: rgba(6,9,16,0.97);
+    border: 1px solid rgba(0,112,243,0.25);
+    border-radius: 10px;
+    padding: 6px 0;
+    z-index: 9999;
+  }
+
   .site-header{padding:0.4rem 0.6rem;}
   .site-nav{border-radius:14px; padding:9px 12px; position:relative;}
   .nav-hamburger{display:flex;}
