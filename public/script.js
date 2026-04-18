@@ -172,15 +172,38 @@ document.getElementById("prompt") && document.getElementById("prompt").addEventL
   });
 })();
 
-// ── LANGUAGE SWITCH (final) ──
+// ── LANGUAGE MENU ──
 (function(){
-  const menu = document.getElementById('langMenu');
-  if(!menu) return;
+  const selector = document.getElementById('langSelector');
+  const btn = document.getElementById('langBtn');
 
-  menu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      window.location.href = a.getAttribute('href');
-    });
+  if(!selector || !btn) return;
+
+  // Create menu dynamically
+  const menu = document.createElement('div');
+  menu.className = 'lang-menu';
+  menu.innerHTML = `
+    <a href="/index.html">🇮🇱 עברית</a>
+    <a href="/en/index.html">🇬🇧 English</a>
+    <a href="/fr/index.html">🇫🇷 Français</a>
+    <a href="/es/index.html">🇪🇸 Español</a>
+    <a href="/pt/index.html">🇧🇷 Português</a>
+    <a href="/ru/index.html">🇷🇺 Русский</a>
+    <a href="/zh/index.html">🇨🇳 中文</a>
+    <a href="/ar/index.html">🇸🇦 العربية</a>
+    <a href="/de/index.html">🇩🇪 Deutsch</a>
+  `;
+  selector.appendChild(menu);
+
+  // Toggle menu
+  btn.addEventListener('click', () => {
+    selector.classList.toggle('open');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', e => {
+    if(!selector.contains(e.target)){
+      selector.classList.remove('open');
+    }
   });
 })();
