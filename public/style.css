@@ -371,14 +371,7 @@ body {
   .hero-text { margin-bottom: 0.6rem; }
   .hero-typing { margin-bottom: 0.5rem !important; }
 }
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 2rem !important;
-  }
-}
-.hero {
-  padding:4rem 1.5rem 1.5rem;
-}
+
 
 /* ══════════════════════════════════════════
    WHAT WE DO (manifesto)
