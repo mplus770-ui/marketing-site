@@ -356,7 +356,7 @@ body {
   .hero-tagline-mobile { display: inline; }
   .hero-tagline-desktop { display: none; }
 }
- 
+  
 /* Desktop: original behavior */
 @media (min-width: 769px) {
   .hero {
