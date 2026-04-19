@@ -376,6 +376,12 @@ body {
     padding-top: 2rem !important;
   }
 }
+@media (max-width: 480px) {
+  .hero-tagline-mobile {
+    white-space: normal !important;
+    display: inline-block;
+  }
+}
 
 
 /* ══════════════════════════════════════════
