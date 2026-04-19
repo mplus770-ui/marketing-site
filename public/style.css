@@ -350,10 +350,28 @@ body {
 /* Hero tagline mobile/desktop splits */
 .hero-tagline-mobile { display: none; }
 .hero-tagline-desktop { display: inline; }
+
+/* Mobile: show mobile version, hide desktop */
 @media (max-width: 768px) {
   .hero-tagline-mobile { display: inline; }
   .hero-tagline-desktop { display: none; }
 }
+
+/* Desktop: original behavior */
+@media (min-width: 769px) {
+  .hero {
+    padding-top: 2rem;
+    min-height: auto;
+    justify-content: flex-start;
+  }
+  .hero-tag { margin-bottom: 0.75rem; }
+  .hero-title { margin-bottom: 0.2rem; }
+  .hero-subtitle { margin-bottom: 0.2rem; }
+  .hero-text { margin-bottom: 0.6rem; }
+  .hero-typing { margin-bottom: 0.5rem !important; }
+}
+
+/* Mobile: allow second line to appear */
 @media (max-width: 480px) {
   .hero-tagline-mobile {
     white-space: normal !important;
