@@ -376,13 +376,9 @@ body {
     padding-top: 2rem !important;
   }
 }
-@media (max-width: 480px) {
-  .hero-tagline-mobile {
-    white-space: normal !important;
-    display: inline-block;
-  }
+.hero {
+  padding:4rem 1.5rem 1.5rem;
 }
-
 
 /* ══════════════════════════════════════════
    WHAT WE DO (manifesto)
