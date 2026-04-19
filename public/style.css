@@ -377,9 +377,13 @@ body {
     white-space: normal !important;
     display: inline-block;
   }
-}
 .hero {
-  padding-top: env(safe-area-inset-top, 0);
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+body {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 /* ══════════════════════════════════════════
