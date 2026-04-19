@@ -377,14 +377,7 @@ body {
     white-space: normal !important;
     display: inline-block;
   }
-.hero {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-body {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
+
 
 /* ══════════════════════════════════════════
    WHAT WE DO (manifesto)
