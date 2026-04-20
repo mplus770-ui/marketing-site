@@ -915,6 +915,16 @@ body {
   }
 }
 
+/* ───────────────────────────────
+  7) דסקטופ — הורדת שורת ⚡ שלא תיכנס מתחת להדר
+─────────────────────────────── */
+@media (min-width: 1024px) {
+  .hero-tag {
+    margin-top: 0 !important; /* במקום -12 או -20 */
+    margin-bottom: 0.5rem !important; /* מצמיד אותה יפה לטקסט שמתחת */
+  }
+}
+
 /* הסרת Google Translate מהפוטר */
 #google_translate_element,
 .goog-te-banner-frame,
