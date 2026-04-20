@@ -920,8 +920,16 @@ body {
 ─────────────────────────────── */
 @media (min-width: 1024px) {
   .hero-tag {
-    margin-top: 0 !important; /* במקום -12 או -20 */
-    margin-bottom: 0.5rem !important; /* מצמיד אותה יפה לטקסט שמתחת */
+    margin-top: 6px !important; /* עדין, לא דחוס */
+    margin-bottom: 0.65rem !important;
+  }
+}
+
+/* מובייל — הורדה עדינה של שורת ⚡ */
+@media (max-width: 768px) {
+  .hero-tag {
+    margin-top: 4px !important;
+    margin-bottom: 0.5rem !important;
   }
 }
 
