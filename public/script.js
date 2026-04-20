@@ -104,16 +104,20 @@
 
   if (lang === "he") {
     words = [
-      "בעלות מלאה 🏆",
-      "מהירות טעינה מטורפת ⚡",
-      "מותאם להמרות 🚀"
-    ];
+  "Amazon (AWS) 🚀",
+  "בעלות מלאה 🏆",
+  "מותאם להמרות ⚡",
+  "קוד נקי ✦",
+  "ללא WordPress ✓"
+];
   } else {
     words = [
-      "Full Ownership 🏆",
-      "Lightning‑Fast Performance ⚡",
-      "Built for Conversion 🚀"
-    ];
+  "Amazon (AWS) 🚀",
+  "Full Ownership 🏆",
+  "Optimized for Conversions ⚡",
+  "Clean Code ✦",
+  "No WordPress ✓"
+];
   }
 
   let wi = 0, ci = 0, typing = true, wait = false;
