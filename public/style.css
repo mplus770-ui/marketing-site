@@ -950,3 +950,12 @@ iframe.goog-te-menu-frame {
   width: 0 !important;
   pointer-events: none !important;
 }
+html[dir="rtl"] body {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="ltr"] body {
+  direction: ltr;
+  text-align: left;
+}
