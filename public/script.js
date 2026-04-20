@@ -93,23 +93,57 @@
   els.forEach(el=>io.observe(el));
 })();
 
-// ── TYPEWRITER ──
+// ── TYPEWRITER (language‑aware) ──
 (function(){
   const target = document.getElementById('typeTarget');
   if(!target) return;
-  const words = ['Amazon (AWS) 🚀','שרתים מהירים ⚡','קוד נקי ✦','בעלות מלאה 🏆','ללא WordPress ✓'];
-  let wi=0,ci=0,typing=true,wait=false;
+
+  const lang = document.documentElement.lang;
+
+  let words = [];
+
+  if (lang === "he") {
+    words = [
+      "בעלות מלאה 🏆",
+      "מהירות טעינה מטורפת ⚡",
+      "מותאם להמרות 🚀"
+    ];
+  } else {
+    words = [
+      "Full Ownership 🏆",
+      "Lightning‑Fast Performance ⚡",
+      "Built for Conversion 🚀"
+    ];
+  }
+
+  let wi = 0, ci = 0, typing = true, wait = false;
+
   function tick(){
-    if(wait){wait=false;setTimeout(tick,1600);return;}
-    const w=words[wi];
+    if(wait){ wait = false; setTimeout(tick,1600); return; }
+    const w = words[wi];
     if(typing){
-      if(ci<w.length){ci++;target.textContent=w.slice(0,ci);setTimeout(tick,55+Math.random()*40);}
-      else{typing=false;wait=true;setTimeout(tick,1600);}
-    }else{
-      if(ci>0){ci--;target.textContent=w.slice(0,ci);setTimeout(tick,22);}
-      else{typing=true;wi=(wi+1)%words.length;setTimeout(tick,280);}
+      if(ci < w.length){
+        ci++;
+        target.textContent = w.slice(0,ci);
+        setTimeout(tick,55+Math.random()*40);
+      } else {
+        typing = false;
+        wait = true;
+        setTimeout(tick,1600);
+      }
+    } else {
+      if(ci > 0){
+        ci--;
+        target.textContent = w.slice(0,ci);
+        setTimeout(tick,22);
+      } else {
+        typing = true;
+        wi = (wi+1) % words.length;
+        setTimeout(tick,280);
+      }
     }
   }
+
   setTimeout(tick,800);
 })();
 
@@ -191,20 +225,3 @@ document.getElementById("prompt") && document.getElementById("prompt").addEventL
     }
   });
 })();
-const lang = document.documentElement.lang;
-
-let typingPhrases = [];
-
-if (lang === "he") {
-  typingPhrases = [
-    "בעלות מלאה 🏆",
-    "מהירות טעינה מטורפת ⚡",
-    "מותאם להמרות 🚀"
-  ];
-} else {
-  typingPhrases = [
-    "Full Ownership 🏆",
-    "Lightning‑Fast Performance ⚡",
-    "Built for Conversion 🚀"
-  ];
-}
