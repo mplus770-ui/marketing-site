@@ -172,3 +172,22 @@ document.getElementById("prompt") && document.getElementById("prompt").addEventL
   });
 })();
 
+// ── LANGUAGE MENU (fixed) ──
+(function(){
+  const selector = document.getElementById('langSelector');
+  const btn = document.getElementById('langBtn');
+
+  if(!selector || !btn) return;
+
+  // Toggle menu
+  btn.addEventListener('click', () => {
+    selector.classList.toggle('open');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', e => {
+    if(!selector.contains(e.target)){
+      selector.classList.remove('open');
+    }
+  });
+})();

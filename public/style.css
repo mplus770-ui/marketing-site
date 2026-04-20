@@ -836,9 +836,18 @@ body {
 /* ── תיקונים נקודתיים ── */
 
 /* 1) תיקון שורה שנעלמת בהירו */
-.hero-tagline-mobile,
-.hero-tagline-desktop {
-  display: inline !important;
+/* מובייל — להסתיר את גרסת הדסקטופ */
+@media (max-width: 768px) {
+  .hero-tagline-desktop {
+    display: none !important;
+  }
+}
+
+/* דסקטופ — להסתיר את גרסת המובייל */
+@media (min-width: 769px) {
+  .hero-tagline-mobile {
+    display: none !important;
+  }
 }
 
 /* 2) צמצום רווח במובייל בין ההדר ל-⚡ */
