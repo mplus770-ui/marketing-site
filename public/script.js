@@ -191,3 +191,20 @@ document.getElementById("prompt") && document.getElementById("prompt").addEventL
     }
   });
 })();
+const lang = document.documentElement.lang;
+
+let typingPhrases = [];
+
+if (lang === "he") {
+  typingPhrases = [
+    "בעלות מלאה 🏆",
+    "מהירות טעינה מטורפת ⚡",
+    "מותאם להמרות 🚀"
+  ];
+} else {
+  typingPhrases = [
+    "Full Ownership 🏆",
+    "Lightning‑Fast Performance ⚡",
+    "Built for Conversion 🚀"
+  ];
+}
