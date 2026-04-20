@@ -108,7 +108,7 @@
   "בעלות מלאה 🏆",
   "מותאם להמרות ⚡",
   "קוד נקי ✦",
-  "ללא WordPress ✓"
+   "<span style='color:#007bff'>ללא WordPress ✓</span>"
 ];
   } else {
     words = [
@@ -116,7 +116,7 @@
   "Full Ownership 🏆",
   "Optimized for Conversions ⚡",
   "Clean Code ✦",
-  "No WordPress ✓"
+  "<span style='color:#007bff'>No WordPress ✓</span>"
 ];
   }
 
@@ -128,7 +128,7 @@
     if(typing){
       if(ci < w.length){
         ci++;
-        target.textContent = w.slice(0,ci);
+       target.innerHTML = w.slice(0,ci);
         setTimeout(tick,55+Math.random()*40);
       } else {
         typing = false;
