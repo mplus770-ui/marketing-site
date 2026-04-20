@@ -886,6 +886,35 @@ body {
   }
 }
 
+/* ───────────────────────────────
+  6) דסקטופ — התאמה עדינה ל־125% זום
+─────────────────────────────── */
+@media (min-width: 1024px) {
+
+  /* מרים את כל ההירו מעט */
+  .hero {
+    padding-top: 1rem !important;
+  }
+
+  /* מרים את שורת ⚡ טיפה */
+  .hero-tag {
+    margin-top: -12px !important;
+  }
+
+  /* מצמצם רווחים קטנים בין הכותרות */
+  .hero-title {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 0.7rem !important;
+  }
+
+  .hero-text {
+    margin-bottom: 0.9rem !important;
+  }
+}
+
 /* הסרת Google Translate מהפוטר */
 #google_translate_element,
 .goog-te-banner-frame,
