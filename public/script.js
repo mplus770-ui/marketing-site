@@ -153,37 +153,6 @@
   setTimeout(tick,800);
 })();
 
-  let wi = 0, ci = 0, typing = true, wait = false;
-
-  function tick(){
-    if(wait){ wait = false; setTimeout(tick,1600); return; }
-    const w = words[wi];
-    if(typing){
-      if(ci < w.length){
-        ci++;
-       target.innerHTML = w.slice(0,ci);
-        setTimeout(tick,55+Math.random()*40);
-      } else {
-        typing = false;
-        wait = true;
-        setTimeout(tick,1600);
-      }
-    } else {
-      if(ci > 0){
-        ci--;
-        target.textContent = w.slice(0,ci);
-        setTimeout(tick,22);
-      } else {
-        typing = true;
-        wi = (wi+1) % words.length;
-        setTimeout(tick,280);
-      }
-    }
-  }
-
-  setTimeout(tick,800);
-})();
-
 // ── HAMBURGER ──
 (function(){
   const btn=document.getElementById('navHamburger');
