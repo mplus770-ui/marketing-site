@@ -960,19 +960,20 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === Medium Glow Fix for New Background System === */
+/* === Adjusted Glow Position (Medium, Recommended) === */
 
-/* Make nebula brighter */
+/* Move nebula glow lower + more to the sides */
 .nebula {
   background:
-    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,70,180,0.32) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(80,0,160,0.25) 0%, transparent 55%),
-    radial-gradient(ellipse 100% 40% at 50% 50%, rgba(0,112,243,0.18) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 60% at 15% 65%, rgba(0,70,180,0.32) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 70%, rgba(80,0,160,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 40% at 50% 85%, rgba(0,112,243,0.18) 0%, transparent 70%);
   opacity: 0.9;
 }
 
-/* Make earth glow stronger */
+/* Move earth glow slightly higher but still below hero */
 .earth-glow {
+  bottom: -80px;
   background: radial-gradient(
     ellipse at 50% 100%,
     rgba(0,112,243,0.38) 0%,
@@ -982,7 +983,7 @@ html[dir="ltr"] body {
   opacity: 0.9;
 }
 
-/* Add soft aurora like old site */
+/* Move aurora lower so it doesn't hit the hero text */
 .hero::before {
   content: "";
   position: fixed;
@@ -992,16 +993,12 @@ html[dir="ltr"] body {
   background: linear-gradient(
     105deg,
     transparent 0%,
-    rgba(0,112,243,0.12) 30%,
-    transparent 55%,
-    rgba(0,60,160,0.10) 80%,
+    rgba(0,112,243,0.10) 45%,
+    transparent 60%,
+    rgba(0,60,160,0.08) 85%,
     transparent 100%
   );
-  opacity: 0.45;
+  opacity: 0.35;
+  transform: translateY(120px); /* pushes glow downward */
   animation: auroraDrift 22s ease-in-out infinite alternate;
-}
-
-@keyframes auroraDrift {
-  0% { background-position: 0% 40%; transform: scale(1); }
-  100% { background-position: 100% 60%; transform: scale(1.03); }
 }
