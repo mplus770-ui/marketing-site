@@ -960,23 +960,23 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === Restore your original center brightness (no extra darkness) === */
+/* === Restore your original center brightness === */
 .nebula {
-  background: rgba(6,10,20,0.75) !important; /* כמו שהיה לך – לא כהה מדי */
+  background: rgba(6,10,20,0.70) !important; /* כמו שהיה בהתחלה – מואר עדין */
 }
 
-/* === Raise side glow slightly without increasing darkness === */
+/* === Raise side glow slightly (without darkening anything) === */
 
 /* LEFT SIDE — lift glow upward a bit */
 .nebula::before {
-  top: -22% !important;   /* היה נמוך יותר – עכשיו רק טיפה גבוה */
-  opacity: 0.78 !important; /* קצת יותר אור, לא מוגזם */
+  top: -14% !important;   /* היה נמוך – עכשיו רק טיפה גבוה */
+  opacity: 0.80 !important; /* טיפה יותר אור */
   filter: blur(90px) !important;
 }
 
 /* RIGHT SIDE — lift glow upward a bit */
 .nebula::after {
-  bottom: -16% !important; /* היה נמוך – עכשיו טיפה גבוה */
-  opacity: 0.76 !important;
+  bottom: -10% !important; /* היה נמוך – עכשיו טיפה גבוה */
+  opacity: 0.78 !important;
   filter: blur(90px) !important;
 }
