@@ -104,21 +104,62 @@
 
   if (lang === "he") {
     words = [
-  "Amazon (AWS) 🚀",
-  "בעלות מלאה 🏆",
-  "מותאם להמרות ⚡",
-  "קוד נקי ✦",
-   "<span style='color:#007bff'>ללא WordPress ✓</span>"
-];
+      "Amazon (AWS) 🚀",
+      "🔥 לא מרוצה? לא משלם.",
+      "בעלות מלאה 🏆",
+      "מותאם להמרות ⚡",
+      "קוד נקי ✦",
+      "<span style='color:#007bff'>ללא WordPress ✓</span>"
+    ];
   } else {
     words = [
-  "Amazon (AWS) 🚀",
-  "Full Ownership 🏆",
-  "Optimized for Conversions ⚡",
-  "Clean Code ✦",
-  "<span style='color:#007bff'>No WordPress ✓</span>"
-];
+      "Amazon (AWS) 🚀",
+      "🔥 Not happy? You don’t pay.",
+      "Full Ownership 🏆",
+      "Optimized for Conversions ⚡",
+      "Clean Code ✦",
+      "<span style='color:#007bff'>No WordPress ✓</span>"
+    ];
   }
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const current = words[wordIndex];
+
+    // אם זה HTML — נכתוב innerHTML
+    if (current.includes("<span")) {
+      target.innerHTML = current;
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        charIndex = 0;
+        isDeleting = false;
+        setTimeout(type, 1500);
+      }, 1500);
+      return;
+    }
+
+    // טקסט רגיל
+    const displayed = isDeleting
+      ? current.substring(0, charIndex--)
+      : current.substring(0, charIndex++);
+
+    target.innerHTML = displayed;
+
+    if (!isDeleting && charIndex === current.length) {
+      setTimeout(() => isDeleting = true, 1000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+  }
+
+  type();
+})();
 
   let wi = 0, ci = 0, typing = true, wait = false;
 
