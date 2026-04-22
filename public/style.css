@@ -960,32 +960,48 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === Medium Glow Background (Recommended) === */
+/* === Medium Glow Fix for New Background System === */
 
-.bg-blobs::before {
+/* Make nebula brighter */
+.nebula {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,70,180,0.32) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(80,0,160,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 40% at 50% 50%, rgba(0,112,243,0.18) 0%, transparent 70%);
+  opacity: 0.9;
+}
+
+/* Make earth glow stronger */
+.earth-glow {
   background: radial-gradient(
-    circle at 30% 30%,
-    rgba(0,112,243,0.32),
-    transparent 62%
+    ellipse at 50% 100%,
+    rgba(0,112,243,0.38) 0%,
+    rgba(0,180,100,0.12) 35%,
+    transparent 70%
   );
   opacity: 0.9;
 }
 
-.bg-blobs::after {
-  background: radial-gradient(
-    circle at 70% 70%,
-    rgba(0,45,120,0.28),
-    rgba(0,112,243,0.15) 45%,
-    transparent 65%
+/* Add soft aurora like old site */
+.hero::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(0,112,243,0.12) 30%,
+    transparent 55%,
+    rgba(0,60,160,0.10) 80%,
+    transparent 100%
   );
-  opacity: 0.75;
-}
-
-.bg-blobs__aurora {
   opacity: 0.45;
+  animation: auroraDrift 22s ease-in-out infinite alternate;
 }
 
-.bg-blobs::after {
-  filter: blur(72px);
-  opacity: 0.22;
+@keyframes auroraDrift {
+  0% { background-position: 0% 40%; transform: scale(1); }
+  100% { background-position: 100% 60%; transform: scale(1.03); }
 }
