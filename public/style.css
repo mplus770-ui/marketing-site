@@ -960,83 +960,23 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === TRUE 1:1 OLD SITE BACKGROUND RECREATION FOR NEW SYSTEM === */
-
-/* --- DARK CENTER (REAL SPACE FEEL) --- */
+/* === Restore your original center brightness (no extra darkness) === */
 .nebula {
-  background: #060a14 !important; /* מרכז כהה אמיתי */
-  position: relative;
-  overflow: hidden;
+  background: rgba(6,10,20,0.75) !important; /* כמו שהיה לך – לא כהה מדי */
 }
 
-/* --- LEFT SIDE GLOW — FROM MIDDLE → UP-LEFT (TRIANGLE FEEL) --- */
+/* === Raise side glow slightly without increasing darkness === */
+
+/* LEFT SIDE — lift glow upward a bit */
 .nebula::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 55% at 25% 35%, /* מהאמצע למעלה-שמאלה */
-    rgba(0,112,243,0.42),
-    transparent 65%
-  );
-  filter: blur(90px);
-  opacity: 0.75;
-  pointer-events: none;
+  top: -22% !important;   /* היה נמוך יותר – עכשיו רק טיפה גבוה */
+  opacity: 0.78 !important; /* קצת יותר אור, לא מוגזם */
+  filter: blur(90px) !important;
 }
 
-/* --- RIGHT SIDE GLOW — FROM MIDDLE → DOWN-RIGHT (TRIANGLE FEEL) --- */
+/* RIGHT SIDE — lift glow upward a bit */
 .nebula::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 55% at 75% 75%, /* מהאמצע למטה-ימינה */
-    rgba(0,60,160,0.38),
-    transparent 65%
-  );
-  filter: blur(90px);
-  opacity: 0.72;
-  pointer-events: none;
-}
-
-/* --- AURORA LAYER — SOFTER, LIKE OLD SITE --- */
-.nebula-aurora {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(0,112,243,0.10) 30%,
-    transparent 55%,
-    rgba(0,60,160,0.08) 80%,
-    transparent 100%
-  );
-  background-size: 220% 220%;
-  animation: auroraDrift 22s ease-in-out infinite alternate;
-  opacity: 0.55; /* עדין יותר */
-  pointer-events: none;
-}
-
-@keyframes auroraDrift {
-  0% { background-position: 0% 40%; transform: scale(1); }
-  100% { background-position: 100% 60%; transform: scale(1.03); }
-}
-
-/* === INPUT GLASS — LUXURY, NOT TOO STRONG === */
-#prompt {
-  background: rgba(10,14,28,0.65) !important;
-  border: 1px solid rgba(0,112,243,0.28) !important;
-  backdrop-filter: blur(14px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
-
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.05) inset,
-    0 6px 18px rgba(0,0,0,0.45),
-    0 0 18px rgba(0,112,243,0.32); /* עדין, יוקרתי */
-}
-
-/* BUTTON FIX — שלא יוחשך במובייל */
-.hero-prompt button {
-  position: relative;
-  z-index: 3;
+  bottom: -16% !important; /* היה נמוך – עכשיו טיפה גבוה */
+  opacity: 0.76 !important;
+  filter: blur(90px) !important;
 }
