@@ -109,7 +109,7 @@
       "בעלות מלאה 🏆",
       "מותאם להמרות ⚡",
       "קוד נקי ✦",
-      "<span style='color:#007bff'>ללא WordPress ✓</span>"
+      "ללא WordPress ✓"
     ];
   } else {
     words = [
@@ -118,26 +118,39 @@
       "Full Ownership 🏆",
       "Optimized for Conversions ⚡",
       "Clean Code ✦",
-      "<span style='color:#007bff'>No WordPress ✓</span>"
+      "No WordPress ✓"
     ];
   }
 
-  let wordIndex = 0;
+  let wi = 0, ci = 0, typing = true, wait = false;
 
-  function showWord() {
-    const current = words[wordIndex];
-
-    // מציג HTML כמו שצריך
-    target.innerHTML = current;
-
-    // עובר למילה הבאה
-    wordIndex = (wordIndex + 1) % words.length;
-
-    // זמן תצוגה
-    setTimeout(showWord, 1800);
+  function tick(){
+    if(wait){ wait = false; setTimeout(tick,1600); return; }
+    const w = words[wi];
+    if(typing){
+      if(ci < w.length){
+        ci++;
+        target.textContent = w.slice(0,ci);
+        setTimeout(tick,55+Math.random()*40);
+      } else {
+        typing = false;
+        wait = true;
+        setTimeout(tick,1600);
+      }
+    } else {
+      if(ci > 0){
+        ci--;
+        target.textContent = w.slice(0,ci);
+        setTimeout(tick,22);
+      } else {
+        typing = true;
+        wi = (wi+1) % words.length;
+        setTimeout(tick,280);
+      }
+    }
   }
 
-  showWord();
+  setTimeout(tick,800);
 })();
 
   let wi = 0, ci = 0, typing = true, wait = false;
