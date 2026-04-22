@@ -960,3 +960,32 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
+/* === Medium Glow Background (Recommended) === */
+
+.bg-blobs::before {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(0,112,243,0.32),
+    transparent 62%
+  );
+  opacity: 0.9;
+}
+
+.bg-blobs::after {
+  background: radial-gradient(
+    circle at 70% 70%,
+    rgba(0,45,120,0.28),
+    rgba(0,112,243,0.15) 45%,
+    transparent 65%
+  );
+  opacity: 0.75;
+}
+
+.bg-blobs__aurora {
+  opacity: 0.45;
+}
+
+.bg-blobs::after {
+  filter: blur(72px);
+  opacity: 0.22;
+}
