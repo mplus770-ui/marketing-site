@@ -960,23 +960,46 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === Restore your original center brightness === */
+/* === Center glow that gets stronger toward the sides === */
 .nebula {
-  background: rgba(6,10,20,0.70) !important; /* כמו שהיה בהתחלה – מואר עדין */
+  background:
+    radial-gradient(
+      ellipse 85% 60% at 50% 55%,
+      rgba(0,112,243,0.22) 0%,     /* אור עדין במרכז */
+      rgba(0,112,243,0.32) 25%,    /* מתחזק */
+      rgba(6,10,20,0.75) 55%,      /* מתחיל להיחלש */
+      rgba(6,10,20,0.95) 85%       /* כהות בקצוות */
+    ) !important;
+  position: relative;
+  overflow: hidden;
 }
 
-/* === Raise side glow slightly (without darkening anything) === */
-
-/* LEFT SIDE — lift glow upward a bit */
+/* === LEFT SIDE — diagonal upward glow (stronger at the edge) === */
 .nebula::before {
-  top: -14% !important;   /* היה נמוך – עכשיו רק טיפה גבוה */
-  opacity: 0.80 !important; /* טיפה יותר אור */
-  filter: blur(90px) !important;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 55% at 20% 35%,   /* אלכסון למעלה-שמאלה */
+    rgba(0,112,243,0.45),         /* חזק יותר בקצה */
+    transparent 65%
+  );
+  filter: blur(95px);
+  opacity: 0.82;
+  pointer-events: none;
 }
 
-/* RIGHT SIDE — lift glow upward a bit */
+/* === RIGHT SIDE — diagonal downward glow (stronger at the edge) === */
 .nebula::after {
-  bottom: -10% !important; /* היה נמוך – עכשיו טיפה גבוה */
-  opacity: 0.78 !important;
-  filter: blur(90px) !important;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 55% at 80% 75%,   /* אלכסון למטה-ימינה */
+    rgba(0,60,160,0.42),
+    transparent 65%
+  );
+  filter: blur(95px);
+  opacity: 0.80;
+  pointer-events: none;
 }
