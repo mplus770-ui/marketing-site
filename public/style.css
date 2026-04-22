@@ -960,45 +960,33 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === Adjusted Glow Position (Medium, Recommended) === */
+/* === Glow Glass Input Enhancement (no HTML changes) === */
 
-/* Move nebula glow lower + more to the sides */
-.nebula {
+#prompt {
+  position: relative;
   background:
-    radial-gradient(ellipse 80% 60% at 15% 65%, rgba(0,70,180,0.32) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 85% 70%, rgba(80,0,160,0.25) 0%, transparent 55%),
-    radial-gradient(ellipse 100% 40% at 50% 85%, rgba(0,112,243,0.18) 0%, transparent 70%);
-  opacity: 0.9;
+    radial-gradient(circle at 0% 0%, rgba(0,112,243,0.35), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(0,60,160,0.28), transparent 55%),
+    rgba(10,14,28,0.75) !important;
+  border: 1px solid rgba(0,112,243,0.45) !important;
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06) inset,
+    0 14px 40px rgba(0,0,0,0.75),
+    0 0 40px rgba(0,112,243,0.55);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
-/* Move earth glow slightly higher but still below hero */
-.earth-glow {
-  bottom: -80px;
-  background: radial-gradient(
-    ellipse at 50% 100%,
-    rgba(0,112,243,0.38) 0%,
-    rgba(0,180,100,0.12) 35%,
-    transparent 70%
-  );
-  opacity: 0.9;
+#prompt:focus {
+  border-color: rgba(0,180,255,0.8) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.12) inset,
+    0 18px 50px rgba(0,0,0,0.9),
+    0 0 52px rgba(0,180,255,0.9);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(0,180,255,0.45), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(0,80,200,0.35), transparent 55%),
+    rgba(4,8,18,0.98) !important;
 }
 
-/* Move aurora lower so it doesn't hit the hero text */
-.hero::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(0,112,243,0.10) 45%,
-    transparent 60%,
-    rgba(0,60,160,0.08) 85%,
-    transparent 100%
-  );
-  opacity: 0.35;
-  transform: translateY(120px); /* pushes glow downward */
-  animation: auroraDrift 22s ease-in-out infinite alternate;
-}
