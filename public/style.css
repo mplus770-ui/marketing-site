@@ -960,46 +960,47 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === Stronger center glow that expands outward === */
+/* === Strong bright center glow expanding outward === */
 .nebula {
   background:
     radial-gradient(
-      ellipse 90% 70% at 50% 55%,
-      rgba(0,112,243,0.38) 0%,     /* מרכז מואר חזק */
-      rgba(0,112,243,0.48) 25%,    /* מתחזק */
-      rgba(6,10,20,0.55) 55%,      /* מעבר רך */
-      rgba(6,10,20,0.85) 85%       /* כהות בקצוות */
+      ellipse 95% 75% at 50% 55%,
+      rgba(0,140,255,0.55) 0%,     /* מרכז חזק וברור */
+      rgba(0,120,255,0.65) 22%,    /* מתחזק */
+      rgba(0,90,200,0.55) 40%,     /* עדיין חזק */
+      rgba(6,10,20,0.55) 65%,      /* מתחיל להיחלש */
+      rgba(6,10,20,0.90) 90%       /* כהות בקצוות */
     ) !important;
   position: relative;
   overflow: hidden;
 }
 
-/* === LEFT SIDE — stronger diagonal glow upward === */
+/* === LEFT SIDE — very strong diagonal glow upward === */
 .nebula::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 85% 60% at 22% 38%,   /* אלכסון למעלה-שמאלה */
-    rgba(0,112,243,0.55),         /* חזק וברור */
-    transparent 65%
+    ellipse 90% 65% at 18% 32%,   /* אלכסון למעלה-שמאלה */
+    rgba(0,140,255,0.75),         /* חזק מאוד */
+    rgba(0,120,255,0.45) 40%,
+    transparent 70%
   );
-  filter: blur(95px);
-  opacity: 0.92; /* הרבה יותר מורגש */
+  filter: blur(110px);
+  opacity: 0.95; /* כמעט מלא */
   pointer-events: none;
 }
 
-/* === RIGHT SIDE — stronger diagonal glow downward === */
+/* === RIGHT SIDE — very strong diagonal glow downward === */
 .nebula::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 85% 60% at 78% 72%,   /* אלכסון למטה-ימינה */
-    rgba(0,60,160,0.52),
-    transparent 65%
+    ellipse 90% 65% at 82% 78%,   /* אלכסון למטה-ימינה */
+    rgba(0,100,220,0.72),
+    rgba(0,80,180,0.42) 40%,
+    transparent 70%
   );
-  filter: blur(95px);
-  opacity: 0.90; /* חזק וברור */
-  pointer-events: none;
-}
+  filter: blur(110px);
+  opacity: 0.93;
