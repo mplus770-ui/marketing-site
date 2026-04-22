@@ -123,42 +123,21 @@
   }
 
   let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
 
-  function type() {
+  function showWord() {
     const current = words[wordIndex];
 
-    // אם זה HTML — נכתוב innerHTML
-    if (current.includes("<span")) {
-      target.innerHTML = current;
-      setTimeout(() => {
-        wordIndex = (wordIndex + 1) % words.length;
-        charIndex = 0;
-        isDeleting = false;
-        setTimeout(type, 1500);
-      }, 1500);
-      return;
-    }
+    // מציג HTML כמו שצריך
+    target.innerHTML = current;
 
-    // טקסט רגיל
-    const displayed = isDeleting
-      ? current.substring(0, charIndex--)
-      : current.substring(0, charIndex++);
+    // עובר למילה הבאה
+    wordIndex = (wordIndex + 1) % words.length;
 
-    target.innerHTML = displayed;
-
-    if (!isDeleting && charIndex === current.length) {
-      setTimeout(() => isDeleting = true, 1000);
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-    }
-
-    setTimeout(type, isDeleting ? 50 : 100);
+    // זמן תצוגה
+    setTimeout(showWord, 1800);
   }
 
-  type();
+  showWord();
 })();
 
   let wi = 0, ci = 0, typing = true, wait = false;
