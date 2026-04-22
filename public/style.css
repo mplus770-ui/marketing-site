@@ -933,6 +933,20 @@ body {
   }
 }
 
+/* מובייל — 3 שורות */
+@media (max-width: 480px) {
+  .hero-subtitle {
+    line-height: 1.35;
+  }
+}
+
+/* דסקטופ — מאחד את השורה השנייה והשלישית */
+@media (min-width: 481px) {
+  .hero-subtitle br:nth-of-type(2) {
+    display: none;
+  }
+}
+
 /* הסרת Google Translate מהפוטר */
 #google_translate_element,
 .goog-te-banner-frame,
