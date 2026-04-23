@@ -999,3 +999,18 @@ html[dir="rtl"] .wa-float {
   left: 24px !important;
   right: auto !important;
 }
+/* Fix hero tagline on mobile (LTR + RTL) */
+@media (max-width: 480px) {
+  .hero-title,
+  .hero-subtitle,
+  .hero-text {
+    font-size: clamp(20px, 6vw, 28px) !important;
+    line-height: 1.2 !important;
+    word-break: break-word;
+  }
+
+  .hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
