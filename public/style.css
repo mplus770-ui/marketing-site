@@ -966,10 +966,11 @@ html[dir="ltr"] body {
 }
 
 @keyframes promptGlow {
-  0%   { box-shadow: 0 0 6px rgba(0,112,243,0.25); }
-  50%  { box-shadow: 0 0 14px rgba(0,112,243,0.45); }
-  100% { box-shadow: 0 0 6px rgba(0,112,243,0.25); }
+  0%   { box-shadow: 0 0 10px rgba(0,112,243,0.35); }
+  50%  { box-shadow: 0 0 22px rgba(0,112,243,0.75); }
+  100% { box-shadow: 0 0 10px rgba(0,112,243,0.35); }
 }
+
 #prompt {
   position: relative;
   z-index: 1;
