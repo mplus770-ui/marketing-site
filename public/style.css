@@ -961,38 +961,3 @@ html[dir="ltr"] body {
   text-align: left;
 }
 
-/* === SIDE LIGHT — slightly brighter but still soft === */
-
-/* LEFT SIDE — tiny brightness boost */
-.nebula::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 70% 55% at -10% 40%,
-    rgba(0,140,255,0.34),   /* היה 0.28 → טיפה יותר */
-    rgba(0,140,255,0.22) 40%,
-    transparent 70%
-  );
-  filter: blur(90px);        /* טיפה יותר רך */
-  opacity: 0.62 !important;  /* היה 0.55 → טיפה יותר */
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* RIGHT SIDE — tiny brightness boost */
-.nebula::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 70% 55% at 110% 60%,
-    rgba(0,120,255,0.32),    /* היה 0.26 → טיפה יותר */
-    rgba(0,120,255,0.20) 40%,
-    transparent 70%
-  );
-  filter: blur(90px);
-  opacity: 0.60 !important;  /* היה 0.53 → טיפה יותר */
-  pointer-events: none;
-  z-index: 1;
-}
