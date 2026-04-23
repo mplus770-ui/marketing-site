@@ -961,38 +961,38 @@ html[dir="ltr"] body {
   text-align: left;
 }
 
-/* === STRONG SIDE LIGHT ONLY — DOES NOT TOUCH CENTER === */
+/* === SIDE LIGHT — same design, softer version === */
 
-/* LEFT SIDE STRONG GLOW */
+/* LEFT SIDE SOFT GLOW */
 .nebula::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 70% 55% at 0% 40%,   /* בצד שמאל בלבד */
-    rgba(0,140,255,0.75),
-    rgba(0,140,255,0.45) 40%,
+    ellipse 70% 55% at 0% 40%,
+    rgba(0,140,255,0.38),   /* חצי מהעוצמה */
+    rgba(0,140,255,0.22) 40%,
     transparent 70%
   );
-  filter: blur(120px);
-  opacity: 1 !important;
+  filter: blur(90px);       /* פחות מפוזר */
+  opacity: 0.65 !important; /* עדין אבל מורגש */
   pointer-events: none;
   z-index: 1;
 }
 
-/* RIGHT SIDE STRONG GLOW */
+/* RIGHT SIDE SOFT GLOW */
 .nebula::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 70% 55% at 100% 60%, /* בצד ימין בלבד */
-    rgba(0,120,255,0.72),
-    rgba(0,120,255,0.42) 40%,
+    ellipse 70% 55% at 100% 60%,
+    rgba(0,120,255,0.36),
+    rgba(0,120,255,0.20) 40%,
     transparent 70%
   );
-  filter: blur(120px);
-  opacity: 1 !important;
+  filter: blur(90px);
+  opacity: 0.63 !important;
   pointer-events: none;
   z-index: 1;
 }
