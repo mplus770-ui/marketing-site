@@ -961,38 +961,38 @@ html[dir="ltr"] body {
   text-align: left;
 }
 
-/* === SIDE LIGHT — same design, softer version === */
+/* === SIDE LIGHT — same shape, softer intensity === */
 
-/* LEFT SIDE SOFT GLOW */
+/* LEFT SIDE — softer */
 .nebula::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse 70% 55% at 0% 40%,
-    rgba(0,140,255,0.38),   /* חצי מהעוצמה */
-    rgba(0,140,255,0.22) 40%,
+    rgba(0,140,255,0.28),   /* היה 0.75 → עכשיו עדין */
+    rgba(0,140,255,0.18) 40%,
     transparent 70%
   );
-  filter: blur(90px);       /* פחות מפוזר */
-  opacity: 0.65 !important; /* עדין אבל מורגש */
+  filter: blur(85px);        /* פחות מפוזר */
+  opacity: 0.55 !important;  /* היה 1 → עכשיו חצי */
   pointer-events: none;
   z-index: 1;
 }
 
-/* RIGHT SIDE SOFT GLOW */
+/* RIGHT SIDE — softer */
 .nebula::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse 70% 55% at 100% 60%,
-    rgba(0,120,255,0.36),
-    rgba(0,120,255,0.20) 40%,
+    rgba(0,120,255,0.26),    /* היה 0.72 → עכשיו עדין */
+    rgba(0,120,255,0.16) 40%,
     transparent 70%
   );
-  filter: blur(90px);
-  opacity: 0.63 !important;
+  filter: blur(85px);
+  opacity: 0.53 !important;
   pointer-events: none;
   z-index: 1;
 }
