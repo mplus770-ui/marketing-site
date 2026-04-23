@@ -960,16 +960,18 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === SIDE GLOW ONLY — no change to center === */
 
-/* LEFT SIDE — slightly brighter */
+/* === SIDE GLOW — slightly stronger, same design === */
+
+/* LEFT SIDE */
 .nebula::before {
-  opacity: 0.88 !important;   /* היה חלש — עכשיו טיפה יותר חזק */
-  filter: blur(95px) !important;
+  opacity: 0.92 !important;   /* היה ~0.80–0.85 → עכשיו טיפה יותר */
+  filter: blur(100px) !important; /* רך, לא חזק מדי */
 }
 
-/* RIGHT SIDE — slightly brighter */
+/* RIGHT SIDE */
 .nebula::after {
-  opacity: 0.86 !important;
-  filter: blur(95px) !important;
+  opacity: 0.90 !important;
+  filter: blur(100px) !important;
 }
+
