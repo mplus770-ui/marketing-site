@@ -981,3 +981,11 @@ html[dir="ltr"] body {
   box-shadow: 0 0 12px rgba(0,112,243,0.45);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
+/* LTR / RTL FIX */
+html[dir="ltr"] .hero {
+  text-align: left;
+}
+
+html[dir="rtl"] .hero {
+  text-align: right;
+}
