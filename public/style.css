@@ -960,3 +960,16 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
+/* === SIDE GLOW ONLY — no change to center === */
+
+/* LEFT SIDE — slightly brighter */
+.nebula::before {
+  opacity: 0.88 !important;   /* היה חלש — עכשיו טיפה יותר חזק */
+  filter: blur(95px) !important;
+}
+
+/* RIGHT SIDE — slightly brighter */
+.nebula::after {
+  opacity: 0.86 !important;
+  filter: blur(95px) !important;
+}
