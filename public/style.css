@@ -999,4 +999,17 @@ html[dir="rtl"] .wa-float {
   left: 24px !important;
   right: auto !important;
 }
+@media (min-width: 1024px) {
+  html[lang="ru"] .nav-links li a,
+  html[lang="pt"] .nav-links li a,
+  html[lang="ar"] .nav-links li a {
+    padding: 0 10px; /* במקום 0 16px */
+  }
+
+  html[lang="ru"] .nav-links,
+  html[lang="pt"] .nav-links,
+  html[lang="ar"] .nav-links {
+    gap: 8px; /* מצמצם את הרווח בין הפריטים */
+  }
+}
 
