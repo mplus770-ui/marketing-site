@@ -961,17 +961,38 @@ html[dir="ltr"] body {
   text-align: left;
 }
 
-/* === SIDE GLOW — slightly stronger, same design === */
+/* === STRONG SIDE LIGHT ONLY — DOES NOT TOUCH CENTER === */
 
-/* LEFT SIDE */
+/* LEFT SIDE STRONG GLOW */
 .nebula::before {
-  opacity: 0.92 !important;   /* היה ~0.80–0.85 → עכשיו טיפה יותר */
-  filter: blur(100px) !important; /* רך, לא חזק מדי */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 55% at 0% 40%,   /* בצד שמאל בלבד */
+    rgba(0,140,255,0.75),
+    rgba(0,140,255,0.45) 40%,
+    transparent 70%
+  );
+  filter: blur(120px);
+  opacity: 1 !important;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* RIGHT SIDE */
+/* RIGHT SIDE STRONG GLOW */
 .nebula::after {
-  opacity: 0.90 !important;
-  filter: blur(100px) !important;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 55% at 100% 60%, /* בצד ימין בלבד */
+    rgba(0,120,255,0.72),
+    rgba(0,120,255,0.42) 40%,
+    transparent 70%
+  );
+  filter: blur(120px);
+  opacity: 1 !important;
+  pointer-events: none;
+  z-index: 1;
 }
-
