@@ -1000,16 +1000,9 @@ html[dir="rtl"] .wa-float {
   right: auto !important;
 }
 @media (min-width: 1024px) {
-  html[lang="ru"] .nav-links li a,
-  html[lang="pt"] .nav-links li a,
-  html[lang="ar"] .nav-links li a {
-    font-size: 0.92rem; /* קטן ב־8% */
-    padding: 0 12px;    /* ריווח מאוזן */
-  }
-
-  html[lang="ru"] .nav-links,
-  html[lang="pt"] .nav-links,
-  html[lang="ar"] .nav-links {
-    gap: 10px;
+  html[lang="ru"] .nav-cta,
+  html[lang="pt"] .nav-cta,
+  html[lang="ar"] .nav-cta {
+    display: none !important;
   }
 }
