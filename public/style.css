@@ -960,34 +960,24 @@ html[dir="ltr"] body {
   direction: ltr;
   text-align: left;
 }
-/* === STREAMING CYBER BORDER EFFECT === */
-.glow-stream {
+/* glow animation */
+#prompt.glow {
+  animation: promptGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes promptGlow {
+  0%   { box-shadow: 0 0 10px rgba(0,112,243,0.35); }
+  50%  { box-shadow: 0 0 22px rgba(0,112,243,0.75); }
+  100% { box-shadow: 0 0 10px rgba(0,112,243,0.35); }
+}
+
+#prompt {
   position: relative;
   z-index: 1;
 }
 
-.glow-stream::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 999px;
-  background: linear-gradient(
-    135deg,
-    rgba(0,112,243,0.9),
-    rgba(0,210,255,0.7),
-    rgba(122,88,255,0.8),
-    rgba(0,112,243,0.9)
-  );
-  background-size: 300% 300%;
-  animation: streamFlow 6s ease infinite;
-  z-index: -1;
-  opacity: 0.55;
-  filter: blur(6px);
-  pointer-events: none;
-}
-
-@keyframes streamFlow {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+#prompt:focus {
+  border-color: rgba(0,112,243,0.55);
+  box-shadow: 0 0 12px rgba(0,112,243,0.45);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
