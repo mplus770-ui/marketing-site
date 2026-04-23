@@ -20,7 +20,7 @@
    RESET & BASE
 ══════════════════════════════════════════ */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { direction:rtl; scroll-behavior:smooth; scroll-padding-top:5rem; }
+html { scroll-behavior:smooth; scroll-padding-top:5rem; }
 body {
   font-family:'Heebo',sans-serif;
   background:var(--bg);
