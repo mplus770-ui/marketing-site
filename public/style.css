@@ -989,3 +989,14 @@ html[dir="ltr"] .hero {
 html[dir="rtl"] .hero {
   text-align: right;
 }
+/* Fix WhatsApp button position for LTR languages */
+html[dir="ltr"] .whatsapp-btn {
+  right: 20px;
+  left: auto;
+}
+
+/* Keep RTL languages on the right side */
+html[dir="rtl"] .whatsapp-btn {
+  left: 20px;
+  right: auto;
+}
