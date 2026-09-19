@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<title>ZOHAR — Gate 2B Visual Concept (not production)</title>
+<meta name="description" content="Isolated Gate 2B design concept. Not a production route.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="concept.css">
+</head>
+<body>
+
+<!-- ═══ SVG SPRITE: logo directions + icons ═══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gSeed" x1="12" y1="22" x2="18" y2="3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10795A"/><stop offset=".55" stop-color="#16A37B"/><stop offset="1" stop-color="#34E39B"/>
+    </linearGradient>
+    <linearGradient id="gWedge" x1="16" y1="7" x2="24" y2="1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6FF3BC" stop-opacity="1"/><stop offset=".55" stop-color="#34E39B" stop-opacity=".55"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gLum" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#34E39B" stop-opacity="0"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".5"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Concept B — Seed of Light (colour) -->
+  <symbol id="mk-seed" viewBox="0 0 24 24">
+    <path d="M12 22.6V11.2" stroke="url(#gSeed)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <path d="M12 12.2C12.3 8.2 14.8 4.8 19 3.2C18.6 8 16.2 11.2 12 12.2Z" fill="url(#gSeed)"/>
+    <path d="M12 13.9C11.7 11.2 9.8 9 6.6 8.1C6.9 11.4 8.8 13.5 12 13.9Z" fill="url(#gSeed)" opacity=".72"/>
+  </symbol>
+  <!-- Concept B — monochrome -->
+  <symbol id="mk-seed-mono" viewBox="0 0 24 24">
+    <path d="M12 22.6V11.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <path d="M12 12.2C12.3 8.2 14.8 4.8 19 3.2C18.6 8 16.2 11.2 12 12.2Z" fill="currentColor"/>
+    <path d="M12 13.9C11.7 11.2 9.8 9 6.6 8.1C6.9 11.4 8.8 13.5 12 13.9Z" fill="currentColor" opacity=".62"/>
+  </symbol>
+
+  <!-- Concept A — The Aperture (colour) -->
+  <symbol id="mk-aper" viewBox="0 0 24 24">
+    <g transform="rotate(-28 12 12)">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="#34E39B" stroke-width="2" stroke-linecap="round"
+              stroke-dasharray="10.18 1.60 10.18 1.60 10.18 1.60 10.18 4.75"/>
+    </g>
+    <path d="M16.6 7.4L23.9 1.0L23.2 7.2Z" fill="url(#gWedge)"/>
+  </symbol>
+  <!-- Concept A — monochrome -->
+  <symbol id="mk-aper-mono" viewBox="0 0 24 24">
+    <g transform="rotate(-28 12 12)">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-dasharray="10.18 1.60 10.18 1.60 10.18 1.60 10.18 4.75"/>
+    </g>
+    <path d="M16.6 7.4L23.9 1.0L23.2 7.2Z" fill="currentColor" opacity=".6"/>
+  </symbol>
+
+  <symbol id="mk-seed-fav" viewBox="0 0 24 24">
+    <path d="M12 22.2V10.6" stroke="url(#gSeed)" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+    <path d="M12 12.1C12.4 7.6 15.2 3.9 19.8 2.2C19.3 7.6 16.6 11.1 12 12.1Z" fill="url(#gSeed)"/>
+    <path d="M12 14.4C11.6 11.3 9.4 8.8 5.8 7.8C6.2 11.5 8.4 13.9 12 14.4Z" fill="url(#gSeed)" opacity=".8"/>
+  </symbol>
+  <symbol id="ic-check" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5" stroke="#34E39B" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.03 1.02-1.03 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></symbol>
+  <symbol id="ic-globe" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M1.8 8h12.4M8 1.8c1.7 2 2.5 4 2.5 6.2S9.7 12.2 8 14.2C6.3 12.2 5.5 10.2 5.5 8s.8-4.2 2.5-6.2z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="ic-arr" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ═══ CONCEPT BANNER (removed with this route) ═══ -->
+<div class="concept-bar">
+  <b>GATE 2B — VISUAL CONCEPT</b>
+  <span>Not production · noindex,nofollow · branch preview only · route <code>/concept-gate2/</code> is removable in one commit</span>
+</div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="#top" aria-label="ZOHAR home">
+      <svg width="30" height="30" aria-hidden="true"><use href="#mk-seed"/></svg>
+      <span style="font-family:var(--font-display);font-weight:600;font-size:1.3rem;letter-spacing:.14em;color:var(--z-text-hi)">ZOHAR</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#offer">Pricing</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#brief">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-ctl" type="button" aria-haspopup="menu" aria-expanded="false">
+        <svg width="14" height="14" aria-hidden="true"><use href="#ic-globe"/></svg> EN
+      </button>
+      <a class="btn btn-primary btn-sm" href="#brief">Start a brief</a>
+      <button class="nav-burger" id="burger" type="button" aria-label="Menu" aria-expanded="false">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="wide hero-grid">
+    <div class="hero-copy">
+      <div class="hero-eyebrow label">Websites that are actually yours</div>
+      <h1 class="d1">Don&rsquo;t build a website.<br>Build a business.</h1>
+      <p class="promise">From business intent to business presence.</p>
+      <p class="lead">ZOHAR builds real websites in code you own &mdash; designed to be found, built to convert, and measured so you know they work.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary btn-lg" href="#brief">Start a project brief</a>
+        <a class="btn btn-ghost btn-lg" href="#brief"><svg width="19" height="19" aria-hidden="true"><use href="#ic-wa"/></svg> Talk on WhatsApp</a>
+      </div>
+      <p class="hero-reassure">
+        <span>Free first consultation</span><span>&middot;</span><span>See it before you pay</span><span>&middot;</span><span>You keep the code</span>
+      </p>
+    </div>
+
+    <!-- Code-based hero motion: inline SVG + CSS keyframes. No canvas, no video, no JS. -->
+    <div class="motion-frame" role="img" aria-label="An animation showing a sentence about a business becoming a finished website, ending on the completed layout.">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+        <rect x="18" y="26" width="364" height="448" rx="12" fill="#07201A" stroke="rgba(244,241,234,.10)"/>
+
+        <!-- Stage 1 — INTENT (fades out at 0.95s) -->
+        <g class="m-intent m-motion-only">
+          <g class="m-intent-clip">
+            <text x="46" y="256" fill="#A9B5AC" font-family="Assistant,sans-serif" font-size="17">A family winery in the Galilee.</text>
+          </g>
+          <rect class="m-cursor" x="283" y="242" width="2" height="19" fill="#34E39B"/>
+        </g>
+
+        <!-- Stage 2 — WIREFRAME (0.70s → 1.15s) -->
+        <g stroke="none" fill="#123529">
+          <rect class="m-wire" style="animation-delay:.70s" x="40" y="52" width="122" height="9" rx="4.5"/>
+          <rect class="m-wire" style="animation-delay:.76s" x="250" y="52" width="110" height="9" rx="4.5"/>
+          <rect class="m-wire" style="animation-delay:.82s" x="40" y="112" width="290" height="20" rx="5"/>
+          <rect class="m-wire" style="animation-delay:.88s" x="40" y="144" width="232" height="20" rx="5"/>
+          <rect class="m-wire" style="animation-delay:.94s" x="40" y="190" width="150" height="14" rx="5"/>
+          <rect class="m-wire" style="animation-delay:1.00s" x="40" y="236" width="126" height="36" rx="18"/>
+          <rect class="m-wire" style="animation-delay:1.06s" x="40" y="308" width="100" height="116" rx="8"/>
+          <rect class="m-wire" style="animation-delay:1.10s" x="150" y="308" width="100" height="116" rx="8"/>
+          <rect class="m-wire" style="animation-delay:1.14s" x="260" y="308" width="100" height="116" rx="8"/>
+        </g>
+
+        <!-- Stage 3 — BUILD / fill (1.20s → 2.00s) -->
+        <g>
+          <g class="m-fill" style="animation-delay:1.20s">
+            <use href="#mk-seed" x="40" y="46" width="21" height="21"/>
+            <rect x="68" y="52" width="52" height="9" rx="4.5" fill="#F4F1EA" opacity=".85"/>
+            <rect x="250" y="53" width="44" height="7" rx="3.5" fill="#6E7F76"/>
+            <rect x="304" y="48" width="56" height="18" rx="9" fill="#34E39B"/>
+          </g>
+          <g class="m-fill" style="animation-delay:1.38s">
+            <rect x="40" y="112" width="290" height="20" rx="5" fill="#F4F1EA" opacity=".93"/>
+            <rect x="40" y="144" width="232" height="20" rx="5" fill="#F4F1EA" opacity=".93"/>
+            <rect x="40" y="190" width="150" height="8" rx="4" fill="#A9B5AC"/>
+            <rect x="40" y="204" width="196" height="8" rx="4" fill="#6E7F76"/>
+          </g>
+          <g class="m-fill" style="animation-delay:1.58s">
+            <rect x="40" y="236" width="126" height="36" rx="18" fill="#34E39B"/>
+            <rect x="62" y="250" width="82" height="8" rx="4" fill="#04150F"/>
+          </g>
+          <g class="m-fill" style="animation-delay:1.76s">
+            <rect x="40" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/>
+            <rect x="40" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/>
+            <rect x="40" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
+            <rect x="150" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/>
+            <rect x="150" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/>
+            <rect x="150" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
+            <rect x="260" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/>
+            <rect x="260" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/>
+            <rect x="260" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
+          </g>
+        </g>
+
+        <!-- Luminance pass (GROW) — one sweep, then gone -->
+        <rect class="m-lum m-motion-only" x="18" y="26" width="364" height="150" fill="url(#gLum)"/>
+
+        <!-- Stage 4 — PROVE chips (2.00s → 2.45s) -->
+        <g class="m-chip" style="animation-delay:2.02s">
+          <rect x="228" y="182" width="132" height="30" rx="15" fill="rgba(228,179,99,.12)" stroke="rgba(228,179,99,.34)"/>
+          <text x="246" y="202" fill="#E4B363" font-family="Assistant,sans-serif" font-size="12.5" font-weight="700">Enquiries &#9650;</text>
+        </g>
+        <g class="m-chip" style="animation-delay:2.24s">
+          <rect x="252" y="220" width="108" height="30" rx="15" fill="rgba(228,179,99,.12)" stroke="rgba(228,179,99,.34)"/>
+          <text x="270" y="240" fill="#E4B363" font-family="Assistant,sans-serif" font-size="12.5" font-weight="700">0.8s load</text>
+        </g>
+
+        <!-- Stage 5 — MEMORY trace (2.45s → 3.00s), persists -->
+        <rect class="m-trace" x="18" y="26" width="364" height="448" rx="12" fill="none"
+              stroke="#34E39B" stroke-width="1.4" opacity=".75"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF STRIP ═══ -->
+<div class="proof">
+  <div class="wide proof-in">
+    <span class="proof-lbl">Built by ZOHAR</span>
+    <a class="proof-item" href="#work">SADAFRONIA</a>
+    <a class="proof-item" href="#work">YAYIN</a>
+    <a class="proof-item" href="#work">Better World</a>
+    <a class="proof-item" href="#work">ZOHAR</a>
+  </div>
+</div>
+
+<!-- ═══ FOUR PILLARS ═══ -->
+<section class="sec" id="services">
+  <div class="wide">
+    <div class="sec-head" style="max-width:640px">
+      <div class="label">The method</div>
+      <h2 class="d2">Four things a business presence has to do.</h2>
+      <p class="lead">Three of them we do for every client today. The fourth is what we are building next.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-n">01</div>
+        <h3 class="d3">Build</h3>
+        <p>We turn what you say about your business into a real, coded presence. Not a template, not a page builder. Clean HTML, CSS and JavaScript you own outright.</p>
+        <div class="pillar-status"><span class="chip chip-now">Available now</span></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02</div>
+        <h3 class="d3">Grow</h3>
+        <p>Built to be found and to convert: structured for search and for AI answers, fast on a phone, and shaped around the one action you want a visitor to take.</p>
+        <div class="pillar-status"><span class="chip chip-now">Available now</span></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03</div>
+        <h3 class="d3">Prove</h3>
+        <p>Every meaningful action is measured. You see which message brings enquiries and which does not &mdash; in numbers, not opinions.</p>
+        <div class="pillar-status"><span class="chip chip-now">Available now</span></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">04</div>
+        <h3 class="d3">Memory</h3>
+        <p>The system keeps your brand, your content and your decisions, so every change starts from what you already are instead of a blank page.</p>
+        <div class="pillar-status"><span class="chip chip-dev">In development</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SELECTED WORK ═══ -->
+<section class="sec" id="work">
+  <div class="wide">
+    <div class="sec-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="max-width:540px">
+        <div class="label">Selected work</div>
+        <h2 class="d2">Four projects. All of them ours.</h2>
+      </div>
+      <div class="rail-ctl">
+        <button class="rail-btn" type="button" aria-label="Previous project" data-rail="prev"><svg width="16" height="16" style="transform:rotate(180deg)" aria-hidden="true"><use href="#ic-arr"/></svg></button>
+        <button class="rail-btn" type="button" aria-label="Next project" data-rail="next"><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg></button>
+      </div>
+    </div>
+
+    <div class="rail" id="rail" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected ZOHAR projects">
+      <a class="card" href="#work" role="group" aria-label="Project 1 of 4: SADAFRONIA">
+        <div class="card-media">
+          <span class="ph-tag chip chip-data">Placeholder &mdash; final media pending</span>
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect width="320" height="200" fill="#0A2B22"/>
+            <rect x="24" y="24" width="60" height="6" rx="3" fill="#16A37B"/>
+            <rect x="24" y="52" width="180" height="13" rx="4" fill="#F4F1EA" opacity=".55"/>
+            <rect x="24" y="74" width="138" height="13" rx="4" fill="#F4F1EA" opacity=".35"/>
+            <rect x="24" y="108" width="84" height="24" rx="12" fill="#34E39B" opacity=".75"/>
+            <rect x="214" y="40" width="82" height="118" rx="8" fill="#0F3A2E"/>
+            <rect x="24" y="152" width="170" height="6" rx="3" fill="#6E7F76"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="d3">SADAFRONIA</h3>
+          <div class="card-sector">Sector to confirm</div>
+          <p>Live project delivered by ZOHAR. Final copy, imagery and outcome line pending your confirmation.</p>
+          <span class="card-link">View case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="card" href="#work" role="group" aria-label="Project 2 of 4: YAYIN">
+        <div class="card-media">
+          <span class="ph-tag chip chip-data">Placeholder &mdash; final media pending</span>
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect width="320" height="200" fill="#0A2B22"/>
+            <rect x="0" y="0" width="320" height="34" fill="#07201A"/>
+            <circle cx="24" cy="17" r="6" fill="#34E39B"/>
+            <rect x="40" y="14" width="42" height="6" rx="3" fill="#E6E2D8" opacity=".6"/>
+            <rect x="24" y="58" width="128" height="14" rx="4" fill="#F4F1EA" opacity=".55"/>
+            <rect x="24" y="82" width="96" height="8" rx="4" fill="#A9B5AC" opacity=".5"/>
+            <rect x="24" y="112" width="132" height="58" rx="8" fill="#0F3A2E"/>
+            <rect x="172" y="58" width="124" height="112" rx="8" fill="#0F3A2E"/>
+            <rect x="186" y="150" width="60" height="6" rx="3" fill="#E4B363" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="d3">YAYIN</h3>
+          <div class="card-sector">Sector to confirm</div>
+          <p>Live project delivered by ZOHAR. Final copy, imagery and outcome line pending your confirmation.</p>
+          <span class="card-link">View case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="card" href="#work" role="group" aria-label="Project 3 of 4: Better World">
+        <div class="card-media">
+          <span class="ph-tag chip chip-data">Placeholder &mdash; permission pending</span>
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect width="320" height="200" fill="#0A2B22"/>
+            <rect x="24" y="30" width="110" height="12" rx="4" fill="#F4F1EA" opacity=".5"/>
+            <rect x="24" y="52" width="76" height="12" rx="4" fill="#F4F1EA" opacity=".3"/>
+            <rect x="24" y="86" width="272" height="1" fill="rgba(244,241,234,.12)"/>
+            <rect x="24" y="102" width="82" height="62" rx="8" fill="#0F3A2E"/>
+            <rect x="119" y="102" width="82" height="62" rx="8" fill="#0F3A2E"/>
+            <rect x="214" y="102" width="82" height="62" rx="8" fill="#0F3A2E"/>
+            <rect x="214" y="30" width="82" height="28" rx="14" fill="#16A37B" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="d3">Better World</h3>
+          <div class="card-sector">Subject to client permission</div>
+          <p>Shown only once display permission is confirmed. Held out of the live build until then.</p>
+          <span class="card-link">View case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="card" href="#work" role="group" aria-label="Project 4 of 4: ZOHAR">
+        <div class="card-media">
+          <span class="ph-tag chip chip-dev">Flagship &mdash; in development</span>
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect width="320" height="200" fill="#0A2B22"/>
+            <use href="#mk-seed" x="130" y="46" width="60" height="60"/>
+            <rect x="120" y="124" width="80" height="9" rx="4" fill="#F4F1EA" opacity=".6"/>
+            <rect x="136" y="145" width="48" height="6" rx="3" fill="#6E7F76"/>
+            <rect x="24" y="176" width="272" height="1" fill="rgba(52,227,155,.25)"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3 class="d3">ZOHAR</h3>
+          <div class="card-sector">Our own flagship</div>
+          <p>This site. Being rebuilt in public as the first proof of BUILD &mdash; the method applied to ourselves.</p>
+          <span class="card-link">Follow the rebuild &rarr;</span>
+        </div>
+      </a>
+    </div>
+    <div class="rail-dots" id="dots" role="tablist" aria-label="Project">
+      <button type="button" aria-current="true" aria-label="Project 1"><i></i></button>
+      <button type="button" aria-label="Project 2"><i></i></button>
+      <button type="button" aria-label="Project 3"><i></i></button>
+      <button type="button" aria-label="Project 4"><i></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OFFER — DFY only ═══ -->
+<section class="sec" id="offer">
+  <div class="wrap">
+    <div class="sec-head" style="max-width:620px">
+      <div class="label">What you can buy today</div>
+      <h2 class="d2">One way to work with us, and it is the premium one.</h2>
+    </div>
+    <div class="offer-grid">
+      <div class="panel panel-now">
+        <span class="chip chip-now">Available now</span>
+        <h3 class="d3">Done For You</h3>
+        <p class="sm">We design it, write it, build it and launch it. You approve and go live.</p>
+        <div class="price">from &#8362;2,800</div>
+        <p class="xs">Marketing site. Stores and systems quoted individually.</p>
+        <ul>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Real code you own outright &mdash; no builder, no theme, no lock-in</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Design, copy and build handled end to end</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Up to nine languages, right-to-left included</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Search and AI-answer structure from day one</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> See it before you pay</li>
+        </ul>
+        <a class="btn btn-primary" href="#brief" style="width:100%">Start a project brief</a>
+      </div>
+
+      <div class="panel panel-dev">
+        <span class="chip chip-dev">In development</span>
+        <h3 class="d3">ZOHAR BUILD</h3>
+        <p class="sm" style="margin-block-end:18px">ZOHAR BUILD is in development. Today, every ZOHAR website is created through our premium Done For You process.</p>
+        <p class="xs" style="margin-block-end:22px">No price, no purchase and no date &mdash; it will appear here when it is real. Join the list and you will be among the first in.</p>
+        <ul style="opacity:.8">
+          <li><svg width="16" height="16" aria-hidden="true" style="opacity:.45"><use href="#ic-check"/></svg> Describe your business, get a real coded site</li>
+          <li><svg width="16" height="16" aria-hidden="true" style="opacity:.45"><use href="#ic-check"/></svg> In-product AI edits</li>
+          <li><svg width="16" height="16" aria-hidden="true" style="opacity:.45"><use href="#ic-check"/></svg> The same code ownership as Done For You</li>
+        </ul>
+        <a class="btn btn-ghost" href="#brief" style="width:100%">Join early access</a>
+      </div>
+    </div>
+    <div class="note" style="margin-block-start:26px">
+      <b>Concept note.</b> No Self-Service pricing, no purchase button and no builder control appears anywhere on this page. The visual asymmetry between the two panels is the message.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONVERSION ═══ -->
+<section class="sec" id="brief" style="background:var(--z-surface-1)">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;max-width:620px;margin-inline:auto">
+      <div class="label">Start here</div>
+      <h2 class="d2">Tell us what your business does.</h2>
+      <p class="lead" style="margin-inline:auto">One sentence is enough to begin. Five short questions, about two minutes.</p>
+    </div>
+
+    <div class="brief">
+      <div class="brief-prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="label" style="margin-block-end:14px">Step 1 of 5</p>
+      <label class="d3" for="b1">What does your business do?</label>
+      <textarea id="b1" placeholder="We&rsquo;re a family winery in the Galilee, and we sell direct to visitors and to restaurants&hellip;"></textarea>
+      <div class="brief-row">
+        <button class="btn btn-primary" type="button" disabled style="opacity:.55;cursor:not-allowed">Continue &rarr;</button>
+        <span class="xs">Endpoint not configured &mdash; disabled until a provider is approved.</span>
+      </div>
+      <p class="brief-priv">We use your answers only to prepare a proposal for you. We do not sell or share them. You can ask us to delete them at any time.</p>
+    </div>
+
+    <div class="alt-paths">
+      <a class="btn btn-ghost" href="#brief"><svg width="19" height="19" aria-hidden="true"><use href="#ic-wa"/></svg> Talk on WhatsApp instead</a>
+      <a class="btn btn-ghost" href="#brief">Book a 20-minute consultation</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wide foot-in">
+    <div style="display:flex;align-items:center;gap:11px">
+      <svg width="26" height="26" aria-hidden="true"><use href="#mk-seed"/></svg>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:600;letter-spacing:.14em;color:var(--z-text-hi)">ZOHAR</div>
+        <div class="xs">ZOHAR AI &mdash; websites you own</div>
+      </div>
+    </div>
+    <p class="xs">Concept render. Legal entity, business email and domain pending decisions D3 and D11.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     REVIEW APPENDIX — not part of the homepage
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="appendix">
+  <div class="wide appx-head">
+    <div class="label brass">Gate 2B review appendix</div>
+    <h2 class="d2">Decisions to make on this page</h2>
+  </div>
+
+  <!-- A/B: hero hierarchy -->
+  <section class="sec" style="border-block-start:none">
+    <div class="wide">
+      <div class="sec-head" style="max-width:660px">
+        <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">Hero hierarchy test</h3>
+        <p class="lead">Both lines are strong. They are not interchangeable: one is a <em>claim</em>, the other is a <em>description</em>. A claim belongs in the H1.</p>
+      </div>
+      <div class="ab">
+        <div class="ab-card win">
+          <span class="chip chip-now">Recommended</span>
+          <p class="ab-h">Don&rsquo;t build a website.<br>Build a business.</p>
+          <p class="ab-sub">From business intent to business presence.</p>
+          <p class="sm">Brand Promise as <b style="color:var(--z-text-hi)">H1</b>; the mechanism line sits beneath it as the supporting brand promise. The H1 creates tension, reframes the category and answers &ldquo;why you&rdquo; in six words. It is also the only one of the two that a competitor cannot copy without sounding like you.</p>
+        </div>
+        <div class="ab-card">
+          <span class="chip chip-vis">Alternate</span>
+          <p class="ab-h">From business intent<br>to business presence.</p>
+          <p class="ab-sub">Don&rsquo;t build a website. Build a business.</p>
+          <p class="sm">Elegant and it is what the hero motion literally animates &mdash; but it describes a <em>process</em>, not a <em>benefit</em>. Read cold by a business owner it is abstract, and it is close enough to generic agency language to be forgettable. Demoting the Brand Promise to a subline weakens the strongest asset on the page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo directions -->
+  <section class="sec">
+    <div class="wide">
+      <div class="sec-head" style="max-width:700px">
+        <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">Logo directions</h3>
+        <p class="lead">Two directions at equal fidelity. The Zohar Glyph is not advanced, per your instruction. A search of the repository and its full 122-commit history found no existing ZOHAR Studio brown-and-gold asset &mdash; see the report accompanying this concept.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- B -->
+        <div class="logo-block">
+          <span class="chip chip-now">Direction B &mdash; recommended</span>
+          <h4 class="d3" style="margin-block:14px 6px">Seed of Light &middot; הנבטה</h4>
+          <p class="sm">One stem opens into two asymmetric forms in a 3:5 ratio, lit from deep emerald at the base to luminous green at the tips. Sprout, flame and Hebrew stroke at once. Strictly geometric &mdash; no botanical illustration.</p>
+          <div class="logo-row">
+            <div class="logo-cell"><div class="swatch sw-dark"><svg width="64" height="64"><use href="#mk-seed"/></svg></div><span class="cap">Symbol</span></div>
+            <div class="logo-cell"><div class="swatch sw-mono"><svg width="64" height="64" style="color:#F4F1EA"><use href="#mk-seed-mono"/></svg></div><span class="cap">Monochrome</span></div>
+            <div class="logo-cell"><div class="swatch sw-dark" style="display:flex;gap:10px;align-items:center;padding:16px 20px"><svg width="34" height="34"><use href="#mk-seed"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.45rem;letter-spacing:.15em;color:var(--z-text-hi)">ZOHAR</span></div><span class="cap">Nav lockup</span></div>
+          </div>
+          <div class="logo-row">
+            <div class="logo-cell"><div class="swatch sw-dark" style="padding:18px 22px"><div style="display:grid;justify-items:center;gap:8px"><svg width="46" height="46"><use href="#mk-seed"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.2em;color:var(--z-text-hi)">ZOHAR</span></div></div><span class="cap">Stacked</span></div>
+            <div class="logo-cell"><div class="swatch sw-fav"><svg width="28" height="28"><use href="#mk-seed-fav"/></svg></div><span class="cap">Favicon 44px</span></div>
+            <div class="logo-cell"><div class="swatch sw-fav sw-fav16"><svg width="16" height="16"><use href="#mk-seed-fav"/></svg></div><span class="cap">16px</span></div>
+            <div class="logo-cell"><div class="swatch" style="background:#F4F1EA;padding:12px"><svg width="34" height="34" style="color:#04150F"><use href="#mk-seed-mono"/></svg></div><span class="cap">On light</span></div>
+          </div>
+          <dl class="logo-verdict">
+            <dt>Strength</dt><dd>Earns the green rather than merely being coloured. Animates into the brand story at logo scale, matching the hero. Holds as a filled form at 16px.</dd>
+            <dt>Risk</dt><dd>Sprout marks are common in eco and wellness branding. Defences: strict geometry, the 3:5 asymmetry, internal luminance, and never pairing it with a circle or a leaf.</dd>
+          </dl>
+        </div>
+
+        <!-- A -->
+        <div class="logo-block">
+          <span class="chip chip-vis">Direction A &mdash; alternate</span>
+          <h4 class="d3" style="margin-block:14px 6px">The Aperture</h4>
+          <p class="sm">Four arcs describe a circle that does not close. A wedge of light escapes the gap. The gap is intent entering; the wedge is presence going out; the arcs are the four pillars.</p>
+          <div class="logo-row">
+            <div class="logo-cell"><div class="swatch sw-dark"><svg width="64" height="64"><use href="#mk-aper"/></svg></div><span class="cap">Symbol</span></div>
+            <div class="logo-cell"><div class="swatch sw-mono"><svg width="64" height="64" style="color:#F4F1EA"><use href="#mk-aper-mono"/></svg></div><span class="cap">Monochrome</span></div>
+            <div class="logo-cell"><div class="swatch sw-dark" style="display:flex;gap:10px;align-items:center;padding:16px 20px"><svg width="34" height="34"><use href="#mk-aper"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.45rem;letter-spacing:.15em;color:var(--z-text-hi)">ZOHAR</span></div><span class="cap">Nav lockup</span></div>
+          </div>
+          <div class="logo-row">
+            <div class="logo-cell"><div class="swatch sw-dark" style="padding:18px 22px"><div style="display:grid;justify-items:center;gap:8px"><svg width="46" height="46"><use href="#mk-aper"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.2em;color:var(--z-text-hi)">ZOHAR</span></div></div><span class="cap">Stacked</span></div>
+            <div class="logo-cell"><div class="swatch sw-fav"><svg width="28" height="28"><use href="#mk-aper"/></svg></div><span class="cap">Favicon 44px</span></div>
+            <div class="logo-cell"><div class="swatch sw-fav sw-fav16"><svg width="16" height="16"><use href="#mk-aper"/></svg></div><span class="cap">16px</span></div>
+            <div class="logo-cell"><div class="swatch" style="background:#F4F1EA;padding:12px"><svg width="34" height="34" style="color:#04150F"><use href="#mk-aper-mono"/></svg></div><span class="cap">On light</span></div>
+          </div>
+          <dl class="logo-verdict">
+            <dt>Strength</dt><dd>Reads as an instrument rather than a decoration. Very legible at small sizes. The single-opening idea explains itself to a client in one sentence.</dd>
+            <dt>Risk</dt><dd>Rings are common in AI branding; at 16px the wedge drops and it edges toward a loading spinner. Needs the asymmetric gap kept wide to stay ownable.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile nav + reduced motion -->
+  <section class="sec">
+    <div class="wide">
+      <div class="sec-head" style="max-width:660px">
+        <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">Mobile navigation &amp; reduced motion</h3>
+      </div>
+      <div class="grid-2">
+        <div>
+          <p class="sm" style="margin-block-end:18px">Full-screen sheet, not a dropdown. 56px rows, focus trapped, body scroll locked, closes on tap / backdrop / Escape. The WhatsApp path is pinned at the sheet&rsquo;s end so it is thumb-reachable.</p>
+          <div class="sheet-demo">
+            <div class="sd-top">
+              <div style="display:flex;align-items:center;gap:8px"><svg width="24" height="24"><use href="#mk-seed"/></svg></div>
+              <div style="display:flex;gap:8px"><span class="lang-ctl" style="height:36px"><svg width="13" height="13"><use href="#ic-globe"/></svg> EN</span><span style="width:36px;height:36px;border:1px solid var(--z-border);border-radius:9px;display:grid;place-items:center;color:var(--z-text-hi)">&times;</span></div>
+            </div>
+            <ul>
+              <li><a href="#work">Work</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#offer">Pricing</a></li>
+              <li><a href="#vision">Vision</a></li>
+              <li><a href="#brief">Contact</a></li>
+            </ul>
+            <div class="sd-foot"><a class="btn btn-primary" href="#brief" style="width:100%"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg> WhatsApp</a></div>
+          </div>
+        </div>
+        <div>
+          <p class="sm" style="margin-block-end:18px"><b style="color:var(--z-text-hi)">Reduced-motion state.</b> Nothing animates. The final frame is already in the markup, so it is also the no-JS and no-CSS-animation state. There is no poster, no blank frame and no layout shift.</p>
+          <div class="motion-frame static-final" style="aspect-ratio:4/5;max-height:440px" role="img" aria-label="The completed hero frame, shown static.">
+            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+              <rect x="18" y="26" width="364" height="448" rx="12" fill="#07201A" stroke="rgba(244,241,234,.10)"/>
+              <g class="m-fill"><use href="#mk-seed" x="40" y="46" width="21" height="21"/>
+                <rect x="68" y="52" width="52" height="9" rx="4.5" fill="#F4F1EA" opacity=".85"/>
+                <rect x="250" y="53" width="44" height="7" rx="3.5" fill="#6E7F76"/>
+                <rect x="304" y="48" width="56" height="18" rx="9" fill="#34E39B"/>
+                <rect x="40" y="112" width="290" height="20" rx="5" fill="#F4F1EA" opacity=".93"/>
+                <rect x="40" y="144" width="232" height="20" rx="5" fill="#F4F1EA" opacity=".93"/>
+                <rect x="40" y="190" width="150" height="8" rx="4" fill="#A9B5AC"/>
+                <rect x="40" y="204" width="196" height="8" rx="4" fill="#6E7F76"/>
+                <rect x="40" y="236" width="126" height="36" rx="18" fill="#34E39B"/>
+                <rect x="62" y="250" width="82" height="8" rx="4" fill="#04150F"/>
+                <rect x="40" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/><rect x="40" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/><rect x="40" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
+                <rect x="150" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/><rect x="150" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/><rect x="150" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
+                <rect x="260" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/><rect x="260" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/><rect x="260" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
+              </g>
+              <g class="m-chip"><rect x="228" y="182" width="132" height="30" rx="15" fill="rgba(228,179,99,.12)" stroke="rgba(228,179,99,.34)"/><text x="246" y="202" fill="#E4B363" font-family="Assistant,sans-serif" font-size="12.5" font-weight="700">Enquiries &#9650;</text></g>
+              <g class="m-chip"><rect x="252" y="220" width="108" height="30" rx="15" fill="rgba(228,179,99,.12)" stroke="rgba(228,179,99,.34)"/><text x="270" y="240" fill="#E4B363" font-family="Assistant,sans-serif" font-size="12.5" font-weight="700">0.8s load</text></g>
+              <rect class="m-trace" x="18" y="26" width="364" height="448" rx="12" fill="none" stroke="#34E39B" stroke-width="1.4" opacity=".75"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Limitations -->
+  <section class="sec">
+    <div class="wide">
+      <div class="sec-head" style="max-width:660px">
+        <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">Known limitations of this concept</h3>
+      </div>
+      <div class="grid-3">
+        <div class="spec"><h4>Project media is placeholder</h4><p>Every showcase card is drawn in SVG and labelled as a placeholder. No external screenshot service is called. Real media awaits decision D12.</p></div>
+        <div class="spec"><h4>Fonts load from Google</h4><p>Concept only, so the real typefaces can be judged. Production self-hosts WOFF2 subsets per §5.5 and makes zero third-party font requests.</p></div>
+        <div class="spec"><h4>Wordmark is live text</h4><p>Rendered in Fraunces / Frank Ruhl Libre as HTML. Production ships it as outlined paths so it never depends on a font being present.</p></div>
+        <div class="spec"><h4>Aperture arcs are uniform</h4><p>The expanding-spiral variation described in the proposal needs four separate drawn paths. This render uses one dash-patterned circle.</p></div>
+        <div class="spec"><h4>Only Home is rendered</h4><p>Work, Services, Vision, About, Contact, Privacy and Terms are specified but not drawn. Case studies await D12.</p></div>
+        <div class="spec"><h4>Brief is step 1, disabled</h4><p>Interface, validation and privacy wording are shown. The submit control is inert and no endpoint is configured, per your correction 5.</p></div>
+        <div class="spec"><h4>No tracking at all</h4><p>Zero analytics scripts, zero pixels, zero placeholder IDs, zero third-party network requests beyond the font CDN.</p></div>
+        <div class="spec"><h4>Carousel JS is minimal</h4><p>~1KB for arrow keys, prev/next and dot sync. Scrolling itself is native. Production adds the full ARIA and RTL key-mapping suite.</p></div>
+        <div class="spec"><h4>Green is judged on screen</h4><p>The emerald system is specified for dark backgrounds only. Print and light-surface behaviour is out of scope for Phase 1&ndash;2 (D9).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wide" style="padding-block:0 60px">
+    <div class="note">
+      <b>Route isolation.</b> This page lives only at <code>/concept-gate2/</code> on the branch
+      <code>redesign/zohar-flagship-marketing-site</code>. It does not modify or replace any existing page.
+      It carries <code>noindex,nofollow</code>, is disallowed in <code>robots.txt</code>, appears in no sitemap,
+      and the branch preview is SSO-protected. Deleting the folder removes it completely.
+    </div>
+  </div>
+</div>
+
+<script>
+/* Minimal, self-terminating. No canvas. No polling. No animation loops. */
+(function(){
+  var b=document.getElementById('burger');
+  if(b) b.addEventListener('click',function(){
+    var e=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!e));
+  });
+
+  var rail=document.getElementById('rail'), dots=document.getElementById('dots');
+  if(!rail) return;
+  var rtl=getComputedStyle(rail).direction==='rtl';
+  function step(dir){ /* dir: +1 = further into the list, in either writing direction */
+    var card=rail.firstElementChild; if(!card) return;
+    var w=card.getBoundingClientRect().width+20;
+    rail.scrollBy({left:(rtl?-1:1)*dir*w,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  }
+  document.querySelectorAll('[data-rail]').forEach(function(btn){
+    btn.addEventListener('click',function(){ step(btn.dataset.rail==='next'?1:-1); });
+  });
+  rail.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();step(rtl?-1:1);}
+    else if(e.key==='ArrowLeft'){e.preventDefault();step(rtl?1:-1);}
+    else if(e.key==='Home'){e.preventDefault();rail.scrollTo({left:0});}
+    else if(e.key==='End'){e.preventDefault();rail.scrollTo({left:rtl?-rail.scrollWidth:rail.scrollWidth});}
+  });
+  if(dots){
+    var btns=[].slice.call(dots.querySelectorAll('button'));
+    btns.forEach(function(d,i){ d.addEventListener('click',function(){
+      var c=rail.children[i]; if(c) rail.scrollTo({left:rtl?-(c.offsetLeft):c.offsetLeft,behavior:'smooth'});
+    });});
+    rail.addEventListener('scroll',function(){
+      var card=rail.firstElementChild; if(!card) return;
+      var w=card.getBoundingClientRect().width+20;
+      var i=Math.round(Math.abs(rail.scrollLeft)/w);
+      btns.forEach(function(d,j){ d.setAttribute('aria-current', j===i?'true':'false'); });
+    },{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
