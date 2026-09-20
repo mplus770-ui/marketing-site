@@ -1,0 +1,25 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if build.indexable and site.origin -%}
+User-agent: *
+Allow: /
+Disallow: /concept-gate2/
+
+# AI assistants are allowed on purpose: being citable is the point of AEO/GEO.
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: {{ site.origin }}/sitemap.xml
+{%- else -%}
+# Not a production build — nothing here should be indexed.
+User-agent: *
+Disallow: /
+{%- endif -%}

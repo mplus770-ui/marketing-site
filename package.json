@@ -1,0 +1,20 @@
+{
+  "name": "zohar-marketing-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ZOHAR AI marketing site \u2014 static, build-time only.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve --port=8080",
+    "check:urls": "node scripts/verify-urls.mjs",
+    "check:i18n": "node scripts/validate-i18n.mjs",
+    "check": "npm run check:i18n && npm run build && npm run check:urls"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "type": "module"
+}

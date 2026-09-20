@@ -1,0 +1,4 @@
+{# Structured data is assembled in .eleventy.js from the same data files as the
+   visible page, so markup and page can never disagree. It renders nothing
+   without a configured origin, and nothing on an unpublished locale. #}
+{% schema site, loc, strings %}

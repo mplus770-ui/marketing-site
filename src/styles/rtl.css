@@ -1,0 +1,8 @@
+/* Direction handling. The layout uses logical properties throughout, so this
+   file only carries what genuinely cannot be expressed logically. */
+[dir="rtl"] .icon-dir{transform:scaleX(-1)}
+/* numbers and Latin runs inside RTL text keep their own direction */
+bdi{unicode-bidi:isolate}
+/* Arabic must never be letter-spaced, uppercased or synthetically bolded */
+:lang(ar){font-synthesis-weight:none}
+:lang(ar) *{letter-spacing:normal!important;text-transform:none!important}

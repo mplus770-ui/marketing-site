@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ loc.code }}" dir="{{ loc.dir }}">
+<head>
+{% include "partials/head.njk" %}
+{% include "partials/schema.njk" %}
+</head>
+<body>
+<a class="skip" href="#main">{{ strings.nav.skip }}</a>
+{% include "partials/icons.njk" %}
+{% include "components/nav.njk" %}
+<main id="main">
+{{ content | safe }}
+</main>
+{% include "components/footer.njk" %}
+<script src="/assets/gen/zohar.js" defer></script>
+</body>
+</html>

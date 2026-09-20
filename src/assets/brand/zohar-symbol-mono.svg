@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<!-- ZOHAR — zohar-symbol-mono.svg. Master mark: Threshold. Gate 2C. -->
+<defs><mask id="bk"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z" fill="#fff"/><rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="#000"/></mask></defs>
+<g mask="url(#bk)"><rect width="24" height="24" fill="currentColor"/></g>
+</svg>

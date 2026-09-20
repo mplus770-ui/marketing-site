@@ -1,0 +1,284 @@
+---
+pagination:
+  data: locales
+  size: 1
+  alias: loc
+permalink: "{{ loc.path }}index.html"
+layout: layouts/base.njk
+---
+{% if not loc.ready %}
+{# ── Unpublished locale: a placeholder, never machine-translated copy and
+      never another locale's strings. noindex, and absent from the sitemap. ── #}
+<section class="sec">
+  <div class="wrap" style="text-align:center;max-width:44rem">
+    <svg width="64" height="64" style="margin-inline:auto" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+    <h1 class="d2" style="margin-block:26px 14px">{{ strings.pendingLocale.title }}</h1>
+    <p class="lead" style="margin-inline:auto">{{ strings.pendingLocale.body }}</p>
+    <div class="hero-ctas" style="justify-content:center;margin-block-start:30px">
+      <a class="btn btn-primary" href="/en/">{{ strings.pendingLocale.cta }}</a>
+      <a class="btn btn-ghost" href="/">{{ strings.pendingLocale.ctaHe }}</a>
+    </div>
+  </div>
+</section>
+{% else %}
+
+{# ══ 2 · HERO ══ #}
+<section class="hero">
+  <div class="wide hero-grid">
+    <div class="hero-copy">
+      <p class="hero-eyebrow label">{{ strings.hero.eyebrow }}</p>
+      <h1 class="d1">{{ strings.hero.h1a }}<br>{{ strings.hero.h1b }}</h1>
+      <p class="promise">{{ strings.hero.promise }}</p>
+      <p class="lead">{{ strings.hero.lead }}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary btn-lg" href="#brief">{{ strings.hero.ctaPrimary }}</a>
+        {% if site.whatsapp %}
+          <a class="btn btn-ghost btn-lg" href="https://wa.me/{{ site.whatsapp }}" rel="noopener">
+            <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.hero.ctaSecondary }}</a>
+        {% else %}
+          <span class="inert" style="min-block-size:56px">
+            <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>
+            {{ strings.hero.ctaSecondary }} — {{ strings.brief.unavailable }}</span>
+        {% endif %}
+      </div>
+      <p class="hero-reassure">
+        <span>{{ strings.hero.reassure1 }}</span><span aria-hidden="true">·</span>
+        <span>{{ strings.hero.reassure2 }}</span><span aria-hidden="true">·</span>
+        <span>{{ strings.hero.reassure3 }}</span>
+      </p>
+    </div>
+    <div class="demo-wrap">
+      <div class="demo" data-demo role="img" aria-label="{{ strings.hero.demoAlt }}">
+        {% if loc.dir == "rtl" %}{% include "components/demo-rtl.njk" %}
+        {% else %}{% include "components/demo-ltr.njk" %}{% endif %}
+      </div>
+      <p class="demo-cap"><span class="demo-label">{{ strings.hero.demoLabel }}</span>{{ strings.hero.demoCaption }}</p>
+    </div>
+  </div>
+</section>
+
+{# ══ 3 · PROOF STRIP ══ #}
+<div class="proof">
+  <div class="wide proof-in">
+    <span class="proof-lbl">{{ strings.proof.label }}</span>
+    {% for p in projects | visible %}<a class="proof-item" href="#work">{{ p.name }}</a>{% endfor %}
+  </div>
+</div>
+
+{# ══ 4 · METHOD ══ #}
+<section class="sec" id="method">
+  <div class="wide">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.pillars.label }}</p>
+      <h2 class="d2">{{ strings.pillars.heading }}</h2>
+      <p class="lead">{{ strings.pillars.lead }}</p>
+    </div>
+    <p class="governing"><b>{{ strings.pillars.governing }}</b></p>
+    <div class="legend">
+      <span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
+      <span class="chip chip-found">{{ strings.pillars.statusFoundation }}</span>
+      <span class="chip chip-dev">{{ strings.pillars.statusDevelopment }}</span>
+      <span class="chip chip-vision">{{ strings.pillars.statusVision }}</span>
+    </div>
+    <div class="pillars">
+      {% for p in offer.pillars %}
+      {% set s = strings.pillars[p.id] %}
+      <article class="pillar">
+        <p class="pillar-n">0{{ loop.index }}</p>
+        <h3 class="d3">{{ s.title }}</h3>
+        <p class="pillar-status">
+          {% if p.status == "now" %}<span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
+          {% elif p.status == "foundation" %}<span class="chip chip-found">{{ strings.pillars.statusFoundation }}</span>
+          {% elif p.status == "development" %}<span class="chip chip-dev">{{ strings.pillars.statusDevelopment }}</span>
+          {% else %}<span class="chip chip-vision">{{ strings.pillars.statusVision }}</span>{% endif %}
+        </p>
+        <p>{{ s.body }}</p>
+        {% if s.note %}<p class="pillar-note">{{ s.note }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ══ 5 · COMMERCIAL OFFER ══ #}
+<section class="sec" id="offer">
+  <div class="wrap">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.offer.label }}</p>
+      <h2 class="d2">{{ strings.offer.heading }}</h2>
+    </div>
+    <div class="offer-grid">
+      <div class="panel panel-now">
+        <span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
+        <h3 class="d3">{{ strings.offer.dfyName }}</h3>
+        <p class="sm">{{ strings.offer.dfyLead }}</p>
+        <p class="price">{{ strings.offer.priceFrom }}&nbsp;₪<bdi>{{ offer.primary.price.from | num(loc.code) }}</bdi></p>
+        <p class="xs">{{ offer.primary.price.note[loc.code] }}</p>
+        <ul class="inc">
+          {% for k in offer.primary.includes %}
+          <li><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>{{ strings.offer.inc[k] }}</li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn-primary" style="width:100%" href="#brief">{{ strings.offer.cta }}</a>
+      </div>
+      <div class="panel panel-future">
+        <span class="chip chip-dev">{{ strings.offer.futureStatus }}</span>
+        <h3 class="d3">{{ strings.offer.futureName }}</h3>
+        <p class="sm">{{ strings.offer.futureBody }}</p>
+        <p class="xs" style="margin-block-start:14px">{{ strings.offer.futureNote }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ══ 6 · PROCESS ══ #}
+<section class="sec">
+  <div class="wide">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.process.label }}</p>
+      <h2 class="d2">{{ strings.process.heading }}</h2>
+    </div>
+    <div class="steps">
+      {% for n in [1,2,3,4] %}
+      <article class="step">
+        <p class="step-n">0{{ n }}</p>
+        <h3 class="d3">{{ strings.process["s" + n + "t"] }}</h3>
+        <p>{{ strings.process["s" + n + "b"] }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ══ 7 · SELECTED WORK ══ #}
+<section class="sec" id="work">
+  <div class="wide">
+    <div class="sec-head edge" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;max-inline-size:none">
+      <div style="max-inline-size:40rem">
+        <p class="label">{{ strings.work.label }}</p>
+        <h2 class="d2">{{ strings.work.heading }}</h2>
+        <p class="lead" style="margin-block-start:14px">{{ strings.work.lead }}</p>
+      </div>
+      <div class="rail-ctl">
+        <button class="rail-btn" type="button" data-rail="prev" aria-label="{{ strings.work.prev }}">
+          <svg width="16" height="16" class="icon-dir" style="transform:rotate(180deg)" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
+        <button class="rail-btn" type="button" data-rail="next" aria-label="{{ strings.work.next }}">
+          <svg width="16" height="16" class="icon-dir" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
+      </div>
+    </div>
+    {% set shown = projects | visible %}
+    <div class="rail" id="rail" tabindex="0" role="group" aria-roledescription="carousel" aria-label="{{ strings.work.carousel }}">
+      {% for p in shown %}
+      <article class="card" aria-label="{{ p.name }} — {{ loop.index }} {{ strings.work.of }} {{ shown.length }}">
+        <div class="card-media">
+          <span class="ph-tag chip chip-vision">{{ strings.work.placeholder }}</span>
+          {% include "components/placeholder.njk" %}
+        </div>
+        <div class="card-body">
+          <h3 class="d3">{{ p.name }}</h3>
+          <p class="card-sector">{{ p.sector[loc.code] }}</p>
+          <p>{{ p.note[loc.code] }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="rail-dots" id="dots">
+      {% for p in shown %}
+      <button type="button" aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="{{ p.name }}"><i></i></button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ══ 8 · VISION / ROADMAP ══ #}
+<section class="sec" id="vision">
+  <div class="wide">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.roadmap.label }}</p>
+      <h2 class="d2">{{ strings.roadmap.heading }}</h2>
+      <p class="lead">{{ strings.roadmap.lead }}</p>
+    </div>
+    <div class="roadmap">
+      <div class="rm-step"><p class="rm-v">V10–V11</p><p class="rm-t">{{ strings.roadmap.v10 }}</p><p class="rm-s">{{ strings.roadmap.v10b }}</p></div>
+      <div class="rm-step"><p class="rm-v">V12</p><p class="rm-t">{{ strings.roadmap.v12 }}</p><p class="rm-s">{{ strings.roadmap.v12b }}</p></div>
+      <div class="rm-step"><p class="rm-v">V13</p><p class="rm-t">{{ strings.roadmap.v13 }}</p><p class="rm-s">{{ strings.roadmap.v13b }}</p></div>
+      <div class="rm-step"><p class="rm-v">V14</p><p class="rm-t">{{ strings.roadmap.v14 }}</p><p class="rm-s">{{ strings.roadmap.v14b }}</p></div>
+    </div>
+  </div>
+</section>
+
+{# ══ 9 · TRUST AND OWNERSHIP ══ #}
+<section class="sec">
+  <div class="wide">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.trust.label }}</p>
+      <h2 class="d2">{{ strings.trust.heading }}</h2>
+    </div>
+    <div class="trust">
+      {% for n in [1,2,3,4,5,6] %}
+      <article class="tile">
+        <svg width="22" height="22" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+        <h3>{{ strings.trust["t" + n] }}</h3>
+        <p>{{ strings.trust["b" + n] }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ══ 10 · FAQ ══ #}
+<section class="sec">
+  <div class="wide">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.faq.label }}</p>
+      <h2 class="d2">{{ strings.faq.heading }}</h2>
+    </div>
+    <div class="faq">
+      {% for n in [1,2,3,4,5,6,7,8] %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary>{{ strings.faq["q" + n] }}</summary>
+        <p>{{ strings.faq["a" + n] }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ══ 11 · PROJECT BRIEF ══ #}
+<section class="sec surface" id="brief">
+  <div class="wrap">
+    <div class="sec-head edge" style="text-align:center;margin-inline:auto">
+      <p class="label">{{ strings.brief.label }}</p>
+      <h2 class="d2">{{ strings.brief.heading }}</h2>
+      <p class="lead" style="margin-inline:auto">{{ strings.brief.lead }}</p>
+    </div>
+    <form class="brief" id="briefForm" novalidate>
+      <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="label" style="margin-block-end:14px">{{ strings.brief.step }}</p>
+      <label class="d3" for="b1">{{ strings.brief.q1 }}</label>
+      <textarea id="b1" name="business" rows="4" placeholder="{{ strings.brief.placeholder }}"></textarea>
+      <p class="err" data-show="0" role="status" aria-live="polite"
+         data-empty="{{ strings.brief.errEmpty }}" data-short="{{ strings.brief.errShort }}"
+         data-disabled="{{ strings.brief.disabled }}"></p>
+      <div class="brief-row">
+        <button class="btn btn-primary" type="submit">{{ strings.brief.continue }}</button>
+        <span class="xs">{{ strings.brief.disabled }}</span>
+      </div>
+      <p class="brief-privacy">{{ strings.brief.privacy }}</p>
+    </form>
+    <div class="alt">
+      {% if site.whatsapp %}
+        <a class="btn btn-ghost" href="https://wa.me/{{ site.whatsapp }}" rel="noopener">
+          <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.altWhatsapp }}</a>
+      {% else %}
+        <span class="inert"><svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.altWhatsapp }} — {{ strings.brief.unavailable }}</span>
+      {% endif %}
+      {% if site.schedulerUrl %}
+        <a class="btn btn-ghost" href="{{ site.schedulerUrl }}" rel="noopener">{{ strings.brief.altConsult }}</a>
+      {% else %}
+        <span class="inert">{{ strings.brief.altConsult }} — {{ strings.brief.unavailable }}</span>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

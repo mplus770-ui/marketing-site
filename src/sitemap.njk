@@ -1,0 +1,24 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+{%- if build.indexable and site.origin -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.w3.org/1999/sitemaps/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for l in locales %}{% if l.ready %}
+  <url>
+    <loc>{{ l.path | abs(site.origin) }}</loc>
+    <lastmod>{{ build.builtAt | truncate(10, true, "") }}</lastmod>
+    <priority>{{ "1.0" if l.code == "he" else "0.9" }}</priority>
+    {%- for a in locales %}{% if a.ready %}
+    <xhtml:link rel="alternate" hreflang="{{ a.hreflang }}" href="{{ a.path | abs(site.origin) }}"/>
+    {%- endif %}{% endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ '/en/' | abs(site.origin) }}"/>
+  </url>
+{%- endif %}{% endfor %}
+</urlset>
+{%- else -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Not a production build: no sitemap is published. -->
+<urlset xmlns="http://www.w3.org/1999/sitemaps/0.9"></urlset>
+{%- endif -%}

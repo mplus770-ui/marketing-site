@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "ZOHAR",
+    "description": ""
+  },
+  "pendingLocale": {
+    "title": "התרגום בעבודה",
+    "body": "השפה הזו היא חלק מארכיטקטורת זוהר ועדיין לא פורסמה. אנחנו לא מפרסמים תרגום מכונה כטקסט סופי.",
+    "cta": "Continue in English",
+    "ctaHe": "המשיכו בעברית"
+  },
+  "nav": {
+    "home": "ZOHAR",
+    "language": "Language",
+    "skip": "Skip to content"
+  }
+}

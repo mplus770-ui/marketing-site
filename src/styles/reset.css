@@ -1,0 +1,13 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-block-start:6rem}
+html,body{max-width:100%}
+img,svg,video{display:block;max-width:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:inherit}
+ul,ol{list-style:none}
+:where(h1,h2,h3,h4){font-weight:inherit}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important}
+}

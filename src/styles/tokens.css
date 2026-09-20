@@ -1,0 +1,43 @@
+/* ══ ZOHAR design tokens — the only file allowed to declare a raw value ══ */
+:root{
+  /* dark backgrounds */
+  --z-canvas:#04150F; --z-surface-1:#07201A; --z-surface-2:#0A2B22; --z-surface-3:#0F3A2E;
+  --z-glass:rgba(7,32,26,.74);
+  /* emerald */
+  --z-emerald-700:#0B5C43; --z-emerald-600:#10795A; --z-emerald-500:#16A37B;
+  /* luminous action green */
+  --z-action-400:#34E39B; --z-action-300:#6FF3BC;
+  /* warm-white type */
+  --z-text-hi:#F4F1EA; --z-text:#E6E2D8; --z-text-mute:#A9B5AC; --z-text-faint:#7E8F85;
+  --z-text-on-light:#04150F;
+  /* secondary proof / data */
+  --z-brass-400:#E4B363; --z-brass-600:#A97B36;
+  /* borders */
+  --z-border:rgba(244,241,234,.10); --z-border-strong:rgba(52,227,155,.28);
+  --z-border-brass:rgba(228,179,99,.24);
+  /* the only two gradients in the system */
+  --z-grad-action:linear-gradient(135deg,#16A37B 0%,#34E39B 100%);
+  --z-grad-dawn:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(52,227,155,.10) 0%,transparent 70%);
+  /* elevation */
+  --z-shadow-1:0 1px 2px rgba(0,0,0,.4);
+  --z-shadow-2:0 8px 28px rgba(0,0,0,.45);
+  --z-shadow-glow:0 0 0 1px rgba(52,227,155,.22),0 8px 32px rgba(52,227,155,.12);
+  --z-inset-hi:inset 0 1px 0 rgba(155,250,210,.055);
+  /* type */
+  --font-display:"Fraunces","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --font-body:"Assistant","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,monospace;
+  --fs-d1:clamp(2.6rem,5.2vw,4.25rem); --fs-d2:clamp(1.875rem,3.4vw,2.7rem);
+  --fs-d3:clamp(1.25rem,2vw,1.5rem);
+  --fs-lead:1.25rem; --fs-body:1.0625rem; --fs-sm:.9375rem; --fs-xs:.875rem; --fs-label:.875rem;
+  --lh-d1:1.05; --lh-d2:1.12; --lh-body:1.65;
+  /* space */
+  --gutter:clamp(20px,5vw,80px); --maxw:1200px; --maxw-wide:1440px;
+  --sec-pad:clamp(4rem,8vw,7rem);
+  --r-sm:10px; --r-md:14px; --r-lg:18px; --r-pill:999px;
+}
+/* Hebrew and Arabic: display serif, looser leading, never negative tracking */
+:root:lang(he),:root:lang(ar){
+  --font-display:"Frank Ruhl Libre","Noto Serif Hebrew",Georgia,serif;
+  --lh-d1:1.18; --lh-d2:1.25; --lh-body:1.8;
+}

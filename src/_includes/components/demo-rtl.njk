@@ -1,0 +1,106 @@
+<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet" direction="ltr">
+  <defs>
+    <linearGradient id="gLum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34E39B" stop-opacity="0"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".5"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <linearGradient id="dPage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07231B"/><stop offset="1" stop-color="#051A14"/></linearGradient>
+    <linearGradient id="dSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E4A38"/><stop offset=".55" stop-color="#0A3528"/><stop offset="1" stop-color="#06231A"/></linearGradient>
+    <radialGradient id="dSun" cx=".78" cy=".16" r=".5"><stop offset="0" stop-color="#F3D9A6" stop-opacity=".55"/><stop offset=".45" stop-color="#7BE9BC" stop-opacity=".16"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></radialGradient>
+    <linearGradient id="dHillA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1B8763"/><stop offset="1" stop-color="#0C4B37"/></linearGradient>
+    <linearGradient id="dHillB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0C4635"/><stop offset="1" stop-color="#083527"/></linearGradient>
+    <linearGradient id="dHillC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A3A2B"/><stop offset="1" stop-color="#062A1F"/></linearGradient>
+    <linearGradient id="dScrim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#04150F" stop-opacity=".88"/><stop offset=".62" stop-color="#04150F" stop-opacity=".18"/><stop offset="1" stop-color="#04150F" stop-opacity="0"/></linearGradient>
+    <linearGradient id="dCard1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14775A"/><stop offset="1" stop-color="#07301F"/></linearGradient>
+    <linearGradient id="dCard2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0D5E48"/><stop offset="1" stop-color="#3A2A12"/></linearGradient>
+    <linearGradient id="dCard3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B4A38"/><stop offset="1" stop-color="#06291E"/></linearGradient>
+    <linearGradient id="dEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34E39B"/><stop offset=".55" stop-color="#34E39B" stop-opacity=".35"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <clipPath id="dClip"><rect x="10" y="10" width="380" height="480" rx="15"/></clipPath>
+    <clipPath id="dHeroClip"><rect x="10" y="58" width="380" height="196"/></clipPath>
+  </defs>
+
+  <rect x="10" y="10" width="380" height="480" rx="15" fill="url(#dPage)"/>
+
+  <!-- INTENT (stage 1) -->
+  <g class="m-intent m-motion-only">
+    <g class="m-intent-clip"><text x="360" y="256" fill="#A9B5AC" font-family="Assistant,sans-serif" font-size="16" text-anchor="end">&#x200F;יקב משפחתי בגליל.</text></g>
+    <rect class="m-cursor" x="212" y="243" width="2" height="18" fill="#34E39B"/>
+  </g>
+
+  <g clip-path="url(#dClip)">
+    <!-- NAV -->
+    <g class="m-fill" style="animation-delay:1.18s">
+      <rect x="10" y="10" width="380" height="44" fill="#061F18"/>
+      <path d="M361 24h11v4h-11z" fill="#34E39B" opacity=".9"/><path d="M365 30h7v4h-7z" fill="#16A37B"/>
+      <text x="354" y="33" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" text-anchor="end">יקב הגליל</text>
+      <text x="164" y="32" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">יינות</text>
+      <text x="128" y="32" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">ביקור</text>
+      <text x="90" y="32" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">הסיפור</text>
+      <rect x="25" y="21" width="46" height="21" rx="10.5" fill="#34E39B"/>
+      <text x="62" y="35" fill="#04150F" font-family="Assistant,sans-serif" font-size="9" font-weight="700" text-anchor="end">הזמנה</text>
+      <rect x="10" y="53.4" width="380" height="1" fill="url(#dEdge)"/>
+    </g>
+
+    <!-- HERO IMAGE -->
+    <g class="m-fill" style="animation-delay:1.36s" clip-path="url(#dHeroClip)" transform="translate(400,0) scale(-1,1)">
+      <rect x="10" y="54" width="380" height="200" fill="url(#dSky)"/>
+      <rect x="10" y="54" width="380" height="200" fill="url(#dSun)"/>
+      <path d="M10 196c58-30 104-14 152-34s86-40 132-22c40 16 68 10 96-4v118H10Z" fill="url(#dHillC)"/>
+      <path d="M10 216c52-24 98-8 148-26 46-16 84-30 128-14 38 14 66 12 104 2v76H10Z" fill="#0A4030"/>
+      <path d="M10 236c60-22 112-6 160-20 44-13 86-22 126-10 36 11 66 10 94 2v46H10Z" fill="url(#dHillA)" opacity=".92"/>
+      <g opacity=".22" stroke="#8FF3C8" stroke-width=".7">
+        <path d="M34 254l26-20M74 254l26-20M114 254l26-20M154 254l26-20M194 254l26-20M234 254l26-20M274 254l26-20M314 254l26-20"/>
+      </g>
+      <rect x="10" y="54" width="380" height="200" fill="url(#dScrim)"/>
+    </g>
+
+    <!-- HERO COPY -->
+    <g class="m-fill" style="animation-delay:1.56s">
+      <text x="368" y="112" fill="#E4B363" font-family="Assistant,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.4" text-anchor="end">הגליל · משנת 1998</text>
+      <text x="368" y="152" fill="#F7F4ED" font-family="'Frank Ruhl Libre',Georgia,serif" font-size="29" font-weight="700" text-anchor="end">יין מגבעה</text>
+      <text x="368" y="188" fill="#F7F4ED" font-family="'Frank Ruhl Libre',Georgia,serif" font-size="29" font-weight="700" text-anchor="end">&#x200F;אחת בלבד.</text>
+      <text x="368" y="212" fill="#C6D3C9" font-family="Assistant,sans-serif" font-size="10.5" text-anchor="end">&#x200F;בציר קטן, נדרך ומבוקבק ביקב.</text>
+    </g>
+    <g class="m-fill" style="animation-delay:1.74s">
+      <rect x="250" y="222" width="118" height="28" rx="14" fill="#34E39B"/>
+      <text x="352" y="240" fill="#04150F" font-family="Assistant,sans-serif" font-size="10.5" font-weight="700" text-anchor="end">להזמנת טעימה</text>
+      <rect x="146" y="222" width="94" height="28" rx="14" fill="none" stroke="rgba(244,241,234,.28)"/>
+      <text x="224" y="240" fill="#E6E2D8" font-family="Assistant,sans-serif" font-size="10.5" font-weight="600" text-anchor="end">היינות שלנו</text>
+    </g>
+
+    <!-- SECTION -->
+    <g class="m-fill" style="animation-delay:1.92s">
+      <rect x="342" y="278" width="26" height="1.4" fill="#34E39B"/>
+      <text x="368" y="300" fill="#E4B363" font-family="Assistant,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.2" text-anchor="end">הכרם</text>
+      <text x="368" y="324" fill="#F4F1EA" font-family="'Frank Ruhl Libre',Georgia,serif" font-size="17" font-weight="700" text-anchor="end">שלושה הקטאר, מדרון אחד</text>
+    </g>
+
+    <!-- CARDS -->
+    <g class="m-fill" style="animation-delay:2.06s">
+      <g><rect x="262" y="338" width="106" height="62" rx="7" fill="url(#dCard1)"/>
+        <path d="M262 380c22-12 36-4 54-12s34-12 52-4v29a7 7 0 0 1-7 7h-92a7 7 0 0 1-7-7Z" fill="#083527" opacity=".55"/>
+        <rect x="262" y="338" width="106" height="1.2" rx=".6" fill="#34E39B" opacity=".5"/>
+        <text x="368" y="416" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="9.5" font-weight="700" text-anchor="end">המדרון</text>
+        <text x="368" y="430" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">גיר, 620 מ׳</text></g>
+      <g><rect x="147" y="338" width="106" height="62" rx="7" fill="url(#dCard2)"/>
+        <circle cx="200" cy="366" r="17" fill="#E4B363" opacity=".28"/><circle cx="200" cy="366" r="9" fill="#F3D9A6" opacity=".4"/>
+        <rect x="147" y="338" width="106" height="1.2" rx=".6" fill="#34E39B" opacity=".5"/>
+        <text x="253" y="416" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="9.5" font-weight="700" text-anchor="end">הבציר</text>
+        <text x="253" y="430" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">בידיים, עם שחר</text></g>
+      <g><rect x="32" y="338" width="106" height="62" rx="7" fill="url(#dCard3)"/>
+        <rect x="56" y="352" width="12" height="34" rx="5" fill="#0F5E44"/><rect x="74" y="346" width="12" height="40" rx="5" fill="#136B4E"/><rect x="92" y="356" width="12" height="30" rx="5" fill="#0D5340"/>
+        <rect x="32" y="338" width="106" height="1.2" rx=".6" fill="#34E39B" opacity=".5"/>
+        <text x="138" y="416" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="9.5" font-weight="700" text-anchor="end">המרתף</text>
+        <text x="138" y="430" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">מבוקבק במקום</text></g>
+    </g>
+
+    <!-- FOOTER -->
+    <g class="m-fill" style="animation-delay:2.2s">
+      <rect x="32" y="452" width="336" height="1" fill="rgba(244,241,234,.09)"/>
+      <text x="368" y="472" fill="#6E7F76" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">© יקב הגליל · ביקורים חמישי עד שבת</text>
+    </g>
+
+    <!-- luminous sweep -->
+    <rect class="m-lum m-motion-only" x="10" y="10" width="380" height="150" fill="url(#gLum)"/>
+  </g>
+
+
+  <rect class="m-trace" x="10" y="10" width="380" height="480" rx="15" fill="none" stroke="#34E39B" stroke-width="1.3" opacity=".8"/>
+</svg>
