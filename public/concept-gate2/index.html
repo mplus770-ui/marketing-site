@@ -17,52 +17,54 @@
 <!-- ═══ SVG SPRITE: logo directions + icons ═══ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="gSeed" x1="12" y1="22" x2="18" y2="3" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#10795A"/><stop offset=".55" stop-color="#16A37B"/><stop offset="1" stop-color="#34E39B"/>
-    </linearGradient>
-    <linearGradient id="gWedge" x1="16" y1="7" x2="24" y2="1" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#6FF3BC" stop-opacity="1"/><stop offset=".55" stop-color="#34E39B" stop-opacity=".55"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="gLum" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#34E39B" stop-opacity="0"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".5"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/>
-    </linearGradient>
+    <linearGradient id="gA" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#16A37B"/><stop offset="1" stop-color="#0B5C43"/></linearGradient>
+    <linearGradient id="gBeamA" x1="15" y1="7" x2="23.6" y2="2.2" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6FF3BC"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".75"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gRay" x1="6" y1="1.6" x2="12.5" y2="10.6" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#A9FBD8"/><stop offset=".6" stop-color="#6FF3BC"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
+    <linearGradient id="gBar1" x1="4" y1="12" x2="21" y2="17" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#16A37B"/><stop offset="1" stop-color="#10795A"/></linearGradient>
+    <linearGradient id="gBar2" x1="4" y1="18" x2="16" y2="22" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#10795A"/><stop offset="1" stop-color="#0B5C43"/></linearGradient>
+    <linearGradient id="gC" x1="12" y1="21" x2="19" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#10795A"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
+    <linearGradient id="gLum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34E39B" stop-opacity="0"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".5"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
   </defs>
 
-  <!-- Concept B — Seed of Light (colour) -->
-  <symbol id="mk-seed" viewBox="0 0 24 24">
-    <path d="M12 22.6V11.2" stroke="url(#gSeed)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-    <path d="M12 12.2C12.3 8.2 14.8 4.8 19 3.2C18.6 8 16.2 11.2 12 12.2Z" fill="url(#gSeed)"/>
-    <path d="M12 13.9C11.7 11.2 9.8 9 6.6 8.1C6.9 11.4 8.8 13.5 12 13.9Z" fill="url(#gSeed)" opacity=".72"/>
+  <!-- DIRECTION A — Refined Aperture: square iris, pinwheel blades, diamond opening, escaping beam -->
+  <symbol id="mk-a" viewBox="0 0 24 24">
+    <path d="M3.6 3.6H14.2V7.4H3.6Z" fill="url(#gA)"/><path d="M16.6 9.8H20.4V20.4H16.6Z" fill="url(#gA)"/>
+    <path d="M7.4 16.6H20.4V20.4H7.4Z" fill="url(#gA)"/><path d="M3.6 3.6H7.4V16.6H3.6Z" fill="url(#gA)"/>
+    <path d="M15.2 7.2L23.6 2.2L22.6 7.0Z" fill="url(#gBeamA)"/>
+    <path d="M12 9.1L14.9 12L12 14.9L9.1 12Z" fill="#34E39B"/>
   </symbol>
-  <!-- Concept B — monochrome -->
-  <symbol id="mk-seed-mono" viewBox="0 0 24 24">
-    <path d="M12 22.6V11.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-    <path d="M12 12.2C12.3 8.2 14.8 4.8 19 3.2C18.6 8 16.2 11.2 12 12.2Z" fill="currentColor"/>
-    <path d="M12 13.9C11.7 11.2 9.8 9 6.6 8.1C6.9 11.4 8.8 13.5 12 13.9Z" fill="currentColor" opacity=".62"/>
-  </symbol>
-
-  <!-- Concept A — The Aperture (colour) -->
-  <symbol id="mk-aper" viewBox="0 0 24 24">
-    <g transform="rotate(-28 12 12)">
-      <circle cx="12" cy="12" r="8" fill="none" stroke="#34E39B" stroke-width="2" stroke-linecap="round"
-              stroke-dasharray="10.18 1.60 10.18 1.60 10.18 1.60 10.18 4.75"/>
-    </g>
-    <path d="M16.6 7.4L23.9 1.0L23.2 7.2Z" fill="url(#gWedge)"/>
-  </symbol>
-  <!-- Concept A — monochrome -->
-  <symbol id="mk-aper-mono" viewBox="0 0 24 24">
-    <g transform="rotate(-28 12 12)">
-      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-dasharray="10.18 1.60 10.18 1.60 10.18 1.60 10.18 4.75"/>
-    </g>
-    <path d="M16.6 7.4L23.9 1.0L23.2 7.2Z" fill="currentColor" opacity=".6"/>
+  <symbol id="mk-a-mono" viewBox="0 0 24 24">
+    <path d="M3.6 3.6H14.2V7.4H3.6Z" fill="currentColor"/><path d="M16.6 9.8H20.4V20.4H16.6Z" fill="currentColor"/>
+    <path d="M7.4 16.6H20.4V20.4H7.4Z" fill="currentColor"/><path d="M3.6 3.6H7.4V16.6H3.6Z" fill="currentColor"/>
+    <path d="M15.2 7.2L23.6 2.2L22.6 7.0Z" fill="currentColor" opacity=".5"/>
+    <path d="M12 9.1L14.9 12L12 14.9L9.1 12Z" fill="currentColor"/>
   </symbol>
 
-  <symbol id="mk-seed-fav" viewBox="0 0 24 24">
-    <path d="M12 22.2V10.6" stroke="url(#gSeed)" stroke-width="3.4" stroke-linecap="round" fill="none"/>
-    <path d="M12 12.1C12.4 7.6 15.2 3.9 19.8 2.2C19.3 7.6 16.6 11.1 12 12.1Z" fill="url(#gSeed)"/>
-    <path d="M12 14.4C11.6 11.3 9.4 8.8 5.8 7.8C6.2 11.5 8.4 13.9 12 14.4Z" fill="url(#gSeed)" opacity=".8"/>
+  <!-- DIRECTION B — Light Fold / Zohar Beam: a ray folds at the axis and becomes structure -->
+  <symbol id="mk-b" viewBox="0 0 24 24">
+    <path d="M5.3 1.6H8.0L14.8 10.6H10.2Z" fill="url(#gRay)"/>
+    <rect x="4.0" y="12.3" width="17.0" height="4.0" rx="1.3" fill="url(#gBar1)"/>
+    <rect x="4.0" y="17.9" width="11.2" height="4.0" rx="1.3" fill="url(#gBar2)"/>
+    <rect x="10.2" y="12.3" width="4.6" height="4.0" fill="#34E39B" opacity=".55"/>
   </symbol>
+  <symbol id="mk-b-mono" viewBox="0 0 24 24">
+    <path d="M5.3 1.6H8.0L14.8 10.6H10.2Z" fill="currentColor"/>
+    <rect x="4.0" y="12.3" width="17.0" height="4.0" rx="1.3" fill="currentColor" opacity=".8"/>
+    <rect x="4.0" y="17.9" width="11.2" height="4.0" rx="1.3" fill="currentColor" opacity=".55"/>
+  </symbol>
+
+  <!-- DIRECTION C — Seed of Light, de-botanization attempt (straight facets, no curves, no ground) -->
+  <symbol id="mk-c" viewBox="0 0 24 24">
+    <path d="M12 20.8V12.2" stroke="url(#gC)" stroke-width="2.4" fill="none"/>
+    <path d="M12.6 11.4L19.6 3.2L19.9 11.6Z" fill="url(#gC)"/>
+    <path d="M11.4 13.6L5.0 8.0L6.3 14.4Z" fill="url(#gC)" opacity=".7"/>
+  </symbol>
+  <symbol id="mk-c-mono" viewBox="0 0 24 24">
+    <path d="M12 20.8V12.2" stroke="currentColor" stroke-width="2.4" fill="none"/>
+    <path d="M12.6 11.4L19.6 3.2L19.9 11.6Z" fill="currentColor"/>
+    <path d="M11.4 13.6L5.0 8.0L6.3 14.4Z" fill="currentColor" opacity=".65"/>
+  </symbol>
+
   <symbol id="ic-check" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5" stroke="#34E39B" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="ic-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.03 1.02-1.03 2.48s1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.69 1.45c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 00-3.48-8.41z"/></symbol>
   <symbol id="ic-globe" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M1.8 8h12.4M8 1.8c1.7 2 2.5 4 2.5 6.2S9.7 12.2 8 14.2C6.3 12.2 5.5 10.2 5.5 8s.8-4.2 2.5-6.2z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
@@ -79,7 +81,7 @@
 <header class="nav">
   <div class="nav-in">
     <a class="nav-logo" href="#top" aria-label="ZOHAR home">
-      <svg width="30" height="30" aria-hidden="true"><use href="#mk-seed"/></svg>
+      <svg width="30" height="30" aria-hidden="true"><use href="#mk-b"/></svg>
       <span style="font-family:var(--font-display);font-weight:600;font-size:1.3rem;letter-spacing:.14em;color:var(--z-text-hi)">ZOHAR</span>
     </a>
     <ul class="nav-links">
@@ -110,13 +112,13 @@
       <div class="hero-eyebrow label">Websites that are actually yours</div>
       <h1 class="d1">Don&rsquo;t build a website.<br>Build a business.</h1>
       <p class="promise">From business intent to business presence.</p>
-      <p class="lead">ZOHAR builds real websites in code you own &mdash; designed to be found, built to convert, and measured so you know they work.</p>
+      <p class="lead">ZOHAR builds real websites in code you own &mdash; built to be found, structured to convert, and ready to be measured.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary btn-lg" href="#brief">Start a project brief</a>
         <a class="btn btn-ghost btn-lg" href="#brief"><svg width="19" height="19" aria-hidden="true"><use href="#ic-wa"/></svg> Talk on WhatsApp</a>
       </div>
       <p class="hero-reassure">
-        <span>Free first consultation</span><span>&middot;</span><span>See it before you pay</span><span>&middot;</span><span>You keep the code</span>
+        <span>Transparent process</span><span>&middot;</span><span>Preview before launch</span><span>&middot;</span><span>Code you own</span>
       </p>
     </div>
 
@@ -149,7 +151,7 @@
         <!-- Stage 3 — BUILD / fill (1.20s → 2.00s) -->
         <g>
           <g class="m-fill" style="animation-delay:1.20s">
-            <use href="#mk-seed" x="40" y="46" width="21" height="21"/>
+            <use href="#mk-b" x="40" y="46" width="21" height="21"/>
             <rect x="68" y="52" width="52" height="9" rx="4.5" fill="#F4F1EA" opacity=".85"/>
             <rect x="250" y="53" width="44" height="7" rx="3.5" fill="#6E7F76"/>
             <rect x="304" y="48" width="56" height="18" rx="9" fill="#34E39B"/>
@@ -204,7 +206,6 @@
     <span class="proof-lbl">Built by ZOHAR</span>
     <a class="proof-item" href="#work">SADAFRONIA</a>
     <a class="proof-item" href="#work">YAYIN</a>
-    <a class="proof-item" href="#work">Better World</a>
     <a class="proof-item" href="#work">ZOHAR</a>
   </div>
 </div>
@@ -212,36 +213,56 @@
 <!-- ═══ FOUR PILLARS ═══ -->
 <section class="sec" id="services">
   <div class="wide">
-    <div class="sec-head" style="max-width:640px">
+    <div class="sec-head" style="max-width:700px">
       <div class="label">The method</div>
       <h2 class="d2">Four things a business presence has to do.</h2>
-      <p class="lead">Three of them we do for every client today. The fourth is what we are building next.</p>
+      <p class="lead">One of them is our product today. Two are foundations we prepare. One is where we are going. We say which is which, on the page.</p>
     </div>
+
+    <div class="governing"><b>Future-ready, not future-built.</b></div>
+
+    <div class="legend">
+      <span class="chip chip-now">Available now</span>
+      <span class="chip chip-found">Foundations we prepare today</span>
+      <span class="chip chip-dev">In development</span>
+      <span class="chip chip-vision">Future vision</span>
+    </div>
+
     <div class="pillars">
       <div class="pillar">
         <div class="pillar-n">01</div>
         <h3 class="d3">Build</h3>
-        <p>We turn what you say about your business into a real, coded presence. Not a template, not a page builder. Clean HTML, CSS and JavaScript you own outright.</p>
-        <div class="pillar-status"><span class="chip chip-now">Available now</span></div>
+        <div class="pillar-status" style="margin-block:0 14px"><span class="chip chip-now">Available now</span></div>
+        <p>Premium Done-For-You websites and digital business presence: multilingual implementation, SEO foundations, conversion architecture, analytics readiness, and clean code you own outright. This is what ZOHAR sells today.</p>
       </div>
       <div class="pillar">
         <div class="pillar-n">02</div>
         <h3 class="d3">Grow</h3>
-        <p>Built to be found and to convert: structured for search and for AI answers, fast on a phone, and shaped around the one action you want a visitor to take.</p>
-        <div class="pillar-status"><span class="chip chip-now">Available now</span></div>
+        <div class="pillar-status" style="margin-block:0 14px"><span class="chip chip-found">Foundations today</span></div>
+        <p>We build growth-ready foundations &mdash; structure for search and for AI answers, speed, and a clear conversion path &mdash; and we support growth with human work, not software.</p>
+        <p class="pillar-sub">There is no automated Growth Engine today. The productised Growth Engine is roadmap V13.</p>
       </div>
       <div class="pillar">
         <div class="pillar-n">03</div>
         <h3 class="d3">Prove</h3>
-        <p>Every meaningful action is measured. You see which message brings enquiries and which does not &mdash; in numbers, not opinions.</p>
-        <div class="pillar-status"><span class="chip chip-now">Available now</span></div>
+        <div class="pillar-status" style="margin-block:0 14px"><span class="chip chip-found">Foundations today</span></div>
+        <p>We prepare analytics, attribution and measurement foundations, and we configure them properly where the accounts and access exist. You get a site that is ready to be measured.</p>
+        <p class="pillar-sub">There is no finished Proof product today. The integrated Connect + Measure layer is roadmap V12.</p>
       </div>
       <div class="pillar">
         <div class="pillar-n">04</div>
         <h3 class="d3">Memory</h3>
-        <p>The system keeps your brand, your content and your decisions, so every change starts from what you already are instead of a blank page.</p>
-        <div class="pillar-status"><span class="chip chip-dev">In development</span></div>
+        <div class="pillar-status" style="margin-block:0 14px"><span class="chip chip-vision">Future vision</span></div>
+        <p>Persistent business memory, and controlled business agents that act on it, are our long-term direction.</p>
+        <p class="pillar-sub">This does not exist today, we do not sell it, and nothing on this site depends on it. Roadmap V14.</p>
       </div>
+    </div>
+
+    <div class="roadmap">
+      <div class="rm-step"><div class="rm-v">V10&ndash;V11</div><div class="rm-t">BUILD Foundation</div><div class="rm-s">Where we are. Done-For-You presence, built properly.</div></div>
+      <div class="rm-step"><div class="rm-v">V12</div><div class="rm-t">Connect + Measure</div><div class="rm-s">The integrated proof layer. In development.</div></div>
+      <div class="rm-step"><div class="rm-v">V13</div><div class="rm-t">Growth Engine</div><div class="rm-s">Productised growth. In development.</div></div>
+      <div class="rm-step"><div class="rm-v">V14</div><div class="rm-t">Controlled &amp; Autonomous Business Agents</div><div class="rm-s">Long-term vision. Not a product.</div></div>
     </div>
   </div>
 </section>
@@ -250,9 +271,10 @@
 <section class="sec" id="work">
   <div class="wide">
     <div class="sec-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-      <div style="max-width:540px">
-        <div class="label">Selected work</div>
-        <h2 class="d2">Four projects. All of them ours.</h2>
+      <div style="max-width:600px">
+        <div class="label">Our work</div>
+        <h2 class="d2">Only work we own or are permitted to show.</h2>
+        <p class="sm" style="margin-block-start:14px">All media below is a <b style="color:var(--z-brass-400)">concept placeholder</b>. Final imagery, copy and any outcome line go live only once assets and client permission are confirmed.</p>
       </div>
       <div class="rail-ctl">
         <button class="rail-btn" type="button" aria-label="Previous project" data-rail="prev"><svg width="16" height="16" style="transform:rotate(180deg)" aria-hidden="true"><use href="#ic-arr"/></svg></button>
@@ -263,7 +285,7 @@
     <div class="rail" id="rail" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected ZOHAR projects">
       <a class="card" href="#work" role="group" aria-label="Project 1 of 4: SADAFRONIA">
         <div class="card-media">
-          <span class="ph-tag chip chip-data">Placeholder &mdash; final media pending</span>
+          <span class="ph-tag chip chip-data">Concept placeholder</span>
           <svg viewBox="0 0 320 200" aria-hidden="true">
             <rect width="320" height="200" fill="#0A2B22"/>
             <rect x="24" y="24" width="60" height="6" rx="3" fill="#16A37B"/>
@@ -277,14 +299,14 @@
         <div class="card-body">
           <h3 class="d3">SADAFRONIA</h3>
           <div class="card-sector">Sector to confirm</div>
-          <p>Live project delivered by ZOHAR. Final copy, imagery and outcome line pending your confirmation.</p>
+          <p>Built by ZOHAR. Sector, description and any result line are pending confirmation &mdash; nothing is claimed here yet.</p>
           <span class="card-link">View case study &rarr;</span>
         </div>
       </a>
 
       <a class="card" href="#work" role="group" aria-label="Project 2 of 4: YAYIN">
         <div class="card-media">
-          <span class="ph-tag chip chip-data">Placeholder &mdash; final media pending</span>
+          <span class="ph-tag chip chip-data">Concept placeholder</span>
           <svg viewBox="0 0 320 200" aria-hidden="true">
             <rect width="320" height="200" fill="#0A2B22"/>
             <rect x="0" y="0" width="320" height="34" fill="#07201A"/>
@@ -300,14 +322,14 @@
         <div class="card-body">
           <h3 class="d3">YAYIN</h3>
           <div class="card-sector">Sector to confirm</div>
-          <p>Live project delivered by ZOHAR. Final copy, imagery and outcome line pending your confirmation.</p>
+          <p>Built by ZOHAR. Sector, description and any result line are pending confirmation &mdash; nothing is claimed here yet.</p>
           <span class="card-link">View case study &rarr;</span>
         </div>
       </a>
 
       <a class="card" href="#work" role="group" aria-label="Project 3 of 4: Better World">
         <div class="card-media">
-          <span class="ph-tag chip chip-data">Placeholder &mdash; permission pending</span>
+          <span class="ph-tag chip chip-vision">Permission not yet confirmed</span>
           <svg viewBox="0 0 320 200" aria-hidden="true">
             <rect width="320" height="200" fill="#0A2B22"/>
             <rect x="24" y="30" width="110" height="12" rx="4" fill="#F4F1EA" opacity=".5"/>
@@ -322,7 +344,7 @@
         <div class="card-body">
           <h3 class="d3">Better World</h3>
           <div class="card-sector">Subject to client permission</div>
-          <p>Shown only once display permission is confirmed. Held out of the live build until then.</p>
+          <p>Not shown until the client confirms display permission. Held out of the live build entirely until then.</p>
           <span class="card-link">View case study &rarr;</span>
         </div>
       </a>
@@ -332,7 +354,7 @@
           <span class="ph-tag chip chip-dev">Flagship &mdash; in development</span>
           <svg viewBox="0 0 320 200" aria-hidden="true">
             <rect width="320" height="200" fill="#0A2B22"/>
-            <use href="#mk-seed" x="130" y="46" width="60" height="60"/>
+            <use href="#mk-b" x="130" y="46" width="60" height="60"/>
             <rect x="120" y="124" width="80" height="9" rx="4" fill="#F4F1EA" opacity=".6"/>
             <rect x="136" y="145" width="48" height="6" rx="3" fill="#6E7F76"/>
             <rect x="24" y="176" width="272" height="1" fill="rgba(52,227,155,.25)"/>
@@ -373,8 +395,8 @@
           <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Real code you own outright &mdash; no builder, no theme, no lock-in</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Design, copy and build handled end to end</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Up to nine languages, right-to-left included</li>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Search and AI-answer structure from day one</li>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> See it before you pay</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Search and AI-answer structure, and analytics ready to configure</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> Transparent process, with a preview before launch</li>
         </ul>
         <a class="btn btn-primary" href="#brief" style="width:100%">Start a project brief</a>
       </div>
@@ -383,6 +405,7 @@
         <span class="chip chip-dev">In development</span>
         <h3 class="d3">ZOHAR BUILD</h3>
         <p class="sm" style="margin-block-end:18px">ZOHAR BUILD is in development. Today, every ZOHAR website is created through our premium Done For You process.</p>
+        <p class="xs" style="margin-block-end:14px">A future option, not an alternative you can choose today.</p>
         <p class="xs" style="margin-block-end:22px">No price, no purchase and no date &mdash; it will appear here when it is real. Join the list and you will be among the first in.</p>
         <ul style="opacity:.8">
           <li><svg width="16" height="16" aria-hidden="true" style="opacity:.45"><use href="#ic-check"/></svg> Describe your business, get a real coded site</li>
@@ -393,7 +416,7 @@
       </div>
     </div>
     <div class="note" style="margin-block-start:26px">
-      <b>Concept note.</b> No Self-Service pricing, no purchase button and no builder control appears anywhere on this page. The visual asymmetry between the two panels is the message.
+      <b>Concept note.</b> There is one offer on this page. No Self-Service pricing, no purchase control, no builder link and no autonomous-capability claim appears anywhere. ZOHAR BUILD is shown as a future option and is deliberately subordinate in size, weight and opacity.
     </div>
   </div>
 </section>
@@ -431,7 +454,7 @@
 <footer class="foot">
   <div class="wide foot-in">
     <div style="display:flex;align-items:center;gap:11px">
-      <svg width="26" height="26" aria-hidden="true"><use href="#mk-seed"/></svg>
+      <svg width="26" height="26" aria-hidden="true"><use href="#mk-b"/></svg>
       <div>
         <div style="font-family:var(--font-display);font-weight:600;letter-spacing:.14em;color:var(--z-text-hi)">ZOHAR</div>
         <div class="xs">ZOHAR AI &mdash; websites you own</div>
@@ -474,59 +497,20 @@
     </div>
   </section>
 
-  <!-- Logo directions -->
+  <!-- Logo directions -> dedicated board -->
   <section class="sec">
     <div class="wide">
-      <div class="sec-head" style="max-width:700px">
+      <div class="sec-head" style="max-width:720px">
         <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">Logo directions</h3>
-        <p class="lead">Two directions at equal fidelity. The Zohar Glyph is not advanced, per your instruction. A search of the repository and its full 122-commit history found no existing ZOHAR Studio brown-and-gold asset &mdash; see the report accompanying this concept.</p>
+        <p class="lead">Three directions, each rendered as symbol, ZOHAR wordmark, ZOHAR&nbsp;AI lockup, dark and light background, monochrome, navigation size, 44px app icon, true 16px favicon, static state and motion principle.</p>
+        <p class="sm" style="margin-block-start:14px">The mark used in this page&rsquo;s navigation is <b style="color:var(--z-text-hi)">Direction B, placed provisionally</b>. No direction is approved.</p>
       </div>
-
-      <div class="grid-2">
-        <!-- B -->
-        <div class="logo-block">
-          <span class="chip chip-now">Direction B &mdash; recommended</span>
-          <h4 class="d3" style="margin-block:14px 6px">Seed of Light &middot; הנבטה</h4>
-          <p class="sm">One stem opens into two asymmetric forms in a 3:5 ratio, lit from deep emerald at the base to luminous green at the tips. Sprout, flame and Hebrew stroke at once. Strictly geometric &mdash; no botanical illustration.</p>
-          <div class="logo-row">
-            <div class="logo-cell"><div class="swatch sw-dark"><svg width="64" height="64"><use href="#mk-seed"/></svg></div><span class="cap">Symbol</span></div>
-            <div class="logo-cell"><div class="swatch sw-mono"><svg width="64" height="64" style="color:#F4F1EA"><use href="#mk-seed-mono"/></svg></div><span class="cap">Monochrome</span></div>
-            <div class="logo-cell"><div class="swatch sw-dark" style="display:flex;gap:10px;align-items:center;padding:16px 20px"><svg width="34" height="34"><use href="#mk-seed"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.45rem;letter-spacing:.15em;color:var(--z-text-hi)">ZOHAR</span></div><span class="cap">Nav lockup</span></div>
-          </div>
-          <div class="logo-row">
-            <div class="logo-cell"><div class="swatch sw-dark" style="padding:18px 22px"><div style="display:grid;justify-items:center;gap:8px"><svg width="46" height="46"><use href="#mk-seed"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.2em;color:var(--z-text-hi)">ZOHAR</span></div></div><span class="cap">Stacked</span></div>
-            <div class="logo-cell"><div class="swatch sw-fav"><svg width="28" height="28"><use href="#mk-seed-fav"/></svg></div><span class="cap">Favicon 44px</span></div>
-            <div class="logo-cell"><div class="swatch sw-fav sw-fav16"><svg width="16" height="16"><use href="#mk-seed-fav"/></svg></div><span class="cap">16px</span></div>
-            <div class="logo-cell"><div class="swatch" style="background:#F4F1EA;padding:12px"><svg width="34" height="34" style="color:#04150F"><use href="#mk-seed-mono"/></svg></div><span class="cap">On light</span></div>
-          </div>
-          <dl class="logo-verdict">
-            <dt>Strength</dt><dd>Earns the green rather than merely being coloured. Animates into the brand story at logo scale, matching the hero. Holds as a filled form at 16px.</dd>
-            <dt>Risk</dt><dd>Sprout marks are common in eco and wellness branding. Defences: strict geometry, the 3:5 asymmetry, internal luminance, and never pairing it with a circle or a leaf.</dd>
-          </dl>
-        </div>
-
-        <!-- A -->
-        <div class="logo-block">
-          <span class="chip chip-vis">Direction A &mdash; alternate</span>
-          <h4 class="d3" style="margin-block:14px 6px">The Aperture</h4>
-          <p class="sm">Four arcs describe a circle that does not close. A wedge of light escapes the gap. The gap is intent entering; the wedge is presence going out; the arcs are the four pillars.</p>
-          <div class="logo-row">
-            <div class="logo-cell"><div class="swatch sw-dark"><svg width="64" height="64"><use href="#mk-aper"/></svg></div><span class="cap">Symbol</span></div>
-            <div class="logo-cell"><div class="swatch sw-mono"><svg width="64" height="64" style="color:#F4F1EA"><use href="#mk-aper-mono"/></svg></div><span class="cap">Monochrome</span></div>
-            <div class="logo-cell"><div class="swatch sw-dark" style="display:flex;gap:10px;align-items:center;padding:16px 20px"><svg width="34" height="34"><use href="#mk-aper"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.45rem;letter-spacing:.15em;color:var(--z-text-hi)">ZOHAR</span></div><span class="cap">Nav lockup</span></div>
-          </div>
-          <div class="logo-row">
-            <div class="logo-cell"><div class="swatch sw-dark" style="padding:18px 22px"><div style="display:grid;justify-items:center;gap:8px"><svg width="46" height="46"><use href="#mk-aper"/></svg><span style="font-family:var(--font-display);font-weight:600;font-size:1.1rem;letter-spacing:.2em;color:var(--z-text-hi)">ZOHAR</span></div></div><span class="cap">Stacked</span></div>
-            <div class="logo-cell"><div class="swatch sw-fav"><svg width="28" height="28"><use href="#mk-aper"/></svg></div><span class="cap">Favicon 44px</span></div>
-            <div class="logo-cell"><div class="swatch sw-fav sw-fav16"><svg width="16" height="16"><use href="#mk-aper"/></svg></div><span class="cap">16px</span></div>
-            <div class="logo-cell"><div class="swatch" style="background:#F4F1EA;padding:12px"><svg width="34" height="34" style="color:#04150F"><use href="#mk-aper-mono"/></svg></div><span class="cap">On light</span></div>
-          </div>
-          <dl class="logo-verdict">
-            <dt>Strength</dt><dd>Reads as an instrument rather than a decoration. Very legible at small sizes. The single-opening idea explains itself to a client in one sentence.</dd>
-            <dt>Risk</dt><dd>Rings are common in AI branding; at 16px the wedge drops and it edges toward a loading spinner. Needs the asymmetric gap kept wide to stay ownable.</dd>
-          </dl>
-        </div>
+      <div class="grid-3" style="margin-block-end:28px">
+        <div class="spec"><h4>A &mdash; Refined Aperture</h4><p>A square iris of four pinwheel blades with a diamond opening and one escaping beam. Rebuilt from the earlier ring, which read as a generic AI spinner.</p></div>
+        <div class="spec"><h4>B &mdash; Light Fold / Zohar Beam</h4><p>A ray folds at the axis and becomes structure. Non-botanical by construction: no leaf, no sprout, no brain, no sparkle, no letter Z.</p></div>
+        <div class="spec" style="opacity:.7"><h4>C &mdash; Seed of Light, de-botanized</h4><p>De-botanization attempted with straight facets only and no ground line. <b style="color:#E4B363">It still reads as a seedling.</b> Rejection documented on the board.</p></div>
       </div>
+      <a class="btn btn-primary" href="logos/">Open the logo comparison board &rarr;</a>
     </div>
   </section>
 
@@ -541,7 +525,7 @@
           <p class="sm" style="margin-block-end:18px">Full-screen sheet, not a dropdown. 56px rows, focus trapped, body scroll locked, closes on tap / backdrop / Escape. The WhatsApp path is pinned at the sheet&rsquo;s end so it is thumb-reachable.</p>
           <div class="sheet-demo">
             <div class="sd-top">
-              <div style="display:flex;align-items:center;gap:8px"><svg width="24" height="24"><use href="#mk-seed"/></svg></div>
+              <div style="display:flex;align-items:center;gap:8px"><svg width="24" height="24"><use href="#mk-b"/></svg></div>
               <div style="display:flex;gap:8px"><span class="lang-ctl" style="height:36px"><svg width="13" height="13"><use href="#ic-globe"/></svg> EN</span><span style="width:36px;height:36px;border:1px solid var(--z-border);border-radius:9px;display:grid;place-items:center;color:var(--z-text-hi)">&times;</span></div>
             </div>
             <ul>
@@ -559,7 +543,7 @@
           <div class="motion-frame static-final" style="aspect-ratio:4/5;max-height:440px" role="img" aria-label="The completed hero frame, shown static.">
             <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
               <rect x="18" y="26" width="364" height="448" rx="12" fill="#07201A" stroke="rgba(244,241,234,.10)"/>
-              <g class="m-fill"><use href="#mk-seed" x="40" y="46" width="21" height="21"/>
+              <g class="m-fill"><use href="#mk-b" x="40" y="46" width="21" height="21"/>
                 <rect x="68" y="52" width="52" height="9" rx="4.5" fill="#F4F1EA" opacity=".85"/>
                 <rect x="250" y="53" width="44" height="7" rx="3.5" fill="#6E7F76"/>
                 <rect x="304" y="48" width="56" height="18" rx="9" fill="#34E39B"/>

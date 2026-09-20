@@ -117,6 +117,8 @@ a{color:inherit}
 .chip-now{background:var(--z-emerald-600);color:#F0FFF8}
 .chip-dev{background:transparent;border:1px solid var(--z-border-strong);color:var(--z-action-400)}
 .chip-vis{background:transparent;border:1px solid var(--z-border);color:var(--z-text-faint)}
+.chip-found{background:rgba(228,179,99,.10);border:1px solid var(--z-border-brass);color:var(--z-brass-400)}
+.chip-vision{background:transparent;border:1px dashed var(--z-border);color:var(--z-text-faint)}
 .chip-data{background:rgba(228,179,99,.10);border:1px solid var(--z-border-brass);color:var(--z-brass-400)}
 
 /* ── HERO ── */
@@ -371,3 +373,26 @@ a{color:inherit}
   .logo-row{gap:14px}
   .price{font-size:1.65rem!important}
 }
+
+/* ── STATUS LEGEND + ROADMAP (correction pass) ── */
+.governing{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--z-border-brass);
+  background:rgba(228,179,99,.07);border-radius:999px;padding:9px 18px;margin-block-end:26px}
+.governing b{font-family:var(--font-display);font-style:italic;font-weight:600;color:var(--z-brass-400);font-size:1.0625rem}
+[dir="rtl"] .governing b{font-style:normal}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-block-end:34px}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--z-border);
+  border:1px solid var(--z-border);border-radius:12px;overflow:hidden;margin-block-start:40px}
+.rm-step{background:var(--z-surface-1);padding:18px 18px 20px}
+.rm-v{font-family:var(--font-mono);font-size:.875rem;color:var(--z-brass-400);letter-spacing:.06em;margin-block-end:8px}
+.rm-t{font-family:var(--font-display);font-weight:600;font-size:1.0625rem;color:var(--z-text-hi);line-height:1.3;margin-block-end:8px}
+[dir="rtl"] .rm-t{font-weight:700}
+.rm-s{font-size:.875rem;color:var(--z-text-mute)}
+@media(max-width:820px){.roadmap{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.roadmap{grid-template-columns:1fr}}
+.pillar-sub{font-size:.875rem;color:var(--z-text-faint);line-height:1.5;margin-block:10px 0;
+  border-inline-start:2px solid var(--z-border-brass);padding-inline-start:11px}
+/* DFY must dominate: Self-Service panel is visually subordinate */
+.offer-grid{grid-template-columns:1.45fr 1fr}
+@media(max-width:820px){.offer-grid{grid-template-columns:1fr}}
+.panel-dev{opacity:.62;border-style:dashed}
+.panel-dev .d3{font-size:1.125rem}
