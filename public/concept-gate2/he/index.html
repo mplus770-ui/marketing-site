@@ -20,52 +20,53 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="gA" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#16A37B"/><stop offset="1" stop-color="#0B5C43"/></linearGradient>
-    <linearGradient id="gBeamA" x1="15" y1="7" x2="23.6" y2="2.2" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6FF3BC"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".75"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
-    <linearGradient id="gRay" x1="6" y1="1.6" x2="12.5" y2="10.6" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#A9FBD8"/><stop offset=".6" stop-color="#6FF3BC"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
-    <linearGradient id="gBar1" x1="4" y1="12" x2="21" y2="17" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#16A37B"/><stop offset="1" stop-color="#10795A"/></linearGradient>
-    <linearGradient id="gBar2" x1="4" y1="18" x2="16" y2="22" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#10795A"/><stop offset="1" stop-color="#0B5C43"/></linearGradient>
-    <linearGradient id="gC" x1="12" y1="21" x2="19" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#10795A"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
+    <linearGradient id="zMass" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1FB584"/><stop offset=".55" stop-color="#128F68"/><stop offset="1" stop-color="#084C36"/></linearGradient>
+    <linearGradient id="zMassB" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1AA97B"/><stop offset="1" stop-color="#073F2C"/></linearGradient>
+    <linearGradient id="zSeam" x1="1" y1="17" x2="23" y2="7" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B"/><stop offset=".5" stop-color="#EAFFF6"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
+    <linearGradient id="zSlit" x1="13" y1="6.5" x2="13" y2="19" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EAFFF6"/><stop offset=".65" stop-color="#5BEDB0"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
+    <linearGradient id="zSpill" x1="14" y1="19" x2="5" y2="23.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B" stop-opacity=".85"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <linearGradient id="zTrace" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0E6E51"/><stop offset=".45" stop-color="#1FB584"/><stop offset="1" stop-color="#9BFAD2"/></linearGradient>
     <linearGradient id="gLum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34E39B" stop-opacity="0"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".5"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <clipPath id="zUp"><polygon points="-6,-6 30,-6 30,3.64 -6,17.14"/></clipPath>
+    <clipPath id="zLo"><polygon points="-6,20.56 30,7.06 30,30 -6,30"/></clipPath>
+    <clipPath id="zSeamClip"><rect x="1.9" y="2.4" width="20.2" height="19.2" rx="4.2"/></clipPath>
+    <mask id="zThr"><rect width="24" height="24" fill="#000"/>
+      <path d="M3.2 8.4C3.2 4.9 6.1 2.1 9.6 2.1H14.8C18.3 2.1 21.2 4.9 21.2 8.4V21.9H3.2Z" fill="#fff"/>
+      <path d="M13.0 11.4C13.0 9.9 14.0 8.7 15.2 8.7C16.4 8.7 17.4 9.9 17.4 11.4V21.9H13.0Z" fill="#000"/></mask>
+    <mask id="zTraceM"><rect width="24" height="24" fill="#000"/><rect x="3" y="3" width="18" height="18" rx="4.5" fill="#fff"/>
+      <rect x="5.6" y="5.6" width="12.8" height="12.8" rx="2.6" fill="#000" transform="translate(1.1 -1.1)"/></mask>
   </defs>
 
-  <!-- DIRECTION A — Refined Aperture: square iris, pinwheel blades, diamond opening, escaping beam -->
-  <symbol id="mk-a" viewBox="0 0 24 24">
-    <path d="M3.6 3.6H14.2V7.4H3.6Z" fill="url(#gA)"/><path d="M16.6 9.8H20.4V20.4H16.6Z" fill="url(#gA)"/>
-    <path d="M7.4 16.6H20.4V20.4H7.4Z" fill="url(#gA)"/><path d="M3.6 3.6H7.4V16.6H3.6Z" fill="url(#gA)"/>
-    <path d="M15.2 7.2L23.6 2.2L22.6 7.0Z" fill="url(#gBeamA)"/>
-    <path d="M12 9.1L14.9 12L12 14.9L9.1 12Z" fill="#34E39B"/>
+  <!-- DIRECTION 1 — THE CUT -->
+  <symbol id="mk-cut" viewBox="0 0 24 24">
+    <g clip-path="url(#zSeamClip)"><polygon points="-6,17.14 30,3.64 30,7.06 -6,20.56" fill="url(#zSeam)"/></g>
+    <g clip-path="url(#zUp)"><rect x="3" y="3" width="18" height="18" rx="3.8" fill="url(#zMass)" transform="translate(-1.03 0.39)"/></g>
+    <g clip-path="url(#zLo)"><rect x="3" y="3" width="18" height="18" rx="3.8" fill="url(#zMass)" transform="translate(1.03 -0.39)"/></g>
   </symbol>
-  <symbol id="mk-a-mono" viewBox="0 0 24 24">
-    <path d="M3.6 3.6H14.2V7.4H3.6Z" fill="currentColor"/><path d="M16.6 9.8H20.4V20.4H16.6Z" fill="currentColor"/>
-    <path d="M7.4 16.6H20.4V20.4H7.4Z" fill="currentColor"/><path d="M3.6 3.6H7.4V16.6H3.6Z" fill="currentColor"/>
-    <path d="M15.2 7.2L23.6 2.2L22.6 7.0Z" fill="currentColor" opacity=".5"/>
-    <path d="M12 9.1L14.9 12L12 14.9L9.1 12Z" fill="currentColor"/>
+  <symbol id="mk-cut-mono" viewBox="0 0 24 24">
+    <g clip-path="url(#zUp)"><rect x="3" y="3" width="18" height="18" rx="3.8" fill="currentColor" transform="translate(-1.03 0.39)"/></g>
+    <g clip-path="url(#zLo)"><rect x="3" y="3" width="18" height="18" rx="3.8" fill="currentColor" transform="translate(1.03 -0.39)"/></g>
   </symbol>
 
-  <!-- DIRECTION B — Light Fold / Zohar Beam: a ray folds at the axis and becomes structure -->
-  <symbol id="mk-b" viewBox="0 0 24 24">
-    <path d="M5.3 1.6H8.0L14.8 10.6H10.2Z" fill="url(#gRay)"/>
-    <rect x="4.0" y="12.3" width="17.0" height="4.0" rx="1.3" fill="url(#gBar1)"/>
-    <rect x="4.0" y="17.9" width="11.2" height="4.0" rx="1.3" fill="url(#gBar2)"/>
-    <rect x="10.2" y="12.3" width="4.6" height="4.0" fill="#34E39B" opacity=".55"/>
+  <!-- DIRECTION 2 — THRESHOLD -->
+  <symbol id="mk-thr" viewBox="0 0 24 24">
+    <path d="M12.4 21.6H18.2L23.2 23.7H7.2Z" fill="url(#zSpill)"/>
+    <g mask="url(#zThr)"><rect width="24" height="24" fill="url(#zMassB)"/></g>
+    <path d="M12.4 12.2C12.4 10.3 13.7 8.9 15.3 8.9C16.9 8.9 18.2 10.3 18.2 12.2V21.6H12.4Z" fill="url(#zSlit)"/>
   </symbol>
-  <symbol id="mk-b-mono" viewBox="0 0 24 24">
-    <path d="M5.3 1.6H8.0L14.8 10.6H10.2Z" fill="currentColor"/>
-    <rect x="4.0" y="12.3" width="17.0" height="4.0" rx="1.3" fill="currentColor" opacity=".8"/>
-    <rect x="4.0" y="17.9" width="11.2" height="4.0" rx="1.3" fill="currentColor" opacity=".55"/>
+  <symbol id="mk-thr-mono" viewBox="0 0 24 24">
+    <g mask="url(#zThr)"><rect width="24" height="24" fill="currentColor"/></g>
+    <path d="M12.4 21.6H18.2L22.2 23.4H8.4Z" fill="currentColor" opacity=".35"/>
   </symbol>
 
-  <!-- DIRECTION C — Seed of Light, de-botanization attempt (straight facets, no curves, no ground) -->
-  <symbol id="mk-c" viewBox="0 0 24 24">
-    <path d="M12 20.8V12.2" stroke="url(#gC)" stroke-width="2.4" fill="none"/>
-    <path d="M12.6 11.4L19.6 3.2L19.9 11.6Z" fill="url(#gC)"/>
-    <path d="M11.4 13.6L5.0 8.0L6.3 14.4Z" fill="url(#gC)" opacity=".7"/>
+  <!-- DIRECTION 3 — THE TRACE -->
+  <symbol id="mk-tra" viewBox="0 0 24 24">
+    <g mask="url(#zTraceM)"><rect width="24" height="24" fill="url(#zTrace)"/></g>
+    <circle cx="19.2" cy="5.4" r="1.55" fill="#EAFFF6"/>
   </symbol>
-  <symbol id="mk-c-mono" viewBox="0 0 24 24">
-    <path d="M12 20.8V12.2" stroke="currentColor" stroke-width="2.4" fill="none"/>
-    <path d="M12.6 11.4L19.6 3.2L19.9 11.6Z" fill="currentColor"/>
-    <path d="M11.4 13.6L5.0 8.0L6.3 14.4Z" fill="currentColor" opacity=".65"/>
+  <symbol id="mk-tra-mono" viewBox="0 0 24 24">
+    <g mask="url(#zTraceM)"><rect width="24" height="24" fill="currentColor"/></g>
+    <circle cx="19.2" cy="5.4" r="1.55" fill="currentColor"/>
   </symbol>
 
   <symbol id="ic-check" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 5" stroke="#34E39B" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -82,7 +83,7 @@
 <header class="nav">
   <div class="nav-in">
     <a class="nav-logo" href="#top" aria-label="ZOHAR — לדף הבית">
-      <svg width="30" height="30" aria-hidden="true"><use href="#mk-b"/></svg>
+      <svg width="30" height="30" aria-hidden="true"><use href="#mk-thr"/></svg>
       <span style="font-family:var(--font-display);font-weight:700;font-size:1.3rem;letter-spacing:.14em;color:var(--z-text-hi)">ZOHAR</span>
     </a>
     <ul class="nav-links">
@@ -116,78 +117,119 @@
         <a class="btn btn-ghost btn-lg" href="#brief"><svg width="19" height="19" aria-hidden="true"><use href="#ic-wa"/></svg> דברו איתנו בוואטסאפ</a>
       </div>
       <p class="hero-reassure">
-        <span>תהליך שקוף</span><span>·</span><span>Preview לפני העלייה לאוויר</span><span>·</span><span>קוד בבעלותכם</span>
+        <span>תהליך שקוף</span><span>·</span><span>תצוגה מקדימה לפני העלייה לאוויר</span><span>·</span><span>קוד בבעלותכם</span>
       </p>
     </div>
 
-    <div class="motion-frame" role="img" aria-label="אנימציה שמראה כיצד משפט על העסק הופך לאתר מוגמר, ונעצרת על הפריסה המלאה.">
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
-        <rect x="18" y="26" width="364" height="448" rx="12" fill="#07201A" stroke="rgba(244,241,234,.10)"/>
+    <div class="demo-wrap"><div class="motion-frame" role="img" aria-label="אנימציה שמראה כיצד משפט על העסק הופך לאתר מוגמר, ונעצרת על הפריסה המלאה.">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet" direction="ltr">
+  <defs>
+    <linearGradient id="dPage" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07231B"/><stop offset="1" stop-color="#051A14"/></linearGradient>
+    <linearGradient id="dSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E4A38"/><stop offset=".55" stop-color="#0A3528"/><stop offset="1" stop-color="#06231A"/></linearGradient>
+    <radialGradient id="dSun" cx=".78" cy=".16" r=".5"><stop offset="0" stop-color="#F3D9A6" stop-opacity=".55"/><stop offset=".45" stop-color="#7BE9BC" stop-opacity=".16"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></radialGradient>
+    <linearGradient id="dHillA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1B8763"/><stop offset="1" stop-color="#0C4B37"/></linearGradient>
+    <linearGradient id="dHillB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0C4635"/><stop offset="1" stop-color="#083527"/></linearGradient>
+    <linearGradient id="dHillC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A3A2B"/><stop offset="1" stop-color="#062A1F"/></linearGradient>
+    <linearGradient id="dScrim" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#04150F" stop-opacity=".88"/><stop offset=".62" stop-color="#04150F" stop-opacity=".18"/><stop offset="1" stop-color="#04150F" stop-opacity="0"/></linearGradient>
+    <linearGradient id="dCard1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14775A"/><stop offset="1" stop-color="#07301F"/></linearGradient>
+    <linearGradient id="dCard2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0D5E48"/><stop offset="1" stop-color="#3A2A12"/></linearGradient>
+    <linearGradient id="dCard3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B4A38"/><stop offset="1" stop-color="#06291E"/></linearGradient>
+    <linearGradient id="dEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34E39B"/><stop offset=".55" stop-color="#34E39B" stop-opacity=".35"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <clipPath id="dClip"><rect x="10" y="10" width="380" height="480" rx="15"/></clipPath>
+    <clipPath id="dHeroClip"><rect x="10" y="58" width="380" height="196"/></clipPath>
+  </defs>
 
-        <g class="m-intent m-motion-only">
-          <g class="m-intent-clip">
-            <text x="354" y="256" fill="#A9B5AC" font-family="Assistant,sans-serif" font-size="17" text-anchor="end" direction="rtl">יקב משפחתי בגליל.</text>
-          </g>
-          <rect class="m-cursor" x="212" y="242" width="2" height="19" fill="#34E39B"/>
-        </g>
+  <rect x="10" y="10" width="380" height="480" rx="15" fill="url(#dPage)"/>
 
-        <!-- wireframe — x-positions mirrored for RTL -->
-        <g fill="#123529">
-          <rect class="m-wire" style="animation-delay:.70s" x="238" y="52" width="122" height="9" rx="4.5"/>
-          <rect class="m-wire" style="animation-delay:.76s" x="40" y="52" width="110" height="9" rx="4.5"/>
-          <rect class="m-wire" style="animation-delay:.82s" x="70" y="112" width="290" height="20" rx="5"/>
-          <rect class="m-wire" style="animation-delay:.88s" x="128" y="144" width="232" height="20" rx="5"/>
-          <rect class="m-wire" style="animation-delay:.94s" x="210" y="190" width="150" height="14" rx="5"/>
-          <rect class="m-wire" style="animation-delay:1.00s" x="234" y="236" width="126" height="36" rx="18"/>
-          <rect class="m-wire" style="animation-delay:1.06s" x="260" y="308" width="100" height="116" rx="8"/>
-          <rect class="m-wire" style="animation-delay:1.10s" x="150" y="308" width="100" height="116" rx="8"/>
-          <rect class="m-wire" style="animation-delay:1.14s" x="40" y="308" width="100" height="116" rx="8"/>
-        </g>
+  <!-- INTENT (stage 1) -->
+  <g class="m-intent m-motion-only">
+    <g class="m-intent-clip"><text x="360" y="256" fill="#A9B5AC" font-family="Assistant,sans-serif" font-size="16" text-anchor="end">&#x200F;יקב משפחתי בגליל.</text></g>
+    <rect class="m-cursor" x="212" y="243" width="2" height="18" fill="#34E39B"/>
+  </g>
 
-        <g>
-          <g class="m-fill" style="animation-delay:1.20s">
-            <use href="#mk-b" x="339" y="46" width="21" height="21"/>
-            <rect x="280" y="52" width="52" height="9" rx="4.5" fill="#F4F1EA" opacity=".85"/>
-            <rect x="106" y="53" width="44" height="7" rx="3.5" fill="#6E7F76"/>
-            <rect x="40" y="48" width="56" height="18" rx="9" fill="#34E39B"/>
-          </g>
-          <g class="m-fill" style="animation-delay:1.38s">
-            <rect x="70" y="112" width="290" height="20" rx="5" fill="#F4F1EA" opacity=".93"/>
-            <rect x="128" y="144" width="232" height="20" rx="5" fill="#F4F1EA" opacity=".93"/>
-            <rect x="210" y="190" width="150" height="8" rx="4" fill="#A9B5AC"/>
-            <rect x="164" y="204" width="196" height="8" rx="4" fill="#6E7F76"/>
-          </g>
-          <g class="m-fill" style="animation-delay:1.58s">
-            <rect x="234" y="236" width="126" height="36" rx="18" fill="#34E39B"/>
-            <rect x="256" y="250" width="82" height="8" rx="4" fill="#04150F"/>
-          </g>
-          <g class="m-fill" style="animation-delay:1.76s">
-            <rect x="260" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/>
-            <rect x="288" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/>
-            <rect x="306" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
-            <rect x="150" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/>
-            <rect x="178" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/>
-            <rect x="196" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
-            <rect x="40" y="308" width="100" height="70" rx="8" fill="#0F3A2E"/>
-            <rect x="68" y="386" width="72" height="7" rx="3.5" fill="#E6E2D8" opacity=".8"/>
-            <rect x="86" y="400" width="54" height="6" rx="3" fill="#6E7F76"/>
-          </g>
-        </g>
+  <g clip-path="url(#dClip)">
+    <!-- NAV -->
+    <g class="m-fill" style="animation-delay:1.18s">
+      <rect x="10" y="10" width="380" height="44" fill="#061F18"/>
+      <path d="M361 24h11v4h-11z" fill="#34E39B" opacity=".9"/><path d="M365 30h7v4h-7z" fill="#16A37B"/>
+      <text x="354" y="33" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="10" font-weight="700" letter-spacing="1.2" text-anchor="end">יקב הגליל</text>
+      <text x="164" y="32" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">יינות</text>
+      <text x="128" y="32" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">ביקור</text>
+      <text x="90" y="32" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">הסיפור</text>
+      <rect x="25" y="21" width="46" height="21" rx="10.5" fill="#34E39B"/>
+      <text x="62" y="35" fill="#04150F" font-family="Assistant,sans-serif" font-size="9" font-weight="700" text-anchor="end">הזמנה</text>
+      <rect x="10" y="53.4" width="380" height="1" fill="url(#dEdge)"/>
+    </g>
 
-        <rect class="m-lum m-motion-only" x="18" y="26" width="364" height="150" fill="url(#gLum)"/>
+    <!-- HERO IMAGE -->
+    <g class="m-fill" style="animation-delay:1.36s" clip-path="url(#dHeroClip)" transform="translate(400,0) scale(-1,1)">
+      <rect x="10" y="54" width="380" height="200" fill="url(#dSky)"/>
+      <rect x="10" y="54" width="380" height="200" fill="url(#dSun)"/>
+      <path d="M10 196c58-30 104-14 152-34s86-40 132-22c40 16 68 10 96-4v118H10Z" fill="url(#dHillC)"/>
+      <path d="M10 216c52-24 98-8 148-26 46-16 84-30 128-14 38 14 66 12 104 2v76H10Z" fill="#0A4030"/>
+      <path d="M10 236c60-22 112-6 160-20 44-13 86-22 126-10 36 11 66 10 94 2v46H10Z" fill="url(#dHillA)" opacity=".92"/>
+      <g opacity=".22" stroke="#8FF3C8" stroke-width=".7">
+        <path d="M34 254l26-20M74 254l26-20M114 254l26-20M154 254l26-20M194 254l26-20M234 254l26-20M274 254l26-20M314 254l26-20"/>
+      </g>
+      <rect x="10" y="54" width="380" height="200" fill="url(#dScrim)"/>
+    </g>
 
-        <g class="m-chip" style="animation-delay:2.02s">
-          <rect x="40" y="182" width="140" height="30" rx="15" fill="rgba(228,179,99,.12)" stroke="rgba(228,179,99,.34)"/>
-          <text x="164" y="202" fill="#E4B363" font-family="Assistant,sans-serif" font-size="12.5" font-weight="700" text-anchor="end" direction="rtl">פניות ▲</text>
-        </g>
-        <g class="m-chip" style="animation-delay:2.24s">
-          <rect x="40" y="220" width="118" height="30" rx="15" fill="rgba(228,179,99,.12)" stroke="rgba(228,179,99,.34)"/>
-          <text x="142" y="240" fill="#E4B363" font-family="Assistant,sans-serif" font-size="12.5" font-weight="700" text-anchor="end">0.8s</text>
-        </g>
+    <!-- HERO COPY -->
+    <g class="m-fill" style="animation-delay:1.56s">
+      <text x="368" y="112" fill="#E4B363" font-family="Assistant,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.4" text-anchor="end">הגליל · משנת 1998</text>
+      <text x="368" y="152" fill="#F7F4ED" font-family="'Frank Ruhl Libre',Georgia,serif" font-size="29" font-weight="700" text-anchor="end">יין מגבעה</text>
+      <text x="368" y="188" fill="#F7F4ED" font-family="'Frank Ruhl Libre',Georgia,serif" font-size="29" font-weight="700" text-anchor="end">&#x200F;אחת בלבד.</text>
+      <text x="368" y="212" fill="#C6D3C9" font-family="Assistant,sans-serif" font-size="10.5" text-anchor="end">&#x200F;בציר קטן, נדרך ומבוקבק ביקב.</text>
+    </g>
+    <g class="m-fill" style="animation-delay:1.74s">
+      <rect x="250" y="222" width="118" height="28" rx="14" fill="#34E39B"/>
+      <text x="352" y="240" fill="#04150F" font-family="Assistant,sans-serif" font-size="10.5" font-weight="700" text-anchor="end">להזמנת טעימה</text>
+      <rect x="146" y="222" width="94" height="28" rx="14" fill="none" stroke="rgba(244,241,234,.28)"/>
+      <text x="224" y="240" fill="#E6E2D8" font-family="Assistant,sans-serif" font-size="10.5" font-weight="600" text-anchor="end">היינות שלנו</text>
+    </g>
 
-        <rect class="m-trace" x="18" y="26" width="364" height="448" rx="12" fill="none" stroke="#34E39B" stroke-width="1.4" opacity=".75"/>
-      </svg>
+    <!-- SECTION -->
+    <g class="m-fill" style="animation-delay:1.92s">
+      <rect x="342" y="278" width="26" height="1.4" fill="#34E39B"/>
+      <text x="368" y="300" fill="#E4B363" font-family="Assistant,sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.2" text-anchor="end">הכרם</text>
+      <text x="368" y="324" fill="#F4F1EA" font-family="'Frank Ruhl Libre',Georgia,serif" font-size="17" font-weight="700" text-anchor="end">שלושה הקטאר, מדרון אחד</text>
+    </g>
+
+    <!-- CARDS -->
+    <g class="m-fill" style="animation-delay:2.06s">
+      <g><rect x="262" y="338" width="106" height="62" rx="7" fill="url(#dCard1)"/>
+        <path d="M262 380c22-12 36-4 54-12s34-12 52-4v29a7 7 0 0 1-7 7h-92a7 7 0 0 1-7-7Z" fill="#083527" opacity=".55"/>
+        <rect x="262" y="338" width="106" height="1.2" rx=".6" fill="#34E39B" opacity=".5"/>
+        <text x="368" y="416" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="9.5" font-weight="700" text-anchor="end">המדרון</text>
+        <text x="368" y="430" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">גיר, 620 מ׳</text></g>
+      <g><rect x="147" y="338" width="106" height="62" rx="7" fill="url(#dCard2)"/>
+        <circle cx="200" cy="366" r="17" fill="#E4B363" opacity=".28"/><circle cx="200" cy="366" r="9" fill="#F3D9A6" opacity=".4"/>
+        <rect x="147" y="338" width="106" height="1.2" rx=".6" fill="#34E39B" opacity=".5"/>
+        <text x="253" y="416" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="9.5" font-weight="700" text-anchor="end">הבציר</text>
+        <text x="253" y="430" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">בידיים, עם שחר</text></g>
+      <g><rect x="32" y="338" width="106" height="62" rx="7" fill="url(#dCard3)"/>
+        <rect x="56" y="352" width="12" height="34" rx="5" fill="#0F5E44"/><rect x="74" y="346" width="12" height="40" rx="5" fill="#136B4E"/><rect x="92" y="356" width="12" height="30" rx="5" fill="#0D5340"/>
+        <rect x="32" y="338" width="106" height="1.2" rx=".6" fill="#34E39B" opacity=".5"/>
+        <text x="138" y="416" fill="#F4F1EA" font-family="Assistant,sans-serif" font-size="9.5" font-weight="700" text-anchor="end">המרתף</text>
+        <text x="138" y="430" fill="#8FA69A" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">מבוקבק במקום</text></g>
+    </g>
+
+    <!-- FOOTER -->
+    <g class="m-fill" style="animation-delay:2.2s">
+      <rect x="32" y="452" width="336" height="1" fill="rgba(244,241,234,.09)"/>
+      <text x="368" y="472" fill="#6E7F76" font-family="Assistant,sans-serif" font-size="8.5" text-anchor="end">© יקב הגליל · ביקורים חמישי עד שבת</text>
+    </g>
+
+    <!-- luminous sweep -->
+    <rect class="m-lum m-motion-only" x="10" y="10" width="380" height="150" fill="url(#gLum)"/>
+  </g>
+
+
+  <rect class="m-trace" x="10" y="10" width="380" height="480" rx="15" fill="none" stroke="#34E39B" stroke-width="1.3" opacity=".8"/>
+</svg>
     </div>
+<div class="ev-row"><span class="ev m-chip" style="animation-delay:2.34s">0.9s &middot; 100/100</span><span class="ev m-chip" style="animation-delay:2.5s">9 שפות</span></div>
+<p class="demo-cap"><span class="dot"></span>תוצר חי של ZOHAR BUILD מהמשפט שלמעלה — לא הדמיה שלו.</p></div>
   </div>
 </section>
 
@@ -292,7 +334,7 @@
       </a>
       <a class="card" href="#work" role="group" aria-label="פרויקט 4 מתוך 4: ZOHAR">
         <div class="card-media"><span class="ph-tag chip chip-dev">פרויקט הדגל — בפיתוח</span>
-          <svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#0A2B22"/><use href="#mk-b" x="130" y="46" width="60" height="60"/><rect x="120" y="124" width="80" height="9" rx="4" fill="#F4F1EA" opacity=".6"/><rect x="136" y="145" width="48" height="6" rx="3" fill="#6E7F76"/><rect x="24" y="176" width="272" height="1" fill="rgba(52,227,155,.25)"/></svg>
+          <svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#0A2B22"/><use href="#mk-thr" x="130" y="46" width="60" height="60"/><rect x="120" y="124" width="80" height="9" rx="4" fill="#F4F1EA" opacity=".6"/><rect x="136" y="145" width="48" height="6" rx="3" fill="#6E7F76"/><rect x="24" y="176" width="272" height="1" fill="rgba(52,227,155,.25)"/></svg>
         </div>
         <div class="card-body"><h3 class="d3">ZOHAR</h3><div class="card-sector">פרויקט הדגל שלנו</div>
           <p>האתר הזה. נבנה מחדש באופן גלוי כהוכחה הראשונה של BUILD — השיטה מיושמת על עצמנו.</p>
@@ -326,7 +368,7 @@
           <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> עיצוב, כתיבה ובנייה מקצה לקצה</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> עד תשע שפות, כולל ימין-לשמאל</li>
           <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> מבנה לחיפוש ולמענה של מנועי AI, ואנליטיקס מוכן להגדרה</li>
-          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> תהליך שקוף, עם Preview לפני העלייה לאוויר</li>
+          <li><svg width="16" height="16" aria-hidden="true"><use href="#ic-check"/></svg> תהליך שקוף, עם תצוגה מקדימה לפני העלייה לאוויר</li>
         </ul>
         <a class="btn btn-primary" href="#brief" style="width:100%">התחילו בריף לפרויקט</a>
       </div>
@@ -377,7 +419,7 @@
 <footer class="foot">
   <div class="wide foot-in">
     <div style="display:flex;align-items:center;gap:11px">
-      <svg width="26" height="26" aria-hidden="true"><use href="#mk-b"/></svg>
+      <svg width="26" height="26" aria-hidden="true"><use href="#mk-thr"/></svg>
       <div>
         <div style="font-family:var(--font-display);font-weight:700;letter-spacing:.14em;color:var(--z-text-hi)">ZOHAR</div>
         <div class="xs">ZOHAR AI — אתרים שבבעלותכם</div>

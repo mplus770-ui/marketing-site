@@ -122,23 +122,24 @@ a{color:inherit}
 .chip-data{background:rgba(228,179,99,.10);border:1px solid var(--z-border-brass);color:var(--z-brass-400)}
 
 /* ── HERO ── */
-.hero{position:relative;padding-block:clamp(3rem,7vw,6rem) clamp(3.5rem,8vw,7rem);overflow:hidden}
+.hero{position:relative;padding-block:clamp(2.25rem,4.5vw,4rem) clamp(3rem,6vw,5rem);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:-10% 0 auto;height:70%;background:var(--z-grad-dawn);
               pointer-events:none}
-.hero-grid{position:relative;display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,72px);align-items:center}
-.hero-eyebrow{margin-block-end:22px}
-.hero h1{margin-block-end:20px}
+.hero-grid{position:relative;display:grid;grid-template-columns:6.6fr 5.4fr;gap:clamp(28px,3.4vw,56px);align-items:center}
+.hero-eyebrow{margin-block-end:18px}
+.hero h1{margin-block-end:16px}
 .hero .promise{font-family:var(--font-display);font-size:clamp(1.125rem,1.9vw,1.5rem);font-style:italic;
                color:var(--z-action-400);line-height:1.35;margin-block-end:18px;font-weight:400}
 [dir="rtl"] .hero .promise{font-style:normal;font-weight:500}
-.hero .lead{margin-block-end:30px}
+.hero .lead{margin-block-end:26px;max-inline-size:34rem}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-block-end:18px}
 .hero-reassure{font-size:.875rem;color:var(--z-text-faint);display:flex;gap:14px;flex-wrap:wrap}
 .hero-reassure span{white-space:nowrap}
 
 /* ── HERO MOTION FRAME (SVG + CSS only; self-terminating) ── */
-.motion-frame{width:100%;aspect-ratio:4/5;max-height:560px;background:var(--z-surface-1);
-              border:1px solid var(--z-border);border-radius:14px;overflow:hidden;position:relative}
+.motion-frame{width:100%;aspect-ratio:4/5;max-height:600px;background:#06251C;
+              border:1px solid var(--z-border);border-radius:16px;overflow:hidden;position:relative;
+              box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(52,227,155,.06)}
 .motion-frame svg{width:100%;height:100%}
 @media(max-width:900px){.motion-frame{aspect-ratio:16/10;max-height:none}}
 
@@ -327,9 +328,9 @@ a{color:inherit}
 @media(max-width:1000px){
   .nav-links{display:none}
   .nav-burger{display:flex}
-  .hero-grid{grid-template-columns:1fr;gap:34px}
-  .hero .motion-frame{order:2}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
   .hero-copy{order:1}
+  .demo-wrap{order:2}
 }
 @media(max-width:520px){
   .nav-right > .btn{display:none}   /* CTA lives in the menu sheet at this width */
@@ -396,3 +397,92 @@ a{color:inherit}
 @media(max-width:820px){.offer-grid{grid-template-columns:1fr}}
 .panel-dev{opacity:.62;border-style:dashed}
 .panel-dev .d3{font-size:1.125rem}
+
+/* ══ GATE 2C — THE LUMINOUS EDGE (the single repeated motif) ══
+   Every meaningful boundary in the system is revealed by one precise line of
+   light at its START edge. Never decorative; it always marks where something
+   begins: the logo seam, the section opening, the pillar, the card, the frame,
+   the button. One idea, six places. */
+.edge{position:relative}
+.edge::before{content:"";position:absolute;inset-block-start:0;inset-inline-start:0;
+  width:clamp(28px,4vw,54px);height:1.5px;background:var(--z-action-400);border-radius:1px}
+
+/* 1 · section openings */
+.sec > .wide > .sec-head,.sec > .wrap > .sec-head{position:relative;padding-block-start:22px}
+.sec > .wide > .sec-head::before,.sec > .wrap > .sec-head::before{content:"";position:absolute;
+  inset-block-start:0;inset-inline-start:0;width:clamp(28px,4vw,54px);height:1.5px;
+  background:linear-gradient(to right,var(--z-action-400),rgba(52,227,155,0));border-radius:1px}
+[dir="rtl"] .sec > .wide > .sec-head::before,[dir="rtl"] .sec > .wrap > .sec-head::before{
+  background:linear-gradient(to left,var(--z-action-400),rgba(52,227,155,0))}
+
+/* 2 · the demonstration frame reads as evidence, not decoration */
+.demo-wrap{position:relative}
+.demo-cap{display:flex;align-items:center;gap:9px;margin-block-start:12px;font-size:.875rem;
+  color:var(--z-text-mute);line-height:1.45}
+.demo-cap .dot{inline-size:7px;block-size:7px;border-radius:50%;background:var(--z-action-400);
+  box-shadow:0 0 0 3px rgba(52,227,155,.18);flex-shrink:0}
+
+/* 3 · material depth — layered emerald, not more gradients everywhere */
+.card,.panel,.spec,.logo-block,.brief,.rm-step{
+  background:linear-gradient(180deg,#08241C 0%,#061E17 100%);
+  box-shadow:inset 0 1px 0 rgba(155,250,210,.055)}
+.card{position:relative}
+.card::after{content:"";position:absolute;inset-block-start:0;inset-inline-start:0;
+  width:38%;height:1.5px;background:linear-gradient(to right,var(--z-action-400),rgba(52,227,155,0));opacity:.75}
+[dir="rtl"] .card::after{background:linear-gradient(to left,var(--z-action-400),rgba(52,227,155,0))}
+.panel-now{position:relative}
+.panel-now::after{content:"";position:absolute;inset-block-start:-1px;inset-inline-start:-1px;
+  width:44%;height:2px;background:linear-gradient(to right,var(--z-action-400),rgba(52,227,155,0));border-radius:2px}
+[dir="rtl"] .panel-now::after{background:linear-gradient(to left,var(--z-action-400),rgba(52,227,155,0))}
+.btn-primary{box-shadow:var(--z-shadow-glow),inset 0 1px 0 rgba(255,255,255,.28)}
+.nav{box-shadow:inset 0 -1px 0 rgba(52,227,155,.07)}
+.proof{background:linear-gradient(180deg,#07231B,#061C16)}
+
+/* 4 · roadmap is secondary — quiet band, not the point of the page */
+.roadmap{margin-block-start:34px;border-radius:10px;opacity:.82}
+.rm-step{padding:14px 16px 16px}
+.rm-v{font-size:.8125rem;margin-block-end:6px}
+.rm-t{font-size:.9375rem;margin-block-end:5px}
+.rm-s{font-size:.8125rem;line-height:1.45}
+.roadmap-intro{font-size:.9375rem;color:var(--z-text-faint);margin-block-start:40px}
+
+/* ── Mobile: tighter rhythm, demonstration visible at the first fold ── */
+@media(max-width:1000px){
+  .hero-grid{gap:24px}
+  .hero{padding-block:1.75rem 2.5rem}
+  .hero h1{margin-block-end:12px}
+  .hero .promise{margin-block-end:14px}
+  .hero .lead{margin-block-end:20px;font-size:1.0625rem}
+  .hero-ctas{margin-block-end:12px}
+  .hero-reassure{font-size:.875rem;gap:8px}
+  .motion-frame{aspect-ratio:16/11}
+  .demo-cap{font-size:.875rem}
+}
+@media(max-width:375px){
+  .hero-eyebrow{display:none}
+  .motion-frame{aspect-ratio:16/12}
+}
+
+/* frame sized to the artwork so nothing letterboxes */
+.motion-frame{max-inline-size:470px;max-block-size:none;margin-inline:auto}
+.demo-wrap{position:relative;max-inline-size:470px;margin-inline:auto}
+.ev-row{display:flex;gap:10px;flex-wrap:wrap;margin-block-start:16px}
+.ev{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;
+  font-size:.875rem;font-weight:700;color:var(--z-brass-400);background:#0B2418;
+  border:1px solid var(--z-border-brass);white-space:nowrap}
+@media(max-width:1000px){
+  .ev{height:32px;font-size:.875rem;padding:0 13px}
+  .ev-row{margin-block-start:12px}
+  .demo-wrap,.motion-frame{max-inline-size:100%}
+}
+/* keep the H1 on its intended three lines */
+@media(min-width:1001px){ .hero .d1{font-size:clamp(2.6rem,3.5vw,3.9rem)} }
+
+/* Mobile: copy first, demonstration meeting the first fold at its edge */
+@media(max-width:1000px){
+  .hero-copy{order:1}
+  .demo-wrap{order:2}
+  .hero-grid{gap:22px}
+}
+/* concept banner is review furniture — keep it to one line on phones */
+@media(max-width:760px){ .concept-bar span{display:none} .concept-bar{padding-block:8px} }
