@@ -417,10 +417,11 @@ a{color:inherit}
 
 /* 2 · the demonstration frame reads as evidence, not decoration */
 .demo-wrap{position:relative}
-.demo-cap{display:flex;align-items:center;gap:9px;margin-block-start:12px;font-size:.875rem;
-  color:var(--z-text-mute);line-height:1.45}
-.demo-cap .dot{inline-size:7px;block-size:7px;border-radius:50%;background:var(--z-action-400);
-  box-shadow:0 0 0 3px rgba(52,227,155,.18);flex-shrink:0}
+.demo-cap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-block-start:16px;
+  font-size:.875rem;color:var(--z-text-mute);line-height:1.5}
+.demo-label{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:999px;
+  font-size:.875rem;font-weight:700;letter-spacing:.04em;color:var(--z-text-faint);
+  border:1px dashed var(--z-border);flex-shrink:0}
 
 /* 3 · material depth — layered emerald, not more gradients everywhere */
 .card,.panel,.spec,.logo-block,.brief,.rm-step{

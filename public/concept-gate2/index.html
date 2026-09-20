@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Assistant:wght@400;600;700&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="brand/zohar-favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="concept.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
     <linearGradient id="zMassB" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1AA97B"/><stop offset="1" stop-color="#073F2C"/></linearGradient>
     <linearGradient id="zSeam" x1="1" y1="17" x2="23" y2="7" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B"/><stop offset=".5" stop-color="#EAFFF6"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
     <linearGradient id="zSlit" x1="13" y1="6.5" x2="13" y2="19" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EAFFF6"/><stop offset=".65" stop-color="#5BEDB0"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
-    <linearGradient id="zSpill" x1="14" y1="19" x2="5" y2="23.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B" stop-opacity=".85"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
+    <linearGradient id="zSpill" x1="14.8" y1="16.1" x2="14" y2="21.4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B" stop-opacity=".9"/><stop offset="1" stop-color="#34E39B" stop-opacity=".12"/></linearGradient>
     <linearGradient id="zTrace" x1="4" y1="20" x2="20" y2="4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0E6E51"/><stop offset=".45" stop-color="#1FB584"/><stop offset="1" stop-color="#9BFAD2"/></linearGradient>
     <linearGradient id="gLum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34E39B" stop-opacity="0"/><stop offset=".5" stop-color="#34E39B" stop-opacity=".5"/><stop offset="1" stop-color="#34E39B" stop-opacity="0"/></linearGradient>
     <clipPath id="zUp"><polygon points="-6,-6 30,-6 30,3.64 -6,17.14"/></clipPath>
@@ -45,17 +46,17 @@
     <g clip-path="url(#zLo)"><rect x="3" y="3" width="18" height="18" rx="3.8" fill="currentColor" transform="translate(1.03 -0.39)"/></g>
   </symbol>
 
-  <!-- DIRECTION 2 — THRESHOLD -->
+  <!-- MASTER MARK — THRESHOLD (Gate 2C final: chamfered monolith + capsule incision) -->
+  <mask id="zThrK"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z" fill="#fff"/><rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="#000"/></mask>
+  <clipPath id="zThrC"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z"/></clipPath>
   <symbol id="mk-thr" viewBox="0 0 24 24">
-    <path d="M12.4 21.6H18.2L23.2 23.7H7.2Z" fill="url(#zSpill)"/>
-    <g mask="url(#zThr)"><rect width="24" height="24" fill="url(#zMassB)"/></g>
-    <path d="M12.4 12.2C12.4 10.3 13.7 8.9 15.3 8.9C16.9 8.9 18.2 10.3 18.2 12.2V21.6H12.4Z" fill="url(#zSlit)"/>
+    <g mask="url(#zThrK)"><rect width="24" height="24" fill="url(#zMassB)"/></g>
+    <g clip-path="url(#zThrC)"><path d="M13.5 16.1H16.1L16.9 21.4H11.1Z" fill="url(#zSpill)"/></g>
+    <rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="url(#zSlit)"/>
   </symbol>
   <symbol id="mk-thr-mono" viewBox="0 0 24 24">
-    <g mask="url(#zThr)"><rect width="24" height="24" fill="currentColor"/></g>
-    <path d="M12.4 21.6H18.2L22.2 23.4H8.4Z" fill="currentColor" opacity=".35"/>
+    <g mask="url(#zThrK)"><rect width="24" height="24" fill="currentColor"/></g>
   </symbol>
-
   <!-- DIRECTION 3 — THE TRACE -->
   <symbol id="mk-tra" viewBox="0 0 24 24">
     <g mask="url(#zTraceM)"><rect width="24" height="24" fill="url(#zTrace)"/></g>
@@ -231,8 +232,7 @@
   <rect class="m-trace" x="10" y="10" width="380" height="480" rx="15" fill="none" stroke="#34E39B" stroke-width="1.3" opacity=".8"/>
 </svg>
     </div>
-<div class="ev-row"><span class="ev m-chip" style="animation-delay:2.34s">0.9s &middot; 100/100</span><span class="ev m-chip" style="animation-delay:2.5s">9 languages</span></div>
-<p class="demo-cap"><span class="dot"></span>Live ZOHAR BUILD output from the sentence above &mdash; not a mockup of one.</p></div>
+<p class="demo-cap"><span class="demo-label">Concept demonstration</span>An illustration of the ZOHAR BUILD experience &mdash; from business intent to a complete digital presence.</p></div>
   </div>
 </section>
 
@@ -537,15 +537,16 @@
   <section class="sec">
     <div class="wide">
       <div class="sec-head" style="max-width:720px">
-        <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">Logo finalists</h3>
-        <p class="lead">Three new directions. Seed of Light and Light Fold are retired; Aperture is reference only. No winner is proposed &mdash; all three are finished to the same level.</p>
+        <h3 class="d2" style="font-size:clamp(1.5rem,2.6vw,2rem)">The mark</h3>
+        <p class="lead"><b style="color:var(--z-text-hi)">Threshold is selected</b> and refined into the production master: a chamfered monolith with a capsule incision and one tapered shaft of light. The Cut and The Trace are retired.</p>
       </div>
       <div class="grid-3" style="margin-block-end:28px">
-        <div class="spec"><h4>1 &mdash; The Cut</h4><p>A solid block opened by one precise incision, the halves sliding apart so light pours from the gap.</p></div>
-        <div class="spec"><h4>2 &mdash; Threshold</h4><p>An architectural mass with an off-centre opening; light comes through and pools forward.</p></div>
-        <div class="spec"><h4>3 &mdash; The Trace</h4><p>One controlled beam travels a square, gaining weight as it goes, and closes on itself.</p></div>
+        <div class="spec"><h4>Preserved</h4><p>The off-centre opening, the light from within, and the crossing from intent to presence.</p></div>
+        <div class="spec"><h4>Corrected</h4><p>The arch is gone. A chamfered monolith replaces it, the opening is now an incision that never reaches the base, and the spill is one clean shaft.</p></div>
+        <div class="spec"><h4>Shipped</h4><p>Symbol, monochrome, favicon, horizontal and ZOHAR&nbsp;AI lockups, app and social icons, and an outlined wordmark that needs no installed font.</p></div>
       </div>
-      <a class="btn btn-primary" href="logos/">Open the finalist board &rarr;</a>
+      <a class="btn btn-primary" href="brand/">Open the brand page &rarr;</a>
+      <a class="btn btn-ghost" href="logos/" style="margin-inline-start:12px">See how it was decided</a>
     </div>
   </section>
 
