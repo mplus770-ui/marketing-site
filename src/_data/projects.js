@@ -1,33 +1,48 @@
 // PROOF RULE — only work ZOHAR owns or is explicitly permitted to display.
-// `verified` gates rendering; `permission` gates a client-owned project.
-// A project with media:null renders a clearly labelled internal placeholder on
-// the protected preview and is dropped entirely from a production build.
+//   own        : part of the ZOHAR business ecosystem (not external client work)
+//   verified   : confirmed as genuine ZOHAR work
+//   permission : cleared for public display
+//   media      : null until real locally-stored captures exist. A project with
+//                null media renders a labelled internal placeholder on a
+//                preview build and is dropped entirely from production.
+// See docs/project-media-spec.md for the capture and export specification.
 export default [
   {
-    slug: "zohar", name: "ZOHAR", verified: true, permission: true,
-    own: true, media: null, url: null,
-    sector: { he: "פרויקט הדגל שלנו", en: "Our own flagship" },
-    note:   { he: "האתר הזה. נבנה מחדש באופן גלוי כהוכחה הראשונה של BUILD.",
-              en: "This site. Rebuilt in public as the first proof of BUILD." },
+    slug: "zohar", name: "ZOHAR",
+    own: true, verified: true, permission: true,
+    url: null, media: null, alt: { he: null, en: null },
+    category: { he: "פרויקט הדגל שלנו", en: "Our own flagship" },
+    description: {
+      he: "האתר הזה. נבנה מחדש באופן גלוי כהוכחה הראשונה של BUILD.",
+      en: "This site. Rebuilt in public as the first proof of BUILD.",
+    },
   },
   {
-    slug: "sadafronia", name: "SADAFRONIA", verified: true, permission: true,
-    own: false, media: null, url: null,
-    sector: { he: "תחום לאישור", en: "Sector to confirm" },
-    note:   { he: "נבנה על ידי זוהר. התיאור וכל שורת תוצאה ממתינים לאישור.",
-              en: "Built by ZOHAR. Description and any result line pending confirmation." },
+    slug: "sadafronia", name: "SADAFRONIA",
+    own: true, verified: true, permission: true,
+    url: null, media: null, alt: { he: null, en: null },
+    category: { he: "מותג יין, אירוח ואקדמיה", en: "Wine, hospitality and academy brand" },
+    description: {
+      he: "מהמערכת העסקית שלנו. נבנה ומתוחזק בבית.",
+      en: "From our own business ecosystem. Built and maintained in-house.",
+    },
   },
   {
-    slug: "yayin", name: "YAYIN", verified: true, permission: true,
-    own: false, media: null, url: null,
-    sector: { he: "תחום לאישור", en: "Sector to confirm" },
-    note:   { he: "נבנה על ידי זוהר. התיאור וכל שורת תוצאה ממתינים לאישור.",
-              en: "Built by ZOHAR. Description and any result line pending confirmation." },
+    slug: "yayin", name: "YAYIN",
+    own: true, verified: true, permission: true,
+    url: null, media: null, alt: { he: null, en: null },
+    category: { he: "מגזין יין דיגיטלי", en: "Digital wine magazine" },
+    description: {
+      he: "מהמערכת העסקית שלנו. נבנה ומתוחזק בבית.",
+      en: "From our own business ecosystem. Built and maintained in-house.",
+    },
   },
-  // Better World — display permission NOT yet confirmed, so it does not render.
+  // Better World — display permission NOT confirmed. It does not render, and no
+  // capture may be taken until permission is granted.
   {
-    slug: "better-world", name: "Better World", verified: true, permission: false,
-    own: false, media: null, url: null,
-    sector: { he: "", en: "" }, note: { he: "", en: "" },
+    slug: "better-world", name: "Better World",
+    own: false, verified: true, permission: false,
+    url: null, media: null, alt: { he: null, en: null },
+    category: { he: "", en: "" }, description: { he: "", en: "" },
   },
 ];

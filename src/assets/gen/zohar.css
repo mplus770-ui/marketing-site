@@ -401,6 +401,22 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 @keyframes mLum{0%{opacity:0;transform:translateY(-40%)}45%{opacity:.55}100%{opacity:0;transform:translateY(120%)}}
 @media(prefers-reduced-motion:reduce){ [data-play="1"] *{animation:none!important} }
 
+/* ── offer fine print: present but not shouting ── */
+.fineprint{margin-block-start:24px;border-block-start:1px solid var(--z-border);padding-block-start:6px}
+.fineprint summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;
+  list-style:none;min-block-size:44px;font-size:var(--fs-sm);font-weight:600;color:var(--z-text-mute)}
+.fineprint summary::-webkit-details-marker{display:none}
+.fineprint summary::after{content:"";inline-size:9px;block-size:9px;border-inline-end:1.6px solid var(--z-text-faint);
+  border-block-end:1.6px solid var(--z-text-faint);transform:rotate(45deg);flex-shrink:0;transition:transform .2s}
+.fineprint[open] summary::after{transform:rotate(-135deg)}
+.exc{display:grid;gap:8px;padding-block-end:8px}
+.exc li{font-size:var(--fs-xs);color:var(--z-text-mute);line-height:1.55;
+  padding-inline-start:14px;position:relative}
+.exc li::before{content:"";position:absolute;inset-inline-start:0;inset-block-start:.65em;
+  inline-size:6px;block-size:1.5px;background:var(--z-text-faint)}
+.foot-in a{color:var(--z-text-mute);text-decoration:none}
+.foot-in a:hover{color:var(--z-text-hi)}
+
 /* Direction handling. The layout uses logical properties throughout, so this
    file only carries what genuinely cannot be expressed logically. */
 [dir="rtl"] .icon-dir{transform:scaleX(-1)}

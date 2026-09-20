@@ -34,6 +34,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("num", (n, code) =>
     new Intl.NumberFormat(code === "he" ? "he-IL" : code || "en").format(n));
 
+  // WhatsApp destination with a localised prefill. Returns null when no number
+  // is configured, so the caller renders inert text instead of a broken link.
+  // The prefill carries no personal data, page history or tracking identifier.
+  eleventyConfig.addFilter("waLink", (number, prefill) =>
+    number ? `https://wa.me/${number}?text=${encodeURIComponent(prefill || "")}` : null);
+
   // Projects that may actually be shown: verified AND permitted.
   eleventyConfig.addFilter("visible", (list) =>
     (list || []).filter((p) => p.verified && p.permission));

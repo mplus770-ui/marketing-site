@@ -1,12 +1,26 @@
 // The single source of truth for what ZOHAR sells today.
-// status: "now" | "foundation" | "development" | "vision"
-// Nothing with a status other than "now" may carry a price or a purchase path.
+// Only `public: true` tiers may be rendered with a figure. Nothing with a
+// status other than "now" may carry a price or a purchase path.
 export default {
-  primary: {
-    id: "dfy", status: "now",
-    price: { currency: "ILS", from: 2800, note: { he: "אתר תדמית. חנויות ומערכות מתומחרות בנפרד.", en: "Marketing site. Stores and systems quoted individually." } },
-    includes: ["ownership", "endToEnd", "multilingual", "seoAeo", "conversion", "analyticsReady", "process"],
+  currency: "ILS",
+  // ── Entry tier — the only figure shown publicly ──────────────────────
+  entry: {
+    id: "focused", status: "now", public: true, priceApproved: true,
+    from: 4900,
+    includes: [
+      "pages", "oneLanguage", "design", "responsive", "aiCopy", "seoAeo",
+      "contact", "analyticsReady", "domain", "ownership", "revisions",
+      "hosting", "ssl", "backup",
+    ],
+    excludes: ["domainPurchase", "businessEmail", "store", "translation",
+               "logo", "media", "ongoing", "unlimitedRevisions", "thirdParty", "maintenance"],
+    terms: ["split", "revisionScope", "extraRevision", "outOfScope", "hostingFair", "renewal"],
   },
+  // ── Internal architecture. NOT rendered with figures. ────────────────
+  tiers: [
+    { id: "premium", status: "now", public: false, from: 7900 },
+    { id: "tailored", status: "now", public: false, from: null },
+  ],
   // In development — no price, no purchase control, no link.
   future: [
     { id: "build",   status: "development", roadmap: null  },

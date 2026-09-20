@@ -14,6 +14,9 @@
       {% endfor %}
     </nav>
     <p class="xs">
+      {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}
+      {% if site.whatsapp %}<span aria-hidden="true"> · </span><bdi>{{ site.whatsappDisplay }}</bdi>{% endif %}
+      <br>
       {% if site.legalEntity %}© {{ site.legalEntity }}. {{ strings.footer.rights }}
       {% else %}{{ strings.footer.pending }}{% endif %}
     </p>

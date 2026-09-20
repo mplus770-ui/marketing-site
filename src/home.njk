@@ -32,8 +32,9 @@ layout: layouts/base.njk
       <p class="lead">{{ strings.hero.lead }}</p>
       <div class="hero-ctas">
         <a class="btn btn-primary btn-lg" href="#brief">{{ strings.hero.ctaPrimary }}</a>
-        {% if site.whatsapp %}
-          <a class="btn btn-ghost btn-lg" href="https://wa.me/{{ site.whatsapp }}" rel="noopener">
+        {% set wa = site.whatsapp | waLink(strings.contact.waPrefill) %}
+        {% if wa %}
+          <a class="btn btn-ghost btn-lg" href="{{ wa }}" rel="noopener">
             <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.hero.ctaSecondary }}</a>
         {% else %}
           <span class="inert" style="min-block-size:56px">
@@ -100,7 +101,8 @@ layout: layouts/base.njk
   </div>
 </section>
 
-{# ══ 5 · COMMERCIAL OFFER ══ #}
+{# ══ 5 · COMMERCIAL OFFER ══
+   One approved figure, shown once. No pricing table, no second public tier. #}
 <section class="sec" id="offer">
   <div class="wrap">
     <div class="sec-head edge">
@@ -110,17 +112,35 @@ layout: layouts/base.njk
     <div class="offer-grid">
       <div class="panel panel-now">
         <span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
-        <h3 class="d3">{{ strings.offer.dfyName }}</h3>
+        <h3 class="d3">{{ strings.offer.entryName }}</h3>
         <p class="sm">{{ strings.offer.dfyLead }}</p>
-        <p class="price">{{ strings.offer.priceFrom }}&nbsp;₪<bdi>{{ offer.primary.price.from | num(loc.code) }}</bdi></p>
-        <p class="xs">{{ offer.primary.price.note[loc.code] }}</p>
+
+        {% if offer.entry.public and offer.entry.priceApproved %}
+        <p class="price">{{ strings.offer.startAt | replace("{price}", "₪" + (offer.entry.from | num(loc.code))) }}</p>
+        <p class="xs">{{ strings.offer.qualifier }}</p>
+        {% endif %}
+
+        <p class="label" style="margin-block:26px 12px">{{ strings.offer.includesLabel }}</p>
         <ul class="inc">
-          {% for k in offer.primary.includes %}
+          {% for k in offer.entry.includes %}
           <li><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>{{ strings.offer.inc[k] }}</li>
           {% endfor %}
         </ul>
         <a class="btn btn-primary" style="width:100%" href="#brief">{{ strings.offer.cta }}</a>
+
+        <details class="fineprint">
+          <summary>{{ strings.offer.excludesLabel }} &middot; {{ strings.offer.termsLabel }}</summary>
+          <p class="label" style="margin-block:16px 10px">{{ strings.offer.excludesLabel }}</p>
+          <ul class="exc">
+            {% for k in offer.entry.excludes %}<li>{{ strings.offer.exc[k] }}</li>{% endfor %}
+          </ul>
+          <p class="label" style="margin-block:20px 10px">{{ strings.offer.termsLabel }}</p>
+          <ul class="exc">
+            {% for k in offer.entry.terms %}<li>{{ strings.offer.terms[k] }}</li>{% endfor %}
+          </ul>
+        </details>
       </div>
+
       <div class="panel panel-future">
         <span class="chip chip-dev">{{ strings.offer.futureStatus }}</span>
         <h3 class="d3">{{ strings.offer.futureName }}</h3>
@@ -128,6 +148,7 @@ layout: layouts/base.njk
         <p class="xs" style="margin-block-start:14px">{{ strings.offer.futureNote }}</p>
       </div>
     </div>
+    <p class="sm" style="margin-block-start:22px;max-inline-size:44rem">{{ strings.offer.larger }}</p>
   </div>
 </section>
 
@@ -176,8 +197,8 @@ layout: layouts/base.njk
         </div>
         <div class="card-body">
           <h3 class="d3">{{ p.name }}</h3>
-          <p class="card-sector">{{ p.sector[loc.code] }}</p>
-          <p>{{ p.note[loc.code] }}</p>
+          <p class="card-sector">{{ p.category[loc.code] }}</p>
+          <p>{{ p.description[loc.code] }}</p>
         </div>
       </article>
       {% endfor %}
@@ -267,11 +288,15 @@ layout: layouts/base.njk
       <p class="brief-privacy">{{ strings.brief.privacy }}</p>
     </form>
     <div class="alt">
-      {% if site.whatsapp %}
-        <a class="btn btn-ghost" href="https://wa.me/{{ site.whatsapp }}" rel="noopener">
+      {% set wa2 = site.whatsapp | waLink(strings.contact.waPrefill) %}
+      {% if wa2 %}
+        <a class="btn btn-ghost" href="{{ wa2 }}" rel="noopener">
           <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.altWhatsapp }}</a>
       {% else %}
         <span class="inert"><svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.altWhatsapp }} — {{ strings.brief.unavailable }}</span>
+      {% endif %}
+      {% if site.email %}
+        <a class="btn btn-ghost" href="mailto:{{ site.email }}">{{ strings.contact.email }}</a>
       {% endif %}
       {% if site.schedulerUrl %}
         <a class="btn btn-ghost" href="{{ site.schedulerUrl }}" rel="noopener">{{ strings.brief.altConsult }}</a>
