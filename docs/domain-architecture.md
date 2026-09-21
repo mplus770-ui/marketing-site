@@ -171,6 +171,7 @@ EN  /en/         canonical https://zohar-ai.com/
                             en    https://zohar-ai.com/
                             x-default https://zohar-ai.com/
 FR  /fr/         noindex,nofollow,noarchive,nosnippet
+                 NO canonical · NO hreflang · NO og:url · NO og:image · NO schema
                  absent from both sitemaps and from every hreflang set
 
 sitemap.xml      <loc>https://zohar-ai.com/</loc>          0 .co.il URLs
@@ -179,10 +180,55 @@ robots.txt       Sitemap: https://zohar-ai.com/sitemap.xml
                  Sitemap: https://www.zohar-ai.co.il/sitemap-he.xml
 ```
 
-One correction to an earlier statement in this file: a held locale **does** emit
-a self-referencing canonical (`https://zohar-ai.com/fr/`). It is `noindex` and
-appears in no sitemap and in no hreflang set, so it publishes nothing — but the
-earlier claim that it carries "no canonical" was inaccurate and is withdrawn.
+### Held locales emit no publication signal at all
+
+An earlier build did emit a self-referencing canonical on a held locale
+(`https://zohar-ai.com/fr/`). **That is fixed.** A locale whose `ready` flag is
+false is a placeholder, not a publication surface, and now emits:
+
+| Signal | Published locale | Held locale |
+|---|---|---|
+| `robots` | `index,follow,max-image-preview:large` | `noindex,nofollow,noarchive,nosnippet` |
+| `<link rel="canonical">` | yes, self-referencing on its own origin | **none** |
+| `<link rel="alternate" hreflang>` | full symmetric set | **none** |
+| `og:url` | yes | **none** |
+| `og:image` | yes | **none** |
+| `application/ld+json` | yes | **none** |
+| Listed in a sitemap | yes, on its own host only | **never** |
+| Listed in another page's hreflang set | yes | **never** |
+
+`src/_includes/partials/head.njk` gates all of it on one variable, `publishes`
+(`canonical and loc.ready`), so the signals cannot drift apart from each other.
+
+This is enforced on every build by `npm run check:surface`
+(`scripts/verify-publication-surface.mjs`), which runs its own production build
+into a scratch directory and asserts both directions — every published locale
+carries **all** signals on its own approved origin, every held locale carries
+**none**:
+
+```
+── publication surface ──
+  he  published  canonical, hreflang, og:url, og:image, ld+json
+  en  published  canonical, hreflang, og:url, og:image, ld+json
+  fr  held       no publication signals
+  es  held       no publication signals
+  pt  held       no publication signals
+  ru  held       no publication signals
+  zh  held       no publication signals
+  ar  held       no publication signals
+  de  held       no publication signals
+
+publication surface: PASS — 2 published locale(s) carry every signal on their
+own origin; 7 held locale(s) carry none and appear in no sitemap and in no
+hreflang set.
+```
+
+The gate was verified against the regression it exists to catch: restoring the
+old condition makes it exit 1 and name every held locale and every signal.
+
+A held locale becomes published by one change — flipping `ready` to `true` in
+`src/_data/locales.js` once its translation is reviewed. The gate then requires
+the full signal set for it, so a locale cannot be published half-way.
 
 ## 4 · Sitemaps
 
@@ -222,6 +268,9 @@ Three independent guards, all already in force:
    is reviewed **and** its canonical origin is configured. Any one missing and
    it is `noindex,nofollow,noarchive,nosnippet`.
 3. Non-production `robots.txt` is `Disallow: /`, and both sitemaps render empty.
+4. A held locale emits no canonical, hreflang, `og:url`, `og:image` or schema at
+   all (§3), so an unreviewed translation cannot present itself as publishable
+   even on a correctly configured production host.
 
 ## 6b · Cutover matrix
 

@@ -6,6 +6,11 @@
 {% set canonical = loc | absUrl(domains) %}
 {% set published = locales | publishable(domains) %}
 
+{# A held locale is a placeholder, not a publication surface. It emits no
+   canonical, no hreflang, no og:url and no og:image — only the noindex block
+   below. `publishes` is the single switch for every published-surface signal. #}
+{% set publishes = canonical and loc.ready %}
+
 {# Indexing: a production build, a reviewed locale, AND a configured canonical
    origin. Any one missing and the page is noindex. A preview host can never
    become a canonical because it is never a value in domains.js. #}
@@ -18,8 +23,8 @@
 
 {# Self-referencing canonical on this locale's OWN domain. Hebrew is never
    canonicalised to English, and the international locales are never
-   canonicalised to the Hebrew host. #}
-{% if canonical %}
+   canonicalised to the Hebrew host. A held locale emits none of this. #}
+{% if publishes %}
 <link rel="canonical" href="{{ canonical }}">
 {% for l in published %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l | absUrl(domains) }}">
 {% endfor %}{% set xd = locales | xDefault(domains) %}{% if xd %}<link rel="alternate" hreflang="x-default" href="{{ xd }}">{% endif %}

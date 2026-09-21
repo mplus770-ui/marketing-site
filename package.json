@@ -12,7 +12,8 @@
     "check:urls": "node scripts/verify-urls.mjs",
     "check:i18n": "node scripts/validate-i18n.mjs",
     "check:hostmap": "node scripts/verify-host-map.mjs",
-    "check": "npm run check:i18n && npm run check:hostmap && npm run build && npm run check:urls"
+    "check:surface": "node scripts/verify-publication-surface.mjs",
+    "check": "npm run check:i18n && npm run check:hostmap && npm run check:surface && npm run build && npm run check:urls"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
