@@ -1,8 +1,8 @@
 ---
-permalink: /robots.txt
+permalink: /robots-he.txt
 eleventyExcludeFromCollections: true
 ---
-{%- set published = locales | onHost("international") | publishable(domains) -%}
+{%- set published = locales | onHost("he") | publishable(domains) -%}
 {%- if build.indexable and published | length -%}
 User-agent: *
 Allow: /
@@ -18,11 +18,10 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-{# This file is served on the INTERNATIONAL host only. It advertises the
-   international sitemap and nothing else — a host must never advertise the
-   other host's sitemap. www.zohar-ai.co.il is rewritten to /robots-he.txt. #}
-{%- if domains.international %}
-Sitemap: {{ domains.international }}/sitemap.xml
+{# This file is served on the HEBREW host only, via a host rewrite of
+   /robots.txt. It advertises the Hebrew sitemap and nothing else. #}
+{%- if domains.he %}
+Sitemap: {{ domains.he }}/sitemap-he.xml
 {%- endif %}
 {%- else -%}
 # Not a production build, or no canonical origin is configured.

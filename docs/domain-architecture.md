@@ -45,92 +45,172 @@ canonical on `.co.il`. There is exactly one canonical copy of each page.
 
 ## 2 · One build, two hosts
 
-The build writes Hebrew to `/` and English to `/en/`. At cutover the edge
-redirects each host to its canonical counterpart and rewrites the international
-host so English answers at its root.
+The build writes Hebrew to `/` and English to `/en/`. At cutover the edge routes
+each request to its canonical host and rewrites the international host so
+English answers at its root.
+
+### The ordering rule
+
+**Cross-domain locale routing takes precedence over hostname normalisation.**
+
+This is the substance of the map, not a detail. If the hostname is normalised
+first and the locale transferred second, `zohar-ai.co.il/en/` becomes
+`www.zohar-ai.co.il/en/` and only then `zohar-ai.com/` — two redirects for a
+single request. Matching the locale rules on **both hostname forms of each
+domain**, ahead of the normalisation rules, sends every request to its final
+host in one move.
+
+**Budget: a canonical URL takes 0 redirects. Every other approved URL takes at
+most 1.** `scripts/verify-host-map.mjs` fails the build on any chain longer than
+one hop.
 
 ```jsonc
 // vercel.json — NOT YET ADDED. Paste at cutover, after the domains are attached
 // and TLS is issued for all four hostnames. Order is significant: Vercel
 // evaluates redirects before rewrites, and the first match in each list wins.
 "redirects": [
-  // 1 · .co.il apex keeps its existing direction: apex → www
-  { "source": "/:p*",   "has": [{ "type": "host", "value": "zohar-ai.co.il" }],     "destination": "https://www.zohar-ai.co.il/:p*",  "permanent": true },
-  // 2 · English requested on the Hebrew host → international host, locale stripped
-  { "source": "/en/:p*", "has": [{ "type": "host", "value": "www.zohar-ai.co.il" }], "destination": "https://zohar-ai.com/:p*",        "permanent": true },
-  // 3 · any other international locale on the Hebrew host → same path on .com
-  { "source": "/:lang(fr|es|pt|ru|zh|ar|de)/:p*", "has": [{ "type": "host", "value": "www.zohar-ai.co.il" }], "destination": "https://zohar-ai.com/:lang/:p*", "permanent": true },
-  // 4 · .com www → apex
-  { "source": "/:p*",   "has": [{ "type": "host", "value": "www.zohar-ai.com" }],    "destination": "https://zohar-ai.com/:p*",        "permanent": true },
-  // 5 · Hebrew requested on the international host → Hebrew host, locale stripped
-  { "source": "/he/:p*", "has": [{ "type": "host", "value": "zohar-ai.com" }],       "destination": "https://www.zohar-ai.co.il/:p*",  "permanent": true }
+  // ── 1 · LOCALE ROUTING FIRST, matched on BOTH hostname forms of each domain.
+  //        These must precede every normalisation rule below.
+  { "source": "/en/:p*",
+    "has": [{ "type": "host", "value": "zohar-ai.co.il" }],
+    "destination": "https://zohar-ai.com/:p*", "permanent": true },
+  { "source": "/en/:p*",
+    "has": [{ "type": "host", "value": "www.zohar-ai.co.il" }],
+    "destination": "https://zohar-ai.com/:p*", "permanent": true },
+  { "source": "/:lang(fr|es|pt|ru|zh|ar|de)/:p*",
+    "has": [{ "type": "host", "value": "zohar-ai.co.il" }],
+    "destination": "https://zohar-ai.com/:lang/:p*", "permanent": true },
+  { "source": "/:lang(fr|es|pt|ru|zh|ar|de)/:p*",
+    "has": [{ "type": "host", "value": "www.zohar-ai.co.il" }],
+    "destination": "https://zohar-ai.com/:lang/:p*", "permanent": true },
+  // Hebrew has no /he/ prefix — it is the root of its own host. Fold the
+  // duplicate away rather than serving the same page at two URLs.
+  { "source": "/he/:p*",
+    "has": [{ "type": "host", "value": "zohar-ai.co.il" }],
+    "destination": "https://www.zohar-ai.co.il/:p*", "permanent": true },
+  { "source": "/he/:p*",
+    "has": [{ "type": "host", "value": "www.zohar-ai.co.il" }],
+    "destination": "https://www.zohar-ai.co.il/:p*", "permanent": true },
+  { "source": "/he/:p*",
+    "has": [{ "type": "host", "value": "zohar-ai.com" }],
+    "destination": "https://www.zohar-ai.co.il/:p*", "permanent": true },
+  { "source": "/he/:p*",
+    "has": [{ "type": "host", "value": "www.zohar-ai.com" }],
+    "destination": "https://www.zohar-ai.co.il/:p*", "permanent": true },
+  // English is canonical at the ROOT of .com; /en/ is the duplicate.
+  { "source": "/en/:p*",
+    "has": [{ "type": "host", "value": "zohar-ai.com" }],
+    "destination": "https://zohar-ai.com/:p*", "permanent": true },
+  { "source": "/en/:p*",
+    "has": [{ "type": "host", "value": "www.zohar-ai.com" }],
+    "destination": "https://zohar-ai.com/:p*", "permanent": true },
+
+  // ── 2 · HOSTNAME NORMALISATION LAST. Reached only when no locale rule
+  //        matched, so it can never be the first half of a two-hop chain.
+  { "source": "/:p*", "has": [{ "type": "host", "value": "zohar-ai.co.il" }],
+    "destination": "https://www.zohar-ai.co.il/:p*", "permanent": true },
+  { "source": "/:p*", "has": [{ "type": "host", "value": "www.zohar-ai.com" }],
+    "destination": "https://zohar-ai.com/:p*", "permanent": true }
 ],
 "rewrites": [
-  // Assets, sitemaps and robots must resolve at their own paths, so they are
-  // pinned to identity BEFORE the English catch-all below.
-  { "source": "/assets/:p*",     "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/assets/:p*" },
+  // Each host serves its OWN robots.txt — see §4.
+  { "source": "/robots.txt", "has": [{ "type": "host", "value": "www.zohar-ai.co.il" }],
+    "destination": "/robots-he.txt" },
+  // Assets, sitemaps and robots resolve at their own paths on .com, pinned to
+  // identity BEFORE the English catch-all below.
+  { "source": "/assets/:p*",        "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/assets/:p*" },
   { "source": "/concept-gate2/:p*", "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/concept-gate2/:p*" },
-  { "source": "/robots.txt",     "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/robots.txt" },
-  { "source": "/sitemap.xml",    "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/sitemap.xml" },
+  { "source": "/robots.txt",        "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/robots.txt" },
+  { "source": "/sitemap.xml",       "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/sitemap.xml" },
   // Published international locales are served from their own directories.
-  { "source": "/:lang(en|fr|es|pt|ru|zh|ar|de)/:p*", "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/:lang/:p*" },
+  { "source": "/:lang(fr|es|pt|ru|zh|ar|de)/:p*", "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/:lang/:p*" },
   // Everything else on .com is English at the root.
   { "source": "/:p*", "has": [{ "type": "host", "value": "zohar-ai.com" }], "destination": "/en/:p*" }
 ]
 ```
 
-Paths and query strings are preserved by the `:p*` capture. Query strings are
-carried by Vercel automatically on a redirect and are asserted in §2b.
+`www.zohar-ai.co.il` is the Hebrew canonical, so it is the one host with no
+normalisation redirect of its own.
 
-`www.zohar-ai.co.il` is served directly — it is the Hebrew canonical, so it is
-the one host with no redirect of its own.
+### What is preserved across every redirect
+
+| | Preserved | How |
+|---|---|---|
+| Full equivalent path | yes | `:p*` captures the remainder; a locale transfer strips exactly the leading `/xx/` segment and keeps the rest |
+| Query string | yes | carried by Vercel on a redirect; asserted per case in §2b |
+| Trailing slash | yes | `trailingSlash: true` is already set in `vercel.json`; `/en/work/` → `/work/`, `/en/work` → `/work`. Asserted in §2b |
+| Fragment | yes | a fragment is **never sent to the server**. The browser re-attaches it to the `Location` target itself, which is why a single hop matters: each extra hop is another chance for a client to drop it |
 
 `zoharai.com → zohar-ai.com` is **not authorised** and is not listed above.
 
 ## 2b · The host map is encoded as data and tested
 
 `src/_data/hostMap.js` holds the approved canonical origins, the four hosts that
-need TLS before any redirect is activated, and the eight ordered rules above in
+need TLS before any redirect is activated, and the eleven ordered rules above in
 machine-readable form. It is data only — no template reads it at build time and
 it changes no output.
 
 `scripts/verify-host-map.mjs` (`npm run check:hostmap`) walks the rule chain for
-13 requests and asserts the invariants. Current result:
+23 requests and **fails the build on any chain longer than one hop**:
 
 ```
 ── final host map ──
-ok   https://zohar-ai.co.il/                    1 hop(s) -> https://www.zohar-ai.co.il/ [he]
-ok   https://zohar-ai.co.il/en/                 2 hop(s) -> https://zohar-ai.com/ [en]
-ok   https://zohar-ai.co.il/en/work?a=1         2 hop(s) -> https://zohar-ai.com/work?a=1 [en]
-ok   https://www.zohar-ai.co.il/                0 hop(s) -> https://www.zohar-ai.co.il/ [he]
-ok   https://www.zohar-ai.co.il/en/             1 hop(s) -> https://zohar-ai.com/ [en]
-ok   https://www.zohar-ai.co.il/fr/             1 hop(s) -> https://zohar-ai.com/fr/ [fr]
-ok   https://www.zohar-ai.co.il/de/x?q=2        1 hop(s) -> https://zohar-ai.com/de/x?q=2 [de]
-ok   https://www.zohar-ai.com/                  1 hop(s) -> https://zohar-ai.com/ [en]
-ok   https://www.zohar-ai.com/he/               2 hop(s) -> https://www.zohar-ai.co.il/ [he]
-ok   https://www.zohar-ai.com/he/about?z=3      2 hop(s) -> https://www.zohar-ai.co.il/about?z=3 [he]
-ok   https://zohar-ai.com/                      0 hop(s) -> https://zohar-ai.com/ [en]
-ok   https://zohar-ai.com/he/                   1 hop(s) -> https://www.zohar-ai.co.il/ [he]
-ok   https://zohar-ai.com/fr/                   0 hop(s) -> https://zohar-ai.com/fr/ [fr]
+  redirects  request                                   result
+      0      https://www.zohar-ai.co.il/                https://www.zohar-ai.co.il/ [he]
+      0      https://zohar-ai.com/                      https://zohar-ai.com/ [en]
+      0      https://zohar-ai.com/fr/                   https://zohar-ai.com/fr/ [fr]
+      1      https://zohar-ai.co.il/                    https://www.zohar-ai.co.il/ [he]
+      1      https://zohar-ai.co.il/about/?a=1          https://www.zohar-ai.co.il/about/?a=1 [he]
+      1      https://www.zohar-ai.com/                  https://zohar-ai.com/ [en]
+      1      https://www.zohar-ai.com/fr/               https://zohar-ai.com/fr/ [fr]
+      1      https://zohar-ai.co.il/en/                 https://zohar-ai.com/ [en]
+      1      https://zohar-ai.co.il/en/work?a=1         https://zohar-ai.com/work?a=1 [en]
+      1      https://zohar-ai.co.il/en/work/?a=1        https://zohar-ai.com/work/?a=1 [en]
+      1      https://zohar-ai.co.il/de/x?q=2            https://zohar-ai.com/de/x?q=2 [de]
+      1      https://www.zohar-ai.co.il/en/             https://zohar-ai.com/ [en]
+      1      https://www.zohar-ai.co.il/fr/             https://zohar-ai.com/fr/ [fr]
+      1      https://www.zohar-ai.co.il/de/x?q=2        https://zohar-ai.com/de/x?q=2 [de]
+      1      https://www.zohar-ai.com/he/               https://www.zohar-ai.co.il/ [he]
+      1      https://www.zohar-ai.com/he/about?z=3      https://www.zohar-ai.co.il/about?z=3 [he]
+      1      https://www.zohar-ai.com/he/about/?z=3     https://www.zohar-ai.co.il/about/?z=3 [he]
+      1      https://zohar-ai.com/he/                   https://www.zohar-ai.co.il/ [he]
+      1      https://zohar-ai.com/en/                   https://zohar-ai.com/ [en]
+      1      https://zohar-ai.com/en/work?a=1           https://zohar-ai.com/work?a=1 [en]
+      1      https://www.zohar-ai.com/en/               https://zohar-ai.com/ [en]
+      1      https://www.zohar-ai.co.il/he/             https://www.zohar-ai.co.il/ [he]
+      1      https://zohar-ai.co.il/he/about?z=3        https://www.zohar-ai.co.il/about?z=3 [he]
 
 ── invariants ──
-ok   no Hebrew on .com, no English on .co.il, queries preserved, every host covered,
-     every published canonical is a 200 on its own host and never redirects
+  ok  canonical URLs take 0 redirects; every other approved URL takes <= 1
+  ok  no chain normalises the hostname before transferring the locale
+  ok  no Hebrew on .com, no English on .co.il
+  ok  path, query and trailing slash preserved; every approved host covered by a rule
+
+── sitemap host check ──
+  zohar-ai.com         /robots.txt     advertises /sitemap.xml     1 URL(s), all 0-redirect 200
+  www.zohar-ai.co.il   /robots-he.txt  advertises /sitemap-he.xml  1 URL(s), all 0-redirect 200
+  ok  neither sitemap is advertised by the wrong host; no held locale appears in either
 
 ── loop guard (negative control) ──
-ok   guard fires on a circular pair
+  ok  guard fires on a circular pair
 
-host map: PASS — 13 cases, 4-hop loop guard, all invariants hold
+host map: PASS — 23 cases, every canonical 0 redirects, every other URL <= 1,
+          per-host sitemaps verified, loop guard proved to fire
 ```
 
-No request needs more than **two hops**, no chain loops, and every published
-canonical answers **200 on its own host and never redirects** — the property
-that a self-referencing canonical depends on.
+**There are no two-hop chains.** Every one of the 23 approved requests reaches
+its final host in 0 or 1 redirect.
 
-The 4-hop guard is proved by a negative control: a deliberately circular rule
-pair, never part of the approved map, must be caught rather than resolved. Without
-that control a passing suite would only prove that nothing loops, not that a loop
-would be noticed.
+Two negative controls, because a check that cannot fail proves nothing:
+
+1. **Loop guard.** A deliberately circular rule pair, never part of the approved
+   map, must be caught rather than resolved.
+2. **Budget guard.** Restoring the old precedence — normalisation rule first —
+   makes the suite exit 1 and name each over-budget request
+   (`OVER BUDGET — max is 1`). Verified, then reverted.
+
+A third assertion states the rule directly rather than only its effect: no chain
+may both normalise the hostname and transfer the locale.
 
 **This test models the rules, not the live edge.** It proves the map is
 internally consistent. It cannot prove Vercel's matcher behaves identically —
@@ -176,8 +256,8 @@ FR  /fr/         noindex,nofollow,noarchive,nosnippet
 
 sitemap.xml      <loc>https://zohar-ai.com/</loc>          0 .co.il URLs
 sitemap-he.xml   <loc>https://www.zohar-ai.co.il/</loc>    0 .com URLs
-robots.txt       Sitemap: https://zohar-ai.com/sitemap.xml
-                 Sitemap: https://www.zohar-ai.co.il/sitemap-he.xml
+robots.txt       Sitemap: https://zohar-ai.com/sitemap.xml          (only)
+robots-he.txt    Sitemap: https://www.zohar-ai.co.il/sitemap-he.xml (only)
 ```
 
 ### Held locales emit no publication signal at all
@@ -232,18 +312,50 @@ the full signal set for it, so a locale cannot be published half-way.
 
 ## 4 · Sitemaps
 
-A sitemap may only list URLs on its own host, so there are two:
+A sitemap may only list URLs on its own host, so there are two — and each host
+advertises **only its own**.
+
+| Host | `robots.txt` served | Advertises | Must never advertise |
+|---|---|---|---|
+| `zohar-ai.com` | `/robots.txt` | `https://zohar-ai.com/sitemap.xml` | `/sitemap-he.xml` |
+| `www.zohar-ai.co.il` | `/robots-he.txt` *(rewritten from `/robots.txt`)* | `https://www.zohar-ai.co.il/sitemap-he.xml` | `/sitemap.xml` |
+
+**This changed.** A single `robots.txt` previously advertised both sitemaps on
+both hosts, which cross-submits each host's sitemap from the other. The build
+now emits two files and the edge rewrite in §2 serves the Hebrew one on the
+Hebrew host. Cross-submission is only accepted once **both hosts are verified in
+Search Console**, and it is not how this is set up today.
 
 | File | Host | Contents |
 |---|---|---|
 | `/sitemap.xml` | `zohar-ai.com` | International locales only |
 | `/sitemap-he.xml` | `www.zohar-ai.co.il` | Hebrew only |
 
-Each entry carries the full `xhtml:link` alternate set. `robots.txt` lists both
-absolute sitemap URLs. **Both hosts must be verified in Search Console** before
-cross-submission is accepted. Contamination is checked on every build: 0 `.co.il`
-URLs in the international sitemap, 0 `.com` URLs in the Hebrew one, 0 pending
-locales in either.
+Each entry carries the full `xhtml:link` alternate set.
+
+### Enforced on every build
+
+`npm run check:hostmap` asserts all five properties against real build output
+and the routing map together:
+
+```
+── sitemap host check ──
+  zohar-ai.com         /robots.txt     advertises /sitemap.xml     1 URL(s), all 0-redirect 200
+  www.zohar-ai.co.il   /robots-he.txt  advertises /sitemap-he.xml  1 URL(s), all 0-redirect 200
+  ok  neither sitemap is advertised by the wrong host; no held locale appears in either
+```
+
+1. `robots.txt` on `zohar-ai.com` references only the international sitemap —
+   and exactly one `Sitemap:` line, on that host.
+2. `robots.txt` on `www.zohar-ai.co.il` references only the Hebrew sitemap. The
+   routing map is checked too: `/robots.txt` on that host must resolve to
+   `/robots-he.txt` in **0 redirects**.
+3. Neither sitemap is advertised by the wrong host.
+4. No held locale appears in either sitemap.
+5. **Every URL inside each sitemap resolves to a 200 on its canonical host with
+   zero redirects**, walked through the same rule chain as §2b. A sitemap that
+   lists a redirecting URL is a sitemap that wastes crawl budget and contradicts
+   its own canonical.
 
 ## 5 · Language handling — no geolocation
 
@@ -313,20 +425,38 @@ value in either.
 
 ### Final host behaviour
 
-| # | Request | Result |
-|---|---|---|
-| 1 | `zohar-ai.co.il/*` | **301** → `https://www.zohar-ai.co.il/*` |
-| 2 | `www.zohar-ai.co.il/*` | **200** — serves Hebrew |
-| 3 | `www.zohar-ai.co.il/en/*` | **301** → `https://zohar-ai.com/*` (locale stripped) |
-| 4 | `www.zohar-ai.co.il/{fr,es,pt,ru,zh,ar,de}/*` | **301** → `https://zohar-ai.com/{lang}/*` |
-| 5 | `www.zohar-ai.com/*` | **301** → `https://zohar-ai.com/*` |
-| 6 | `zohar-ai.com/*` | **200** — serves English at the root |
-| 7 | `zohar-ai.com/he/*` | **301** → `https://www.zohar-ai.co.il/*` (locale stripped) |
-| 8 | `zohar-ai.com/{fr,es,pt,ru,zh,ar,de}/*` | **200** — serves that locale (once published) |
+Locale routing is matched on **both** hostname forms of each domain, ahead of
+hostname normalisation, so no approved URL takes more than one redirect.
 
-Every redirect is a single **301** that preserves path and query. The longest
-chain is two hops (`zohar-ai.co.il/en/x` → `www.zohar-ai.co.il/en/x` →
-`zohar-ai.com/x`). Encoded in `src/_data/hostMap.js`, proved in §2b.
+| # | Request | Redirects | Result |
+|---|---|---|---|
+| 1 | `www.zohar-ai.co.il/*` | **0** | serves Hebrew |
+| 2 | `zohar-ai.com/*` | **0** | serves English at the root |
+| 3 | `zohar-ai.com/{fr,es,pt,ru,zh,ar,de}/*` | **0** | serves that locale (once published) |
+| 4 | `zohar-ai.co.il/*` | 1 | → `https://www.zohar-ai.co.il/*` |
+| 5 | `www.zohar-ai.com/*` | 1 | → `https://zohar-ai.com/*` |
+| 6 | `{zohar-ai.co.il, www.zohar-ai.co.il}/en/*` | 1 | → `https://zohar-ai.com/*` |
+| 7 | `{zohar-ai.co.il, www.zohar-ai.co.il}/{fr…de}/*` | 1 | → `https://zohar-ai.com/{lang}/*` |
+| 8 | `{zohar-ai.com, www.zohar-ai.com}/he/*` | 1 | → `https://www.zohar-ai.co.il/*` |
+| 9 | `{zohar-ai.com, www.zohar-ai.com}/en/*` | 1 | → `https://zohar-ai.com/*` (fold the duplicate) |
+| 10 | `{zohar-ai.co.il, www.zohar-ai.co.il}/he/*` | 1 | → `https://www.zohar-ai.co.il/*` (fold the duplicate) |
+
+Rows 6 and 8 are the ones that used to take two hops. They are now direct:
+
+```
+zohar-ai.co.il/en/              →  https://zohar-ai.com/
+zohar-ai.co.il/en/work?a=1      →  https://zohar-ai.com/work?a=1
+www.zohar-ai.com/he/            →  https://www.zohar-ai.co.il/
+www.zohar-ai.com/he/about?z=3   →  https://www.zohar-ai.co.il/about?z=3
+```
+
+Rows 9 and 10 close a duplicate that the earlier map left open: `/en/` is a real
+built path and would otherwise have served English at a second, non-canonical
+URL on `.com`.
+
+Every redirect is a single **301** preserving path, query and trailing slash; a
+fragment is re-attached by the browser, which never sends it to the server.
+Encoded in `src/_data/hostMap.js`, proved in §2b.
 
 **All four hostnames need valid TLS before any of this is switched on** —
 `zohar-ai.co.il`, `www.zohar-ai.co.il`, `zohar-ai.com`, `www.zohar-ai.com`. A
@@ -381,13 +511,20 @@ Nothing below is authorised yet. Each step is reversible on its own.
 10. **Verify TLS** is issued for all four hostnames — `zohar-ai.co.il`,
     `www.zohar-ai.co.il`, `zohar-ai.com`, `www.zohar-ai.com` — before
     announcing. Then confirm the direction tests:
-    Then walk the eight rows of the §6c table against the live hosts with
-    `curl -sI`, and confirm each one returns the status and `Location` that the
-    table states — including that `www.zohar-ai.co.il/` is a **200**, not a
-    redirect, and that `zohar-ai.com/` serves **English**, not Hebrew. Confirm
-    path and query survive on rows 1, 3, 4, 5 and 7. §2b proves the map is
-    self-consistent; this step is the only thing that proves the live edge
-    matches it.
+    Then walk the **ten rows** of the §6c table against the live hosts with
+    `curl -sIL -o /dev/null -w '%{num_redirects} %{url_effective}\n'`, and
+    confirm each one reports the redirect **count** and final URL the table
+    states — including that `www.zohar-ai.co.il/` and `zohar-ai.com/` are
+    **0 redirects**, that `zohar-ai.com/` serves **English**, not Hebrew, and
+    that **no row reports more than 1**. Confirm path, query and trailing slash
+    survive on every redirecting row.
+
+    Also fetch `https://zohar-ai.com/robots.txt` and
+    `https://www.zohar-ai.co.il/robots.txt` and confirm each returns exactly one
+    `Sitemap:` line, on its own host (§4).
+
+    §2b proves the map is self-consistent; this step is the only thing that
+    proves the live edge matches it.
 11. **Verify both hosts** in Search Console, submit both sitemaps, and confirm
     hreflang is reported without errors.
 12. **Restore TTL** once traffic is stable.
