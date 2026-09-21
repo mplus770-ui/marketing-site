@@ -1,0 +1,26 @@
+{# ── Continuous work showcase ───────────────────────────────────────────────
+   Desktop: one CSS-animated track. The visual loop is seamless because the
+   track holds the real list plus ONE aria-hidden duplicate, and the animation
+   translates by exactly -50% (or +50% in RTL) — it resets on an identical
+   frame, so there is no jump.
+
+   The duplicate exists only for the eye: it is aria-hidden, its links are
+   tabindex="-1", and assistive technology therefore hears each project once.
+
+   Mobile: the animation is off and the same rail is a native scroll-snap
+   carousel, so touch works exactly as a user expects and nothing auto-scrolls
+   under their finger. #}
+{% set shown = projects | visible %}
+{% if shown.length %}
+<div class="showcase" data-showcase>
+  <div class="showcase-track" data-showcase-track>
+    <ul class="showcase-list" aria-label="{{ strings.work.carousel }}">
+      {% for p in shown %}{% set clone = false %}{% include "components/showcase-card.njk" %}{% endfor %}
+    </ul>
+    {# Visual duplicate. Hidden from assistive technology and from the tab order. #}
+    <ul class="showcase-list" aria-hidden="true" data-showcase-clone>
+      {% for p in shown %}{% set clone = true %}{% include "components/showcase-card.njk" %}{% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}

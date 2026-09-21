@@ -63,9 +63,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("waLink", (number, prefill) =>
     number ? `https://wa.me/${number}?text=${encodeURIComponent(prefill || "")}` : null);
 
-  // Projects that may actually be shown: verified AND permitted.
+  // A project renders only when EVERY activation condition holds: verified,
+  // permitted, published, with local media and a destination. An entry missing
+  // any of them is absent from the page — never an empty or broken card.
   eleventyConfig.addFilter("visible", (list) =>
-    (list || []).filter((p) => p.verified && p.permission));
+    (list || [])
+      .filter((p) => p.verified && p.permission && p.published && p.media && p.url)
+      .sort((a, b) => (a.order || 0) - (b.order || 0)));
 
   // ── Structured data ─────────────────────────────────────────────────
   // Nothing is emitted without a configured origin, and nothing on a locale

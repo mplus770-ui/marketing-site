@@ -188,4 +188,50 @@
       document.hidden ? stop() : start();
     });
   }
+  /* ── work showcase ───────────────────────────────────────────────────────
+        CSS already pauses on hover and on focus-within. This adds the states
+        CSS cannot see: the tab being hidden, a pointer being held on the rail
+        (so it never slides under a finger or a drag), the rail being scrolled
+        out of view, and an explicit toggle. Under reduced motion or on the
+        mobile layout there is no animation to control, so the button is
+        hidden by CSS and this code simply never has anything to pause. */
+  var rail = document.querySelector("[data-showcase]");
+  if (rail) {
+    var railBtn = document.querySelector("[data-showcase-toggle]");
+    var held = false, offscreen = false, hidden = false, byUser = false;
+
+    function applyPause() {
+      var p = held || offscreen || hidden || byUser;
+      p ? rail.setAttribute("data-paused", "1") : rail.removeAttribute("data-paused");
+      if (railBtn) {
+        railBtn.setAttribute("aria-label", byUser ? railBtn.dataset.labelPlay : railBtn.dataset.labelPause);
+        byUser ? railBtn.setAttribute("data-paused", "1") : railBtn.removeAttribute("data-paused");
+      }
+    }
+
+    /* A pointer resting on the rail stops it, so dragging and native scrolling
+       are never fighting the animation. */
+    ["pointerdown", "touchstart"].forEach(function (e) {
+      rail.addEventListener(e, function () { held = true; applyPause(); }, { passive: true });
+    });
+    ["pointerup", "pointercancel", "touchend", "touchcancel"].forEach(function (e) {
+      window.addEventListener(e, function () { held = false; applyPause(); }, { passive: true });
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      hidden = document.hidden; applyPause();
+    });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { offscreen = !en.isIntersecting; });
+        applyPause();
+      }, { threshold: 0 }).observe(rail);
+    }
+
+    if (railBtn) railBtn.addEventListener("click", function () {
+      byUser = !byUser; applyPause();
+    });
+  }
+
 })();

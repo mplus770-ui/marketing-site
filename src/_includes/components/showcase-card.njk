@@ -1,0 +1,31 @@
+<li class="showcase-item">
+  <a class="showcase-card" href="{{ p.url }}"
+     {% if p.external %}target="_blank" rel="noopener noreferrer"{% endif %}
+     {% if clone %}tabindex="-1" aria-hidden="true"{% endif %}>
+    <span class="showcase-media">
+      <picture>
+        <source type="image/avif" media="(max-width:719px)"
+                srcset="{{ p.media.mobile.avif }} 1x, {{ p.media.mobile2x.avif }} 2x">
+        <source type="image/webp" media="(max-width:719px)"
+                srcset="{{ p.media.mobile.webp }} 1x, {{ p.media.mobile2x.webp }} 2x">
+        <source type="image/avif" srcset="{{ p.media.card.avif }} 1x, {{ p.media.card2x.avif }} 2x">
+        <source type="image/webp" srcset="{{ p.media.card.webp }} 1x, {{ p.media.card2x.webp }} 2x">
+        <img src="{{ p.media.card.webp }}" alt="{% if clone %}{% else %}{{ p.alt[loc.code] }}{% endif %}"
+             width="800" height="500" loading="lazy" decoding="async"
+             style="object-position:{{ (p.focal[0] * 100) }}% {{ (p.focal[1] * 100) }}%">
+      </picture>
+    </span>
+    <span class="showcase-body">
+      <span class="showcase-name">{{ p.name }}</span>
+      <span class="showcase-sector">{{ p.category[loc.code] }}</span>
+      <span class="showcase-desc">{{ p.description[loc.code] }}</span>
+      {# An internal destination must not promise an external visit. #}
+      <span class="showcase-visit">
+        {% if p.external %}{{ strings.work.visit }}{% else %}{{ strings.work.visitInternal }}{% endif %}
+        {% if p.external %}<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"
+          class="showcase-ext"><path d="M4.2 1.6h6.2v6.2M10.4 1.6 5 7M8.4 7.6v2.8H1.6V3.6h2.8"
+          fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endif %}
+      </span>
+    </span>
+  </a>
+</li>

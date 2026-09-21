@@ -113,8 +113,12 @@
     "placeholder": "Internal placeholder — not for production",
     "prev": "Previous project",
     "next": "Next project",
-    "carousel": "Selected ZOHAR projects",
-    "of": "of"
+    "carousel": "Selected ZOHAR work",
+    "of": "of",
+    "visit": "Visit site",
+    "pauseMotion": "Pause the motion",
+    "playMotion": "Play the motion",
+    "visitInternal": "See how it was built"
   },
   "roadmap": {
     "label": "Where we are going",

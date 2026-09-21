@@ -182,54 +182,19 @@ layout: layouts/base.njk
         <h2 class="d2">{{ strings.work.heading }}</h2>
         <p class="lead" style="margin-block-start:14px">{{ strings.work.lead }}</p>
       </div>
-      <div class="rail-ctl">
-        <button class="rail-btn" type="button" data-rail="prev" aria-label="{{ strings.work.prev }}">
-          <svg width="16" height="16" class="icon-dir" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
-        <button class="rail-btn" type="button" data-rail="next" aria-label="{{ strings.work.next }}">
-          <svg width="16" height="16" class="icon-dir" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
-      </div>
-    </div>
-    {% set shown = projects | visible %}
-    <div class="rail" id="rail" tabindex="0" role="group" aria-roledescription="carousel" aria-label="{{ strings.work.carousel }}">
-      {% for p in shown %}
-      <article class="card" aria-label="{{ p.name }} — {{ loop.index }} {{ strings.work.of }} {{ shown.length }}">
-        <div class="card-media">
-          {% if p.media %}
-          {# Real capture, committed locally. AVIF first, WebP fallback.
-             object-position comes from the same focal value as the crop. #}
-          <picture>
-            <source type="image/avif" media="(max-width:719px)"
-                    srcset="{{ p.media.mobile.avif }} 1x, {{ p.media.mobile2x.avif }} 2x">
-            <source type="image/webp" media="(max-width:719px)"
-                    srcset="{{ p.media.mobile.webp }} 1x, {{ p.media.mobile2x.webp }} 2x">
-            <source type="image/avif" srcset="{{ p.media.card.avif }} 1x, {{ p.media.card2x.avif }} 2x">
-            <source type="image/webp" srcset="{{ p.media.card.webp }} 1x, {{ p.media.card2x.webp }} 2x">
-            {# Eager on purpose: the three AVIF cards total ~42 KB, and lazy
-               loading left a visible empty box exactly like the one the hero
-               was corrected for. fetchpriority=low keeps them behind the hero. #}
-            <img src="{{ p.media.card.webp }}" alt="{{ p.alt[loc.code] }}"
-                 width="800" height="500" loading="eager" fetchpriority="low" decoding="async"
-                 style="object-position:{{ (p.focal[0] * 100) }}% {{ (p.focal[1] * 100) }}%">
-          </picture>
-          {% else %}
-          <span class="ph-tag chip chip-vision">{{ strings.work.placeholder }}</span>
-          {% include "components/placeholder.njk" %}
-          {% endif %}
-        </div>
-        <div class="card-body">
-          <h3 class="d3">{{ p.name }}</h3>
-          <p class="card-sector">{{ p.category[loc.code] }}</p>
-          <p>{{ p.description[loc.code] }}</p>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-    <div class="rail-dots" id="dots">
-      {% for p in shown %}
-      <button type="button" aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="{{ p.name }}"><i></i></button>
-      {% endfor %}
+      <button class="showcase-btn" type="button" data-showcase-toggle
+              aria-label="{{ strings.work.pauseMotion }}"
+              data-label-play="{{ strings.work.playMotion }}"
+              data-label-pause="{{ strings.work.pauseMotion }}">
+        <svg class="mi-pause" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true" focusable="false">
+          <rect x="3" y="2" width="3.2" height="11" rx="1.1" fill="currentColor"/>
+          <rect x="8.8" y="2" width="3.2" height="11" rx="1.1" fill="currentColor"/></svg>
+        <svg class="mi-play" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true" focusable="false">
+          <path d="M4 2.6 12.4 7.5 4 12.4Z" fill="currentColor"/></svg>
+      </button>
     </div>
   </div>
+  {% include "components/showcase.njk" %}
 </section>
 
 {# ══ 8 · VISION / ROADMAP ══ #}
