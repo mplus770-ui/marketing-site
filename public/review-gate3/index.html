@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>ZOHAR — HE/EN review package</title>
+<style>
+  :root{--bg:#04150F;--s1:#07201A;--s2:#0A2A22;--line:#123A2E;
+        --hi:#F4F7F5;--tx:#C8D6CE;--fa:#7E8F85;--ac:#34E39B}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);
+       font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:40px 20px 90px}
+  h1{color:var(--hi);font-size:1.7rem;margin:0 0 6px;letter-spacing:.01em}
+  h2{color:var(--hi);font-size:1.12rem;margin:46px 0 4px;
+     padding-block-end:9px;border-block-end:1px solid var(--line)}
+  .sub{color:var(--fa);margin:0 0 26px;font-size:.92rem}
+  .note{background:var(--s1);border:1px solid var(--line);border-inline-start:2px solid var(--ac);
+        border-radius:10px;padding:14px 16px;margin:20px 0;font-size:.9rem}
+  .note b{color:var(--hi)}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin-block-start:18px}
+  figure{margin:0;background:var(--s1);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  figure a{display:block;line-height:0;background:var(--s2)}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{padding:9px 11px;font-size:.78rem;color:var(--fa);
+             display:flex;justify-content:space-between;gap:10px;line-height:1.35}
+  figcaption b{color:var(--tx);font-weight:600}
+  .tall figure a{max-height:420px;overflow:hidden}
+  table{border-collapse:collapse;width:100%;margin-block-start:14px;font-size:.88rem}
+  th,td{text-align:start;padding:8px 10px;border-block-end:1px solid var(--line);vertical-align:top}
+  th{color:var(--fa);font-weight:600}
+  code{background:var(--s2);padding:1px 6px;border-radius:5px;font-size:.85em;color:var(--hi)}
+  a{color:var(--ac)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>ZOHAR — HE/EN review package</h1>
+<p class="sub">Branch <code>redesign/zohar-flagship-marketing-site</code> · captured from the branch build ·
+   every image is a real capture, none is a mockup · this route is <code>noindex</code> and lives only on the protected preview.</p>
+
+<div class="note">
+  <b>Read the captures as captures.</b> The hero holds a 2.8-second BUILD reveal that starts when the frame is
+  half visible. The viewport captures below were taken <b>after</b> that sequence finished, so they show the
+  settled state. <code>*-first-second.png</code> shows the same viewport during the reveal — that empty frame is
+  what a visitor sees for the first second or so, and it is a finding, not a broken capture.
+  Close-ups are element crops with the sticky header hidden, so the header never paints over the section.
+</div>
+
+<h2>1 · Hebrew homepage — viewports</h2>
+<div class="grid" id="g-he-vp"></div>
+
+<h2>2 · English homepage — viewports</h2>
+<div class="grid" id="g-en-vp"></div>
+
+<h2>3 · Full-page captures</h2>
+<div class="grid tall" id="g-full"></div>
+
+<h2>4 · Close-ups — Hebrew</h2>
+<div class="grid" id="g-he-cu"></div>
+
+<h2>5 · Close-ups — English</h2>
+<div class="grid" id="g-en-cu"></div>
+
+<h2>6 · What was verified in the built HTML</h2>
+<table>
+  <tr><th>Check</th><th>Result</th></tr>
+  <tr><td>WhatsApp number</td><td><code>972555626040</code> — 3 links per locale, localized prefill</td></tr>
+  <tr><td>Public email</td><td><code>support@zoharai.com</code> only</td></tr>
+  <tr><td>Personal Gmail</td><td>0 occurrences anywhere in <code>dist/</code></td></tr>
+  <tr><td>“Digital Solutions”</td><td>0 occurrences anywhere in <code>dist/</code></td></tr>
+  <tr><td>₪4,900</td><td>2 occurrences per locale — offer card and FAQ answer. Both framed “projects start at”.</td></tr>
+  <tr><td>Homepage inclusions</td><td>exactly 8</td></tr>
+  <tr><td>Qualification line</td><td>one line, below the offer card</td></tr>
+  <tr><td>Held locales in the footer</td><td><code>&lt;span&gt;</code>, never <code>&lt;a&gt;</code> — not linked</td></tr>
+  <tr><td>Form delivery</td><td>no endpoint; submit is intercepted and says so on screen</td></tr>
+  <tr><td>Analytics / pixels</td><td>none</td></tr>
+  <tr><td>Preview protection</td><td>Vercel SSO, <code>all_except_custom_domains</code>; no custom domain attached</td></tr>
+</table>
+
+<script>
+const F = window.__SHOTS__ || [];
+function card(file, label, meta) {
+  return `<figure><a href="shots/${file}" target="_blank" rel="noopener">
+    <img src="shots/${file}" alt="${label}" loading="lazy"></a>
+    <figcaption><b>${label}</b><span>${meta || ""}</span></figcaption></figure>`;
+}
+const put = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+const NICE = { header:"Header + Threshold logo", hero:"Hero", "build-demo":"BUILD concept demonstration",
+  offer:"Commercial offer", work:"Selected work carousel", method:"BUILD → GROW → PROVE → MEMORY",
+  faq:"FAQ (all open)", footer:"Footer + language row", contact:"Contact / brief surface" };
+const ORDER = ["header","hero","build-demo","offer","work","method","faq","footer","contact"];
+
+put("g-he-vp", [[320,568],[375,667],[390,844],[430,932],[768,1024],[1440,900],[1920,1080]]
+  .map(([w,h]) => card(`he-${w}x${h}.png`, `${w}×${h}`, "Hebrew")).join("")
+  + card("he-1440x900-first-second.png", "1440×900 — first second", "during the reveal"));
+
+put("g-en-vp", [[320,568],[390,844],[768,1024],[1440,900],[1920,1080]]
+  .map(([w,h]) => card(`en-${w}x${h}.png`, `${w}×${h}`, "English")).join("")
+  + card("en-1440x900-first-second.png", "1440×900 — first second", "during the reveal"));
+
+put("g-full", [["he","desktop"],["he","mobile"],["en","desktop"],["en","mobile"]]
+  .map(([l,d]) => card(`${l}-fullpage-${d}.png`, `${l.toUpperCase()} full page — ${d}`, "FAQ opened")).join(""));
+
+for (const loc of ["he","en"]) {
+  put(`g-${loc}-cu`, ORDER.flatMap((n) => ["desktop","mobile"]
+    .map((d) => card(`${loc}-${d}-${n}.png`, NICE[n], d))).join(""));
+}
+</script>
+</div>
+</body>
+</html>

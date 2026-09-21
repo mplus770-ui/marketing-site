@@ -9,6 +9,8 @@ export default function (eleventyConfig) {
   // The approved Gate 2B/2C concept + brand review routes stay reachable on the
   // branch preview. They carry their own noindex and are excluded in robots.txt.
   eleventyConfig.addPassthroughCopy({ "public/concept-gate2": "concept-gate2" });
+  // Gate 3 review package: protected preview only, noindex, robots-disallowed.
+  eleventyConfig.addPassthroughCopy({ "public/review-gate3": "review-gate3" });
 
   // ── Central origin resolver ─────────────────────────────────────────
   // One place decides canonical origin, absolute URL, alternates, x-default,

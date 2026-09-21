@@ -97,6 +97,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/review-gate3/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
