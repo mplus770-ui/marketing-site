@@ -1,0 +1,27 @@
+---
+permalink: /sitemap-he.xml
+eleventyExcludeFromCollections: true
+---
+{%- set hostLocales = locales | onHost("he") | publishable(domains) -%}
+{%- set all = locales | publishable(domains) -%}
+{%- set xd = locales | xDefault(domains) -%}
+{%- if build.indexable and hostLocales | length -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.w3.org/1999/sitemaps/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for l in hostLocales %}
+  <url>
+    <loc>{{ l | absUrl(domains) }}</loc>
+    <lastmod>{{ build.builtAt | truncate(10, true, "") }}</lastmod>
+    <priority>1.0</priority>
+    {%- for a in all %}
+    <xhtml:link rel="alternate" hreflang="{{ a.hreflang }}" href="{{ a | absUrl(domains) }}"/>
+    {%- endfor %}{% if xd %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ xd }}"/>{% endif %}
+  </url>
+{%- endfor %}
+</urlset>
+{%- else -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Not a production build, or the Hebrew origin is not configured. -->
+<urlset xmlns="http://www.w3.org/1999/sitemaps/0.9"></urlset>
+{%- endif -%}

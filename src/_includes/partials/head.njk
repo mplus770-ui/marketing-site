@@ -3,22 +3,28 @@
 <title>{{ strings.meta.title }}</title>
 {% if strings.meta.description %}<meta name="description" content="{{ strings.meta.description }}">{% endif %}
 
-{# Indexing: production + a ready locale only. Everything else is noindex. #}
-{% if build.indexable and loc.ready %}
+{% set canonical = loc | absUrl(domains) %}
+{% set published = locales | publishable(domains) %}
+
+{# Indexing: a production build, a reviewed locale, AND a configured canonical
+   origin. Any one missing and the page is noindex. A preview host can never
+   become a canonical because it is never a value in domains.js. #}
+{% if build.indexable and loc.ready and canonical %}
 <meta name="robots" content="index,follow,max-image-preview:large">
 {% else %}
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="googlebot" content="noindex,nofollow">
 {% endif %}
 
-{# Canonical + symmetric hreflang. Emitted only once an origin is configured;
-   a relative canonical is worse than none. #}
-{% if site.origin %}
-<link rel="canonical" href="{{ loc.path | abs(site.origin) }}">
-{% for l in locales %}{% if l.ready %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l.path | abs(site.origin) }}">
-{% endif %}{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ '/en/' | abs(site.origin) }}">
-<meta property="og:url" content="{{ loc.path | abs(site.origin) }}">
-<meta property="og:image" content="{{ '/assets/brand/zohar-social-1200x630.svg' | abs(site.origin) }}">
+{# Self-referencing canonical on this locale's OWN domain. Hebrew is never
+   canonicalised to English, and the international locales are never
+   canonicalised to the Hebrew host. #}
+{% if canonical %}
+<link rel="canonical" href="{{ canonical }}">
+{% for l in published %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l | absUrl(domains) }}">
+{% endfor %}{% set xd = locales | xDefault(domains) %}{% if xd %}<link rel="alternate" hreflang="x-default" href="{{ xd }}">{% endif %}
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.svg' }}">
 {% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.legalName }}">
@@ -31,7 +37,7 @@
 <link rel="apple-touch-icon" href="/assets/brand/zohar-appicon-512.svg">
 <meta name="theme-color" content="#04150F">
 
-{# Exactly two preloads: the locale's display face and its body regular. #}
+{# Exactly two preloads: this locale's display face and its body regular. #}
 {% if loc.script == "hebrew" %}
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/frankruhl-700-hebrew.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/assistant-400-hebrew.woff2" crossorigin>

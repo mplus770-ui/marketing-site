@@ -10,11 +10,29 @@ export default function (eleventyConfig) {
   // branch preview. They carry their own noindex and are excluded in robots.txt.
   eleventyConfig.addPassthroughCopy({ "public/concept-gate2": "concept-gate2" });
 
-  // ── Filters ─────────────────────────────────────────────────────────
-  eleventyConfig.addFilter("abs", (p, origin) => {
-    if (!origin) return p;
-    return origin.replace(/\/$/, "") + p;
+  // ── Central origin resolver ─────────────────────────────────────────
+  // One place decides canonical origin, absolute URL, alternates, x-default,
+  // sitemap membership and indexability. No template hardcodes a host.
+  const originOf = (loc, domains) => (domains && domains[loc.origin]) || null;
+  const absUrl = (loc, domains) => {
+    const o = originOf(loc, domains);
+    return o ? o.replace(/\/$/, "") + loc.canonicalPath : null;
+  };
+  eleventyConfig.addFilter("originOf", originOf);
+  eleventyConfig.addFilter("absUrl", absUrl);
+  // Published locales that also have their canonical origin configured. A
+  // locale missing either is absent from hreflang and from every sitemap.
+  eleventyConfig.addFilter("publishable", (locales, domains) =>
+    (locales || []).filter((l) => l.ready && originOf(l, domains)));
+  // Locales belonging to one host — a sitemap may only list its own host.
+  eleventyConfig.addFilter("onHost", (locales, key) =>
+    (locales || []).filter((l) => l.origin === key));
+  eleventyConfig.addFilter("xDefault", (locales, domains) => {
+    const en = (locales || []).find((l) => l.code === "en");
+    return en ? absUrl(en, domains) : null;
   });
+  // Legacy single-origin helper, kept for the 404 page only.
+  eleventyConfig.addFilter("abs", (p, origin) => (origin ? origin.replace(/\/$/, "") + p : p));
 
   // Look up a dotted key in the active locale's strings, with no cross-locale
   // fallback: a missing key is a visible build error, never silent English.
@@ -47,10 +65,11 @@ export default function (eleventyConfig) {
   // ── Structured data ─────────────────────────────────────────────────
   // Nothing is emitted without a configured origin, and nothing on a locale
   // that has not passed translation review.
-  eleventyConfig.addShortcode("schema", function (site, loc, strings) {
-    if (!site.origin || !loc.ready) return "";
-    const o = site.origin.replace(/\/$/, "");
-    const page = o + loc.path;
+  eleventyConfig.addShortcode("schema", function (site, loc, strings, domains) {
+    const origin = domains && domains[loc.origin];
+    if (!origin || !loc.ready) return "";
+    const o = origin.replace(/\/$/, "");
+    const page = o + loc.canonicalPath;
     const org = {
       "@type": "Organization", "@id": o + "/#organization",
       name: site.legalName, alternateName: site.brand, url: o + "/",
@@ -71,7 +90,7 @@ export default function (eleventyConfig) {
     if (site.areaServed) svc.areaServed = site.areaServed;
 
     const faq = [];
-    for (let n = 1; n <= 8; n++) {
+    for (let n = 1; n <= 9; n++) {
       const q = strings.faq?.["q" + n], a = strings.faq?.["a" + n];
       if (q && a) faq.push({ "@type": "Question", name: q,
         acceptedAnswer: { "@type": "Answer", text: a } });

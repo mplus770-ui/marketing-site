@@ -9,7 +9,7 @@
     </div>
     <nav class="foot-langs" aria-label="{{ strings.footer.nav }}">
       {% for l in locales %}
-        {% if l.ready %}<a href="{{ l.path }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a>
+        {% if l.ready %}<a href="{{ (l | absUrl(domains)) or l.buildPath }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a>
         {% else %}<span lang="{{ l.code }}" title="pending translation QA">{{ l.endonym }}</span>{% endif %}
       {% endfor %}
     </nav>

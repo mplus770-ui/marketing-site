@@ -2,7 +2,8 @@
 permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
-{%- if build.indexable and site.origin -%}
+{%- set published = locales | publishable(domains) -%}
+{%- if build.indexable and published | length -%}
 User-agent: *
 Allow: /
 Disallow: /concept-gate2/
@@ -17,9 +18,16 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: {{ site.origin }}/sitemap.xml
+{# One sitemap per host. Both hosts must be verified in Search Console before
+   cross-submission is accepted. #}
+{%- if domains.international %}
+Sitemap: {{ domains.international }}/sitemap.xml
+{%- endif %}
+{%- if domains.he %}
+Sitemap: {{ domains.he }}/sitemap-he.xml
+{%- endif %}
 {%- else -%}
-# Not a production build — nothing here should be indexed.
+# Not a production build, or no canonical origin is configured.
 User-agent: *
 Disallow: /
 {%- endif -%}

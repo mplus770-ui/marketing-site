@@ -7,14 +7,13 @@ export default {
   entry: {
     id: "focused", status: "now", public: true, priceApproved: true,
     from: 4900,
+    // Homepage-visible inclusions ONLY. The full inclusion list, the
+    // exclusions and the commercial terms belong in the FAQ, the formal
+    // proposal and the service agreement — not in the sales section.
     includes: [
-      "pages", "oneLanguage", "design", "responsive", "aiCopy", "seoAeo",
-      "contact", "analyticsReady", "domain", "ownership", "revisions",
-      "hosting", "ssl", "backup",
+      "pages", "oneLanguage", "design", "responsive",
+      "seoAeo", "revisions", "hosting", "ownership",
     ],
-    excludes: ["domainPurchase", "businessEmail", "store", "translation",
-               "logo", "media", "ongoing", "unlimitedRevisions", "thirdParty", "maintenance"],
-    terms: ["split", "revisionScope", "extraRevision", "outOfScope", "hostingFair", "renewal"],
   },
   // ── Internal architecture. NOT rendered with figures. ────────────────
   tiers: [

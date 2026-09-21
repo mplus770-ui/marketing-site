@@ -1,6 +1,6 @@
 <header class="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="{{ loc.path }}" aria-label="{{ strings.nav.home }}">
+    <a class="nav-logo" href="{{ loc.buildPath }}" aria-label="{{ strings.nav.home }}">
       <svg width="30" height="30" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
       <span class="wm">{{ site.brand }}</span>
     </a>
@@ -40,7 +40,7 @@
       <li><a href="#vision">{{ strings.nav.vision }}</a></li>
       <li><a href="#brief">{{ strings.nav.contact }}</a></li>
       {% endif %}
-      {% for l in locales %}{% if l.ready %}<li><a href="{{ l.path }}" lang="{{ l.code }}">{{ l.endonym }}</a></li>{% endif %}{% endfor %}
+      {% for l in locales %}{% if l.ready %}<li><a href="{{ (l | absUrl(domains)) or l.buildPath }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a></li>{% endif %}{% endfor %}
     </ul>
   </nav>
   {% if loc.ready %}

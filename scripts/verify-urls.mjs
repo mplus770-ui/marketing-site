@@ -24,8 +24,8 @@ for (const u of LEGACY) {
     bad.push(`${u} → no redirect`);
   }
 }
-for (const extra of ["/robots.txt", "/sitemap.xml", "/404.html"]) {
+for (const extra of ["/robots.txt", "/sitemap.xml", "/sitemap-he.xml", "/404.html"]) {
   if (!fs.existsSync(`${dist}${extra}`)) bad.push(`${extra} → missing`);
 }
 if (bad.length) { console.error("URL PRESERVATION FAILED:\n  " + bad.join("\n  ")); process.exit(1); }
-console.log(`URL preservation: PASS — ${LEGACY.length} legacy URLs covered, plus robots/sitemap/404.`);
+console.log(`URL preservation: PASS — ${LEGACY.length} legacy URLs covered, plus robots, both sitemaps and 404.`);

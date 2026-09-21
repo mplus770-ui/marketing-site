@@ -3,7 +3,7 @@ pagination:
   data: locales
   size: 1
   alias: loc
-permalink: "{{ loc.path }}index.html"
+permalink: "{{ loc.buildPath }}index.html"
 layout: layouts/base.njk
 ---
 {% if not loc.ready %}
@@ -128,17 +128,6 @@ layout: layouts/base.njk
         </ul>
         <a class="btn btn-primary" style="width:100%" href="#brief">{{ strings.offer.cta }}</a>
 
-        <details class="fineprint">
-          <summary>{{ strings.offer.excludesLabel }} &middot; {{ strings.offer.termsLabel }}</summary>
-          <p class="label" style="margin-block:16px 10px">{{ strings.offer.excludesLabel }}</p>
-          <ul class="exc">
-            {% for k in offer.entry.excludes %}<li>{{ strings.offer.exc[k] }}</li>{% endfor %}
-          </ul>
-          <p class="label" style="margin-block:20px 10px">{{ strings.offer.termsLabel }}</p>
-          <ul class="exc">
-            {% for k in offer.entry.terms %}<li>{{ strings.offer.terms[k] }}</li>{% endfor %}
-          </ul>
-        </details>
       </div>
 
       <div class="panel panel-future">
@@ -255,7 +244,7 @@ layout: layouts/base.njk
       <h2 class="d2">{{ strings.faq.heading }}</h2>
     </div>
     <div class="faq">
-      {% for n in [1,2,3,4,5,6,7,8] %}
+      {% for n in [1,2,3,4,5,6,7,8,9] %}
       <details{% if loop.first %} open{% endif %}>
         <summary>{{ strings.faq["q" + n] }}</summary>
         <p>{{ strings.faq["a" + n] }}</p>
