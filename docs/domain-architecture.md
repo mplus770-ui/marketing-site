@@ -9,11 +9,24 @@ no canonical, no hreflang, no schema and no sitemap entries at all.
 
 ## 1 · Domain roles
 
-| Domain | Role | Status |
+| Domain | Role | Verified current state |
 |---|---|---|
-| `zohar-ai.co.il` | **Israel / Hebrew canonical host.** Hebrew at the root. | Owned; currently serves the old "Zohar AI Digital Solutions" site |
-| `zohar-ai.com` | **International canonical host.** English at the root, every future locale beneath it. | Owned; currently serves the old site |
-| `zoharai.com` | **Not a canonical website domain.** Mail only for now (`support@zoharai.com`). | Owned; shows a GoDaddy for-sale page |
+| `zohar-ai.co.il` | **Israel / Hebrew canonical host.** | Apex **301 → `www.zohar-ai.co.il`**; `www` serves the legacy Hebrew site |
+| `zohar-ai.com` | **International canonical host.** English at the root, every future locale beneath it. | `www` serves **the same legacy Hebrew site**; apex behaviour **unverified** |
+| `zoharai.com` | **Not a website origin.** Mail only — `support@zoharai.com`, confirmed working. | GoDaddy for-sale page; mail records must be preserved untouched |
+
+### Material finding
+
+**`www.zohar-ai.com` currently serves the Hebrew site.** Two consequences:
+
+1. **There is already duplicate content across both domains today** — the same
+   Hebrew pages answer on `.co.il` and on `.com`. Whatever ranking signal exists
+   is split between two hosts with no canonical or hreflang linking them. The
+   cutover fixes this rather than causing it.
+2. **`.com` must stop serving Hebrew at cutover.** Under the approved
+   architecture `.com` is the English/international canonical. Hebrew URLs
+   requested on `.com` redirect to their `.co.il` equivalents, and vice versa —
+   §2 covers both directions.
 
 Hebrew is never canonical on `.com`. The international locales are never
 canonical on `.co.il`. There is exactly one canonical copy of each page.
@@ -108,10 +121,71 @@ Three independent guards, all already in force:
    it is `noindex,nofollow,noarchive,nosnippet`.
 3. Non-production `robots.txt` is `Disallow: /`, and both sitemaps render empty.
 
+## 6b · Cutover matrix
+
+| # | Item | State |
+|---|---|---|
+| 1 | Apex `zohar-ai.co.il` | **301 → `www.zohar-ai.co.il`** (verified externally) |
+| 2 | `www.zohar-ai.co.il` | Serves legacy Hebrew site (verified) |
+| 3 | Apex `zohar-ai.com` | **Unverified** — must be tested during cutover |
+| 4 | `www.zohar-ai.com` | Serves legacy Hebrew site (verified) |
+| 5 | Current DNS targets | **Unavailable** — this environment blocks DNS and outbound HTTP |
+| 6 | Current TLS coverage | **Unavailable** — same reason |
+| 7 | Current hosting provider / project / repo / commit | **Unavailable** — not the `marketing-site` Vercel project; that project has no custom domain attached |
+| 8 | Selected `.co.il` canonical hostname | **NOT CHOSEN** — see §6c. Requires the DNS and TLS state first. |
+| 9 | Selected `.com` canonical hostname | **Apex `https://zohar-ai.com`**, per the approved architecture |
+| 10 | Email records | Untouched and to be preserved; see §6d |
+
+## 6c · apex vs www for `.co.il` — decision deferred, deliberately
+
+You asked not to choose without the DNS and SSL state, and that state is still
+unavailable from here. So this is the decision rule, not the decision.
+
+**The live apex already 301s to `www`.** That is the only hard fact available,
+and it points at `www` as the incumbent. Choosing `www` means no redirect
+direction changes and no accumulated signal moves.
+
+| Choice | DNS change needed | Argument |
+|---|---|---|
+| **`www.zohar-ai.co.il`** *(incumbent)* | `www` → CNAME to the value Vercel displays. Apex keeps redirecting to `www`. | Preserves the existing redirect direction and whatever link equity sits on `www`. CNAME at `www` is universally supported. |
+| **`zohar-ai.co.il`** *(apex)* | Apex → A or ALIAS to the value Vercel displays; `www` → 301 to apex, reversing the current direction. | Shorter, cleaner. But it inverts a live redirect and depends on the DNS provider supporting ALIAS/ANAME at the apex — many Israeli registrars do not. |
+
+**Decide with these three answers:**
+1. `dig +short A zohar-ai.co.il` and `dig +short CNAME www.zohar-ai.co.il` — what do they point at now?
+2. Does the registrar support ALIAS/ANAME (or flattened CNAME) at the apex?
+3. `curl -sI https://zohar-ai.co.il` and `https://www.zohar-ai.co.il` — is TLS valid on **both**, or only `www`?
+
+If apex TLS is absent or the registrar has no ALIAS support, **`www` is the
+answer** and the question is closed. If both are clean, apex is the better
+long-term choice and is worth the one-time redirect inversion.
+
+Either value drops straight into `ZOHAR_ORIGIN_HE`; the resolver does not care
+which, and the build guard accepts both.
+
+## 6d · Email preservation — `zoharai.com`
+
+`support@zoharai.com` is confirmed working and is the approved public address.
+`zoharai.com` is **not** a website origin and is not part of this cutover.
+
+**Do not touch, on any domain:** `MX` · `TXT` SPF · DKIM selector `TXT` ·
+`_dmarc` `TXT` · any autodiscover/autoconfig record.
+
+Before and after **every** DNS step, send a test message to
+`support@zoharai.com` and confirm receipt. If a step requires a nameserver
+change on `zoharai.com`, export the full zone first and re-create every mail
+record at the new provider **before** the nameservers are switched — a
+nameserver change moves the whole zone, and mail is the thing that breaks
+silently.
+
+The future `zoharai.com → zohar-ai.com` web redirect is **not authorised** and
+is not part of this plan.
+
 ## 7 · Cutover sequence
 
 Nothing below is authorised yet. Each step is reversible on its own.
 
+0. **Answer §6c** and fix the `.co.il` canonical hostname. Nothing below can
+   start until that is decided, because it determines the DNS change itself.
 1. **Verify ownership** of all three domains at the registrar. Record the
    registrar, nameservers and expiry.
 2. **Export the current DNS zone** for both active domains, in full, and store
@@ -129,8 +203,17 @@ Nothing below is authorised yet. Each step is reversible on its own.
 7. **Set the origins**: `ZOHAR_ORIGIN_HE`, `ZOHAR_ORIGIN_INTL`. Confirm on a
    preview build that canonical, hreflang and both sitemaps are correct.
 8. **Lower TTL** on the A/CNAME records to 300s and wait one full old TTL.
-9. **Point DNS** at Vercel — apex and `www` only. Nothing else changes.
-10. **Verify TLS** is issued for all four hostnames before announcing.
+9. **Point DNS** at Vercel — apex and `www` only, using the exact A / ALIAS /
+   CNAME values **Vercel displays in the project's Domains tab**. Do not copy an
+   IP or hostname from documentation, a blog or memory; those values change.
+   Nothing else in the zone is edited.
+10. **Verify TLS** is issued for all four hostnames — `zohar-ai.co.il`,
+    `www.zohar-ai.co.il`, `zohar-ai.com`, `www.zohar-ai.com` — before
+    announcing. Then confirm the direction tests:
+    - Hebrew URL on `.com` → 301 to the `.co.il` equivalent
+    - English URL on `.co.il` → 301 to the `.com` equivalent
+    - `www` → selected canonical, path and query preserved
+    - `.com` root serves **English**, not Hebrew
 11. **Verify both hosts** in Search Console, submit both sitemaps, and confirm
     hreflang is reported without errors.
 12. **Restore TTL** once traffic is stable.
