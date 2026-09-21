@@ -41,10 +41,11 @@
    every image is a real capture, none is a mockup · this route is <code>noindex</code> and lives only on the protected preview.</p>
 
 <div class="note">
-  <b>Read the captures as captures.</b> The hero holds a 2.8-second BUILD reveal that starts when the frame is
-  half visible. The viewport captures below were taken <b>after</b> that sequence finished, so they show the
-  settled state. <code>*-first-second.png</code> shows the same viewport during the reveal — that empty frame is
-  what a visitor sees for the first second or so, and it is a finding, not a broken capture.
+  <b>Correction pass.</b> The hero composition is now <b>complete on first paint</b> — the empty-frame finding
+  from the last review is gone. <code>*-first-paint.png</code> proves it: those frames are captured before any
+  animation could have run. The BUILD demonstration's subject is now <b>Meridian Studio</b>, an invented
+  architecture practice, so it cannot be read as SADAFRONIA. The work carousel carries <b>real captures</b> of
+  ZOHAR, SADAFRONIA and YAYIN — no placeholders remain.
   Close-ups are element crops with the sticky header hidden, so the header never paints over the section.
 </div>
 
@@ -63,19 +64,26 @@
 <h2>5 · Close-ups — English</h2>
 <div class="grid" id="g-en-cu"></div>
 
-<h2>6 · What was verified in the built HTML</h2>
+<h2>6 · What was verified after the correction pass</h2>
 <table>
   <tr><th>Check</th><th>Result</th></tr>
-  <tr><td>WhatsApp number</td><td><code>972555626040</code> — 3 links per locale, localized prefill</td></tr>
-  <tr><td>Public email</td><td><code>support@zoharai.com</code> only</td></tr>
-  <tr><td>Personal Gmail</td><td>0 occurrences anywhere in <code>dist/</code></td></tr>
-  <tr><td>“Digital Solutions”</td><td>0 occurrences anywhere in <code>dist/</code></td></tr>
-  <tr><td>₪4,900</td><td>2 occurrences per locale — offer card and FAQ answer. Both framed “projects start at”.</td></tr>
+  <tr><td>Hero composition at first paint</td><td>7/7 groups fully opaque at 320 / 390 / 768 / 1440, both locales</td></tr>
+  <tr><td>LCP element</td><td>hero text in all 8 cases — <code>H1.d1</code> ×4, <code>P.lead</code> ×4. Never the demo frame.</td></tr>
+  <tr><td>Cumulative layout shift</td><td>&le; 0.0006 everywhere (was 0.0386 on HE&nbsp;390)</td></tr>
+  <tr><td>Tap targets &lt; 44&times;44</td><td>none, at 390 / 768 / 1440</td></tr>
+  <tr><td>Horizontal overflow</td><td>none, at all 7 viewports, both locales</td></tr>
+  <tr><td>Smallest rendered text</td><td>14px floor holds</td></tr>
+  <tr><td>Carousel arrows</td><td>opposite logical directions in RTL and LTR</td></tr>
+  <tr><td>Disclosure chevrons</td><td>identical computed transform in HE and EN: 45&deg; closed, &minus;135&deg; open</td></tr>
+  <tr><td>Work media</td><td>real captures for all three; <b>0</b> placeholder chips in the build</td></tr>
+  <tr><td>Media budget</td><td>3 AVIF cards = 42.3 KB of a 500 KB budget; every slot inside its own budget</td></tr>
+  <tr><td>&#8362;4,900</td><td>exactly once per locale, in the commercial offer only</td></tr>
   <tr><td>Homepage inclusions</td><td>exactly 8</td></tr>
-  <tr><td>Qualification line</td><td>one line, below the offer card</td></tr>
-  <tr><td>Held locales in the footer</td><td><code>&lt;span&gt;</code>, never <code>&lt;a&gt;</code> — not linked</td></tr>
-  <tr><td>Form delivery</td><td>no endpoint; submit is intercepted and says so on screen</td></tr>
-  <tr><td>Analytics / pixels</td><td>none</td></tr>
+  <tr><td>Service name spelling</td><td>one form everywhere on the homepage</td></tr>
+  <tr><td>WhatsApp number</td><td><code>972555626040</code></td></tr>
+  <tr><td>Public email</td><td><code>support@zoharai.com</code> only; personal Gmail: 0 occurrences</td></tr>
+  <tr><td>Held locales</td><td>not linked, visibly marked, absent from sitemaps and hreflang</td></tr>
+  <tr><td>Form delivery / analytics / pixels</td><td>none</td></tr>
   <tr><td>Preview protection</td><td>Vercel SSO, <code>all_except_custom_domains</code>; no custom domain attached</td></tr>
 </table>
 
@@ -94,11 +102,11 @@ const ORDER = ["header","hero","build-demo","offer","work","method","faq","foote
 
 put("g-he-vp", [[320,568],[375,667],[390,844],[430,932],[768,1024],[1440,900],[1920,1080]]
   .map(([w,h]) => card(`he-${w}x${h}.png`, `${w}×${h}`, "Hebrew")).join("")
-  + card("he-1440x900-first-second.png", "1440×900 — first second", "during the reveal"));
+  + [320,390,768,1440].map((w) => card(`he-${w}-first-paint.png`, `${w} — first paint`, "before any animation")).join(""));
 
 put("g-en-vp", [[320,568],[390,844],[768,1024],[1440,900],[1920,1080]]
   .map(([w,h]) => card(`en-${w}x${h}.png`, `${w}×${h}`, "English")).join("")
-  + card("en-1440x900-first-second.png", "1440×900 — first second", "during the reveal"));
+  + [320,390,768,1440].map((w) => card(`en-${w}-first-paint.png`, `${w} — first paint`, "before any animation")).join(""));
 
 put("g-full", [["he","desktop"],["he","mobile"],["en","desktop"],["en","mobile"]]
   .map(([l,d]) => card(`${l}-fullpage-${d}.png`, `${l.toUpperCase()} full page — ${d}`, "FAQ opened")).join(""));

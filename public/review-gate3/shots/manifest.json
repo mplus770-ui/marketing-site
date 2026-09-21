@@ -1,67 +1,67 @@
 [
   {
     "file": "he-320x568.png",
-    "kb": 120
+    "kb": 115
   },
   {
     "file": "he-375x667.png",
-    "kb": 171
+    "kb": 177
   },
   {
     "file": "he-390x844.png",
-    "kb": 210
+    "kb": 226
   },
   {
     "file": "he-430x932.png",
-    "kb": 246
+    "kb": 265
   },
   {
     "file": "he-768x1024.png",
-    "kb": 342
+    "kb": 409
   },
   {
     "file": "he-1440x900.png",
-    "kb": 500
+    "kb": 639
   },
   {
     "file": "he-1920x1080.png",
-    "kb": 537
+    "kb": 679
   },
   {
     "file": "en-320x568.png",
-    "kb": 146
+    "kb": 143
   },
   {
     "file": "en-390x844.png",
-    "kb": 250
+    "kb": 272
   },
   {
     "file": "en-768x1024.png",
-    "kb": 454
+    "kb": 523
   },
   {
     "file": "en-1440x900.png",
-    "kb": 593
+    "kb": 725
   },
   {
     "file": "en-1920x1080.png",
-    "kb": 634
+    "kb": 767
   },
   {
     "file": "he-fullpage-desktop.png",
-    "kb": 2124
+    "kb": 2876
   },
   {
     "file": "he-fullpage-mobile.png",
-    "kb": 1665
+    "kb": 1765
   },
   {
     "file": "en-fullpage-desktop.png",
-    "kb": 2692
+    "kb": 3421
   },
   {
     "file": "en-fullpage-mobile.png",
-    "kb": 2229
+    "kb": 2341
   },
   {
     "file": "he-desktop-header.png",
@@ -69,35 +69,35 @@
   },
   {
     "file": "he-desktop-hero.png",
-    "kb": 459
+    "kb": 598
   },
   {
     "file": "he-desktop-build-demo.png",
-    "kb": 284
+    "kb": 398
   },
   {
     "file": "he-desktop-offer.png",
-    "kb": 303
+    "kb": 271
   },
   {
     "file": "he-desktop-work.png",
-    "kb": 155
+    "kb": 763
   },
   {
     "file": "he-desktop-method.png",
-    "kb": 225
+    "kb": 224
   },
   {
     "file": "he-desktop-faq.png",
-    "kb": 353
+    "kb": 349
   },
   {
     "file": "he-desktop-footer.png",
-    "kb": 46
+    "kb": 47
   },
   {
     "file": "he-desktop-contact.png",
-    "kb": 193
+    "kb": 179
   },
   {
     "file": "he-mobile-header.png",
@@ -105,35 +105,35 @@
   },
   {
     "file": "he-mobile-hero.png",
-    "kb": 220
+    "kb": 240
   },
   {
     "file": "he-mobile-build-demo.png",
-    "kb": 89
+    "kb": 111
   },
   {
     "file": "he-mobile-offer.png",
-    "kb": 235
+    "kb": 236
   },
   {
     "file": "he-mobile-work.png",
-    "kb": 77
+    "kb": 164
   },
   {
     "file": "he-mobile-method.png",
-    "kb": 230
+    "kb": 231
   },
   {
     "file": "he-mobile-faq.png",
-    "kb": 329
+    "kb": 324
   },
   {
     "file": "he-mobile-footer.png",
-    "kb": 44
+    "kb": 46
   },
   {
     "file": "he-mobile-contact.png",
-    "kb": 164
+    "kb": 150
   },
   {
     "file": "en-desktop-header.png",
@@ -141,35 +141,35 @@
   },
   {
     "file": "en-desktop-hero.png",
-    "kb": 549
+    "kb": 681
   },
   {
     "file": "en-desktop-build-demo.png",
-    "kb": 324
+    "kb": 429
   },
   {
     "file": "en-desktop-offer.png",
-    "kb": 390
+    "kb": 362
   },
   {
     "file": "en-desktop-work.png",
-    "kb": 189
+    "kb": 800
   },
   {
     "file": "en-desktop-method.png",
-    "kb": 296
+    "kb": 289
   },
   {
     "file": "en-desktop-faq.png",
-    "kb": 499
+    "kb": 494
   },
   {
     "file": "en-desktop-footer.png",
-    "kb": 45
+    "kb": 48
   },
   {
     "file": "en-desktop-contact.png",
-    "kb": 243
+    "kb": 220
   },
   {
     "file": "en-mobile-header.png",
@@ -177,34 +177,34 @@
   },
   {
     "file": "en-mobile-hero.png",
-    "kb": 272
+    "kb": 289
   },
   {
     "file": "en-mobile-build-demo.png",
-    "kb": 105
+    "kb": 124
   },
   {
     "file": "en-mobile-offer.png",
-    "kb": 315
-  },
-  {
-    "file": "en-mobile-work.png",
-    "kb": 96
-  },
-  {
-    "file": "en-mobile-method.png",
     "kb": 327
   },
   {
+    "file": "en-mobile-work.png",
+    "kb": 182
+  },
+  {
+    "file": "en-mobile-method.png",
+    "kb": 326
+  },
+  {
     "file": "en-mobile-faq.png",
-    "kb": 491
+    "kb": 480
   },
   {
     "file": "en-mobile-footer.png",
-    "kb": 45
+    "kb": 47
   },
   {
     "file": "en-mobile-contact.png",
-    "kb": 208
+    "kb": 190
   }
 ]
