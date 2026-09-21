@@ -1579,13 +1579,18 @@ brief submissions arrive with attribution.
 **Phase 7 — Production cutover**
 Merge to `main` → Vercel production deploy. Immediately: re-verify all 21 legacy URLs against
 production; submit the new sitemap in Search Console; monitor Core Web Vitals and 404s for 72
-hours. The previous production deployment
-(`dpl_2mw25nzJyRUUtksbD6Kgj1rfnmiQ`) remains a one-click rollback for the entire period.
+hours. The previous `marketing-site` production deployment
+(`dpl_2mw25nzJyRUUtksbD6Kgj1rfnmiQ`) remains a one-click rollback **between versions of this
+marketing site** for the entire period. It is **not** recovery of the externally hosted legacy
+website on `zohar-ai.co.il` / `zohar-ai.com`; only restoring the exported DNS zone does that.
+See `docs/domain-architecture.md` §8.
 
 ---
 
 **Rollback:** every phase is a separate merge commit, and Vercel retains each production
-deployment. Rollback is instant and does not require a code change.
+deployment, so rolling back *this site* is instant and needs no code change. Rolling back the
+*cutover* is a different operation and is DNS-first — restore the exact previous DNS records
+before detaching any domain from Vercel. `docs/domain-architecture.md` §8 is authoritative.
 
 ---
 
