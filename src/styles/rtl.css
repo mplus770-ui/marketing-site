@@ -1,6 +1,11 @@
 /* Direction handling. The layout uses logical properties throughout, so this
    file only carries what genuinely cannot be expressed logically. */
 [dir="rtl"] .icon-dir{transform:scaleX(-1)}
+/* Carousel controls. The base arrow points toward the inline END. "previous"
+   is the same glyph turned 180deg, and in RTL the pair mirrors as a pair — so
+   prev and next always point in OPPOSITE logical directions, in both scripts.
+   The JS already treats +1 as "further into the list" in either direction. */
+[dir="rtl"] .rail-btn[data-rail="prev"] .icon-dir{transform:scaleX(-1) rotate(180deg)}
 /* numbers and Latin runs inside RTL text keep their own direction */
 bdi{unicode-bidi:isolate}
 /* Arabic must never be letter-spaced, uppercased or synthetically bolded */

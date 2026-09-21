@@ -23,6 +23,34 @@ final proof. Every asset is captured once and committed to the repository.
 Capture the **live site at its own domain**, logged out, with the viewport at a
 standard zoom of 100%. Wait for fonts and images to settle before the shot.
 
+### Deviation on record — captured from source, not from the live domain
+
+The build environment has **no outbound web access**: every request to a public
+domain is refused by the egress proxy. The three captures currently committed
+were therefore taken from each project's **own committed repository**, served
+locally at the viewport and pixel ratio above, not from the live domain:
+
+| Project | Source repository | Owner |
+|---|---|---|
+| ZOHAR | `mplus770-ui/marketing-site` (this branch) | the user |
+| SADAFRONIA | `mplus770-ui/sadafronia-website` | the user |
+| YAYIN | `mplus770-ui/yayin-magazine-v01` | the user |
+
+Each project's `source` field in `src/_data/projects.js` records which repo and
+ref its capture came from. No external screenshot API was used and nothing was
+hotlinked.
+
+**What this does and does not guarantee.** It guarantees the capture is the
+project's real design, from source the user owns, at a recorded ref. It does
+**not** guarantee the live domain currently serves that same revision. Before
+these assets go to production, re-capture from the live domains, or confirm that
+each live site matches its repository HEAD.
+
+Both ecosystem sites request Assistant and Frank Ruhl Libre from Google Fonts,
+which is also unreachable here. The same two typefaces were served from this
+repository's own committed subsets for the capture, so the screenshots show the
+intended typography rather than a system fallback.
+
 ## 2 · Export
 
 Two formats per capture, AVIF first with WebP as the fallback. No JPEG, no PNG

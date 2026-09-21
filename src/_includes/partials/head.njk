@@ -42,12 +42,16 @@
 <link rel="apple-touch-icon" href="/assets/brand/zohar-appicon-512.svg">
 <meta name="theme-color" content="#04150F">
 
-{# Exactly two preloads: this locale's display face and its body regular. #}
+{# Three preloads: this locale's display face, its body regular and its body
+   bold. The bold face is here because the header uses it, and swapping it in
+   late is what produced the only measurable layout shift on the page. #}
 {% if loc.script == "hebrew" %}
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/frankruhl-700-hebrew.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/assistant-400-hebrew.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/assistant-700-hebrew.woff2" crossorigin>
 {% else %}
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-600-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/assistant-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/assistant-700-latin.woff2" crossorigin>
 {% endif %}
 <link rel="stylesheet" href="/assets/gen/zohar.css">

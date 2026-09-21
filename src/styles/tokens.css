@@ -11,6 +11,15 @@
   --z-text-hi:#F4F1EA; --z-text:#E6E2D8; --z-text-mute:#A9B5AC; --z-text-faint:#7E8F85;
   --z-text-on-light:#04150F;
   /* secondary proof / data */
+  /* BRASS — the system's ONE non-green hue, declared rather than decorative.
+     Green means "available now, act on this". Brass is the secondary,
+     non-actionable register and carries exactly four uses:
+       · ordinals and indices      .pillar-n .step-n .rm-v
+       · sector / category labels  .card-sector
+       · "foundation we prepare"   .chip-found and the notice explaining it
+       · inline validation text    .err
+     Nothing clickable is ever brass, and brass is never used for emphasis or
+     as a third status. If a fifth use appears, extend this list or drop it. */
   --z-brass-400:#E4B363; --z-brass-600:#A97B36;
   /* borders */
   --z-border:rgba(244,241,234,.10); --z-border-strong:rgba(52,227,155,.28);

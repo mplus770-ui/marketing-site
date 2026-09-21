@@ -8,6 +8,7 @@
 
 /* ── sections ── */
 .sec{padding-block:var(--sec-pad);position:relative}
+@media(max-width:560px){ :root{--sec-pad:clamp(2.75rem,9vw,4rem)} }
 .sec+.sec{border-block-start:1px solid var(--z-border)}
 .sec-head{margin-block-end:clamp(2.25rem,4.5vw,3.5rem);max-inline-size:44rem}
 .sec-head .label{margin-block-end:14px} .sec-head .lead{margin-block-start:16px}
@@ -44,9 +45,12 @@
   backdrop-filter:blur(12px);border-block-end:1px solid var(--z-border);box-shadow:inset 0 -1px 0 rgba(52,227,155,.07)}
 .nav-in{max-inline-size:var(--maxw-wide);margin-inline:auto;padding-inline:var(--gutter);
   block-size:72px;display:flex;align-items:center;gap:clamp(14px,3vw,40px)}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;
+  min-block-size:44px}
 .nav-logo .wm{font-family:var(--font-display);font-weight:600;font-size:1.3rem;letter-spacing:.14em;color:var(--z-text-hi)}
-.nav-links{display:flex;gap:clamp(14px,2.2vw,30px);margin-inline-start:auto}
+.nav-links{display:flex;gap:clamp(6px,1.4vw,18px);margin-inline-start:auto}
+.nav-links a{display:inline-flex;align-items:center;justify-content:center;
+  min-block-size:44px;min-inline-size:44px;padding-inline:8px;border-radius:10px}
 .nav-links a{text-decoration:none;font-size:var(--fs-sm);font-weight:500;color:var(--z-text-mute);
   padding-block:6px;transition:color .18s}
 .nav-links a:hover,.nav-links a:focus-visible{color:var(--z-text-hi)}
@@ -99,7 +103,8 @@
 .proof-lbl{font-size:var(--fs-xs);letter-spacing:.09em;text-transform:uppercase;color:var(--z-text-faint);font-weight:600}
 :lang(he) .proof-lbl,:lang(ar) .proof-lbl{text-transform:none;letter-spacing:0}
 .proof-item{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--z-text-mute);
-  text-decoration:none;letter-spacing:.02em;transition:color .18s}
+  text-decoration:none;letter-spacing:.02em;transition:color .18s;
+  display:inline-flex;align-items:center;min-block-size:44px;padding-inline:4px}
 .proof-item:hover{color:var(--z-text-hi)}
 
 /* ── pillars ── */
@@ -141,6 +146,7 @@
 .rail-ctl{display:flex;gap:8px;flex-shrink:0}
 .rail-btn{inline-size:44px;min-inline-size:44px;block-size:44px;border-radius:var(--r-pill);
   border:1px solid var(--z-border);background:none;color:var(--z-text-hi);cursor:pointer;display:grid;place-items:center}
+.rail-btn[data-rail="prev"] .icon-dir{transform:rotate(180deg)}
 .rail-btn:hover{border-color:var(--z-border-strong)}
 .rail-dots{display:none;gap:6px;justify-content:center;margin-block-start:14px}
 .rail-dots button{inline-size:44px;block-size:44px;border:none;background:none;cursor:pointer;display:grid;place-items:center}
@@ -148,12 +154,31 @@
 .rail-dots button[aria-current="true"] i{background:var(--z-action-400);inline-size:20px}
 
 /* ── offer ── */
-.offer-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:clamp(18px,2.5vw,28px);align-items:start}
+/* The sellable offer takes the full measure. The unavailable future product is
+   a band below it, never a second card of comparable weight. */
 .panel{padding:clamp(24px,3vw,34px);position:relative}
 .panel-now{border-color:var(--z-border-strong)}
 .panel-now::after{content:"";position:absolute;inset-block-start:-1px;inset-inline-start:-1px;inline-size:44%;
   block-size:2px;border-radius:2px;background:linear-gradient(to right,var(--z-action-400),rgba(52,227,155,0))}
-.panel-future{opacity:.62;border-style:dashed}
+.offer-lead{padding:clamp(28px,3.4vw,44px)}
+.offer-lead-line{max-inline-size:40rem;margin-block-start:6px}
+.offer-note{color:var(--z-text-mute);margin-block-start:4px;max-inline-size:40rem}
+.inc-two{grid-template-columns:1fr;column-gap:36px}
+@media(min-width:820px){.inc-two{grid-template-columns:1fr 1fr}}
+/* Secondary, but body size and body colour — it qualifies the price, so it has
+   to be readable without hunting for it. */
+.offer-qualifier{color:var(--z-text-mute);max-inline-size:44rem;
+  padding-block-start:16px;border-block-start:1px solid var(--z-border)}
+.offer-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-block-start:26px}
+.offer-brief-link,.hero-brief-link{color:var(--z-text-mute);font-size:var(--fs-sm);
+  text-underline-offset:4px;display:inline-flex;align-items:center;min-block-size:44px}
+.offer-brief-link:hover,.hero-brief-link:hover{color:var(--z-text-hi)}
+.roadmap-band{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;
+  margin-block-start:18px;padding:16px 20px;border:1px dashed var(--z-border);
+  border-radius:14px;background:var(--z-surface-1);opacity:.78}
+.roadmap-band-name{font-family:var(--font-display);font-weight:600;letter-spacing:.08em;
+  color:var(--z-text-mute);font-size:var(--fs-sm);margin-block-end:2px}
+.roadmap-band .xs{max-inline-size:60rem}
 .panel h3{margin-block:14px 8px}
 .price{font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--z-text-hi);margin-block:18px 4px}
 .inc{margin-block:20px 24px;display:grid;gap:11px}
@@ -188,8 +213,12 @@
   font-size:clamp(1.0625rem,1.6vw,1.25rem);font-weight:600;color:var(--z-text-hi)}
 :lang(he) .faq summary,:lang(ar) .faq summary{font-weight:700}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";inline-size:12px;block-size:12px;border-inline-end:1.7px solid var(--z-action-400);
-  border-block-end:1.7px solid var(--z-action-400);transform:rotate(45deg);flex-shrink:0;transition:transform .2s}
+/* Disclosure indicator. PHYSICAL borders on purpose: border-inline-* flips in
+   RTL and turns the chevron sideways. Closed points DOWN, open points UP, in
+   every script. Do not convert these to logical properties. */
+.faq summary::after{content:"";inline-size:12px;block-size:12px;
+  border-right:1.7px solid var(--z-action-400);border-bottom:1.7px solid var(--z-action-400);
+  transform:rotate(45deg);transform-origin:60% 60%;flex-shrink:0;transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(-135deg)}
 .faq p{padding-block-end:22px;font-size:var(--fs-sm);color:var(--z-text-mute);line-height:1.7;max-inline-size:44rem}
 
@@ -214,10 +243,18 @@
 /* ── footer ── */
 .foot{border-block-start:1px solid var(--z-border);padding-block:44px;background:var(--z-surface-1)}
 .foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-.foot-langs{display:flex;gap:14px;flex-wrap:wrap;font-size:var(--fs-xs)}
+/* Every entry is a 44px-high target, linked or not, so the row does not become
+   a field of 25px hit areas on a phone. */
+.foot-langs{display:flex;gap:4px;flex-wrap:wrap;font-size:var(--fs-xs)}
+.foot-langs a,.foot-langs span{display:inline-flex;align-items:center;
+  min-block-size:44px;min-inline-size:44px;justify-content:center;padding-inline:10px;border-radius:10px}
 .foot-langs a{color:var(--z-text-mute);text-decoration:none}
-.foot-langs a:hover{color:var(--z-text-hi)}
-.foot-langs span{color:var(--z-text-faint)}
+.foot-langs a:hover{color:var(--z-text-hi);background:var(--z-surface-2)}
+/* A held locale is not a link. Say so visibly, not only in a title attribute. */
+.foot-langs span{color:var(--z-text-faint);cursor:default}
+.foot-langs span::after{content:"";inline-size:5px;block-size:5px;border-radius:50%;
+  background:var(--z-text-faint);opacity:.55;margin-inline-start:6px}
+.foot-contact a{display:inline-flex;align-items:center;min-block-size:44px}
 
 /* ── notices ── */
 .notice{background:rgba(228,179,99,.07);border:1px solid var(--z-border-brass);border-radius:12px;
@@ -233,7 +270,7 @@
   .demo{aspect-ratio:16/11}
   .pillars,.steps{grid-template-columns:repeat(2,1fr)}
   .trust{grid-template-columns:repeat(2,1fr)}
-  .offer-grid{grid-template-columns:1fr}
+  .offer-actions{gap:12px}
   .rail{grid-auto-columns:86%;gap:14px}
   .rail-ctl{display:none} .rail-dots{display:flex}
   .roadmap{grid-template-columns:repeat(2,1fr)}
@@ -243,9 +280,14 @@
   .hero-ctas{gap:10px}
 }
 @media(max-width:560px){
-  .pillars,.steps,.trust{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
   .roadmap{grid-template-columns:1fr}
+  /* Two-up, not stacked: four single-column cards was the longest stretch of
+     dead scroll on a phone. Below 380px they fall back to one column. */
+  .steps,.trust{grid-template-columns:1fr 1fr;gap:14px}
+  .steps h3,.trust h3{font-size:1rem}
 }
+@media(max-width:379px){ .steps,.trust{grid-template-columns:1fr} }
 @media(max-width:520px){ .nav-right>.btn{display:none} }
 @media(max-width:375px){
   .hero-eyebrow{display:none}
@@ -262,35 +304,21 @@
 /* iOS: inputs must be >=16px or Safari zooms on focus */
 @media(max-width:767px){ input,textarea,select{font-size:16px} }
 
-/* ══ BUILD demonstration — one sequence, gated, self-terminating ══
-   Nothing animates until [data-play="1"] is set, which only happens when the
-   frame is in view AND the visitor has not asked for reduced motion. The final
-   frame is in the markup, so the static state needs no poster and no fallback. */
-.demo .m-intent{opacity:0}
-.demo .m-intent-clip{clip-path:none}
-.demo .m-wire,.demo .m-fill,.demo .m-chip{opacity:1;transform:none}
+/* ══ BUILD demonstration — the composition is COMPLETE on first paint ══
+   The finished frame is in the markup and is never hidden. [data-play="1"]
+   adds two purely ADDITIVE layers on top of it — a luminous sweep and a
+   border trace — so there is no blank state, no skeleton, no poster and no
+   layout shift. `aspect-ratio` on .demo reserves the box before paint.
+   Reduced motion and no-JS show exactly the same completed composition;
+   the only difference is that the two extra layers never run.
+   Never reintroduce an `opacity:0` start state on .m-fill here. */
+.demo .m-fill{opacity:1;transform:none}
 .demo .m-trace{stroke-dashoffset:0}
 .demo .m-lum{display:none}
-[data-play="1"] .m-intent{opacity:1;animation:mFadeOut .3s ease-in .95s forwards}
-[data-play="1"] .m-intent-clip{clip-path:inset(0 100% 0 0);animation:mReveal .7s steps(24,end) .15s forwards}
-[dir="rtl"] [data-play="1"] .m-intent-clip{clip-path:inset(0 0 0 100%);animation-name:mRevealR}
-[data-play="1"] .m-cursor{animation:mBlink .5s steps(1,end) 4 .15s forwards}
-[data-play="1"] .m-wire{opacity:0;animation:mWire .35s cubic-bezier(.22,1,.36,1) forwards}
-[data-play="1"] .m-fill{opacity:0;animation:mFill .4s ease-out forwards}
-[data-play="1"] .m-chip{opacity:0;animation:mChip .38s cubic-bezier(.22,1,.36,1) forwards}
-[dir="rtl"] [data-play="1"] .m-chip{animation-name:mChipR}
-[data-play="1"] .m-trace{stroke-dasharray:1660;stroke-dashoffset:1660;animation:mTrace .55s ease-out 2.45s forwards}
-[data-play="1"] .m-lum{display:block;opacity:0;animation:mLum .8s ease-out 1.25s forwards}
-@keyframes mReveal{to{clip-path:inset(0 0 0 0)}}
-@keyframes mRevealR{to{clip-path:inset(0 0 0 0)}}
-@keyframes mBlink{50%{opacity:0}}
-@keyframes mFadeOut{to{opacity:0}}
-@keyframes mWire{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes mFill{to{opacity:1}}
-@keyframes mChip{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
-@keyframes mChipR{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+[data-play="1"] .m-trace{stroke-dasharray:1660;stroke-dashoffset:1660;animation:mTrace .55s ease-out .35s forwards}
+[data-play="1"] .m-lum{display:block;opacity:0;animation:mLum 1.1s ease-out .15s forwards}
 @keyframes mTrace{to{stroke-dashoffset:0}}
-@keyframes mLum{0%{opacity:0;transform:translateY(-40%)}45%{opacity:.55}100%{opacity:0;transform:translateY(120%)}}
+@keyframes mLum{0%{opacity:0;transform:translateY(-40%)}45%{opacity:.5}100%{opacity:0;transform:translateY(120%)}}
 @media(prefers-reduced-motion:reduce){ [data-play="1"] *{animation:none!important} }
 
 /* ── offer fine print: present but not shouting ── */
@@ -298,8 +326,9 @@
 .fineprint summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;
   list-style:none;min-block-size:44px;font-size:var(--fs-sm);font-weight:600;color:var(--z-text-mute)}
 .fineprint summary::-webkit-details-marker{display:none}
-.fineprint summary::after{content:"";inline-size:9px;block-size:9px;border-inline-end:1.6px solid var(--z-text-faint);
-  border-block-end:1.6px solid var(--z-text-faint);transform:rotate(45deg);flex-shrink:0;transition:transform .2s}
+/* Same physical-geometry rule as .faq summary::after above. */
+.fineprint summary::after{content:"";inline-size:9px;block-size:9px;border-right:1.6px solid var(--z-text-faint);
+  border-bottom:1.6px solid var(--z-text-faint);transform:rotate(45deg);transform-origin:60% 60%;flex-shrink:0;transition:transform .2s}
 .fineprint[open] summary::after{transform:rotate(-135deg)}
 .exc{display:grid;gap:8px;padding-block-end:8px}
 .exc li{font-size:var(--fs-xs);color:var(--z-text-mute);line-height:1.55;
@@ -308,3 +337,26 @@
   inline-size:6px;block-size:1.5px;background:var(--z-text-faint)}
 .foot-in a{color:var(--z-text-mute);text-decoration:none}
 .foot-in a:hover{color:var(--z-text-hi)}
+
+
+/* ── conversion honesty ────────────────────────────────────────────────────
+   A form that cannot send must not wear the primary-action colour. */
+.btn-muted{background:transparent;color:var(--z-text-mute);border:1px dashed var(--z-border-strong)}
+.btn-muted:hover{color:var(--z-text-hi);border-color:var(--z-text-faint)}
+.chip-preview{display:inline-flex;align-items:center;gap:7px;margin-block-end:16px;
+  border:1px dashed var(--z-border-strong);color:var(--z-text-faint);
+  padding:5px 12px;border-radius:var(--r-pill);font-size:var(--fs-xs)}
+
+/* ── one deliberate brand moment ───────────────────────────────────────────
+   The mark stays at navigation size everywhere else. This is the single place
+   the chamfer and the incision are large enough to read. */
+.brand-moment{display:flex;align-items:center;gap:clamp(18px,2.4vw,26px);
+  padding-block:clamp(34px,5vw,56px);border-block-start:1px solid var(--z-border)}
+.brand-moment svg{inline-size:clamp(64px,7vw,96px);block-size:clamp(64px,7vw,96px);flex-shrink:0}
+.brand-moment-copy{max-inline-size:40rem}
+.brand-moment-name{font-family:var(--font-display);font-weight:600;letter-spacing:.16em;
+  font-size:1.35rem;color:var(--z-text-hi);margin-block-end:6px}
+
+/* ── work card media ── */
+.card-media img{inline-size:100%;block-size:100%;object-fit:cover;display:block}
+.card-media picture{display:block;inline-size:100%;block-size:100%}

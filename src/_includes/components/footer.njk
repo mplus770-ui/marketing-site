@@ -10,12 +10,12 @@
     <nav class="foot-langs" aria-label="{{ strings.footer.nav }}">
       {% for l in locales %}
         {% if l.ready %}<a href="{{ (l | absUrl(domains)) or l.buildPath }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a>
-        {% else %}<span lang="{{ l.code }}" title="pending translation QA">{{ l.endonym }}</span>{% endif %}
+        {% else %}<span lang="{{ l.code }}" aria-disabled="true" title="{{ strings.footer.langPending }}">{{ l.endonym }}</span>{% endif %}
       {% endfor %}
     </nav>
-    <p class="xs">
+    <p class="xs foot-contact">
       {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}
-      {% if site.whatsapp %}<span aria-hidden="true"> · </span><bdi>{{ site.whatsappDisplay }}</bdi>{% endif %}
+      {% if site.whatsapp %}<a href="{{ site.whatsapp | waLink(strings.contact.waPrefill) }}" rel="noopener">{{ site.whatsappDisplay }}</a>{% endif %}
       <br>
       {% if site.legalEntity %}© {{ site.legalEntity }}. {{ strings.footer.rights }}
       {% else %}{{ strings.footer.pending }}{% endif %}

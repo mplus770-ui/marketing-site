@@ -22,14 +22,14 @@
     "h1b": "Build a business.",
     "promise": "From business intent to business presence.",
     "lead": "ZOHAR builds real websites in code you own — built to be found, structured to convert, and ready to be measured.",
-    "ctaPrimary": "Start a project brief",
-    "ctaSecondary": "Talk on WhatsApp",
+    "ctaPrimary": "Talk on WhatsApp",
+    "ctaSecondary": "Look through the brief questions",
     "reassure1": "Transparent process",
     "reassure2": "Preview before launch",
     "reassure3": "Code you own",
     "demoLabel": "Concept demonstration",
-    "demoCaption": "An illustration of the ZOHAR BUILD experience — from business intent to a complete digital presence.",
-    "demoAlt": "An illustration showing a sentence about a business becoming a finished website."
+    "demoCaption": "Concept demonstration — Meridian Studio is a fictional business, not a client and not live product output.",
+    "demoAlt": "A concept illustration of a website for a fictional architecture studio, in the style ZOHAR builds."
   },
   "proof": {
     "label": "Built by ZOHAR",
@@ -86,8 +86,10 @@
     },
     "futureName": "ZOHAR BUILD",
     "futureStatus": "In development",
-    "futureBody": "ZOHAR BUILD is in development. Today, every ZOHAR website is created through our premium Done For You process.",
-    "futureNote": "A future option, not an alternative you can choose today. No price, no purchase and no date."
+    "futureBody": "ZOHAR BUILD is in development. Today, every ZOHAR website is created through our premium Done-For-You process.",
+    "futureNote": "A future option, not an alternative you can choose today. No price, no purchase and no date.",
+    "ctaWa": "Talk on WhatsApp",
+    "ctaBrief": "or look through the brief questions"
   },
   "process": {
     "label": "How it works",
@@ -104,7 +106,7 @@
   "work": {
     "label": "Selected work",
     "heading": "Real projects only.",
-    "lead": "These are our own projects. Media below is a clearly marked internal placeholder until real captures are in place.",
+    "lead": "These three are our own projects, from ZOHAR's business ecosystem. The captures are real, taken from each project's own source. They are not client projects and not testimonials.",
     "placeholder": "Internal placeholder — not for production",
     "prev": "Previous project",
     "next": "Next project",
@@ -156,9 +158,9 @@
     "q6": "Do you guarantee results?",
     "a6": "No. We build the structure that makes results possible and we prepare the measurement that shows whether they happened. Anyone guaranteeing a number before seeing your market is guessing.",
     "q7": "What does it cost, and how is it paid?",
-    "a7": "Projects start at ₪4,900 for a focused business presence. The final proposal is defined after a short brief and depends on scope, languages and functionality — online stores, multilingual sites and custom systems are quoted separately. Payment is 50% at project start and 50% before production launch. Domain registration and paid third-party services are not included.",
+    "a7": "The final proposal is defined after a short brief and depends on scope, languages and functionality — online stores, multilingual websites and custom systems are quoted separately. Payment is 50% at project start and 50% before production launch. Domain registration and paid third-party services are not included.",
     "q8": "Is ZOHAR BUILD available?",
-    "a8": "Not yet. It is in development. Today every ZOHAR website is created through the Done For You process, and we do not take payment for anything that is not ready.",
+    "a8": "Not yet. It is in development. Today every ZOHAR website is created through the Done-For-You process, and we do not take payment for anything that is not ready.",
     "q9": "What happens to hosting after the first year?",
     "a9": "The first year of secure managed static hosting is included, subject to reasonable use. Domains, paid third-party services, abnormal traffic and paid server functions sit outside it. After that you can renew hosting and basic management at ₪600 per year, or move the code to your own hosting account — it is your code, so there is no dependency on us either way."
   },
@@ -169,7 +171,7 @@
     "step": "Step 1 of 5",
     "q1": "What does your business do?",
     "placeholder": "We’re a family winery in the Galilee, and we sell direct to visitors and to restaurants…",
-    "continue": "Continue",
+    "continue": "Check this answer",
     "back": "Back",
     "privacy": "We would use your answers only to prepare a proposal for you. We do not sell or share them, and you can ask us to delete them at any time.",
     "disabled": "Submissions are not enabled yet. The endpoint and privacy handling are pending approval, so nothing is transmitted or stored.",
@@ -177,13 +179,16 @@
     "errShort": "A sentence or two would help — please add a bit more detail.",
     "altWhatsapp": "Talk on WhatsApp instead",
     "altConsult": "Book a 20-minute consultation",
-    "unavailable": "Not configured yet"
+    "unavailable": "Not configured yet",
+    "previewChip": "Preview — sending is not active",
+    "submitNote": "This button sends nothing. To actually start, talk to us on WhatsApp."
   },
   "footer": {
     "tagline": "ZOHAR AI — websites you own",
     "rights": "All rights reserved.",
     "pending": "Legal entity, business email and domain are pending.",
-    "nav": "Footer"
+    "nav": "Footer",
+    "langPending": "Coming soon — translation in review"
   },
   "pendingLocale": {
     "title": "Translation in progress",
@@ -194,5 +199,9 @@
   "contact": {
     "waPrefill": "Hello, I came from the ZOHAR website and would like to discuss a new project.",
     "email": "Email us"
+  },
+  "brand": {
+    "name": "ZOHAR",
+    "line": "A threshold is the moment business intent becomes presence. Our mark is that cut — a monolith with a single incision of light."
   }
 }

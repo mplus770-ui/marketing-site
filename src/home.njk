@@ -30,17 +30,19 @@ layout: layouts/base.njk
       <h1 class="d1">{{ strings.hero.h1a }}<br>{{ strings.hero.h1b }}</h1>
       <p class="promise">{{ strings.hero.promise }}</p>
       <p class="lead">{{ strings.hero.lead }}</p>
+      {# WhatsApp is the only conversion that actually works today, so it is
+         the primary action. The brief is a preview and reads as a link. #}
       <div class="hero-ctas">
-        <a class="btn btn-primary btn-lg" href="#brief">{{ strings.hero.ctaPrimary }}</a>
         {% set wa = site.whatsapp | waLink(strings.contact.waPrefill) %}
         {% if wa %}
-          <a class="btn btn-ghost btn-lg" href="{{ wa }}" rel="noopener">
-            <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.hero.ctaSecondary }}</a>
+          <a class="btn btn-primary btn-lg" href="{{ wa }}" rel="noopener">
+            <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.hero.ctaPrimary }}</a>
         {% else %}
           <span class="inert" style="min-block-size:56px">
             <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>
-            {{ strings.hero.ctaSecondary }} — {{ strings.brief.unavailable }}</span>
+            {{ strings.hero.ctaPrimary }} — {{ strings.brief.unavailable }}</span>
         {% endif %}
+        <a class="hero-brief-link" href="#brief">{{ strings.hero.ctaSecondary }}</a>
       </div>
       <p class="hero-reassure">
         <span>{{ strings.hero.reassure1 }}</span><span aria-hidden="true">·</span>
@@ -109,35 +111,46 @@ layout: layouts/base.njk
       <p class="label">{{ strings.offer.label }}</p>
       <h2 class="d2">{{ strings.offer.heading }}</h2>
     </div>
-    <div class="offer-grid">
-      <div class="panel panel-now">
-        <span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
-        <h3 class="d3">{{ strings.offer.entryName }}</h3>
-        <p class="sm">{{ strings.offer.dfyLead }}</p>
 
-        {% if offer.entry.public and offer.entry.priceApproved %}
-        <p class="price">{{ strings.offer.startAt | replace("{price}", "₪" + (offer.entry.from | num(loc.code))) }}</p>
-        <p class="xs">{{ strings.offer.qualifier }}</p>
+    {# The thing you can buy gets the full measure and all the visual weight.
+       The thing you cannot buy is a band underneath, not a second card. #}
+    <div class="panel panel-now offer-lead">
+      <span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
+      <h3 class="d3">{{ strings.offer.entryName }}</h3>
+      <p class="lead offer-lead-line">{{ strings.offer.dfyLead }}</p>
+
+      {% if offer.entry.public and offer.entry.priceApproved %}
+      <p class="price">{{ strings.offer.startAt | replace("{price}", "₪" + (offer.entry.from | num(loc.code))) }}</p>
+      <p class="sm offer-note">{{ strings.offer.qualifier }}</p>
+      {% endif %}
+
+      <p class="label" style="margin-block:26px 12px">{{ strings.offer.includesLabel }}</p>
+      <ul class="inc inc-two">
+        {% for k in offer.entry.includes %}
+        <li><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>{{ strings.offer.inc[k] }}</li>
+        {% endfor %}
+      </ul>
+
+      {# Qualification sits directly beneath the eight inclusions: secondary,
+         but at body size and body colour — never faint, never detached. #}
+      <p class="sm offer-qualifier">{{ strings.offer.larger }}</p>
+
+      <div class="offer-actions">
+        {% if site.whatsapp %}
+        <a class="btn btn-primary" href="{{ site.whatsapp | waLink(strings.contact.waPrefill) }}" rel="noopener">
+          <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.offer.ctaWa }}</a>
         {% endif %}
-
-        <p class="label" style="margin-block:26px 12px">{{ strings.offer.includesLabel }}</p>
-        <ul class="inc">
-          {% for k in offer.entry.includes %}
-          <li><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>{{ strings.offer.inc[k] }}</li>
-          {% endfor %}
-        </ul>
-        <a class="btn btn-primary" style="width:100%" href="#brief">{{ strings.offer.cta }}</a>
-
-      </div>
-
-      <div class="panel panel-future">
-        <span class="chip chip-dev">{{ strings.offer.futureStatus }}</span>
-        <h3 class="d3">{{ strings.offer.futureName }}</h3>
-        <p class="sm">{{ strings.offer.futureBody }}</p>
-        <p class="xs" style="margin-block-start:14px">{{ strings.offer.futureNote }}</p>
+        <a class="offer-brief-link" href="#brief">{{ strings.offer.ctaBrief }}</a>
       </div>
     </div>
-    <p class="sm" style="margin-block-start:22px;max-inline-size:44rem">{{ strings.offer.larger }}</p>
+
+    <aside class="roadmap-band" aria-label="{{ strings.offer.futureName }}">
+      <span class="chip chip-dev">{{ strings.offer.futureStatus }}</span>
+      <div>
+        <p class="roadmap-band-name">{{ strings.offer.futureName }}</p>
+        <p class="xs">{{ strings.offer.futureBody }} {{ strings.offer.futureNote }}</p>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -171,7 +184,7 @@ layout: layouts/base.njk
       </div>
       <div class="rail-ctl">
         <button class="rail-btn" type="button" data-rail="prev" aria-label="{{ strings.work.prev }}">
-          <svg width="16" height="16" class="icon-dir" style="transform:rotate(180deg)" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
+          <svg width="16" height="16" class="icon-dir" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
         <button class="rail-btn" type="button" data-rail="next" aria-label="{{ strings.work.next }}">
           <svg width="16" height="16" class="icon-dir" aria-hidden="true" focusable="false"><use href="#i-arr"/></svg></button>
       </div>
@@ -181,8 +194,27 @@ layout: layouts/base.njk
       {% for p in shown %}
       <article class="card" aria-label="{{ p.name }} — {{ loop.index }} {{ strings.work.of }} {{ shown.length }}">
         <div class="card-media">
+          {% if p.media %}
+          {# Real capture, committed locally. AVIF first, WebP fallback.
+             object-position comes from the same focal value as the crop. #}
+          <picture>
+            <source type="image/avif" media="(max-width:719px)"
+                    srcset="{{ p.media.mobile.avif }} 1x, {{ p.media.mobile2x.avif }} 2x">
+            <source type="image/webp" media="(max-width:719px)"
+                    srcset="{{ p.media.mobile.webp }} 1x, {{ p.media.mobile2x.webp }} 2x">
+            <source type="image/avif" srcset="{{ p.media.card.avif }} 1x, {{ p.media.card2x.avif }} 2x">
+            <source type="image/webp" srcset="{{ p.media.card.webp }} 1x, {{ p.media.card2x.webp }} 2x">
+            {# Eager on purpose: the three AVIF cards total ~42 KB, and lazy
+               loading left a visible empty box exactly like the one the hero
+               was corrected for. fetchpriority=low keeps them behind the hero. #}
+            <img src="{{ p.media.card.webp }}" alt="{{ p.alt[loc.code] }}"
+                 width="800" height="500" loading="eager" fetchpriority="low" decoding="async"
+                 style="object-position:{{ (p.focal[0] * 100) }}% {{ (p.focal[1] * 100) }}%">
+          </picture>
+          {% else %}
           <span class="ph-tag chip chip-vision">{{ strings.work.placeholder }}</span>
           {% include "components/placeholder.njk" %}
+          {% endif %}
         </div>
         <div class="card-body">
           <h3 class="d3">{{ p.name }}</h3>
@@ -263,6 +295,7 @@ layout: layouts/base.njk
       <p class="lead" style="margin-inline:auto">{{ strings.brief.lead }}</p>
     </div>
     <form class="brief" id="briefForm" novalidate>
+      <span class="chip chip-preview">{{ strings.brief.previewChip }}</span>
       <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <p class="label" style="margin-block-end:14px">{{ strings.brief.step }}</p>
       <label class="d3" for="b1">{{ strings.brief.q1 }}</label>
@@ -271,8 +304,8 @@ layout: layouts/base.njk
          data-empty="{{ strings.brief.errEmpty }}" data-short="{{ strings.brief.errShort }}"
          data-disabled="{{ strings.brief.disabled }}"></p>
       <div class="brief-row">
-        <button class="btn btn-primary" type="submit">{{ strings.brief.continue }}</button>
-        <span class="xs">{{ strings.brief.disabled }}</span>
+        <button class="btn btn-muted" type="submit" aria-describedby="briefSubmitNote">{{ strings.brief.continue }}</button>
+        <span class="xs" id="briefSubmitNote">{{ strings.brief.submitNote }}</span>
       </div>
       <p class="brief-privacy">{{ strings.brief.privacy }}</p>
     </form>
@@ -296,3 +329,15 @@ layout: layouts/base.njk
   </div>
 </section>
 {% endif %}
+{# One deliberate brand moment, pre-footer. The only place the Threshold mark
+   is large enough for the chamfer and the incision to be legible. #}
+<section class="sec" aria-labelledby="brandMomentName" style="padding-block-end:0">
+  <div class="wrap brand-moment">
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+    <div class="brand-moment-copy">
+      <p class="brand-moment-name" id="brandMomentName">{{ strings.brand.name }}</p>
+      <p class="sm">{{ strings.brand.line }}</p>
+    </div>
+  </div>
+</section>
+
