@@ -117,16 +117,75 @@
     });
   }
 
-  /* ── hero demonstration: one 2.8s sequence, then it stops for good ──
-        Under reduced motion no animation is ever scheduled; the final frame
-        is already in the markup, so it is also the no-JS state. */
-  var demo = document.querySelector("[data-demo]");
-  if (demo && !reduce.matches && "IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { demo.setAttribute("data-play", "1"); io.disconnect(); }
+  /* ── hero motion ─────────────────────────────────────────────────────────
+        Nothing is fetched until motion is both PERMITTED and NEEDED.
+
+        Permitted  = not prefers-reduced-motion AND not Save-Data.
+        Needed     = the frame is near the viewport and the tab is visible.
+
+        The <source> elements ship with data-src, so until this code promotes
+        them the <video autoplay> has no resolvable source and the browser
+        downloads zero bytes. Reduced motion, Save-Data and no-JS therefore
+        cost nothing at all rather than "download, then stop". Only one of the
+        desktop/mobile pair can ever match, so they never both load. */
+  var frame = document.querySelector("[data-hero-motion]");
+  if (frame) {
+    var vid = frame.querySelector("video");
+    var btn = frame.querySelector("[data-motion-toggle]");
+    var saveData = !!(navigator.connection && navigator.connection.saveData);
+    var wanted = !reduce.matches && !saveData;   // the visitor's standing preference
+    var armed = false;                           // sources promoted yet?
+    var paused = false;                          // explicit user pause
+
+    function arm() {
+      if (armed) return;
+      armed = true;
+      Array.prototype.forEach.call(vid.querySelectorAll("source[data-src]"), function (s) {
+        s.setAttribute("src", s.dataset.src);
       });
-    }, { threshold: 0.5 });
-    io.observe(demo);
+      vid.load();
+    }
+    function show() { frame.setAttribute("data-playing", "1"); }
+    function hide() { frame.removeAttribute("data-playing"); }
+    function start() {
+      if (!wanted || paused) return;
+      arm();
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () { hide(); });
+    }
+    function stop() { if (!vid.paused) vid.pause(); }
+
+    /* The label follows the ACTUAL state, not just clicks, so an offscreen or
+       tab-hidden pause never leaves the control announcing the wrong action. */
+    function sync() {
+      if (!btn) return;
+      btn.setAttribute("aria-label", vid.paused ? btn.dataset.labelPlay : btn.dataset.labelPause);
+    }
+    vid.addEventListener("playing", function () { show(); sync(); });
+    vid.addEventListener("pause", function () { hide(); sync(); });
+    vid.addEventListener("error", hide);
+
+    if (btn) {
+      btn.hidden = false;
+      /* Under Save-Data the control becomes the manual opt-in the visitor
+         needs: one tap loads and plays the motion, nothing before that. */
+      if (saveData) btn.setAttribute("aria-label", btn.dataset.labelPlay);
+      btn.addEventListener("click", function () {
+        if (!wanted) { wanted = true; paused = false; start(); }
+        else if (vid.paused) { paused = false; start(); }
+        else { paused = true; stop(); }
+        sync();
+      });
+    }
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { en.isIntersecting ? start() : stop(); });
+      }, { threshold: .25 }).observe(frame);
+    } else { start(); }
+
+    document.addEventListener("visibilitychange", function () {
+      document.hidden ? stop() : start();
+    });
   }
 })();

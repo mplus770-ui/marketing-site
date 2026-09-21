@@ -50,12 +50,12 @@ layout: layouts/base.njk
         <span>{{ strings.hero.reassure3 }}</span>
       </p>
     </div>
+    {# ONE controlling hero visual. The Meridian SVG demonstration used to live
+       here; it now appears once, at small scale, inside the capability band so
+       the two never compete for the same job. #}
     <div class="demo-wrap">
-      <div class="demo" data-demo role="img" aria-label="{{ strings.hero.demoAlt }}">
-        {% if loc.dir == "rtl" %}{% include "components/demo-rtl.njk" %}
-        {% else %}{% include "components/demo-ltr.njk" %}{% endif %}
-      </div>
-      <p class="demo-cap"><span class="demo-label">{{ strings.hero.demoLabel }}</span>{{ strings.hero.demoCaption }}</p>
+      {% include "components/hero-motion.njk" %}
+      <p class="demo-cap">{{ strings.hero.demoCaption }}</p>
     </div>
   </div>
 </section>

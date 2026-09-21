@@ -11,6 +11,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/concept-gate2": "concept-gate2" });
   // Gate 3 review package: protected preview only, noindex, robots-disallowed.
   eleventyConfig.addPassthroughCopy({ "public/review-gate3": "review-gate3" });
+  // The Codex hero-motion prototype stays exactly as delivered, reachable on
+  // the protected preview. Production uses its own copies in src/assets/motion.
+  eleventyConfig.addPassthroughCopy({ "public/hero-motion-review": "hero-motion-review" });
 
   // ── Central origin resolver ─────────────────────────────────────────
   // One place decides canonical origin, absolute URL, alternates, x-default,

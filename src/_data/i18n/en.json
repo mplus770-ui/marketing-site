@@ -28,8 +28,11 @@
     "reassure2": "Preview before launch",
     "reassure3": "Code you own",
     "demoLabel": "Concept demonstration",
-    "demoCaption": "Concept demonstration — Meridian Studio is a fictional business, not a client and not live product output.",
-    "demoAlt": "A concept illustration of a website for a fictional architecture studio, in the style ZOHAR builds."
+    "demoCaption": "Concept demonstration — motion made for ZOHAR. Not live product output.",
+    "demoAlt": "A cinematic illustration: a line of light resolving into a built digital presence.",
+    "motionPlay": "Play motion",
+    "motionPause": "Pause motion",
+    "motionSaveData": "Play motion"
   },
   "proof": {
     "label": "Built by ZOHAR",

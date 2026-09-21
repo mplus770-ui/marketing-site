@@ -1,0 +1,39 @@
+{# ── Cinematic hero motion ──────────────────────────────────────────────────
+   Poster-first by construction. The <source> elements carry data-src, not src,
+   so an <video autoplay> with no resolvable source downloads NOTHING and shows
+   nothing until JS decides motion is allowed AND the frame is near the
+   viewport. That is what makes reduced-motion, Save-Data and no-JS cost zero
+   bytes rather than "load then stop".
+
+   The poster <img> carries intrinsic width/height, so the box is reserved
+   before paint — no layout shift, no black frame, no skeleton. The video sits
+   on top at opacity 0 and is only revealed once it is genuinely playing. #}
+<div class="hero-motion" data-hero-motion
+     data-src-desktop-webm="/assets/motion/zohar-hero-motion-desktop.webm"
+     data-src-mobile-webm="/assets/motion/zohar-hero-motion-mobile.webm">
+  <picture class="hero-motion-poster">
+    <source media="(max-width:860px)" srcset="/assets/motion/zohar-hero-poster-mobile.webp" type="image/webp">
+    <img src="/assets/motion/zohar-hero-poster-desktop.webp" alt="{{ strings.hero.demoAlt }}"
+         width="1280" height="720" decoding="async" fetchpriority="high">
+  </picture>
+
+  <video class="hero-motion-video" autoplay muted playsinline loop preload="none"
+         disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1">
+    <source media="(max-width:860px)" data-src="/assets/motion/zohar-hero-motion-mobile.webm" type="video/webm">
+    <source data-src="/assets/motion/zohar-hero-motion-desktop.webm" type="video/webm">
+    <source media="(max-width:860px)" data-src="/assets/motion/zohar-hero-motion-mobile.mp4" type="video/mp4">
+    <source data-src="/assets/motion/zohar-hero-motion-desktop.mp4" type="video/mp4">
+  </video>
+
+  <button class="hero-motion-btn" type="button" data-motion-toggle hidden
+          aria-label="{{ strings.hero.motionPause }}" data-label-play="{{ strings.hero.motionPlay }}"
+          data-label-pause="{{ strings.hero.motionPause }}">
+    <svg class="mi-pause" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true" focusable="false">
+      <rect x="3" y="2" width="3.2" height="11" rx="1.1" fill="currentColor"/>
+      <rect x="8.8" y="2" width="3.2" height="11" rx="1.1" fill="currentColor"/></svg>
+    <svg class="mi-play" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true" focusable="false">
+      <path d="M4 2.6 12.4 7.5 4 12.4Z" fill="currentColor"/></svg>
+  </button>
+
+  <span class="hero-motion-label">{{ strings.hero.demoLabel }}</span>
+</div>
