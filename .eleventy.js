@@ -14,6 +14,7 @@ export default function (eleventyConfig) {
   // The Codex hero-motion prototype stays exactly as delivered, reachable on
   // the protected preview. Production uses its own copies in src/assets/motion.
   eleventyConfig.addPassthroughCopy({ "public/hero-motion-review": "hero-motion-review" });
+  eleventyConfig.addPassthroughCopy({ "public/logo-review": "logo-review" });
 
   // ── Central origin resolver ─────────────────────────────────────────
   // One place decides canonical origin, absolute URL, alternates, x-default,

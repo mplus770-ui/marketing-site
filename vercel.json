@@ -115,6 +115,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/logo-review/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
