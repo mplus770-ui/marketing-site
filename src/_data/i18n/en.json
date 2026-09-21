@@ -210,5 +210,20 @@
   "brand": {
     "name": "ZOHAR",
     "line": "A threshold is the moment business intent becomes presence. Our mark is that cut — a monolith with a single incision of light."
+  },
+  "cap": {
+    "label": "Capabilities",
+    "heading": "What we actually build today.",
+    "lead": "Every item here is a real interface from a real project of ours — not a mockup, not a dashboard, not a future product.",
+    "responsive": "Premium responsive implementation",
+    "rtl": "Hebrew and RTL from the ground up",
+    "editorial": "Editorial and magazine experiences",
+    "commerce": "E-commerce-ready interfaces",
+    "multilingual": "Multilingual architecture",
+    "conversion": "Conversion and WhatsApp journeys",
+    "seo": "Foundational SEO and AEO",
+    "seoNote": "Schema, hreflang and heading structure, written at build time rather than bolted on.",
+    "code": "Clean, portable code",
+    "codeNote": "Plain HTML, CSS and JavaScript. No page builder, no vendor lock-in."
   }
 }

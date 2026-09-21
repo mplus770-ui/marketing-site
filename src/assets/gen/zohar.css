@@ -607,6 +607,65 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   .showcase-btn{display:none}
 }
 
+/* ══ CAPABILITY RIBBON ═════════════════════════════════════════════════════
+   Same seamless-loop principle as the work showcase, deliberately a different
+   register: smaller fragments, varied shape and vertical offset, a slower
+   pass, and the opposite direction so the page never reads as two identical
+   rails stacked on each other. */
+.cap{position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.cap-track{display:flex;inline-size:max-content;gap:18px;margin:0;padding:0;list-style:none;
+  animation:capRun 72s linear infinite}
+[dir="rtl"] .cap-track{animation-name:capRunRtl}
+.cap-group{display:block}
+.cap-list{display:flex;align-items:center;gap:18px;margin:0;padding:0;list-style:none}
+.cap-item{flex:0 0 auto}
+/* opposite direction to the work rail */
+@keyframes capRun{from{transform:translateX(calc(-50% - 9px))}to{transform:translateX(0)}}
+@keyframes capRunRtl{from{transform:translateX(calc(50% + 9px))}to{transform:translateX(0)}}
+.cap:hover .cap-track,.cap:focus-within .cap-track,
+.cap[data-paused="1"] .cap-track{animation-play-state:paused}
+
+.cap-frame{margin:0;position:relative;border:1px solid var(--z-border);border-radius:14px;
+  overflow:hidden;background:var(--z-surface-1)}
+.cap-frame img{display:block;inline-size:100%;block-size:100%;object-fit:cover}
+.cap-wide .cap-frame{inline-size:340px;aspect-ratio:4/3}
+.cap-tall .cap-frame{inline-size:212px;aspect-ratio:3/4}
+/* the depth cue: alternating items sit slightly higher and slightly back */
+.cap-lift{transform:translateY(-16px) scale(.94)}
+.cap-cap{position:absolute;inset-inline:0;inset-block-end:0;padding:22px 13px 11px;
+  font-size:var(--fs-xs);color:var(--z-text);line-height:1.35;
+  background:linear-gradient(to top,rgba(4,21,15,.92),rgba(4,21,15,.72) 55%,transparent)}
+.cap-frame::after{content:"";position:absolute;inset-block-start:0;inset-inline:0;block-size:1px;
+  background:linear-gradient(to right,rgba(52,227,155,.55),rgba(52,227,155,0))}
+
+.cap-note .cap-frame-note{inline-size:296px;aspect-ratio:4/3;display:flex;flex-direction:column;
+  justify-content:center;gap:9px;padding:20px 22px;background:var(--z-surface-2);
+  border-style:dashed}
+.cap-note-title{font-family:var(--font-display);font-size:1.0625rem;font-weight:600;color:var(--z-text-hi)}
+.cap-note-body{font-size:var(--fs-xs);color:var(--z-text-mute);line-height:1.6}
+
+@media(max-width:860px){
+  .cap{overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-inline:contain;
+    -webkit-mask-image:none;mask-image:none;padding-inline:var(--gutter);
+    scrollbar-width:none;padding-block:20px}
+  .cap::-webkit-scrollbar{display:none}
+  .cap-track{animation:none!important;inline-size:auto}
+  [data-rail-clone]{display:none}
+  .cap-lift{transform:none}
+  .cap-item{scroll-snap-align:center}
+  .cap-wide .cap-frame{inline-size:280px}
+  .cap-tall .cap-frame{inline-size:186px}
+  .cap-note .cap-frame-note{inline-size:260px}
+}
+@media(prefers-reduced-motion:reduce){
+  .cap-track{animation:none!important}
+  .cap{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+  [data-rail-clone]{display:none}
+  .cap-lift{transform:none}
+}
+
 /* Direction handling. The layout uses logical properties throughout, so this
    file only carries what genuinely cannot be expressed logically. */
 [dir="rtl"] .icon-dir{transform:scaleX(-1)}

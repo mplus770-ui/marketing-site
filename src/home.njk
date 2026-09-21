@@ -197,6 +197,18 @@ layout: layouts/base.njk
   {% include "components/showcase.njk" %}
 </section>
 
+{# ══ CAPABILITY BAND ══ #}
+<section class="sec" id="capabilities">
+  <div class="wide">
+    <div class="sec-head edge">
+      <p class="label">{{ strings.cap.label }}</p>
+      <h2 class="d2">{{ strings.cap.heading }}</h2>
+      <p class="lead" style="margin-block-start:14px">{{ strings.cap.lead }}</p>
+    </div>
+  </div>
+  {% include "components/capability.njk" %}
+</section>
+
 {# ══ 8 · VISION / ROADMAP ══ #}
 <section class="sec" id="vision">
   <div class="wide">

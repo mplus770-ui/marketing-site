@@ -1,0 +1,51 @@
+{# ── Capability ribbon ──────────────────────────────────────────────────────
+   Every visual here is a REAL rendered interface captured from a real project
+   of ours. No dashboards, no analytics, no agents, no builder, no invented
+   results — a claim about what we build has to be shown with the thing itself.
+
+   Deliberately a different motion language from the work showcase: smaller
+   fragments at varied scale and offset, a slower pass, and the opposite
+   direction, so the page does not read as two copies of the same rail. #}
+<div class="cap" data-rail data-rail-speed="72" aria-label="{{ strings.cap.heading }}">
+  <ul class="cap-track" data-rail-track>
+    {% for n in [1, 2] %}
+    <li class="cap-group"{% if n == 2 %} aria-hidden="true" data-rail-clone{% endif %}>
+      <ul class="cap-list">
+        {% for f in [
+          {id:"responsive",  shape:"wide", lift:0},
+          {id:"rtl",         shape:"tall", lift:1},
+          {id:"editorial",   shape:"tall", lift:0},
+          {id:"commerce",    shape:"wide", lift:1},
+          {id:"multilingual",shape:"wide", lift:0},
+          {id:"conversion",  shape:"tall", lift:1}
+        ] %}
+        <li class="cap-item cap-{{ f.shape }}{% if f.lift %} cap-lift{% endif %}">
+          <figure class="cap-frame">
+            <picture>
+              <source type="image/avif" srcset="/assets/capability/{{ f.id }}.avif">
+              <img src="/assets/capability/{{ f.id }}.webp"
+                   alt="{% if n == 2 %}{% else %}{{ strings.cap[f.id] }}{% endif %}"
+                   width="{{ 640 if f.shape == 'wide' else 460 }}"
+                   height="{{ 480 if f.shape == 'wide' else 613 }}"
+                   loading="lazy" decoding="async">
+            </picture>
+            <figcaption class="cap-cap">{{ strings.cap[f.id] }}</figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+        {# Two capabilities that are structural, not visual. Showing a fake
+           dashboard for them would be exactly the kind of invention the brief
+           rules out, so they are stated plainly instead. #}
+        {% for t in [{k:"seo"}, {k:"code"}] %}
+        <li class="cap-item cap-note">
+          <div class="cap-frame cap-frame-note">
+            <p class="cap-note-title">{{ strings.cap[t.k] }}</p>
+            <p class="cap-note-body">{{ strings.cap[t.k + "Note"] }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
