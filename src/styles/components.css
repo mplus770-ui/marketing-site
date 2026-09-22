@@ -387,7 +387,7 @@
 /* Pulled in once the film gained its own quiet zone: the old 62rem reach was
    sized for a photographic frame that was bright edge to edge, and over an
    authored composition it only made the surfaces read as ghosts. */
-.hero-scrim-edge{background:linear-gradient(to right,
+.hero-scrim-edge{background:linear-gradient(to left,
   rgba(4,21,15,.96) 0,rgba(4,21,15,.88) 26rem,rgba(4,21,15,.42) 37rem,rgba(4,21,15,0) 50rem)}
 [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,
   rgba(4,21,15,.96) 0,rgba(4,21,15,.88) 26rem,rgba(4,21,15,.42) 37rem,rgba(4,21,15,0) 50rem)}
@@ -407,11 +407,15 @@
      inside the trailing padding. A percentage fade put the soft end underneath
      the headline, which is how a 1.10:1 H1 survived at 1920. */
   --hero-fade:clamp(30px,6vw,120px)}
+/* The approved master frame deliberately reserves its right-hand side for
+   copy. Keep both writing directions in that quiet zone; LTR text remains
+   left-aligned inside the right-hand column. */
+[dir="ltr"] .hero-copy,[dir="ltr"] .hero-foot{margin-inline-start:auto}
 /* The panel is a pseudo-element, not the element's own background, so it can be
    masked without touching the type. A hard top edge with a rounded corner read
    as a card sitting on a picture; the copy has to feel printed into the frame. */
 .hero-copy::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to right,rgba(4,21,15,.93) 0,
+  background:linear-gradient(to left,rgba(4,21,15,.93) 0,
     rgba(4,21,15,.93) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%);
   -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
     #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%);
@@ -455,6 +459,7 @@
      in the middle of the film instead of under it. */
   .hero{min-block-size:min(760px,94svh);align-items:stretch;padding-block:clamp(1rem,2.4vh,1.75rem)}
   .hero-copy{max-inline-size:100%;padding-block:10px 22px}
+  [dir="ltr"] .hero-copy,[dir="ltr"] .hero-foot{margin-inline-start:0}
   .hero-copy .lead{max-inline-size:34rem}
   /* Every gap removed here is exposed stage. The phone reads the promise and
      the CTA without scrolling, and the structure keeps the bottom third. */

@@ -31,23 +31,22 @@
    on top at opacity 0 and is revealed only once it is genuinely playing, and
    it is inset by 1px so the poster stays strictly the larger element and
    therefore always wins LCP. Do not remove that inset without re-measuring. #}
-{% set film = "he" if loc.dir == "rtl" else "en" %}
 <div class="hero-stage" data-hero-motion aria-hidden="true">
   <picture class="hero-stage-poster">
     <source media="(max-width:860px) and (orientation:portrait)"
-            srcset="/assets/motion/zohar-hero-poster-{{ film }}-mobile.webp" type="image/webp">
-    <img src="/assets/motion/zohar-hero-poster-{{ film }}-desktop.webp" alt=""
+            srcset="/assets/motion/zohar-hero-master-mobile.webp" type="image/webp">
+    <img src="/assets/motion/zohar-hero-master-desktop.webp" alt=""
          width="1280" height="720" decoding="async" fetchpriority="high">
   </picture>
 
   <video class="hero-stage-video" autoplay muted playsinline preload="none"
          disablepictureinpicture disableremoteplayback tabindex="-1">
     <source media="(max-width:860px) and (orientation:portrait)"
-            data-src="/assets/motion/zohar-hero-motion-{{ film }}-mobile.webm" type="video/webm">
-    <source data-src="/assets/motion/zohar-hero-motion-{{ film }}-desktop.webm" type="video/webm">
+            data-src="/assets/motion/zohar-hero-master-mobile.webm" type="video/webm">
+    <source data-src="/assets/motion/zohar-hero-master-desktop.webm" type="video/webm">
     <source media="(max-width:860px) and (orientation:portrait)"
-            data-src="/assets/motion/zohar-hero-motion-{{ film }}-mobile.mp4" type="video/mp4">
-    <source data-src="/assets/motion/zohar-hero-motion-{{ film }}-desktop.mp4" type="video/mp4">
+            data-src="/assets/motion/zohar-hero-master-mobile.mp4" type="video/mp4">
+    <source data-src="/assets/motion/zohar-hero-master-desktop.mp4" type="video/mp4">
   </video>
 
   {# Two scrims: one along the copy edge for contrast, one at the foot so the
