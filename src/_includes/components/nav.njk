@@ -47,10 +47,10 @@
   <div class="sheet-foot">
     {% set waSheet = site.whatsapp | waLink(strings.contact.waPrefill) %}
     {% if waSheet %}
-      <a class="btn btn-primary" style="width:100%" href="{{ waSheet }}" rel="noopener">
+      <a class="btn btn-primary u-full" href="{{ waSheet }}" rel="noopener">
         <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.hero.ctaSecondary }}</a>
     {% else %}
-      <span class="inert" style="width:100%;justify-content:center">
+      <span class="inert u-full-center">
         <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.unavailable }}</span>
     {% endif %}
   </div>

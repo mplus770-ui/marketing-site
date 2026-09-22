@@ -10,11 +10,11 @@ layout: layouts/base.njk
 {# ── Unpublished locale: a placeholder, never machine-translated copy and
       never another locale's strings. noindex, and absent from the sitemap. ── #}
 <section class="sec">
-  <div class="wrap" style="text-align:center;max-width:44rem">
-    <svg width="64" height="64" style="margin-inline:auto" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
-    <h1 class="d2" style="margin-block:26px 14px">{{ strings.pendingLocale.title }}</h1>
-    <p class="lead" style="margin-inline:auto">{{ strings.pendingLocale.body }}</p>
-    <div class="hero-ctas" style="justify-content:center;margin-block-start:30px">
+  <div class="wrap u-center-narrow">
+    <svg width="64" height="64" class="u-mi-auto" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+    <h1 class="d2 u-title-gap">{{ strings.pendingLocale.title }}</h1>
+    <p class="lead u-mi-auto">{{ strings.pendingLocale.body }}</p>
+    <div class="hero-ctas u-ctas-center">
       <a class="btn btn-primary" href="/en/">{{ strings.pendingLocale.cta }}</a>
       <a class="btn btn-ghost" href="/">{{ strings.pendingLocale.ctaHe }}</a>
     </div>
@@ -38,7 +38,7 @@ layout: layouts/base.njk
           <a class="btn btn-primary btn-lg" href="{{ wa }}" rel="noopener">
             <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.hero.ctaPrimary }}</a>
         {% else %}
-          <span class="inert" style="min-block-size:56px">
+          <span class="inert u-inert-lg">
             <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>
             {{ strings.hero.ctaPrimary }} — {{ strings.brief.unavailable }}</span>
         {% endif %}
@@ -124,7 +124,7 @@ layout: layouts/base.njk
       <p class="sm offer-note">{{ strings.offer.qualifier }}</p>
       {% endif %}
 
-      <p class="label" style="margin-block:26px 12px">{{ strings.offer.includesLabel }}</p>
+      <p class="label u-label-gap">{{ strings.offer.includesLabel }}</p>
       <ul class="inc inc-two">
         {% for k in offer.entry.includes %}
         <li><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>{{ strings.offer.inc[k] }}</li>
@@ -176,11 +176,11 @@ layout: layouts/base.njk
 {# ══ 7 · SELECTED WORK ══ #}
 <section class="sec" id="work">
   <div class="wide">
-    <div class="sec-head edge" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;max-inline-size:none">
-      <div style="max-inline-size:40rem">
+    <div class="sec-head edge sec-head-split">
+      <div class="u-measure">
         <p class="label">{{ strings.work.label }}</p>
         <h2 class="d2">{{ strings.work.heading }}</h2>
-        <p class="lead" style="margin-block-start:14px">{{ strings.work.lead }}</p>
+        <p class="lead u-lead-gap">{{ strings.work.lead }}</p>
       </div>
       <button class="showcase-btn" type="button" data-showcase-toggle
               aria-label="{{ strings.work.pauseMotion }}"
@@ -203,7 +203,7 @@ layout: layouts/base.njk
     <div class="sec-head edge">
       <p class="label">{{ strings.cap.label }}</p>
       <h2 class="d2">{{ strings.cap.heading }}</h2>
-      <p class="lead" style="margin-block-start:14px">{{ strings.cap.lead }}</p>
+      <p class="lead u-lead-gap">{{ strings.cap.lead }}</p>
     </div>
   </div>
   {% include "components/capability.njk" %}
@@ -266,15 +266,15 @@ layout: layouts/base.njk
 {# ══ 11 · PROJECT BRIEF ══ #}
 <section class="sec surface" id="brief">
   <div class="wrap">
-    <div class="sec-head edge" style="text-align:center;margin-inline:auto">
+    <div class="sec-head edge u-center">
       <p class="label">{{ strings.brief.label }}</p>
       <h2 class="d2">{{ strings.brief.heading }}</h2>
-      <p class="lead" style="margin-inline:auto">{{ strings.brief.lead }}</p>
+      <p class="lead u-mi-auto">{{ strings.brief.lead }}</p>
     </div>
     <form class="brief" id="briefForm" novalidate>
       <span class="chip chip-preview">{{ strings.brief.previewChip }}</span>
       <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      <p class="label" style="margin-block-end:14px">{{ strings.brief.step }}</p>
+      <p class="label u-label-gap-end">{{ strings.brief.step }}</p>
       <label class="d3" for="b1">{{ strings.brief.q1 }}</label>
       <textarea id="b1" name="business" rows="4" placeholder="{{ strings.brief.placeholder }}"></textarea>
       <p class="err" data-show="0" role="status" aria-live="polite"
@@ -308,7 +308,7 @@ layout: layouts/base.njk
 {% endif %}
 {# One deliberate brand moment, pre-footer. The only place the Threshold mark
    is large enough for the chamfer and the incision to be legible. #}
-<section class="sec" aria-labelledby="brandMomentName" style="padding-block-end:0">
+<section class="sec u-flush-end" aria-labelledby="brandMomentName">
   <div class="wrap brand-moment">
     <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
     <div class="brand-moment-copy">

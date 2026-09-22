@@ -121,10 +121,23 @@ export default function (eleventyConfig) {
 
 
   // ── One concatenated stylesheet, hashed, no bundler ──────────────────
-  eleventyConfig.on("eleventy.before", () => {
+  eleventyConfig.on("eleventy.before", async () => {
+    const { default: projects } = await import("./src/_data/projects.js");
     const dir = "src/styles";
     const order = ["tokens.css", "reset.css", "base.css", "components.css", "rtl.css"];
-    const css = order.map((f) => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
+    let css = order.map((f) => fs.readFileSync(path.join(dir, f), "utf8")).join("\n");
+
+    // Per-project focal crops. These used to be an inline style attribute,
+    // which the production CSP (style-src 'self', no 'unsafe-inline') refuses
+    // outright — every card silently fell back to a centre crop on the real
+    // host while looking correct locally. The values are known at build time,
+    // so they are emitted as real rules instead.
+    const focals = projects
+      .filter((p) => p.focal)
+      .map((p) => `.focal-${p.slug}{object-position:${p.focal[0] * 100}% ${p.focal[1] * 100}%}`)
+      .join("\n");
+    css += "\n/* generated: per-project focal crops */\n" + focals + "\n";
+
     fs.mkdirSync("src/assets/gen", { recursive: true });
     fs.writeFileSync("src/assets/gen/zohar.css", css);
     fs.writeFileSync("src/assets/gen/zohar.js", fs.readFileSync("src/scripts/main.js", "utf8"));

@@ -666,6 +666,31 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   .cap-lift{transform:none}
 }
 
+/* ══ UTILITIES ═════════════════════════════════════════════════════════════
+   These exist because the production Content-Security-Policy sets
+   style-src 'self' with no 'unsafe-inline': every inline style= attribute is
+   REFUSED by the browser on the real host, while working fine on a local
+   server that sends no CSP. Anything here was previously an inline style and
+   was silently dropped in production. Do not reintroduce inline styles. */
+.u-sprite{position:absolute}
+.u-center{text-align:center;margin-inline:auto}
+.u-center-narrow{text-align:center;max-inline-size:44rem;margin-inline:auto}
+.u-mi-auto{margin-inline:auto}
+.u-lead-gap{margin-block-start:14px}
+.u-label-gap{margin-block:26px 12px}
+.u-label-gap-end{margin-block-end:14px}
+.u-title-gap{margin-block:26px 14px}
+.u-ctas-center{justify-content:center;margin-block-start:30px}
+.u-inert-lg{min-block-size:56px}
+.u-full{inline-size:100%}
+.u-full-center{inline-size:100%;justify-content:center}
+.u-measure{max-inline-size:40rem}
+.u-flush-end{padding-block-end:0}
+.sec-head-split{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:24px;flex-wrap:wrap;max-inline-size:none}
+.foot-brand{display:flex;align-items:center;gap:11px}
+.foot-brand-name{font-family:var(--font-display);font-weight:600;letter-spacing:.14em;color:var(--z-text-hi)}
+
 /* Direction handling. The layout uses logical properties throughout, so this
    file only carries what genuinely cannot be expressed logically. */
 [dir="rtl"] .icon-dir{transform:scaleX(-1)}
@@ -679,3 +704,13 @@ bdi{unicode-bidi:isolate}
 /* Arabic must never be letter-spaced, uppercased or synthetically bolded */
 :lang(ar){font-synthesis-weight:none}
 :lang(ar) *{letter-spacing:normal!important;text-transform:none!important}
+
+/* generated: per-project focal crops */
+.focal-sadafronia{object-position:50% 20%}
+.focal-better-world{object-position:50% 18%}
+.focal-yayin{object-position:50% 30%}
+.focal-zohar{object-position:50% 18%}
+.focal-eco-tech-israel{object-position:50% 18%}
+.focal-urban-fashion-store{object-position:50% 18%}
+.focal-le-monde-sefarade{object-position:50% 18%}
+.focal-gourmet-delivery{object-position:50% 18%}

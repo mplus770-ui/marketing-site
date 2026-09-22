@@ -5,34 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <title>ZOHAR — HE/EN review package</title>
-<style>
-  :root{--bg:#04150F;--s1:#07201A;--s2:#0A2A22;--line:#123A2E;
-        --hi:#F4F7F5;--tx:#C8D6CE;--fa:#7E8F85;--ac:#34E39B}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--tx);
-       font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  .wrap{max-width:1180px;margin:0 auto;padding:40px 20px 90px}
-  h1{color:var(--hi);font-size:1.7rem;margin:0 0 6px;letter-spacing:.01em}
-  h2{color:var(--hi);font-size:1.12rem;margin:46px 0 4px;
-     padding-block-end:9px;border-block-end:1px solid var(--line)}
-  .sub{color:var(--fa);margin:0 0 26px;font-size:.92rem}
-  .note{background:var(--s1);border:1px solid var(--line);border-inline-start:2px solid var(--ac);
-        border-radius:10px;padding:14px 16px;margin:20px 0;font-size:.9rem}
-  .note b{color:var(--hi)}
-  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin-block-start:18px}
-  figure{margin:0;background:var(--s1);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  figure a{display:block;line-height:0;background:var(--s2)}
-  figure img{width:100%;height:auto;display:block}
-  figcaption{padding:9px 11px;font-size:.78rem;color:var(--fa);
-             display:flex;justify-content:space-between;gap:10px;line-height:1.35}
-  figcaption b{color:var(--tx);font-weight:600}
-  .tall figure a{max-height:420px;overflow:hidden}
-  table{border-collapse:collapse;width:100%;margin-block-start:14px;font-size:.88rem}
-  th,td{text-align:start;padding:8px 10px;border-block-end:1px solid var(--line);vertical-align:top}
-  th{color:var(--fa);font-weight:600}
-  code{background:var(--s2);padding:1px 6px;border-radius:5px;font-size:.85em;color:var(--hi)}
-  a{color:var(--ac)}
-</style>
+<link rel="stylesheet" href="review.css">
 </head>
 <body>
 <div class="wrap">
@@ -87,35 +60,7 @@
   <tr><td>Preview protection</td><td>Vercel SSO, <code>all_except_custom_domains</code>; no custom domain attached</td></tr>
 </table>
 
-<script>
-const F = window.__SHOTS__ || [];
-function card(file, label, meta) {
-  return `<figure><a href="shots/${file}" target="_blank" rel="noopener">
-    <img src="shots/${file}" alt="${label}" loading="lazy"></a>
-    <figcaption><b>${label}</b><span>${meta || ""}</span></figcaption></figure>`;
-}
-const put = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
-const NICE = { header:"Header + Threshold logo", hero:"Hero", "build-demo":"BUILD concept demonstration",
-  offer:"Commercial offer", work:"Selected work carousel", method:"BUILD → GROW → PROVE → MEMORY",
-  faq:"FAQ (all open)", footer:"Footer + language row", contact:"Contact / brief surface" };
-const ORDER = ["header","hero","build-demo","offer","work","method","faq","footer","contact"];
-
-put("g-he-vp", [[320,568],[375,667],[390,844],[430,932],[768,1024],[1440,900],[1920,1080]]
-  .map(([w,h]) => card(`he-${w}x${h}.png`, `${w}×${h}`, "Hebrew")).join("")
-  + [320,390,768,1440].map((w) => card(`he-${w}-first-paint.png`, `${w} — first paint`, "before any animation")).join(""));
-
-put("g-en-vp", [[320,568],[390,844],[768,1024],[1440,900],[1920,1080]]
-  .map(([w,h]) => card(`en-${w}x${h}.png`, `${w}×${h}`, "English")).join("")
-  + [320,390,768,1440].map((w) => card(`en-${w}-first-paint.png`, `${w} — first paint`, "before any animation")).join(""));
-
-put("g-full", [["he","desktop"],["he","mobile"],["en","desktop"],["en","mobile"]]
-  .map(([l,d]) => card(`${l}-fullpage-${d}.png`, `${l.toUpperCase()} full page — ${d}`, "FAQ opened")).join(""));
-
-for (const loc of ["he","en"]) {
-  put(`g-${loc}-cu`, ORDER.flatMap((n) => ["desktop","mobile"]
-    .map((d) => card(`${loc}-${d}-${n}.png`, NICE[n], d))).join(""));
-}
-</script>
+<script src="review.js" defer></script>
 </div>
 </body>
 </html>

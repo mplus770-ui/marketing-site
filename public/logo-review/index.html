@@ -5,50 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <title>ZOHAR — Logo direction review</title>
-<style>
-  :root{--bg:#04150F;--s1:#07201A;--s2:#0A2A22;--line:#123A2E;
-        --hi:#F4F7F5;--tx:#C8D6CE;--fa:#7E8F85;--ac:#34E39B;--brass:#E4B363;--light:#F4F1EA}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--tx);
-       font:15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  .wrap{max-width:1180px;margin:0 auto;padding:44px 20px 100px}
-  h1{color:var(--hi);font-size:1.75rem;margin:0 0 6px;letter-spacing:.01em}
-  h2{color:var(--hi);font-size:1.1rem;margin:52px 0 6px;padding-block-end:9px;border-block-end:1px solid var(--line)}
-  h3{color:var(--hi);font-size:.95rem;margin:0 0 4px}
-  .sub{color:var(--fa);margin:0 0 30px;font-size:.92rem}
-  .note{background:var(--s1);border:1px solid var(--line);border-left:2px solid var(--ac);
-        border-radius:10px;padding:14px 16px;margin:20px 0;font-size:.9rem}
-  .note b{color:var(--hi)}
-  .row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:18px}
-  .card{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center}
-  .card.light{background:var(--light);color:#33413a}
-  .card.light h3{color:#04150F}
-  .stage{display:flex;align-items:center;justify-content:center;min-height:150px;margin-bottom:12px}
-  .stage img{max-width:100%;max-height:150px}
-  .cap{font-size:.8rem;color:var(--fa)}
-  .card.light .cap{color:#5c6b62}
-  .verdict{display:inline-block;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
-           padding:4px 10px;border-radius:999px;margin-bottom:10px}
-  .bad{background:rgba(228,99,99,.12);color:#E58585;border:1px solid rgba(228,99,99,.3)}
-  .ref{background:rgba(228,179,99,.1);color:var(--brass);border:1px solid rgba(228,179,99,.3)}
-  .good{background:rgba(52,227,155,.12);color:var(--ac);border:1px solid rgba(52,227,155,.34)}
-  .sizes{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;justify-content:center}
-  .sizes figure{margin:0;text-align:center}
-  .sizes img{display:block;margin:0 auto 6px}
-  ul{margin:10px 0 0;padding-inline-start:20px}
-  li{margin-block-end:5px}
-  code{background:var(--s2);padding:1px 6px;border-radius:5px;font-size:.85em;color:var(--hi)}
-  .two{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-  .navbar{display:flex;align-items:center;justify-content:space-between;
-          padding:0 22px;height:72px;border:1px solid var(--line);border-radius:12px;background:rgba(4,21,15,.9)}
-  .navbar.light{background:var(--light);border-color:#d9d5cb}
-  .navbar img{height:26px}
-  .navlinks{display:flex;gap:18px;font-size:.85rem;color:var(--fa)}
-  .navbar.light .navlinks{color:#6a7a70}
-  table{border-collapse:collapse;width:100%;margin-top:14px;font-size:.88rem}
-  th,td{text-align:left;padding:9px 10px;border-block-end:1px solid var(--line);vertical-align:top}
-  th{color:var(--fa);font-weight:600}
-</style>
+<link rel="stylesheet" href="review.css">
 </head>
 <body>
 <div class="wrap">
@@ -100,15 +57,15 @@ the navigation still carries the rejected Threshold mark until this direction is
   </ul>
 </div>
 <div class="row">
-  <div class="card"><div class="stage"><img src="assets/symbol-emerald.svg" alt="Emerald" style="max-height:110px"></div><h3>Emerald — primary</h3><p class="cap">The default, everywhere.</p></div>
-  <div class="card"><div class="stage"><img src="assets/symbol-brass.svg" alt="Brass accent" style="max-height:110px"></div><h3>Brass accent — optional</h3><p class="cap">Restrained premium use only. Never the default.</p></div>
-  <div class="card"><div class="stage"><img src="assets/symbol-mono-dark.svg" alt="Monochrome on dark" style="max-height:110px"></div><h3>One colour — dark ground</h3><p class="cap">Single fill. No colour dependency.</p></div>
-  <div class="card light"><div class="stage"><img src="assets/symbol-mono-light.svg" alt="Monochrome on light" style="max-height:110px"></div><h3>One colour — light ground</h3><p class="cap">The same geometry, inverted.</p></div>
+  <div class="card"><div class="stage"><img src="assets/symbol-emerald.svg" alt="Emerald" class="h110"></div><h3>Emerald — primary</h3><p class="cap">The default, everywhere.</p></div>
+  <div class="card"><div class="stage"><img src="assets/symbol-brass.svg" alt="Brass accent" class="h110"></div><h3>Brass accent — optional</h3><p class="cap">Restrained premium use only. Never the default.</p></div>
+  <div class="card"><div class="stage"><img src="assets/symbol-mono-dark.svg" alt="Monochrome on dark" class="h110"></div><h3>One colour — dark ground</h3><p class="cap">Single fill. No colour dependency.</p></div>
+  <div class="card light"><div class="stage"><img src="assets/symbol-mono-light.svg" alt="Monochrome on light" class="h110"></div><h3>One colour — light ground</h3><p class="cap">The same geometry, inverted.</p></div>
 </div>
 
 <h2>3 · Small sizes — the real test</h2>
-<p class="sub" style="margin-bottom:0">Rendered at true pixel size. The counters in the Z and the A must survive.</p>
-<div class="card" style="margin-top:18px">
+<p class="sub mb0">Rendered at true pixel size. The counters in the Z and the A must survive.</p>
+<div class="card mt18">
   <div class="sizes">
     <figure><img src="assets/symbol-emerald.svg" width="96" alt=""><figcaption class="cap">96px</figcaption></figure>
     <figure><img src="assets/appicon-44.svg" width="44" alt=""><figcaption class="cap">44px app icon</figcaption></figure>
@@ -121,19 +78,19 @@ the navigation still carries the rejected Threshold mark until this direction is
 <h2>4 · Lockups</h2>
 <div class="two">
   <div class="card"><div class="stage"><img src="assets/lockup-horizontal.svg" alt="Horizontal lockup"></div><h3>Horizontal — navigation</h3><p class="cap">The primary lockup.</p></div>
-  <div class="card"><div class="stage"><img src="assets/lockup-stacked.svg" alt="Stacked lockup" style="max-height:130px"></div><h3>Stacked</h3><p class="cap">For square and centred placements.</p></div>
+  <div class="card"><div class="stage"><img src="assets/lockup-stacked.svg" alt="Stacked lockup" class="h130"></div><h3>Stacked</h3><p class="cap">For square and centred placements.</p></div>
   <div class="card"><div class="stage"><img src="assets/lockup-zohar-ai.svg" alt="ZOHAR AI lockup"></div><h3>ZOHAR AI — secondary</h3><p class="cap">Company and schema name. Visible brand stays ZOHAR.</p></div>
-  <div class="card"><div class="stage"><img src="assets/wordmark.svg" alt="ZOHAR wordmark" style="max-height:60px"></div><h3>Wordmark</h3><p class="cap">Real outlined vector, drawn from the committed display face.</p></div>
+  <div class="card"><div class="stage"><img src="assets/wordmark.svg" alt="ZOHAR wordmark" class="h60"></div><h3>Wordmark</h3><p class="cap">Real outlined vector, drawn from the committed display face.</p></div>
 </div>
 
 <h2>5 · In place — dark and light navigation</h2>
-<div style="display:grid;gap:16px;margin-top:18px">
+<div class="navstack">
   <div class="navbar"><img src="assets/lockup-horizontal.svg" alt="ZOHAR"><div class="navlinks"><span>Work</span><span>Method</span><span>Offer</span><span>Contact</span></div></div>
   <div class="navbar light"><img src="assets/lockup-horizontal-mono-light.svg" alt="ZOHAR"><div class="navlinks"><span>Work</span><span>Method</span><span>Offer</span><span>Contact</span></div></div>
 </div>
 
 <h2>6 · Social mark</h2>
-<div class="card" style="margin-top:18px"><div class="stage" style="min-height:0"><img src="assets/social-mark.svg" alt="Social mark" style="max-height:290px"></div><p class="cap">1200×630. No badge, no reflection, no subtitle.</p></div>
+<div class="card mt18"><div class="stage mh0"><img src="assets/social-mark.svg" alt="Social mark" class="h290"></div><p class="cap">1200×630. No badge, no reflection, no subtitle.</p></div>
 
 <h2>7 · Motion principle, and the static state</h2>
 <div class="note">
@@ -150,8 +107,8 @@ the navigation still carries the rejected Threshold mark until this direction is
   </ul>
 </div>
 <div class="two">
-  <div class="card"><div class="stage"><img src="assets/symbol-emerald.svg" alt="" style="max-height:120px"></div><h3>Static / reduced-motion</h3><p class="cap">Identical to the default. This is the artwork, not a fallback.</p></div>
-  <div class="card"><div class="stage"><img src="assets/symbol-brass.svg" alt="" style="max-height:120px"></div><h3>Accent at rest</h3><p class="cap">Where the incision would catch light, shown statically.</p></div>
+  <div class="card"><div class="stage"><img src="assets/symbol-emerald.svg" alt="" class="h120"></div><h3>Static / reduced-motion</h3><p class="cap">Identical to the default. This is the artwork, not a fallback.</p></div>
+  <div class="card"><div class="stage"><img src="assets/symbol-brass.svg" alt="" class="h120"></div><h3>Accent at rest</h3><p class="cap">Where the incision would catch light, shown statically.</p></div>
 </div>
 
 <h2>8 · Delivered files</h2>
@@ -169,7 +126,7 @@ the navigation still carries the rejected Threshold mark until this direction is
   <tr><td><code>social-mark.svg</code></td><td>1200×630 social mark</td></tr>
 </table>
 
-<div class="note" style="margin-top:34px">
+<div class="note mt34">
   <b>Nothing is live.</b> The site-wide mark is unchanged and will stay the Threshold until you
   approve this direction. On approval the swap is a single sprite replacement plus the favicon and
   social references — the lockups are already sized to the current navigation.
