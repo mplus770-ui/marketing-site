@@ -15,9 +15,10 @@
 //   3. reviewed alt text in both published locales
 //   4. published: true
 //
-// This build environment has no outbound HTTP, so no external destination
-// could be verified and no external site could be captured. Those entries stay
-// unpublished by design rather than shipping an unverified link.
+// Live destinations captured through the review browser record the capture
+// date in source.live/source.captured and the verification method explicitly.
+// Broken or unverified destinations stay unpublished rather than shipping a
+// misleading card.
 // See docs/project-media-spec.md for the capture and export specification.
 
 export default [
@@ -52,15 +53,28 @@ export default [
   },
   {
     slug: "better-world", name: "Better World", order: 2,
-    own: false, verified: true, permission: true, published: false,
-    url: "https://alefbetcontent.com/new/",   // AWAITING VERIFICATION
+    own: false, verified: true, permission: true, published: true,
+    // /new/ now redirects to a Vercel 404. The live project is at the root.
+    url: "https://www.alefbetcontent.com/",
+    urlVerifiedBy: "live-browser:2026-09-22",
     external: true,
-    category: { he: "פרויקט לקוח", en: "Client project" },
-    description: { he: null, en: null },
-    alt: { he: null, en: null },
+    category: { he: "עולם תוכן ומדע־בדיוני", en: "Science-fiction content universe" },
+    description: {
+      he: "אתר תוכן קולנועי לסדרת ספרים וחזון על עתיד האנושות.",
+      en: "A cinematic content site for a book series and a vision of humanity's future.",
+    },
+    alt: {
+      he: "Better World — אתר תוכן קולנועי בעברית על עתיד האנושות.",
+      en: "Better World — a cinematic Hebrew content site about humanity's future.",
+    },
     focal: [0.5, 0.18],
-    source: null,
-    media: null,
+    source: { live: "https://www.alefbetcontent.com/", captured: "2026-09-22" },
+    media: {
+      card:     { avif: "/assets/work/better-world-card.avif",      webp: "/assets/work/better-world-card.webp" },
+      card2x:   { avif: "/assets/work/better-world-card@2x.avif",   webp: "/assets/work/better-world-card@2x.webp" },
+      mobile:   { avif: "/assets/work/better-world-mobile.avif",    webp: "/assets/work/better-world-mobile.webp" },
+      mobile2x: { avif: "/assets/work/better-world-mobile@2x.avif", webp: "/assets/work/better-world-mobile@2x.webp" },
+    },
   },
   {
     slug: "yayin", name: "YAYIN", order: 3,
@@ -112,32 +126,75 @@ export default [
   },
   {
     slug: "eco-tech-israel", name: "Eco-Tech Israel", order: 5,
-    own: false, verified: true, permission: true, published: false,
-    url: "https://ecot.co.il/",       // AWAITING VERIFICATION
+    own: false, verified: true, permission: true, published: true,
+    url: "https://ecot.co.il/",
+    urlVerifiedBy: "live-browser:2026-09-22",
     external: true,
-    category: { he: "פרויקט אתר", en: "Website project" },
-    description: { he: null, en: null }, alt: { he: null, en: null },
-    focal: [0.5, 0.18], source: { legacy: "mplus770-ui/zohar-ai-site" }, media: null,
+    category: { he: "אנרגיה סולארית ומסחר", en: "Solar energy and commerce" },
+    description: {
+      he: "אתר מסחרי למערכות סולאריות, מחשבון חיסכון וחנות.",
+      en: "A commercial solar-energy site with savings guidance and a store.",
+    },
+    alt: {
+      he: "Eco-Tech Israel — אתר סולארי המציג מערכת גג, חיסכון וקריאה להצעת מחיר.",
+      en: "Eco-Tech Israel — a solar website showing a rooftop system, savings and quote CTA.",
+    },
+    focal: [0.55, 0.18],
+    source: { live: "https://ecot.co.il/", captured: "2026-09-22", legacy: "mplus770-ui/zohar-ai-site" },
+    media: {
+      card:     { avif: "/assets/work/eco-tech-israel-card.avif",      webp: "/assets/work/eco-tech-israel-card.webp" },
+      card2x:   { avif: "/assets/work/eco-tech-israel-card@2x.avif",   webp: "/assets/work/eco-tech-israel-card@2x.webp" },
+      mobile:   { avif: "/assets/work/eco-tech-israel-mobile.avif",    webp: "/assets/work/eco-tech-israel-mobile.webp" },
+      mobile2x: { avif: "/assets/work/eco-tech-israel-mobile@2x.avif", webp: "/assets/work/eco-tech-israel-mobile@2x.webp" },
+    },
   },
   {
     slug: "urban-fashion-store", name: "Urban Fashion Store", order: 6,
-    own: false, verified: true, permission: true, published: false,
-    url: "https://theme389-urban-fashion.myshopify.com/",   // AWAITING VERIFICATION
+    own: false, verified: true, permission: true, published: true,
+    url: "https://theme389-urban-fashion.myshopify.com/",
+    urlVerifiedBy: "live-browser:2026-09-22",
     external: true,
     category: { he: "פרויקט מסחר אלקטרוני", en: "E-commerce project" },
-    description: { he: null, en: null }, alt: { he: null, en: null },
-    focal: [0.5, 0.18], source: { legacy: "mplus770-ui/zohar-ai-site" }, media: null,
+    description: {
+      he: "חנות אופנה עם קטלוג, מבצעים, וריאציות מוצר ומסלול רכישה.",
+      en: "A fashion store with catalogue, promotions, variants and a purchase journey.",
+    },
+    alt: {
+      he: "Urban Fashion — חנות אופנה מקוונת עם תמונת קמפיין וקריאה לקנייה.",
+      en: "Urban Fashion — an online fashion store with campaign imagery and shop CTA.",
+    },
+    focal: [0.5, 0.18],
+    source: { live: "https://theme389-urban-fashion.myshopify.com/", captured: "2026-09-22", legacy: "mplus770-ui/zohar-ai-site" },
+    media: {
+      card:     { avif: "/assets/work/urban-fashion-store-card.avif",      webp: "/assets/work/urban-fashion-store-card.webp" },
+      card2x:   { avif: "/assets/work/urban-fashion-store-card@2x.avif",   webp: "/assets/work/urban-fashion-store-card@2x.webp" },
+      mobile:   { avif: "/assets/work/urban-fashion-store-mobile.avif",    webp: "/assets/work/urban-fashion-store-mobile.webp" },
+      mobile2x: { avif: "/assets/work/urban-fashion-store-mobile@2x.avif", webp: "/assets/work/urban-fashion-store-mobile@2x.webp" },
+    },
   },
   {
     slug: "le-monde-sefarade", name: "Le Monde Séfarade", order: 7,
-    own: false, verified: true, permission: true, published: false,
-    // The legacy source links this over http://, not https:// — confirm the
-    // scheme during verification before it is ever published.
-    url: "https://lemondesepharade.co.il/",  // AWAITING VERIFICATION
+    own: false, verified: true, permission: true, published: true,
+    url: "https://lemondesepharade.co.il/",
+    urlVerifiedBy: "live-browser:2026-09-22",
     external: true,
     category: { he: "אתר תרבות וקהילה", en: "Cultural/community website project" },
-    description: { he: null, en: null }, alt: { he: null, en: null },
-    focal: [0.5, 0.18], source: { legacy: "mplus770-ui/zohar-ai-site" }, media: null,
+    description: {
+      he: "מגזין רב־לשוני לתרבות, מורשת וקהילות ספרדיות.",
+      en: "A multilingual magazine for Sephardic culture, heritage and communities.",
+    },
+    alt: {
+      he: "Le Monde Séfarade — אתר מגזין כחול וזהב לתרבות ולמורשת ספרדית.",
+      en: "Le Monde Séfarade — a blue-and-gold magazine site for Sephardic culture and heritage.",
+    },
+    focal: [0.5, 0.18],
+    source: { live: "https://lemondesepharade.co.il/", captured: "2026-09-22", legacy: "mplus770-ui/zohar-ai-site" },
+    media: {
+      card:     { avif: "/assets/work/le-monde-sefarade-card.avif",      webp: "/assets/work/le-monde-sefarade-card.webp" },
+      card2x:   { avif: "/assets/work/le-monde-sefarade-card@2x.avif",   webp: "/assets/work/le-monde-sefarade-card@2x.webp" },
+      mobile:   { avif: "/assets/work/le-monde-sefarade-mobile.avif",    webp: "/assets/work/le-monde-sefarade-mobile.webp" },
+      mobile2x: { avif: "/assets/work/le-monde-sefarade-mobile@2x.avif", webp: "/assets/work/le-monde-sefarade-mobile@2x.webp" },
+    },
   },
   {
     slug: "gourmet-delivery", name: "Gourmet Delivery", order: 8,

@@ -7,9 +7,9 @@
    The duplicate exists only for the eye: it is aria-hidden, its links are
    tabindex="-1", and assistive technology therefore hears each project once.
 
-   Mobile: the animation is off and the same rail is a native scroll-snap
-   carousel, so touch works exactly as a user expects and nothing auto-scrolls
-   under their finger. #}
+   Mobile uses the same continuous motion at a slightly quicker duration.
+   Pointer contact pauses immediately; reduced-motion turns it into a manual
+   scrollable row and removes the decorative duplicate. #}
 {% set shown = projects | visible %}
 {% if shown.length %}
 <div class="showcase" data-showcase>

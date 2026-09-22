@@ -193,4 +193,41 @@
     });
   }
 
+  /* ── continuously moving visual rails ──────────────────────────────────
+       Both rails move on desktop and touch screens. Touch/pointer contact,
+       keyboard focus, an explicit pause, an offscreen rail or a hidden tab
+       pauses immediately. Reduced-motion visitors get a static manual row. */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-showcase],[data-rail]"), function (el) {
+    var toggle = el.matches("[data-showcase]")
+      ? document.querySelector("[data-showcase-toggle]") : null;
+    var explicit = false, visible = true;
+
+    function setPaused() {
+      var pausedNow = reduce.matches || explicit || !visible || document.hidden;
+      el.dataset.paused = pausedNow ? "1" : "0";
+      if (toggle) {
+        toggle.dataset.paused = pausedNow ? "1" : "0";
+        toggle.setAttribute("aria-pressed", explicit ? "true" : "false");
+        toggle.setAttribute("aria-label",
+          explicit ? toggle.dataset.labelPlay : toggle.dataset.labelPause);
+      }
+    }
+    function interact(on) { el.dataset.interacting = on ? "1" : "0"; }
+    el.addEventListener("pointerdown", function () { interact(true); });
+    el.addEventListener("pointerup", function () { interact(false); });
+    el.addEventListener("pointercancel", function () { interact(false); });
+    el.addEventListener("pointerleave", function () { interact(false); });
+    if (toggle) toggle.addEventListener("click", function () {
+      explicit = !explicit; setPaused();
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        visible = !!entries[0].isIntersecting; setPaused();
+      }, { threshold: .08 }).observe(el);
+    }
+    document.addEventListener("visibilitychange", setPaused);
+    if (reduce.addEventListener) reduce.addEventListener("change", setPaused);
+    setPaused();
+  });
+
 })();

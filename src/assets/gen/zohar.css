@@ -166,6 +166,7 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;
   min-block-size:44px}
 .nav-logo .wm{font-family:var(--font-display);font-weight:600;font-size:1.3rem;letter-spacing:.14em;color:var(--z-text-hi)}
+.nav-logo svg{overflow:visible;filter:drop-shadow(0 0 9px rgba(52,227,155,.16))}
 .nav-links{display:flex;gap:clamp(6px,1.4vw,18px);margin-inline-start:auto}
 .nav-links a{display:inline-flex;align-items:center;justify-content:center;
   min-block-size:44px;min-inline-size:44px;padding-inline:8px;border-radius:10px}
@@ -182,6 +183,12 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   background:none;border-radius:var(--r-sm);cursor:pointer;flex-direction:column;align-items:center;
   justify-content:center;gap:5px;flex-shrink:0}
 .burger i{inline-size:18px;block-size:1.5px;background:var(--z-text-hi);display:block}
+@media(max-width:560px){
+  .nav-in{block-size:64px;gap:10px}
+  .nav-logo{gap:8px}
+  .nav-logo .wm{font-size:1.12rem;letter-spacing:.11em}
+  .nav-logo svg{inline-size:28px;block-size:28px}
+}
 /* full-screen sheet, focus-trapped */
 .sheet{position:fixed;inset:0;z-index:120;background:var(--z-canvas);display:none;
   flex-direction:column;padding:max(16px,env(safe-area-inset-top)) var(--gutter) max(20px,env(safe-area-inset-bottom))}
@@ -616,11 +623,29 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   .hero-reassure{gap:7px;row-gap:1px;font-size:13px}
 }
 @media(max-width:560px){
-  .hero{min-block-size:min(720px,96svh)}
+  /* The approved visual is a lead character, not wallpaper. Keep only the
+     decision-making copy above it and reserve almost half the first viewport
+     as a clean, unobstructed stage. */
+  .hero{min-block-size:calc(100svh - 64px);block-size:auto;padding-block:12px 0}
+  .hero-inner{min-block-size:calc(100svh - 76px);gap:0}
+  .hero-copy{padding-block:8px 14px;max-inline-size:100%}
+  .hero h1{font-size:clamp(2.65rem,12.5vw,3.45rem);line-height:1.02;margin-block-end:8px}
+  .hero .promise{font-size:1.075rem;margin-block-end:10px}
+  .hero .lead,.hero-reassure{display:none}
+  .hero-ctas{margin-block-end:0;gap:8px}
+  .hero-ctas .btn-lg{min-block-size:52px;inline-size:100%;font-size:1rem}
+  .hero-brief-link{min-block-size:36px;font-size:.875rem}
+  .hero-scrim-edge,[dir="rtl"] .hero-scrim-edge{background:linear-gradient(to bottom,
+    rgba(4,21,15,.94) 0%,rgba(4,21,15,.9) 31%,rgba(4,21,15,.58) 43%,
+    rgba(4,21,15,.12) 55%,rgba(4,21,15,0) 68%)}
+  .hero-scrim-foot{background:linear-gradient(to bottom,transparent 88%,rgba(4,21,15,.38) 96%,var(--z-canvas) 100%)}
+  .hero-stage-poster img,.hero-stage-video{object-position:center 64%}
   /* The honesty caption never shortens, so it gets the width instead: the
      control keeps its 44px target and the sentence runs under it. */
-  .hero-foot{align-items:flex-start}
-  .hero-caption{font-size:11px;line-height:1.4;flex:1 1 100%;text-wrap:balance}
+  .hero-foot{align-items:flex-end;padding:30px 0 8px;margin-inline:0;
+    background:linear-gradient(to top,rgba(4,21,15,.72),rgba(4,21,15,0));gap:8px}
+  .hero-caption{font-size:12px;line-height:1.35;flex:1 1 180px;text-wrap:pretty}
+  .hero-caption-chip{padding:3px 8px;margin-inline-end:5px}
 }
 /* Landscape phones: stacking is wrong here — there is width to spare and no
    height at all, so the copy returns to a column beside the stage and the
@@ -653,8 +678,8 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
    the CTA and a real band of film all have to be above the fold at 320x568,
    so the reassurance line goes below it. */
 @media(max-width:360px),(max-height:620px) and (orientation:portrait){
-  .hero{min-block-size:min(600px,100svh)}
-  .hero .lead{font-size:.9375rem;line-height:1.5;margin-block-end:12px}
+  .hero{min-block-size:calc(100svh - 56px)}
+  .hero-inner{min-block-size:calc(100svh - 68px)}
   .hero .promise{font-size:1rem;margin-block-end:8px}
   .hero h1{margin-block-end:8px}
   .hero-ctas{margin-block-end:8px}
@@ -689,8 +714,8 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
    Desktop is one animated track carrying the real list plus a single
    aria-hidden duplicate; translating by exactly half the track resets on an
    identical frame, so the loop never visibly jumps.
-   Mobile turns the animation off and the same rail becomes a native
-   scroll-snap carousel — nothing ever scrolls under the user's finger. */
+   Mobile keeps the same cinematic motion. It pauses immediately while a
+   visitor touches, drags or focuses the rail, then resumes after release. */
 .showcase{position:relative;overflow:hidden;
   -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
   mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
@@ -707,7 +732,8 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
    marks the rail paused (tab hidden, pointer held, explicit toggle). */
 .showcase:hover .showcase-track,
 .showcase:focus-within .showcase-track,
-.showcase[data-paused="1"] .showcase-track{animation-play-state:paused}
+.showcase[data-paused="1"] .showcase-track,
+.showcase[data-interacting="1"] .showcase-track{animation-play-state:paused}
 
 /* Cards are equal height regardless of copy length, and the call to action
    sits on the same baseline across the rail. */
@@ -741,17 +767,15 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .showcase-btn[data-paused="1"] .mi-play{display:block}
 .showcase-btn[data-paused="1"] .mi-pause{display:none}
 
-/* Mobile: no automatic motion, native snap, and the duplicate is removed so
-   nothing is repeated to anyone — visually or semantically. */
+/* Mobile stays automatic, but touch pauses it immediately. The duplicate is
+   aria-hidden and untabbable, so assistive technology hears one set. */
 @media(max-width:860px){
-  .showcase{overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;
-    -webkit-mask-image:none;mask-image:none;padding-inline:var(--gutter);
-    scrollbar-width:none;padding-block-end:6px}
-  .showcase::-webkit-scrollbar{display:none}
-  .showcase-track{animation:none!important;inline-size:auto}
-  [data-showcase-clone]{display:none}
-  .showcase-item{scroll-snap-align:center;inline-size:min(330px,84vw)}
-  .showcase-btn{display:none}
+  .showcase{overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent);
+    mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent)}
+  .showcase-track{inline-size:max-content;animation-duration:34s}
+  .showcase-item{inline-size:min(330px,82vw)}
+  .showcase-btn{display:inline-flex}
 }
 
 /* Reduced motion: automatic movement stops everywhere. The rail stays a
@@ -781,7 +805,8 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 @keyframes capRun{from{transform:translateX(calc(-50% - 9px))}to{transform:translateX(0)}}
 @keyframes capRunRtl{from{transform:translateX(calc(50% + 9px))}to{transform:translateX(0)}}
 .cap:hover .cap-track,.cap:focus-within .cap-track,
-.cap[data-paused="1"] .cap-track{animation-play-state:paused}
+.cap[data-paused="1"] .cap-track,
+.cap[data-interacting="1"] .cap-track{animation-play-state:paused}
 
 .cap-frame{margin:0;position:relative;border:1px solid var(--z-border);border-radius:14px;
   overflow:hidden;background:var(--z-surface-1)}
@@ -803,14 +828,11 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .cap-note-body{font-size:var(--fs-xs);color:var(--z-text-mute);line-height:1.6}
 
 @media(max-width:860px){
-  .cap{overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-inline:contain;
-    -webkit-mask-image:none;mask-image:none;padding-inline:var(--gutter);
-    scrollbar-width:none;padding-block:20px}
-  .cap::-webkit-scrollbar{display:none}
-  .cap-track{animation:none!important;inline-size:auto}
-  [data-rail-clone]{display:none}
-  .cap-lift{transform:none}
-  .cap-item{scroll-snap-align:center}
+  .cap{overflow:hidden;padding-block:20px;
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent);
+    mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent)}
+  .cap-track{inline-size:max-content;animation-duration:58s}
+  .cap-lift{transform:translateY(-10px) scale(.96)}
   .cap-wide .cap-frame{inline-size:280px}
   .cap-tall .cap-frame{inline-size:186px}
   .cap-note .cap-frame-note{inline-size:260px}
@@ -866,7 +888,7 @@ bdi{unicode-bidi:isolate}
 .focal-better-world{object-position:50% 18%}
 .focal-yayin{object-position:50% 30%}
 .focal-zohar{object-position:50% 18%}
-.focal-eco-tech-israel{object-position:50% 18%}
+.focal-eco-tech-israel{object-position:55.00000000000001% 18%}
 .focal-urban-fashion-store{object-position:50% 18%}
 .focal-le-monde-sefarade{object-position:50% 18%}
 .focal-gourmet-delivery{object-position:50% 18%}
