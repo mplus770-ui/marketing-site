@@ -482,9 +482,9 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .hero-stage{position:absolute;inset:0;z-index:0}
 .hero-stage-poster,.hero-stage-poster img,.hero-stage-video{
   position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover;display:block}
-/* The grade belongs to the footage, not to the stage: on the stage it also lifted
-   the foot scrim's canvas stop and left a visible seam where the hero ends. */
-.hero-stage-poster img,.hero-stage-video{filter:saturate(1.06) brightness(1.1)}
+/* No grade. The licensed scene needed one; this film is authored from the
+   site's own tokens, so lifting it here only flattened the blacks and pushed
+   the whole hero towards a single mid-green. Grade the film, not the stage. */
 .hero-stage-poster{z-index:0}
 /* The 1px inset is load-bearing: poster and video are otherwise the same box
    with the same imagery, so which one wins LCP was a coin flip on paint order.
@@ -492,19 +492,24 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
    wins. Do not remove without re-measuring LCP. */
 .hero-stage-video{z-index:1;inset:1px;opacity:0;transition:opacity .5s ease}
 .hero-stage[data-playing="1"] .hero-stage-video{opacity:1}
-/* Mirrored in RTL so the frame's quiet side always sits behind the copy. */
-[dir="rtl"] .hero-stage{transform:scaleX(-1)}
+/* NOT mirrored. The film carries real words in the visitor's own language, so
+   a scaleX flip would reverse every glyph in it. Each direction is composed
+   separately in tools/hero-film and selected at build time; the quiet side
+   still lands behind the copy, because the composition puts it there. */
 
 .hero-scrim-edge,.hero-scrim-foot{position:absolute;inset:0;z-index:2;pointer-events:none}
 /* LENGTH-based stops, not percentages. A percentage scrim tracks the viewport
    while the copy column tracks a max measure, so at 1920 the bright frame
    drifted under the H1 and contrast measured 1.40:1. In rem the scrim stays
    locked to the copy at every width. */
+/* Pulled in once the film gained its own quiet zone: the old 62rem reach was
+   sized for a photographic frame that was bright edge to edge, and over an
+   authored composition it only made the surfaces read as ghosts. */
 .hero-scrim-edge{background:linear-gradient(to right,
-  rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 30rem,rgba(4,21,15,.52) 44rem,rgba(4,21,15,0) 62rem)}
+  rgba(4,21,15,.96) 0,rgba(4,21,15,.88) 26rem,rgba(4,21,15,.42) 37rem,rgba(4,21,15,0) 50rem)}
 [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,
-  rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 30rem,rgba(4,21,15,.52) 44rem,rgba(4,21,15,0) 62rem)}
-.hero-scrim-foot{background:linear-gradient(to bottom,transparent 58%,rgba(4,21,15,.62) 84%,var(--z-canvas) 100%)}
+  rgba(4,21,15,.96) 0,rgba(4,21,15,.88) 26rem,rgba(4,21,15,.42) 37rem,rgba(4,21,15,0) 50rem)}
+.hero-scrim-foot{background:linear-gradient(to bottom,transparent 70%,rgba(4,21,15,.5) 88%,var(--z-canvas) 100%)}
 
 .hero-inner{position:relative;z-index:3;inline-size:100%;
   display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vh,34px)}
@@ -554,50 +559,63 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   cursor:pointer;transition:border-color .18s}
 .hero-motion-btn:hover{border-color:var(--z-action-400)}
 .hero-motion-btn .mi-play{display:none}
-.hero-motion-btn[data-state="paused"] .mi-play{display:block}
-.hero-motion-btn[data-state="paused"] .mi-pause{display:none}
+.hero-motion-btn[data-state="paused"] .mi-play,
+.hero-motion-btn[data-state="ended"] .mi-play{display:block}
+.hero-motion-btn[data-state="paused"] .mi-pause,
+.hero-motion-btn[data-state="ended"] .mi-pause{display:none}
 
 @media(max-width:1000px){
   /* Mobile: the stage still fills the hero, so meaningful motion is inside the
      first viewport rather than below a full screen of copy. The copy sits in
      the upper portion and the scrim runs top-to-bottom instead of edge-to-edge. */
-  .hero{min-block-size:min(760px,94svh);align-items:flex-start;padding-block:clamp(1.25rem,3vh,2rem)}
-  .hero-copy{max-inline-size:100%;padding-block:12px 30px}
+  /* stretch, not flex-start: the inner column has to fill the hero or the
+     foot's auto top margin has nothing to push against and the caption lands
+     in the middle of the film instead of under it. */
+  .hero{min-block-size:min(760px,94svh);align-items:stretch;padding-block:clamp(1rem,2.4vh,1.75rem)}
+  .hero-copy{max-inline-size:100%;padding-block:10px 22px}
   .hero-copy .lead{max-inline-size:34rem}
   /* Every gap removed here is exposed stage. The phone reads the promise and
      the CTA without scrolling, and the structure keeps the bottom third. */
-  .hero-eyebrow{margin-block-end:10px}
   .hero h1{margin-block-end:10px}
-  .hero .promise{margin-block-end:12px}
-  .hero .lead{margin-block-end:18px}
-  .hero-ctas{margin-block-end:12px}
+  .hero .promise{margin-block-end:10px}
+  .hero .lead{margin-block-end:16px}
+  .hero-ctas{margin-block-end:10px}
+  /* The eyebrow restates what the H1 and the promise already say. On a phone
+     its height is worth more as exposed film than as a third restatement. */
+  .hero-eyebrow{display:none}
   /* The copy panel is translucent on a phone, not a lid: the structure reads
      through the type instead of the first viewport being a dark rectangle.
      LENGTH-based fade, confined to the trailing padding — a percentage fade
      put the soft end under the reassurance line and measured 1.15:1. */
-  .hero-copy{--hero-vpad:12px}
+  .hero-copy{--hero-vpad:10px}
   .hero-copy::after,[dir="rtl"] .hero-copy::after{background:rgba(4,21,15,.9);
     -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
-      #000 calc(100% - 30px),rgba(0,0,0,0) 100%);
+      #000 calc(100% - 22px),rgba(0,0,0,0) 100%);
     mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
-      #000 calc(100% - 30px),rgba(0,0,0,0) 100%)}
+      #000 calc(100% - 22px),rgba(0,0,0,0) 100%)}
+  /* The scrims stop where the copy stops. Carrying them to the foot is what
+     made the exposed band read as an almost-black strip: the film was there
+     and two gradients were painting over it. */
   .hero-scrim-edge,[dir="rtl"] .hero-scrim-edge{background:linear-gradient(to bottom,
-    rgba(4,21,15,.9) 0%,rgba(4,21,15,.84) 40%,rgba(4,21,15,.5) 64%,rgba(4,21,15,.2) 78%,rgba(4,21,15,.46) 100%)}
-  .hero-scrim-foot{background:linear-gradient(to bottom,transparent 66%,rgba(4,21,15,.62) 88%,var(--z-canvas) 100%)}
-  .hero-inner{justify-content:flex-start;gap:14px}
+    rgba(4,21,15,.9) 0%,rgba(4,21,15,.86) 34%,rgba(4,21,15,.54) 48%,
+    rgba(4,21,15,.14) 60%,rgba(4,21,15,.06) 100%)}
+  .hero-scrim-foot{background:linear-gradient(to bottom,transparent 84%,rgba(4,21,15,.42) 94%,var(--z-canvas) 100%)}
+  .hero-inner{justify-content:flex-start;gap:12px}
   /* The caption sits on the stage, not in the panel, so it carries its own
-     contrast — as a thickening of the foot scrim rather than a box. */
-  .hero-foot{margin-block-start:auto;gap:10px;
-    padding:18px var(--gutter) 10px;margin-inline:calc(-1 * var(--gutter));
-    background:linear-gradient(to top,rgba(4,21,15,.94) 0,rgba(4,21,15,.9) 64%,rgba(4,21,15,0) 100%)}
-  .hero-reassure{gap:8px;row-gap:2px}
+     contrast — as a thickening of the foot scrim rather than a box. It is kept
+     as short and as low as it can be: every pixel it takes is a pixel of film
+     the visitor never sees. */
+  .hero-foot{margin-block-start:auto;gap:9px;
+    padding:12px var(--gutter) 6px;margin-inline:calc(-1 * var(--gutter));
+    background:linear-gradient(to top,rgba(4,21,15,.9) 0,rgba(4,21,15,.8) 58%,rgba(4,21,15,0) 100%)}
+  .hero-reassure{gap:7px;row-gap:1px;font-size:13px}
 }
 @media(max-width:560px){
   .hero{min-block-size:min(720px,96svh)}
   /* The honesty caption never shortens, so it gets the width instead: the
      control keeps its 44px target and the sentence runs under it. */
   .hero-foot{align-items:flex-start}
-  .hero-caption{font-size:12.5px;line-height:1.45;flex:1 1 100%}
+  .hero-caption{font-size:11px;line-height:1.4;flex:1 1 100%;text-wrap:balance}
 }
 /* Landscape phones: stacking is wrong here — there is width to spare and no
    height at all, so the copy returns to a column beside the stage and the
@@ -626,12 +644,35 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
     rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 22rem,rgba(4,21,15,.5) 32rem,rgba(4,21,15,0) 46rem)}
   .hero-foot{margin-block-start:10px;padding:0;margin-inline:0;background:none}
 }
-/* Very short portrait phones: no composition survives here, so the hero gives
-   up its stage share and guarantees the headline, promise and CTA instead. */
-@media(max-width:360px){
-  .hero{min-block-size:min(620px,100svh)}
-  .hero .lead{font-size:1rem;margin-block-end:14px}
-  .hero .promise{margin-block-end:10px}
+/* Short phones. This is a floor, not a preference: the headline, the promise,
+   the CTA and a real band of film all have to be above the fold at 320x568,
+   so the reassurance line goes below it. */
+@media(max-width:360px),(max-height:620px) and (orientation:portrait){
+  .hero{min-block-size:min(600px,100svh)}
+  .hero .lead{font-size:.9375rem;line-height:1.5;margin-block-end:12px}
+  .hero .promise{font-size:1rem;margin-block-end:8px}
+  .hero h1{margin-block-end:8px}
+  .hero-ctas{margin-block-end:8px}
+  .hero-reassure{display:none}
+  .hero-caption{font-size:11px}
+  .hero-foot{padding-block:10px 4px}
+}
+
+/* Ultra-wide. Cover-fitting a 16:9 frame into a 3440x900 hero scales it 2.7x
+   and leaves a zoomed centre band with the composition cut off on every side.
+   The stage is capped instead, anchored to the outer edge where the film lives,
+   and masked on its inner edge so it resolves into the canvas rather than
+   ending on a seam. The video keeps its 1px inset, so the poster is still
+   strictly the larger element and still wins LCP. */
+@media(min-width:2100px){
+  .hero-stage-poster,.hero-stage-video{
+    inline-size:1900px;inset-inline-start:auto;inset-inline-end:0;
+    -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0) 0,#000 15%);
+    mask-image:linear-gradient(to right,rgba(0,0,0,0) 0,#000 15%)}
+  [dir="rtl"] .hero-stage-poster,[dir="rtl"] .hero-stage-video{
+    -webkit-mask-image:linear-gradient(to left,rgba(0,0,0,0) 0,#000 15%);
+    mask-image:linear-gradient(to left,rgba(0,0,0,0) 0,#000 15%)}
+  .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:1898px}
 }
 
 @media(prefers-reduced-motion:reduce){

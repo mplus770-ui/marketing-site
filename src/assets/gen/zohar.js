@@ -132,12 +132,20 @@
     var btn = document.querySelector("[data-motion-toggle]");
     var saveData = !!(navigator.connection && navigator.connection.saveData);
     var wanted = !reduce.matches && !saveData;
-    var armed = false, paused = false;
+    var armed = false, paused = false, ended = false;
 
+    /* The film plays ONCE and comes to rest on its final frame. That frame is
+       also the poster, rendered from the same scene at the same timestamp, so
+       when the video fades out at the end the image underneath is identical
+       and nothing visibly changes. A loop would make the hero restless and
+       would keep a decode running for as long as the tab is open. */
     function sync() {
       if (!btn) return;
-      btn.setAttribute("aria-label", vid.paused ? btn.dataset.labelPlay : btn.dataset.labelPause);
-      btn.setAttribute("data-state", vid.paused ? "paused" : "playing");
+      var state = ended ? "ended" : (vid.paused ? "paused" : "playing");
+      btn.setAttribute("data-state", state);
+      btn.setAttribute("aria-label",
+        state === "ended" ? btn.dataset.labelReplay
+          : state === "paused" ? btn.dataset.labelPlay : btn.dataset.labelPause);
     }
     function arm() {
       if (armed) return;
@@ -148,13 +156,14 @@
       vid.load();
     }
     function start() {
-      if (!wanted || paused) return;
+      if (!wanted || paused || ended) return;
       arm();
       var pr = vid.play();
       if (pr && pr.catch) pr.catch(function () { stage.removeAttribute("data-playing"); });
     }
     function stop() { if (!vid.paused) vid.pause(); }
 
+    vid.addEventListener("ended", function () { ended = true; sync(); });
     vid.addEventListener("playing", function () { stage.setAttribute("data-playing", "1"); sync(); });
     vid.addEventListener("pause", function () { stage.removeAttribute("data-playing"); sync(); });
     vid.addEventListener("error", function () { stage.removeAttribute("data-playing"); });
@@ -165,7 +174,8 @@
       /* Under Save-Data the control is the manual opt-in: one tap loads and
          plays the motion, and nothing is fetched before that. */
       btn.addEventListener("click", function () {
-        if (!wanted) { wanted = true; paused = false; start(); }
+        if (!wanted) { wanted = true; paused = false; ended = false; start(); }
+        else if (ended) { ended = false; paused = false; vid.currentTime = 0; start(); }
         else if (vid.paused) { paused = false; start(); }
         else { paused = true; stop(); }
         sync();

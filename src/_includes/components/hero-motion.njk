@@ -1,7 +1,19 @@
 {# ── Hero stage ─────────────────────────────────────────────────────────────
-   The motion is no longer a boxed illustration beside a text column: it is the
-   hero's full field, and the copy sits on it. Everything that made the boxed
-   version safe is kept.
+   The motion is not a boxed illustration beside a text column: it is the
+   hero's full field, and the copy sits on it.
+
+   THE FILM IS OURS. It is authored in tools/hero-film from this site's own
+   tokens, typefaces and layout language and rendered at build time, so the
+   subject is a business presence being formed — intent, identity, digital
+   surfaces, readiness — and not a licensed architectural scene that read as a
+   property campaign.
+
+   FOUR VARIANTS, ONE DOWNLOAD. The film carries real words, so it cannot be
+   mirrored with a CSS transform the way an abstract frame could: each
+   direction is composed, not flipped. The locale is known at build time, so
+   only that locale's pair is ever referenced, and orientation picks one of the
+   two within it. Portrait phones get the 4:5 cut, whose action sits in the
+   band left exposed below the copy; everything else gets the 16:9 cut.
 
    Poster-first by construction: the <source> elements carry data-src, not src,
    so a <video autoplay> with no resolvable source downloads NOTHING until JS
@@ -9,35 +21,33 @@
    needed (near the viewport, tab visible). Reduced motion, Save-Data and no-JS
    therefore cost zero video bytes rather than "load, then stop".
 
+   The poster IS the film's last frame, rendered from the same scene at the
+   same timestamp, so the resting state and the finished state can never drift
+   apart. The film does NOT loop: it plays once and comes to rest on that
+   frame, and the control becomes a replay.
+
    The poster <img> carries intrinsic width/height inside a sized stage, so
    there is no black frame, no blank frame and no layout shift. The video sits
    on top at opacity 0 and is revealed only once it is genuinely playing, and
    it is inset by 1px so the poster stays strictly the larger element and
-   therefore always wins LCP. Do not remove that inset without re-measuring.
-
-   The tall 4:5 asset is selected on PORTRAIT phones only. A landscape phone is
-   still under 860px wide, and cover-fitting the 4:5 frame into a 844x451 box
-   scaled it 1.17x and cropped to the middle band — a full-bleed villa interior,
-   which is exactly the real-estate read the composition must not have. Landscape
-   takes the 16:9 asset, which needs almost no crop at that ratio.
-
-   The stage is mirrored in RTL. The composition keeps its quiet negative space
-   on one side and its built architecture on the other; mirroring puts the quiet
-   side behind the copy in both scripts instead of dropping Hebrew type onto the
-   brightest part of the frame. #}
+   therefore always wins LCP. Do not remove that inset without re-measuring. #}
+{% set film = "he" if loc.dir == "rtl" else "en" %}
 <div class="hero-stage" data-hero-motion aria-hidden="true">
   <picture class="hero-stage-poster">
-    <source media="(max-width:860px) and (orientation:portrait)" srcset="/assets/motion/zohar-hero-poster-mobile.webp" type="image/webp">
-    <img src="/assets/motion/zohar-hero-poster-desktop.webp" alt=""
+    <source media="(max-width:860px) and (orientation:portrait)"
+            srcset="/assets/motion/zohar-hero-poster-{{ film }}-mobile.webp" type="image/webp">
+    <img src="/assets/motion/zohar-hero-poster-{{ film }}-desktop.webp" alt=""
          width="1280" height="720" decoding="async" fetchpriority="high">
   </picture>
 
-  <video class="hero-stage-video" autoplay muted playsinline loop preload="none"
+  <video class="hero-stage-video" autoplay muted playsinline preload="none"
          disablepictureinpicture disableremoteplayback tabindex="-1">
-    <source media="(max-width:860px) and (orientation:portrait)" data-src="/assets/motion/zohar-hero-motion-mobile.webm" type="video/webm">
-    <source data-src="/assets/motion/zohar-hero-motion-desktop.webm" type="video/webm">
-    <source media="(max-width:860px) and (orientation:portrait)" data-src="/assets/motion/zohar-hero-motion-mobile.mp4" type="video/mp4">
-    <source data-src="/assets/motion/zohar-hero-motion-desktop.mp4" type="video/mp4">
+    <source media="(max-width:860px) and (orientation:portrait)"
+            data-src="/assets/motion/zohar-hero-motion-{{ film }}-mobile.webm" type="video/webm">
+    <source data-src="/assets/motion/zohar-hero-motion-{{ film }}-desktop.webm" type="video/webm">
+    <source media="(max-width:860px) and (orientation:portrait)"
+            data-src="/assets/motion/zohar-hero-motion-{{ film }}-mobile.mp4" type="video/mp4">
+    <source data-src="/assets/motion/zohar-hero-motion-{{ film }}-desktop.mp4" type="video/mp4">
   </video>
 
   {# Two scrims: one along the copy edge for contrast, one at the foot so the

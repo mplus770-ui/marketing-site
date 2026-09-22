@@ -1,0 +1,99 @@
+/* ZOHAR business-presence film — build tooling, never published.
+   Every colour here is a ZOHAR token value; the film has no palette of its own. */
+@font-face{font-family:"Assistant";src:url("/assets/fonts/assistant-400-latin.woff2") format("woff2");
+  font-weight:400;font-display:block;unicode-range:U+0000-024F,U+2000-206F}
+@font-face{font-family:"Assistant";src:url("/assets/fonts/assistant-400-hebrew.woff2") format("woff2");
+  font-weight:400;font-display:block;unicode-range:U+0590-05FF,U+FB1D-FB4F}
+@font-face{font-family:"Assistant";src:url("/assets/fonts/assistant-700-latin.woff2") format("woff2");
+  font-weight:700;font-display:block;unicode-range:U+0000-024F,U+2000-206F}
+@font-face{font-family:"Assistant";src:url("/assets/fonts/assistant-700-hebrew.woff2") format("woff2");
+  font-weight:700;font-display:block;unicode-range:U+0590-05FF,U+FB1D-FB4F}
+@font-face{font-family:"Fraunces";src:url("/assets/fonts/fraunces-600-latin.woff2") format("woff2");
+  font-weight:600;font-display:block}
+@font-face{font-family:"FrankRuhl";src:url("/assets/fonts/frankruhl-700-hebrew.woff2") format("woff2");
+  font-weight:700;font-display:block;unicode-range:U+0590-05FF,U+FB1D-FB4F}
+@font-face{font-family:"FrankRuhl";src:url("/assets/fonts/frankruhl-700-latin.woff2") format("woff2");
+  font-weight:700;font-display:block;unicode-range:U+0000-024F,U+2000-206F}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#04150F}
+.stage{position:relative;overflow:hidden;background:#04150F;
+  --canvas:#04150F; --s1:#07201A; --s2:#0A2B22; --s3:#0F3A2E;
+  --em700:#0B5C43; --em600:#10795A; --em500:#16A37B;
+  --act:#34E39B; --act3:#6FF3BC;
+  --hi:#F4F1EA; --tx:#E6E2D8; --mute:#A9B5AC; --faint:#7E8F85;
+  --brass:#E4B363; --brass6:#A97B36;
+  --serif:"Fraunces",Georgia,serif; --sans:"Assistant",system-ui,sans-serif}
+.stage[data-lang="he"]{--serif:"FrankRuhl",Georgia,serif}
+.scene{position:absolute;inset:0}
+.n{position:absolute;will-change:transform,opacity;transform-origin:50% 50%}
+
+/* atmosphere */
+.glow{border-radius:50%;filter:blur(60px);pointer-events:none}
+.floor{background:linear-gradient(to bottom,rgba(52,227,155,0),rgba(52,227,155,.055) 45%,rgba(52,227,155,0))}
+.vig{background:radial-gradient(ellipse 72% 62% at var(--vx) 52%,rgba(0,0,0,0) 26%,rgba(0,0,0,.55) 78%,rgba(0,0,0,.78) 100%)}
+
+/* type */
+.intent{font-family:var(--serif);color:rgba(244,241,234,.94);line-height:1.22;
+  text-wrap:balance;font-weight:600}
+.stage[data-lang="he"] .intent{font-weight:700}
+.rule{background:linear-gradient(to right,rgba(52,227,155,0),var(--act) 22%,var(--act) 78%,rgba(52,227,155,0))}
+
+/* identity plate */
+.mod{background:rgba(7,32,26,.72);border:1px solid rgba(244,241,234,.09);border-radius:12px;
+  backdrop-filter:blur(2px);overflow:hidden}
+.mod-h{color:var(--faint);font-family:var(--sans);font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.spec-a{font-family:var(--serif);color:var(--hi);font-weight:600;line-height:1}
+.spec-b{font-family:var(--sans);color:var(--tx);font-weight:700;line-height:1}
+.spec-c{font-family:var(--sans);color:var(--mute);font-weight:400;line-height:1}
+.sw{border-radius:6px}
+.field{border-radius:8px}
+.f-warm{background:linear-gradient(140deg,#3A2A1C,#8C6A3F 55%,#E4B363)}
+.f-cool{background:linear-gradient(140deg,#0A2B22,#16A37B 60%,#6FF3BC)}
+.f-neutral{background:linear-gradient(140deg,#151A18,#4A544E 55%,#C8CFC9)}
+.cat{font-family:var(--sans);color:var(--mute);font-weight:400}
+.pill{border-radius:999px;background:rgba(244,241,234,.10)}
+.voice{font-family:var(--serif);color:var(--act3);font-weight:600}
+
+/* surfaces */
+.surf{background:linear-gradient(160deg,#0C3428 0%,#071F18 100%);
+  border:1px solid rgba(244,241,234,.12);border-radius:10px;overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.55),inset 0 1px 0 rgba(155,250,210,.06)}
+.surf-nav{background:rgba(4,21,15,.62);border-bottom:1px solid rgba(244,241,234,.09)}
+.bar{background:rgba(244,241,234,.26);border-radius:3px}
+.bar-d{background:rgba(244,241,234,.15);border-radius:3px}
+.bar-a{background:var(--act);border-radius:3px}
+.cta{background:linear-gradient(135deg,#16A37B 0%,#34E39B 100%);border-radius:999px}
+.tile{background:rgba(244,241,234,.07);border:1px solid rgba(244,241,234,.12);border-radius:7px}
+.serifline{font-family:var(--serif);color:var(--hi);font-weight:600;line-height:1.05}
+.sansline{font-family:var(--sans);color:var(--tx);font-weight:400;line-height:1.35}
+.kicker{font-family:var(--sans);color:var(--brass);font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.quote{border-inline-start:2px solid var(--act)}
+.conn{background:linear-gradient(to right,rgba(52,227,155,.0),rgba(52,227,155,.55),rgba(52,227,155,0))}
+.connv{background:linear-gradient(to bottom,rgba(52,227,155,.0),rgba(52,227,155,.55),rgba(52,227,155,0))}
+.route{font-family:var(--sans);color:var(--faint);font-weight:400;white-space:nowrap}
+.routechip{border:1px solid rgba(244,241,234,.14);border-radius:999px;color:var(--mute);
+  font-family:var(--sans);display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.sweep{background:linear-gradient(105deg,rgba(255,255,255,0) 40%,rgba(155,250,210,.16) 50%,rgba(255,255,255,0) 60%)}
+
+/* depth: a soft reflection under each plane, and a key light on its edge */
+.refl{background:linear-gradient(to bottom,rgba(52,227,155,.13),rgba(52,227,155,0) 72%);
+  filter:blur(6px);border-radius:0 0 10px 10px}
+.edge{background:linear-gradient(to bottom,rgba(155,250,210,0),rgba(155,250,210,.75) 35%,
+  rgba(155,250,210,.35) 70%,rgba(155,250,210,0));box-shadow:0 0 14px rgba(52,227,155,.45)}
+.mark{border-radius:3px}
+
+/* Depth is carried by tone and shadow, not by perspective: a tilted plane
+   reads as a device mockup, which is the one thing these surfaces are not. */
+.glow-wide{filter:blur(110px)}
+.pool{filter:blur(70px);border-radius:50%}
+.s-site{box-shadow:0 34px 90px rgba(0,0,0,.65),inset 0 1px 0 rgba(155,250,210,.09)}
+.s-mob{box-shadow:0 26px 60px rgba(0,0,0,.7),inset 0 1px 0 rgba(155,250,210,.10)}
+.s-ed,.s-co{background:linear-gradient(160deg,#0A2A21 0%,#061914 100%);
+  border-color:rgba(244,241,234,.085);box-shadow:0 16px 44px rgba(0,0,0,.5)}
+.refl{background:linear-gradient(to bottom,rgba(52,227,155,.20),rgba(52,227,155,0) 65%);
+  filter:blur(4px);border-radius:0 0 12px 12px}
+
+.bloom{filter:blur(80px)}
+.edge{background:linear-gradient(to bottom,rgba(155,250,210,0),rgba(155,250,210,.9) 35%,
+  rgba(155,250,210,.4) 72%,rgba(155,250,210,0))}
