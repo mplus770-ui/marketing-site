@@ -193,9 +193,6 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .sheet-foot{flex-shrink:0;padding-block-start:16px}
 
 /* ── hero ── */
-.hero{position:relative;padding-block:clamp(2rem,4vw,3.75rem) clamp(2.75rem,5.5vw,4.5rem);overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-10% 0 auto;block-size:70%;background:var(--z-grad-dawn);pointer-events:none}
-.hero-grid{position:relative;display:grid;grid-template-columns:5.2fr 6.8fr;gap:clamp(26px,3.4vw,54px);align-items:center}
 .hero-eyebrow{margin-block-end:18px}
 .hero h1{margin-block-end:16px}
 .hero .promise{font-family:var(--font-display);font-size:clamp(1.125rem,1.9vw,1.5rem);font-style:italic;
@@ -206,7 +203,6 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .hero-reassure{display:flex;gap:10px;flex-wrap:wrap;font-size:var(--fs-xs);color:var(--z-text-faint)}
 
 /* ── BUILD demonstration ── */
-.demo-wrap{position:relative;inline-size:100%;max-inline-size:620px;margin-inline:auto}
 .demo{inline-size:100%;aspect-ratio:4/5;background:#06251C;border:1px solid var(--z-border);
   border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(52,227,155,.06)}
 .demo svg{inline-size:100%;block-size:100%}
@@ -382,8 +378,6 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 /* ══ RESPONSIVE ══ */
 @media(max-width:1000px){
   .nav-links{display:none} .burger{display:flex}
-  .hero-grid{grid-template-columns:1fr;gap:22px}
-  .hero-copy{order:1} .demo-wrap{order:2;max-inline-size:100%}
   .hero{padding-block:1.5rem 2.5rem}
   .demo{aspect-ratio:16/11}
   .pillars,.steps{grid-template-columns:repeat(2,1fr)}
@@ -415,8 +409,7 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 @media(max-width:360px){ :root{--gutter:16px} .nav-in{gap:10px} .proof-in{gap:14px} }
 /* landscape phone */
 @media(max-height:480px) and (orientation:landscape) and (max-width:1000px){
-  .hero-grid{grid-template-columns:5.2fr 6.8fr} .demo-wrap{order:0}
-  :root{--fs-d1:1.875rem} .nav-in{block-size:56px}
+  .hero-grid{grid-template-columns:5.2fr 6.8fr}   :root{--fs-d1:1.875rem} .nav-in{block-size:56px}
 }
 @media(min-width:2200px){ .wide{max-width:1600px} }
 /* iOS: inputs must be >=16px or Safari zooms on focus */
@@ -479,53 +472,170 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .card-media img{inline-size:100%;block-size:100%;object-fit:cover;display:block}
 .card-media picture{display:block;inline-size:100%;block-size:100%}
 
-/* ══ HERO MOTION ═══════════════════════════════════════════════════════════
-   The poster is the base layer and is always painted. The video is an overlay
-   that only becomes visible once it is actually playing, so there is never a
-   black frame, a blank frame or a skeleton. aspect-ratio on the wrapper plus
-   width/height on the poster reserve the box before first paint. */
-.hero-motion{position:relative;border:1px solid var(--z-border);border-radius:20px;
-  overflow:hidden;background:#03100B;aspect-ratio:16/9;
-  box-shadow:0 34px 90px rgba(0,0,0,.42);direction:ltr}
-.hero-motion::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-  box-shadow:inset 0 1px 0 rgba(244,241,234,.16);border-radius:inherit}
-.hero-motion-poster,.hero-motion-poster img,.hero-motion-video{
+/* ══ HERO STAGE ═══════════════════════════════════════════════════════════
+   The motion is the hero's field, not a card beside the text. The copy sits on
+   the stage; two scrims carry the contrast so type never lands on the bright
+   architecture. Nothing here may cost layout shift: the stage is absolutely
+   positioned inside a hero whose height is set before paint. */
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;
+  min-block-size:min(900px,92svh);padding-block:clamp(2.5rem,6vh,5rem);overflow:hidden}
+.hero-stage{position:absolute;inset:0;z-index:0}
+.hero-stage-poster,.hero-stage-poster img,.hero-stage-video{
   position:absolute;inset:0;inline-size:100%;block-size:100%;object-fit:cover;display:block}
-.hero-motion-poster{z-index:0}
-/* The 1px inset is deliberate and load-bearing. The poster and the video are
-   otherwise the same box with the same imagery, so which one wins Largest
-   Contentful Paint was a coin flip on paint order — and the brief requires
-   that it is never the video. Insetting the video by 1px makes the poster
-   strictly the larger element, so the poster always wins. The poster sits
-   directly behind and shows the identical frame, so the 1px ring is invisible.
-   Do not remove this without re-measuring LCP. */
-.hero-motion-video{z-index:1;inset:1px;opacity:0;transition:opacity .45s ease}
-.hero-motion[data-playing="1"] .hero-motion-video{opacity:1}
+/* The grade belongs to the footage, not to the stage: on the stage it also lifted
+   the foot scrim's canvas stop and left a visible seam where the hero ends. */
+.hero-stage-poster img,.hero-stage-video{filter:saturate(1.06) brightness(1.1)}
+.hero-stage-poster{z-index:0}
+/* The 1px inset is load-bearing: poster and video are otherwise the same box
+   with the same imagery, so which one wins LCP was a coin flip on paint order.
+   Insetting the video makes the poster strictly larger, so the poster always
+   wins. Do not remove without re-measuring LCP. */
+.hero-stage-video{z-index:1;inset:1px;opacity:0;transition:opacity .5s ease}
+.hero-stage[data-playing="1"] .hero-stage-video{opacity:1}
+/* Mirrored in RTL so the frame's quiet side always sits behind the copy. */
+[dir="rtl"] .hero-stage{transform:scaleX(-1)}
 
-.hero-motion-btn{position:absolute;z-index:4;inset-block-end:12px;inset-inline-end:12px;
-  inline-size:44px;block-size:44px;display:inline-flex;align-items:center;justify-content:center;
+.hero-scrim-edge,.hero-scrim-foot{position:absolute;inset:0;z-index:2;pointer-events:none}
+/* LENGTH-based stops, not percentages. A percentage scrim tracks the viewport
+   while the copy column tracks a max measure, so at 1920 the bright frame
+   drifted under the H1 and contrast measured 1.40:1. In rem the scrim stays
+   locked to the copy at every width. */
+.hero-scrim-edge{background:linear-gradient(to right,
+  rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 30rem,rgba(4,21,15,.52) 44rem,rgba(4,21,15,0) 62rem)}
+[dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,
+  rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 30rem,rgba(4,21,15,.52) 44rem,rgba(4,21,15,0) 62rem)}
+.hero-scrim-foot{background:linear-gradient(to bottom,transparent 58%,rgba(4,21,15,.62) 84%,var(--z-canvas) 100%)}
+
+.hero-inner{position:relative;z-index:3;inline-size:100%;
+  display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vh,34px)}
+/* The copy carries its own guarantee. Contrast cannot depend on where the
+   frame's bright architecture happens to fall, so a soft panel travels with
+   the text and fades out before it can read as a box. */
+.hero-copy{max-inline-size:min(44rem,52%);position:relative;
+  --hero-vpad:clamp(14px,2vh,26px);
+  padding-block:var(--hero-vpad);
+  padding-inline:clamp(14px,2vw,30px) clamp(30px,6vw,120px);
+  margin-inline:calc(-1 * clamp(14px,2vw,30px)) 0;
+  /* The opaque region covers the whole text measure and the fade happens only
+     inside the trailing padding. A percentage fade put the soft end underneath
+     the headline, which is how a 1.10:1 H1 survived at 1920. */
+  --hero-fade:clamp(30px,6vw,120px)}
+/* The panel is a pseudo-element, not the element's own background, so it can be
+   masked without touching the type. A hard top edge with a rounded corner read
+   as a card sitting on a picture; the copy has to feel printed into the frame. */
+.hero-copy::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to right,rgba(4,21,15,.93) 0,
+    rgba(4,21,15,.93) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
+    #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
+    #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%)}
+[dir="rtl"] .hero-copy::after{background:linear-gradient(to left,rgba(4,21,15,.93) 0,
+  rgba(4,21,15,.93) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%)}
+.hero-copy .lead{max-inline-size:33rem}
+
+/* The luminous edge runs from the copy into the stage: one authored system
+   rather than a text column next to an unrelated picture. */
+.hero-copy::before{content:"";position:absolute;inset-block-start:0;inset-inline-start:clamp(14px,2vw,30px);
+  inline-size:clamp(120px,22vw,340px);block-size:1.5px;
+  background:linear-gradient(to right,var(--z-action-400),rgba(52,227,155,0))}
+[dir="rtl"] .hero-copy::before{background:linear-gradient(to left,var(--z-action-400),rgba(52,227,155,0))}
+
+.hero-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-caption{font-size:var(--fs-xs);color:var(--z-text-mute);max-inline-size:40rem;line-height:1.5}
+.hero-caption-chip{display:inline-flex;align-items:center;margin-inline-end:9px;
+  padding:4px 11px;border-radius:var(--r-pill);border:1px solid var(--z-border);
+  background:rgba(4,21,15,.6);color:var(--z-text)}
+
+.hero-motion-btn{inline-size:44px;block-size:44px;flex-shrink:0;
+  display:inline-flex;align-items:center;justify-content:center;
   border:1px solid rgba(244,241,234,.22);border-radius:var(--r-pill);
   background:rgba(4,21,15,.72);backdrop-filter:blur(10px);color:var(--z-text-hi);
-  cursor:pointer;transition:border-color .18s,background .18s}
+  cursor:pointer;transition:border-color .18s}
 .hero-motion-btn:hover{border-color:var(--z-action-400)}
 .hero-motion-btn .mi-play{display:none}
-.hero-motion[data-playing="1"] .hero-motion-btn .mi-play{display:none}
-.hero-motion[data-playing="1"] .hero-motion-btn .mi-pause{display:block}
-.hero-motion:not([data-playing="1"]) .hero-motion-btn .mi-play{display:block}
-.hero-motion:not([data-playing="1"]) .hero-motion-btn .mi-pause{display:none}
+.hero-motion-btn[data-state="paused"] .mi-play{display:block}
+.hero-motion-btn[data-state="paused"] .mi-pause{display:none}
 
-.hero-motion-label{position:absolute;z-index:4;inset-block-end:12px;inset-inline-start:12px;
-  padding:6px 12px;border:1px solid rgba(244,241,234,.18);border-radius:var(--r-pill);
-  background:rgba(4,21,15,.74);backdrop-filter:blur(10px);
-  font-size:var(--fs-xs);color:var(--z-text-mute)}
+@media(max-width:1000px){
+  /* Mobile: the stage still fills the hero, so meaningful motion is inside the
+     first viewport rather than below a full screen of copy. The copy sits in
+     the upper portion and the scrim runs top-to-bottom instead of edge-to-edge. */
+  .hero{min-block-size:min(760px,94svh);align-items:flex-start;padding-block:clamp(1.25rem,3vh,2rem)}
+  .hero-copy{max-inline-size:100%;padding-block:12px 30px}
+  .hero-copy .lead{max-inline-size:34rem}
+  /* Every gap removed here is exposed stage. The phone reads the promise and
+     the CTA without scrolling, and the structure keeps the bottom third. */
+  .hero-eyebrow{margin-block-end:10px}
+  .hero h1{margin-block-end:10px}
+  .hero .promise{margin-block-end:12px}
+  .hero .lead{margin-block-end:18px}
+  .hero-ctas{margin-block-end:12px}
+  /* The copy panel is translucent on a phone, not a lid: the structure reads
+     through the type instead of the first viewport being a dark rectangle.
+     LENGTH-based fade, confined to the trailing padding — a percentage fade
+     put the soft end under the reassurance line and measured 1.15:1. */
+  .hero-copy{--hero-vpad:12px}
+  .hero-copy::after,[dir="rtl"] .hero-copy::after{background:rgba(4,21,15,.9);
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
+      #000 calc(100% - 30px),rgba(0,0,0,0) 100%);
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
+      #000 calc(100% - 30px),rgba(0,0,0,0) 100%)}
+  .hero-scrim-edge,[dir="rtl"] .hero-scrim-edge{background:linear-gradient(to bottom,
+    rgba(4,21,15,.9) 0%,rgba(4,21,15,.84) 40%,rgba(4,21,15,.5) 64%,rgba(4,21,15,.2) 78%,rgba(4,21,15,.46) 100%)}
+  .hero-scrim-foot{background:linear-gradient(to bottom,transparent 66%,rgba(4,21,15,.62) 88%,var(--z-canvas) 100%)}
+  .hero-inner{justify-content:flex-start;gap:14px}
+  /* The caption sits on the stage, not in the panel, so it carries its own
+     contrast — as a thickening of the foot scrim rather than a box. */
+  .hero-foot{margin-block-start:auto;gap:10px;
+    padding:18px var(--gutter) 10px;margin-inline:calc(-1 * var(--gutter));
+    background:linear-gradient(to top,rgba(4,21,15,.94) 0,rgba(4,21,15,.9) 64%,rgba(4,21,15,0) 100%)}
+  .hero-reassure{gap:8px;row-gap:2px}
+}
+@media(max-width:560px){
+  .hero{min-block-size:min(720px,96svh)}
+  /* The honesty caption never shortens, so it gets the width instead: the
+     control keeps its 44px target and the sentence runs under it. */
+  .hero-foot{align-items:flex-start}
+  .hero-caption{font-size:12.5px;line-height:1.45;flex:1 1 100%}
+}
+/* Landscape phones: stacking is wrong here — there is width to spare and no
+   height at all, so the copy returns to a column beside the stage and the
+   scrim goes back to running edge-to-edge. */
+@media(max-height:560px) and (orientation:landscape) and (min-width:700px){
+  .hero{min-block-size:auto;padding-block:1.25rem;align-items:center}
+  .hero-inner{gap:12px}
+  .hero-copy{max-inline-size:min(34rem,56%);padding-block:10px 14px}
+  /* The copy keeps a panel here too — the edge scrim alone measured 1.44:1 on
+     the lead at 844x390. It runs inline, like the desktop composition. */
+  .hero-copy{--hero-fade:60px;--hero-vpad:10px;
+    padding-inline:16px 70px;margin-inline:-16px 0}
+  .hero-copy::after{background:linear-gradient(to right,rgba(4,21,15,.9) 0,
+    rgba(4,21,15,.9) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%);
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
+      #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%);
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
+      #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%)}
+  [dir="rtl"] .hero-copy::after{background:linear-gradient(to left,rgba(4,21,15,.9) 0,
+    rgba(4,21,15,.9) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%)}
+  .hero .lead{margin-block-end:14px}
+  .hero-eyebrow{display:none}
+  .hero-scrim-edge{background:linear-gradient(to right,
+    rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 22rem,rgba(4,21,15,.5) 32rem,rgba(4,21,15,0) 46rem)}
+  [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,
+    rgba(4,21,15,.96) 0,rgba(4,21,15,.9) 22rem,rgba(4,21,15,.5) 32rem,rgba(4,21,15,0) 46rem)}
+  .hero-foot{margin-block-start:10px;padding:0;margin-inline:0;background:none}
+}
+/* Very short portrait phones: no composition survives here, so the hero gives
+   up its stage share and guarantees the headline, promise and CTA instead. */
+@media(max-width:360px){
+  .hero{min-block-size:min(620px,100svh)}
+  .hero .lead{font-size:1rem;margin-block-end:14px}
+  .hero .promise{margin-block-end:10px}
+}
 
-@media(max-width:860px){ .hero-motion{aspect-ratio:4/5;border-radius:16px} }
-@media(max-width:375px){ .hero-motion{aspect-ratio:3/4} }
-
-/* Reduced motion: the poster is the whole experience and the control is gone,
-   because there is nothing to control. */
 @media(prefers-reduced-motion:reduce){
-  .hero-motion-video{display:none}
+  .hero-stage-video{display:none}
   .hero-motion-btn{display:none!important}
 }
 

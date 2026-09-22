@@ -24,7 +24,8 @@ layout: layouts/base.njk
 
 {# ══ 2 · HERO ══ #}
 <section class="hero">
-  <div class="wide hero-grid">
+  {% include "components/hero-motion.njk" %}
+  <div class="wide hero-inner">
     <div class="hero-copy">
       <p class="hero-eyebrow label">{{ strings.hero.eyebrow }}</p>
       <h1 class="d1">{{ strings.hero.h1a }}<br>{{ strings.hero.h1b }}</h1>
@@ -50,23 +51,24 @@ layout: layouts/base.njk
         <span>{{ strings.hero.reassure3 }}</span>
       </p>
     </div>
-    {# ONE controlling hero visual. The Meridian SVG demonstration used to live
-       here; it now appears once, at small scale, inside the capability band so
-       the two never compete for the same job. #}
-    <div class="demo-wrap">
-      {% include "components/hero-motion.njk" %}
-      <p class="demo-cap">{{ strings.hero.demoCaption }}</p>
+
+    {# The stage is decorative, so the honest description of what it shows has
+       to be readable text, not an alt attribute on a background layer. #}
+    <div class="hero-foot">
+      <button class="hero-motion-btn" type="button" data-motion-toggle hidden
+              aria-label="{{ strings.hero.motionPause }}"
+              data-label-play="{{ strings.hero.motionPlay }}"
+              data-label-pause="{{ strings.hero.motionPause }}">
+        <svg class="mi-pause" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true" focusable="false">
+          <rect x="3" y="2" width="3.2" height="11" rx="1.1" fill="currentColor"/>
+          <rect x="8.8" y="2" width="3.2" height="11" rx="1.1" fill="currentColor"/></svg>
+        <svg class="mi-play" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true" focusable="false">
+          <path d="M4 2.6 12.4 7.5 4 12.4Z" fill="currentColor"/></svg>
+      </button>
+      <p class="hero-caption"><span class="hero-caption-chip">{{ strings.hero.demoLabel }}</span>{{ strings.hero.demoCaption }}</p>
     </div>
   </div>
 </section>
-
-{# ══ 3 · PROOF STRIP ══ #}
-<div class="proof">
-  <div class="wide proof-in">
-    <span class="proof-lbl">{{ strings.proof.label }}</span>
-    {% for p in projects | visible %}<a class="proof-item" href="#work">{{ p.name }}</a>{% endfor %}
-  </div>
-</div>
 
 {# ══ 4 · METHOD ══ #}
 <section class="sec" id="method">
