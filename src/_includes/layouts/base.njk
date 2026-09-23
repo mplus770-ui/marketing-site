@@ -2,7 +2,7 @@
 <html lang="{{ loc.code }}" dir="{{ loc.dir }}">
 <head>
 {% include "partials/head.njk" %}
-{% include "partials/schema.njk" %}
+{% if schemaEnabled %}{% include "partials/schema.njk" %}{% endif %}
 </head>
 <body>
 <a class="skip" href="#main">{{ strings.nav.skip }}</a>

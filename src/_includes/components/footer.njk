@@ -7,18 +7,20 @@
         <div class="xs">{{ strings.footer.tagline }}</div>
       </div>
     </div>
-    <nav class="foot-langs" aria-label="{{ strings.footer.nav }}">
-      {% for l in locales %}
-        {% if l.ready %}<a href="{{ (l | absUrl(domains)) or l.buildPath }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a>
-        {% else %}<span lang="{{ l.code }}" aria-disabled="true" title="{{ strings.footer.langPending }}">{{ l.endonym }}</span>{% endif %}
-      {% endfor %}
+    <nav class="foot-legal" aria-label="{{ strings.footer.legalNav }}">
+      <a href="{{ (loc | absPageUrl(domains, 'privacy')) or (loc.buildPath ~ 'privacy/') }}">{{ strings.footer.privacy }}</a>
+      <a href="{{ (loc | absPageUrl(domains, 'accessibility')) or (loc.buildPath ~ 'accessibility/') }}">{{ strings.footer.accessibility }}</a>
+      <a href="{{ (loc | absPageUrl(domains, 'terms')) or (loc.buildPath ~ 'terms/') }}">{{ strings.footer.terms }}</a>
     </nav>
-    <p class="xs foot-contact">
+    <div class="foot-contact">
       {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}
       {% if site.whatsapp %}<a href="{{ site.whatsapp | waLink(strings.contact.waPrefill) }}" rel="noopener">{{ site.whatsappDisplay }}</a>{% endif %}
-      <br>
-      {% if site.legalEntity %}© {{ site.legalEntity }}. {{ strings.footer.rights }}
-      {% else %}{{ strings.footer.pending }}{% endif %}
-    </p>
+    </div>
+    <div class="foot-bottom">
+      <nav class="foot-langs" aria-label="{{ strings.nav.language }}">
+        {% for l in locales %}{% if l.ready %}{% set localPage = l.buildPath ~ (pageSlug ~ '/' if pageSlug else '') %}<a href="{{ (l | absPageUrl(domains, pageSlug or '')) or localPage }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a>{% endif %}{% endfor %}
+      </nav>
+      <p class="xs">© 2026 {{ site.brand }}. {{ strings.footer.rights }}</p>
+    </div>
   </div>
 </footer>

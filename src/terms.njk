@@ -1,0 +1,13 @@
+---
+pagination:
+  data: legalLocales
+  size: 1
+  alias: loc
+permalink: "{{ loc.buildPath }}terms/index.html"
+layout: layouts/base.njk
+pageSlug: terms
+legalKey: termsPage
+isHome: false
+schemaEnabled: false
+---
+{% include "components/legal-page.njk" %}

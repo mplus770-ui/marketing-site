@@ -2,17 +2,16 @@
 permalink: /404.html
 layout: layouts/base.njk
 eleventyExcludeFromCollections: true
-eleventyComputed:
-  loc: "{{ locales[1] }}"
+isHome: false
+schemaEnabled: false
 ---
-{% set strings = i18n.en %}
 <section class="sec">
-  <div class="wrap" style="text-align:center;max-width:40rem">
-    <svg width="64" height="64" style="margin-inline:auto" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
-    <p class="label" style="margin-block-start:26px">404</p>
-    <h1 class="d2" style="margin-block:12px 14px">This page isn’t here.</h1>
-    <p class="lead" style="margin-inline:auto">The link may be old, or the page may have moved. The homepage is a good place to restart.</p>
-    <div class="hero-ctas" style="justify-content:center;margin-block-start:30px">
+  <div class="wrap u-center-narrow">
+    <svg width="64" height="64" class="u-mi-auto" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+    <p class="label u-title-gap">404</p>
+    <h1 class="d2 u-404-title">This page isn’t here.</h1>
+    <p class="lead u-mi-auto">The link may be old, or the page may have moved. The homepage is a good place to restart.</p>
+    <div class="hero-ctas u-ctas-center">
       <a class="btn btn-primary" href="/en/">English</a>
       <a class="btn btn-ghost" href="/">עברית</a>
     </div>

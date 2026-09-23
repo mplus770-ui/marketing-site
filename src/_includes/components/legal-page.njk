@@ -1,0 +1,23 @@
+{% set legal = strings[legalKey] %}
+<article class="legal-page">
+  <header class="legal-hero">
+    <div class="wrap legal-hero-in">
+      <p class="label">{{ legal.label }}</p>
+      <h1 class="d1 legal-title">{{ legal.heading }}</h1>
+      <p class="lead legal-intro">{{ legal.intro }}</p>
+      <p class="xs legal-updated">{{ legal.updated }}</p>
+    </div>
+  </header>
+  <div class="wrap legal-grid">
+    {% for n in [1,2,3,4,5,6] %}
+    <section class="legal-section">
+      <span class="legal-number" aria-hidden="true">0{{ n }}</span>
+      <div><h2>{{ legal["s" + n + "t"] }}</h2><p>{{ legal["s" + n + "b"] }}</p></div>
+    </section>
+    {% endfor %}
+  </div>
+  <aside class="wrap legal-contact">
+    <div><p class="label">{{ legal.contactTitle }}</p><p>{{ legal.contactBody }}</p></div>
+    <a class="btn btn-primary" href="mailto:{{ site.email }}">{{ strings.contact.email }}</a>
+  </aside>
+</article>

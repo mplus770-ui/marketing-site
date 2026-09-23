@@ -1,16 +1,18 @@
+{% set homeHref = (loc | absUrl(domains)) or loc.buildPath %}
+{% set sectionBase = '' if isHome else homeHref %}
 <header class="nav">
   <div class="nav-in">
-    <a class="nav-logo" href="{{ loc.buildPath }}" aria-label="{{ strings.nav.home }}">
+    <a class="nav-logo" href="{{ homeHref }}" aria-label="{{ strings.nav.home }}">
       <svg width="42" height="42" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
       <span class="wm-lock"><span class="wm">{{ site.brand }} <b>AI</b></span><span class="wm-studio">DIGITAL EXPERIENCE STUDIO</span></span>
     </a>
     {% if loc.ready %}
     <ul class="nav-links">
-      <li><a href="#work">{{ strings.nav.work }}</a></li>
-      <li><a href="#method">{{ strings.nav.method }}</a></li>
-      <li><a href="#offer">{{ strings.nav.offer }}</a></li>
-      <li><a href="#vision">{{ strings.nav.vision }}</a></li>
-      <li><a href="#brief">{{ strings.nav.contact }}</a></li>
+      <li><a href="{{ sectionBase }}#work">{{ strings.nav.work }}</a></li>
+      <li><a href="{{ sectionBase }}#method">{{ strings.nav.method }}</a></li>
+      <li><a href="{{ sectionBase }}#offer">{{ strings.nav.offer }}</a></li>
+      <li><a href="{{ sectionBase }}#vision">{{ strings.nav.vision }}</a></li>
+      <li><a href="{{ sectionBase }}#brief">{{ strings.nav.contact }}</a></li>
     </ul>
     {% endif %}
     <div class="nav-right">
@@ -18,7 +20,7 @@
         <svg width="14" height="14" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>
         <span aria-hidden="true">{{ loc.code | upper }}</span>
       </button>
-      {% if loc.ready %}<a class="btn btn-primary btn-sm" href="#brief">{{ strings.nav.cta }}</a>{% endif %}
+      {% if loc.ready %}<a class="btn btn-primary btn-sm" href="{{ sectionBase }}#brief">{{ strings.nav.cta }}</a>{% endif %}
       <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="{{ strings.nav.menu }}">
         <i></i><i></i><i></i>
       </button>
@@ -34,13 +36,13 @@
   <nav class="sheet-nav" aria-label="{{ strings.nav.menu }}">
     <ul>
       {% if loc.ready %}
-      <li><a href="#work">{{ strings.nav.work }}</a></li>
-      <li><a href="#method">{{ strings.nav.method }}</a></li>
-      <li><a href="#offer">{{ strings.nav.offer }}</a></li>
-      <li><a href="#vision">{{ strings.nav.vision }}</a></li>
-      <li><a href="#brief">{{ strings.nav.contact }}</a></li>
+      <li><a href="{{ sectionBase }}#work">{{ strings.nav.work }}</a></li>
+      <li><a href="{{ sectionBase }}#method">{{ strings.nav.method }}</a></li>
+      <li><a href="{{ sectionBase }}#offer">{{ strings.nav.offer }}</a></li>
+      <li><a href="{{ sectionBase }}#vision">{{ strings.nav.vision }}</a></li>
+      <li><a href="{{ sectionBase }}#brief">{{ strings.nav.contact }}</a></li>
       {% endif %}
-      {% for l in locales %}{% if l.ready %}<li><a href="{{ (l | absUrl(domains)) or l.buildPath }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a></li>{% endif %}{% endfor %}
+      {% for l in locales %}{% if l.ready %}{% set localPage = l.buildPath ~ (pageSlug ~ '/' if pageSlug else '') %}<li><a href="{{ (l | absPageUrl(domains, pageSlug or '')) or localPage }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a></li>{% endif %}{% endfor %}
     </ul>
   </nav>
   {% if loc.ready %}

@@ -1,9 +1,11 @@
 # ZOHAR launch and marketing checklist
 
-This is the operating checklist for the two approved public hosts:
+This is the operating checklist for the two approved public hosts and three
+reviewed languages:
 
 - Hebrew / Israel: `https://www.zohar-ai.co.il/`
 - English / international: `https://zohar-ai.com/`
+- French / international: `https://zohar-ai.com/fr/`
 
 The language switch is explicit. There is no IP- or geolocation-based redirect.
 
@@ -17,6 +19,8 @@ The language switch is explicit. There is no IP- or geolocation-based redirect.
   and verify each outbound link immediately before launch.
 - Keep analytics, advertising pixels and form delivery disabled until the
   measurement IDs, consent behavior and privacy handling are approved.
+- Confirm the registered legal entity or public business name and country
+  before production. Do not invent these values in schema, terms or privacy.
 
 ## Cutover configuration
 
@@ -37,11 +41,14 @@ The language switch is explicit. There is no IP- or geolocation-based redirect.
   international property. Do not cross-submit them.
 - Inspect each canonical homepage after launch and confirm Google sees the same
   user-declared canonical that the page, redirect map and sitemap declare.
-- Confirm the reciprocal `he-IL`, `en` and `x-default` hreflang set on both
-  published pages. The seven held locales must remain absent from canonical,
+- Confirm the reciprocal `he-IL`, `en`, `fr` and `x-default` hreflang set on
+  all three published languages and on each equivalent policy page. The six
+  held locales must remain absent from canonical,
   hreflang, Open Graph, schema and both sitemaps.
 - Request indexing only after the canonical hosts return 200 and all alternate
   hostname/locale combinations return their reviewed 301.
+- Validate the privacy, accessibility and terms URLs in Search Console after
+  launch; their canonicals must be page-specific, never the homepage.
 
 ## Sharing launch
 

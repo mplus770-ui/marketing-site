@@ -1,17 +1,217 @@
 {
   "meta": {
-    "title": "ZOHAR",
-    "description": ""
-  },
-  "pendingLocale": {
-    "title": "התרגום בעבודה",
-    "body": "השפה הזו היא חלק מארכיטקטורת זוהר ועדיין לא פורסמה. אנחנו לא מפרסמים תרגום מכונה כטקסט סופי.",
-    "cta": "Continue in English",
-    "ctaHe": "המשיכו בעברית"
+    "title": "ZOHAR — Ne construisez pas un site. Construisez une entreprise.",
+    "description": "ZOHAR conçoit des sites premium clés en main, dans un code qui vous appartient — pensés pour être trouvés, convertir et être mesurés. Multilingue et RTL inclus.",
+    "shareImageAlt": "ZOHAR AI — sites premium et studio d’expérience numérique"
   },
   "nav": {
-    "home": "ZOHAR",
-    "language": "Language",
-    "skip": "Skip to content"
+    "work": "Réalisations", "method": "Méthode", "offer": "Offre", "vision": "Vision", "contact": "Contact",
+    "cta": "Démarrer le brief", "menu": "Menu", "close": "Fermer", "language": "Langue",
+    "skip": "Aller au contenu", "home": "Accueil ZOHAR"
+  },
+  "hero": {
+    "eyebrow": "Des sites qui vous appartiennent vraiment",
+    "h1a": "Ne construisez pas un site.", "h1b": "Construisez une entreprise.",
+    "promise": "De l’intention commerciale à une présence qui agit.",
+    "lead": "De vrais sites, dans un code qui vous appartient — conçus pour être trouvés, convertir et être mesurés.",
+    "ctaPrimary": "Parler sur WhatsApp", "ctaSecondary": "Parcourir les questions du brief",
+    "reassure1": "Processus transparent", "reassure2": "Aperçu avant mise en ligne", "reassure3": "Code qui vous appartient",
+    "demoLabel": "Démonstration conceptuelle", "demoCaption": "Une vision d’une présence numérique complète.",
+    "demoAlt": "Une illustration cinématographique : un trait de lumière devient une présence numérique structurée.",
+    "motionPlay": "Lire l’animation", "motionPause": "Mettre l’animation en pause",
+    "motionSaveData": "Lire l’animation", "motionReplay": "Rejouer l’animation"
+  },
+  "proof": {
+    "label": "Conçu par ZOHAR",
+    "heading": "Uniquement des réalisations que nous possédons ou sommes autorisés à présenter."
+  },
+  "pillars": {
+    "label": "La méthode", "heading": "Quatre choses qu’une présence d’entreprise doit accomplir.",
+    "lead": "L’une est notre offre actuelle. Deux sont des fondations que nous préparons. La dernière indique notre direction. Nous le précisons clairement.",
+    "governing": "Prêt pour l’avenir, sans prétendre l’avoir déjà construit.",
+    "statusNow": "Disponible aujourd’hui", "statusFoundation": "Fondations préparées aujourd’hui",
+    "statusDevelopment": "En développement", "statusVision": "Vision future",
+    "build": {
+      "title": "Construire",
+      "body": "Sites premium clés en main et présence numérique d’entreprise : réalisation multilingue, bases SEO, architecture de conversion, préparation à la mesure et code propre dont vous êtes propriétaire. C’est ce que ZOHAR vend aujourd’hui."
+    },
+    "grow": {
+      "title": "Développer",
+      "body": "Nous posons des fondations prêtes pour la croissance — structure pour la recherche et les réponses IA, rapidité et parcours de conversion clair — puis nous accompagnons la croissance par un travail humain, pas par un logiciel.",
+      "note": "Il n’existe pas encore de moteur de croissance automatisé. Le Growth Engine industrialisé est prévu pour la version V13."
+    },
+    "prove": {
+      "title": "Prouver",
+      "body": "Nous préparons les bases de l’analytique, de l’attribution et de la mesure, puis les configurons correctement lorsque les comptes et accès sont disponibles. Le site est prêt à être mesuré.",
+      "note": "Il n’existe pas encore de produit Proof finalisé. La couche intégrée Connect + Measure est prévue pour la version V12."
+    },
+    "memory": {
+      "title": "Mémoire",
+      "body": "Une mémoire d’entreprise persistante et des agents contrôlés capables de l’exploiter constituent notre direction à long terme.",
+      "note": "Cela n’existe pas aujourd’hui, nous ne le vendons pas et rien sur ce site n’en dépend. Feuille de route V14."
+    }
+  },
+  "offer": {
+    "label": "Ce que vous pouvez acheter aujourd’hui",
+    "heading": "Une seule façon de travailler avec nous : l’exigence premium.",
+    "entryName": "Présence d’entreprise ciblée",
+    "dfyLead": "Nous concevons, rédigeons, développons et mettons en ligne. Vous validez, puis vous lancez.",
+    "startAt": "Projets à partir de {price}",
+    "qualifier": "La proposition finale est définie après un brief court et dépend du périmètre, des langues et des fonctionnalités.",
+    "includesLabel": "Ce que comprend l’offre de départ",
+    "larger": "Les boutiques en ligne, sites multilingues et systèmes sur mesure font l’objet d’un devis séparé.",
+    "cta": "Démarrer un brief projet",
+    "inc": {
+      "pages": "Jusqu’à 5 pages principales", "oneLanguage": "Une langue",
+      "design": "Design conçu pour votre entreprise", "responsive": "Réalisation responsive complète",
+      "seoAeo": "Bases SEO et AEO", "revisions": "Deux séries de révisions consolidées",
+      "hosting": "Un an d’hébergement statique géré", "ownership": "Propriété du code"
+    },
+    "futureName": "ZOHAR BUILD", "futureStatus": "En développement",
+    "futureBody": "ZOHAR BUILD est en développement. Aujourd’hui, chaque site ZOHAR est créé dans le cadre de notre processus premium clés en main.",
+    "futureNote": "Une option future, pas une alternative disponible aujourd’hui. Aucun prix, aucun achat et aucune date.",
+    "ctaWa": "Parler sur WhatsApp", "ctaBrief": "ou parcourir les questions du brief"
+  },
+  "process": {
+    "label": "Comment ça marche", "heading": "D’une phrase à une présence en ligne.",
+    "s1t": "Brief", "s1b": "Vous décrivez l’entreprise avec vos mots. Nous posons les questions qui comptent.",
+    "s2t": "Direction", "s2b": "Nous validons la structure, le message et l’univers visuel avant de développer.",
+    "s3t": "Réalisation", "s3b": "Nous concevons et rédigeons, puis développons dans un code propre qui vous appartiendra.",
+    "s4t": "Mise en ligne", "s4b": "Vous consultez l’aperçu, nous corrigeons, puis le site est publié sur votre propre domaine."
+  },
+  "work": {
+    "label": "Réalisations choisies", "heading": "Uniquement de vrais projets.",
+    "lead": "Des projets réellement réalisés par ZOHAR, présentés avec des captures issues de leurs propres sites. Aucun faux témoignage, aucune maquette présentée comme un résultat.",
+    "placeholder": "Emplacement interne — pas pour la production", "prev": "Projet précédent", "next": "Projet suivant",
+    "carousel": "Réalisations choisies de ZOHAR", "of": "sur", "visit": "Visiter le site",
+    "pauseMotion": "Mettre le défilement en pause", "playMotion": "Relancer le défilement",
+    "visitInternal": "Découvrir sa construction"
+  },
+  "roadmap": {
+    "label": "Notre direction", "heading": "La feuille de route, sans ambiguïté.",
+    "lead": "Nous la publions pour que rien sur cette page ne suggère davantage que ce qui existe réellement.",
+    "v10": "Fondation BUILD", "v10b": "Notre position actuelle. Une présence clés en main, réalisée correctement.",
+    "v12": "Connect + Measure", "v12b": "La couche intégrée de preuve. En développement.",
+    "v13": "Growth Engine", "v13b": "La croissance transformée en produit. En développement.",
+    "v14": "Agents d’entreprise contrôlés et autonomes", "v14b": "Vision à long terme. Ce n’est pas un produit."
+  },
+  "trust": {
+    "label": "Propriété", "heading": "Ce que vous gardez.",
+    "t1": "Vous possédez le code, entièrement, dès le premier jour.", "b1": "Aucun constructeur de pages, aucun thème, aucune licence qui expire.",
+    "t2": "Aucune dépendance envers un fournisseur.", "b2": "Le site repose sur du HTML, du CSS et du JavaScript standards. Tout développeur peut le reprendre.",
+    "t3": "Multilingue dès la conception.", "b3": "Le RTL est intégré, pas ajouté après coup. Ce site en apporte la preuve.",
+    "t4": "Conçu pour être trouvé.", "b4": "Structure canonique, hreflang, données structurées et balisage propre dès le départ.",
+    "t5": "Prêt à être mesuré.", "b5": "L’analytique et l’attribution sont préparées, puis configurées lorsque vous disposez des comptes.",
+    "t6": "Un processus transparent.", "b6": "Vous voyez le site avant sa mise en ligne et vous validez ce qui sera publié."
+  },
+  "faq": {
+    "label": "Questions", "heading": "Des réponses directes.",
+    "q1": "Combien de temps faut-il pour créer un site ZOHAR ?",
+    "a1": "Un site marketing demande généralement 3 à 7 jours ouvrés une fois le brief validé et les contenus reçus. Les boutiques et systèmes sont chiffrés individuellement, avec un délai défini avant le début des travaux.",
+    "q2": "Que m’appartient-il exactement à la fin ?",
+    "a2": "L’intégralité des sources : HTML, CSS, JavaScript, images et configuration. Vous pouvez héberger le site où vous voulez et le confier à tout développeur. Aucune licence à renouveler, aucune plateforme imposée.",
+    "q3": "Combien de séries de modifications sont incluses ?",
+    "a3": "Deux séries de révisions consolidées, dans le cadre du brief convenu. Chaque série nous parvient sous forme d’une liste unique, ce qui permet de garder un calendrier et un prix prévisibles. Une série supplémentaire coûte 650 ₪. Les travaux hors périmètre — nouvelle orientation, pages supplémentaires ou nouvelle fonctionnalité — sont facturés 300 ₪ de l’heure ou chiffrés à l’avance.",
+    "q4": "Travaillez-vous dans d’autres langues que l’hébreu et l’anglais ?",
+    "a4": "Oui. Le multilingue fait partie du service et les langues de droite à gauche sont traitées correctement, pas simplement inversées après coup.",
+    "q5": "Pouvez-vous reprendre mon site WordPress existant ?",
+    "a5": "Lorsque c’est réellement faisable, oui : nous reconstruisons le contenu dans un code indépendant au lieu de déplacer les extensions. Nous vous dirons franchement si votre site s’y prête mal.",
+    "q6": "Garantissez-vous des résultats ?",
+    "a6": "Non. Nous construisons la structure qui rend les résultats possibles et préparons la mesure qui permettra de les vérifier. Garantir un chiffre avant de connaître votre marché serait une supposition.",
+    "q7": "Quel est le prix et comment s’effectue le paiement ?",
+    "a7": "La proposition finale est définie après un brief court et dépend du périmètre, des langues et des fonctionnalités. Les boutiques en ligne, sites multilingues et systèmes sur mesure sont chiffrés séparément. Le paiement s’effectue à 50 % au démarrage et à 50 % avant la mise en production. Le domaine et les services tiers payants ne sont pas inclus.",
+    "q8": "ZOHAR BUILD est-il disponible ?",
+    "a8": "Pas encore. Il est en développement. Aujourd’hui, chaque site ZOHAR est réalisé dans le cadre du processus clés en main et nous n’acceptons aucun paiement pour une offre qui n’est pas prête.",
+    "q9": "Que devient l’hébergement après la première année ?",
+    "a9": "La première année d’hébergement statique sécurisé et géré est incluse dans la limite d’un usage raisonnable. Les domaines, services tiers payants, trafic anormal et fonctions serveur payantes restent séparés. Ensuite, vous pouvez renouveler l’hébergement et la gestion de base pour 600 ₪ par an ou déplacer le code vers votre propre compte : le code vous appartient, vous ne dépendez donc pas de nous."
+  },
+  "brief": {
+    "label": "Commencez ici", "heading": "Expliquez-nous ce que fait votre entreprise.",
+    "lead": "Une phrase suffit pour commencer. Cinq questions courtes, environ deux minutes.",
+    "step": "Étape 1 sur 5", "q1": "Que fait votre entreprise ?",
+    "placeholder": "Nous sommes un domaine viticole familial en Galilée et vendons directement aux visiteurs et aux restaurants…",
+    "continue": "Vérifier cette réponse", "back": "Retour",
+    "privacy": "Nous utiliserions vos réponses uniquement pour préparer une proposition. Nous ne les vendons ni ne les partageons et vous pouvez demander leur suppression à tout moment.",
+    "disabled": "L’envoi n’est pas encore activé. La destination et le traitement des données doivent être approuvés ; rien n’est donc transmis ni stocké.",
+    "errEmpty": "Décrivez brièvement l’entreprise avant de continuer.",
+    "errShort": "Une ou deux phrases nous aideraient : ajoutez quelques détails.",
+    "altWhatsapp": "Parler sur WhatsApp à la place", "altConsult": "Réserver une consultation de 20 minutes",
+    "unavailable": "Pas encore configuré", "previewChip": "Aperçu — l’envoi n’est pas actif",
+    "submitNote": "Ce bouton n’envoie rien. Pour commencer réellement, contactez-nous sur WhatsApp."
+  },
+  "footer": {
+    "tagline": "ZOHAR AI — des sites qui vous appartiennent", "rights": "Tous droits réservés.",
+    "pending": "Informations juridiques en cours de finalisation.", "nav": "Pied de page",
+    "langPending": "Bientôt disponible — traduction en cours de validation", "legalNav": "Informations juridiques",
+    "privacy": "Confidentialité", "accessibility": "Accessibilité", "terms": "Conditions d’utilisation"
+  },
+  "pendingLocale": {
+    "title": "Traduction en cours",
+    "body": "Cette langue fait partie de l’architecture ZOHAR mais n’est pas encore publiée. Nous ne publions pas une traduction automatique comme texte final.",
+    "cta": "Continue in English", "ctaHe": "המשיכו בעברית"
+  },
+  "contact": {
+    "waPrefill": "Bonjour, je viens du site ZOHAR et je souhaite parler d’un nouveau projet.",
+    "email": "Nous écrire"
+  },
+  "brand": {
+    "name": "ZOHAR",
+    "line": "La lumière devient direction, puis la direction devient présence. Le nouveau monogramme réunit Z et A dans une signature dorée — la mémoire du studio où tout a commencé."
+  },
+  "cap": {
+    "label": "Compétences", "heading": "Ce que nous réalisons vraiment aujourd’hui.",
+    "lead": "Chaque élément présenté ici provient d’une interface réelle d’un de nos projets — ni maquette, ni tableau de bord, ni produit futur.",
+    "responsive": "Réalisation responsive premium", "rtl": "Hébreu et RTL intégrés dès le départ",
+    "editorial": "Expériences éditoriales et magazines", "commerce": "Interfaces prêtes pour le commerce en ligne",
+    "multilingual": "Architecture multilingue", "conversion": "Parcours de conversion et WhatsApp",
+    "seo": "Bases SEO et AEO", "seoNote": "Schéma, hreflang et structure des titres sont intégrés à la construction, pas ajoutés après coup.",
+    "code": "Code propre et portable", "codeNote": "HTML, CSS et JavaScript standards. Aucun constructeur de pages, aucune dépendance fournisseur."
+  },
+  "privacyPage": {
+    "metaTitle": "Politique de confidentialité — ZOHAR AI",
+    "metaDescription": "Comment ZOHAR AI traite les données sur ce site et lorsque vous nous contactez.",
+    "label": "Confidentialité", "heading": "Vos données, expliquées clairement.",
+    "intro": "Ce site est conçu pour collecter le minimum d’informations. Cette page décrit ce qui se passe aujourd’hui, sans supposer des outils futurs.",
+    "updated": "Dernière mise à jour : 23 septembre 2026",
+    "s1t": "Informations que vous choisissez de nous transmettre",
+    "s1b": "Si vous nous contactez par e-mail ou WhatsApp, nous recevons les informations que vous envoyez volontairement afin de répondre à votre demande et de préparer, le cas échéant, une proposition.",
+    "s2t": "Formulaire de brief",
+    "s2b": "Le formulaire visible sur le site est actuellement une démonstration. Son bouton n’envoie et ne stocke aucune donnée. Cette politique sera mise à jour avant l’activation d’un véritable formulaire.",
+    "s3t": "Analytique et publicité",
+    "s3b": "Le site n’active actuellement aucun outil d’analytique, pixel publicitaire ou cookie marketing. Si cela change, les informations nécessaires et, le cas échéant, les choix de consentement seront ajoutés avant l’activation.",
+    "s4t": "Hébergement et journaux techniques",
+    "s4b": "Notre hébergeur peut traiter des données techniques limitées, comme l’adresse IP, le type d’appareil et les journaux de sécurité, afin de servir et protéger le site. Nous n’utilisons pas ces journaux pour constituer des profils commerciaux.",
+    "s5t": "Services externes",
+    "s5b": "Les liens vers WhatsApp, l’e-mail et les sites de projets vous conduisent vers des services externes soumis à leurs propres politiques de confidentialité.",
+    "s6t": "Conservation et vos demandes",
+    "s6b": "Les échanges directs sont conservés uniquement aussi longtemps qu’ils sont utiles au suivi de votre demande ou requis par une obligation applicable. Vous pouvez nous demander l’accès, la correction ou la suppression des informations que vous nous avez transmises.",
+    "contactTitle": "Contact confidentialité", "contactBody": "Pour toute question ou demande concernant vos données, écrivez à support@zoharai.com."
+  },
+  "accessibilityPage": {
+    "metaTitle": "Déclaration d’accessibilité — ZOHAR AI",
+    "metaDescription": "Engagement et fonctionnalités d’accessibilité du site ZOHAR AI.",
+    "label": "Accessibilité", "heading": "Une expérience conçue pour davantage de personnes.",
+    "intro": "Nous visons le niveau AA des WCAG 2.2 et améliorons le site lorsque nous identifions un obstacle réel.",
+    "updated": "Dernière mise à jour : 23 septembre 2026",
+    "s1t": "Navigation et structure", "s1b": "Le site utilise des titres, régions et liens sémantiques, un lien d’évitement, un ordre de focus logique et une navigation utilisable au clavier.",
+    "s2t": "Lisibilité et contraste", "s2b": "La taille du texte, le contraste, les états de focus et le redimensionnement sont conçus pour rester lisibles sur téléphone, tablette et ordinateur.",
+    "s3t": "Mouvement", "s3b": "Les préférences de réduction des animations sont respectées. Les mouvements importants peuvent être mis en pause et aucune vidéo essentielle ne dépend du son.",
+    "s4t": "Langues et direction", "s4b": "Chaque page déclare sa langue et son sens de lecture. L’hébreu et les langues de gauche à droite utilisent des mises en page adaptées, pas une simple inversion visuelle.",
+    "s5t": "Limites", "s5b": "Les sites externes accessibles depuis notre portfolio ne sont pas sous notre contrôle. Malgré nos vérifications, un problème peut également apparaître sur un appareil ou avec une technologie d’assistance particulière.",
+    "s6t": "Signaler un obstacle", "s6b": "Décrivez la page, l’action que vous tentiez d’effectuer, votre appareil et votre technologie d’assistance. Nous examinerons le problème et chercherons une solution praticable.",
+    "contactTitle": "Contact accessibilité", "contactBody": "Écrivez à support@zoharai.com ou contactez-nous au 055-562-6040."
+  },
+  "termsPage": {
+    "metaTitle": "Conditions d’utilisation — ZOHAR AI", "metaDescription": "Conditions applicables à l’utilisation du site public ZOHAR AI.",
+    "label": "Conditions", "heading": "Conditions d’utilisation du site.",
+    "intro": "Ces conditions concernent le site public. Un projet client est régi par sa proposition et son contrat de service, qui prévalent pour ce projet.",
+    "updated": "Dernière mise à jour : 23 septembre 2026",
+    "s1t": "Objet du site", "s1b": "Le site présente les services actuels de ZOHAR, des réalisations autorisées et une feuille de route clairement identifiée. Il ne constitue pas une promesse de disponibilité pour les produits indiqués comme futurs ou en développement.",
+    "s2t": "Propositions et prix", "s2b": "Le prix de départ affiché ne remplace pas une proposition. Le périmètre, le calendrier, les langues, les fonctionnalités, les paiements et les responsabilités sont définis dans une proposition ou un contrat séparé.",
+    "s3t": "Propriété intellectuelle", "s3b": "Sauf indication contraire, le design, les textes, la marque et le code de ce site appartiennent à ZOHAR ou sont utilisés avec autorisation. Les droits remis à un client sont ceux définis dans son accord de projet.",
+    "s4t": "Portfolio et liens externes", "s4b": "Les captures reflètent les projets au moment de leur préparation. Les destinations externes peuvent évoluer, devenir indisponibles ou appliquer leurs propres conditions.",
+    "s5t": "Utilisation acceptable", "s5b": "Vous ne devez pas tenter de perturber le site, contourner ses protections, extraire massivement son contenu ou utiliser la marque d’une manière susceptible de créer une confusion.",
+    "s6t": "Disponibilité et responsabilité", "s6b": "Nous nous efforçons de maintenir des informations exactes et un site disponible, sans garantir un fonctionnement continu ni des résultats commerciaux particuliers. Les limites applicables à un projet sont définies dans son contrat.",
+    "contactTitle": "Nous contacter", "contactBody": "Pour toute question relative à ces conditions, écrivez à support@zoharai.com."
   }
 }

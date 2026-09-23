@@ -5,6 +5,8 @@ pagination:
   alias: loc
 permalink: "{{ loc.buildPath }}index.html"
 layout: layouts/base.njk
+isHome: true
+schemaEnabled: true
 ---
 {% if not loc.ready %}
 {# ── Unpublished locale: a placeholder, never machine-translated copy and
@@ -287,7 +289,7 @@ layout: layouts/base.njk
         <button class="btn btn-muted" type="submit" aria-describedby="briefSubmitNote">{{ strings.brief.continue }}</button>
         <span class="xs" id="briefSubmitNote">{{ strings.brief.submitNote }}</span>
       </div>
-      <p class="brief-privacy">{{ strings.brief.privacy }}</p>
+      <p class="brief-privacy">{{ strings.brief.privacy }} <a href="{{ (loc | absPageUrl(domains, 'privacy')) or (loc.buildPath ~ 'privacy/') }}">{{ strings.footer.privacy }}</a></p>
     </form>
     <div class="alt">
       {% set wa2 = site.whatsapp | waLink(strings.contact.waPrefill) %}
@@ -320,4 +322,3 @@ layout: layouts/base.njk
     </div>
   </div>
 </section>
-

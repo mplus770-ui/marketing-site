@@ -24,8 +24,15 @@ export default function (eleventyConfig) {
     const o = originOf(loc, domains);
     return o ? o.replace(/\/$/, "") + loc.canonicalPath : null;
   };
+  const absPageUrl = (loc, domains, slug = "") => {
+    const base = absUrl(loc, domains);
+    if (!base) return null;
+    if (!slug) return base;
+    return base.replace(/\/$/, "") + "/" + String(slug).replace(/^\/+|\/+$/g, "") + "/";
+  };
   eleventyConfig.addFilter("originOf", originOf);
   eleventyConfig.addFilter("absUrl", absUrl);
+  eleventyConfig.addFilter("absPageUrl", absPageUrl);
   // Published locales that also have their canonical origin configured. A
   // locale missing either is absent from hreflang and from every sitemap.
   eleventyConfig.addFilter("publishable", (locales, domains) =>
@@ -36,6 +43,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("xDefault", (locales, domains) => {
     const en = (locales || []).find((l) => l.code === "en");
     return en ? absUrl(en, domains) : null;
+  });
+  eleventyConfig.addFilter("xDefaultPage", (locales, domains, slug = "") => {
+    const en = (locales || []).find((l) => l.code === "en");
+    return en ? absPageUrl(en, domains, slug) : null;
   });
   // Legacy single-origin helper, kept for the 404 page only.
   eleventyConfig.addFilter("abs", (p, origin) => (origin ? origin.replace(/\/$/, "") + p : p));

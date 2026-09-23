@@ -195,9 +195,13 @@
   "footer": {
     "tagline": "ZOHAR AI — websites you own",
     "rights": "All rights reserved.",
-    "pending": "Legal entity, business email and domain are pending.",
+    "pending": "Business details are being finalised.",
     "nav": "Footer",
-    "langPending": "Coming soon — translation in review"
+    "langPending": "Coming soon — translation in review",
+    "legalNav": "Legal information",
+    "privacy": "Privacy",
+    "accessibility": "Accessibility",
+    "terms": "Terms of use"
   },
   "pendingLocale": {
     "title": "Translation in progress",
@@ -227,5 +231,46 @@
     "seoNote": "Schema, hreflang and heading structure, written at build time rather than bolted on.",
     "code": "Clean, portable code",
     "codeNote": "Plain HTML, CSS and JavaScript. No page builder, no vendor lock-in."
+  },
+  "privacyPage": {
+    "metaTitle": "Privacy policy — ZOHAR AI",
+    "metaDescription": "How ZOHAR AI handles information on this website and when you contact us.",
+    "label": "Privacy", "heading": "Your information, explained clearly.",
+    "intro": "This website is designed to collect as little information as possible. This page describes what happens today, without assuming future tools.",
+    "updated": "Last updated: 23 September 2026",
+    "s1t": "Information you choose to send", "s1b": "If you contact us by email or WhatsApp, we receive the information you voluntarily send so we can answer your enquiry and, where relevant, prepare a proposal.",
+    "s2t": "Project brief form", "s2b": "The form currently shown on the website is a demonstration. Its button does not transmit or store any data. This policy will be updated before a working form is enabled.",
+    "s3t": "Analytics and advertising", "s3b": "The website currently uses no analytics service, advertising pixel or marketing cookie. If that changes, the necessary information and, where required, consent choices will be added before activation.",
+    "s4t": "Hosting and technical logs", "s4b": "Our hosting provider may process limited technical data such as IP address, device type and security logs to serve and protect the website. We do not use those logs to create marketing profiles.",
+    "s5t": "External services", "s5b": "Links to WhatsApp, email and project websites take you to external services governed by their own privacy policies.",
+    "s6t": "Retention and your requests", "s6b": "Direct correspondence is kept only for as long as it is useful for handling your enquiry or required by an applicable obligation. You may ask us to access, correct or delete information you sent us.",
+    "contactTitle": "Privacy contact", "contactBody": "For a privacy question or request, email support@zoharai.com."
+  },
+  "accessibilityPage": {
+    "metaTitle": "Accessibility statement — ZOHAR AI",
+    "metaDescription": "ZOHAR AI website accessibility commitment and features.",
+    "label": "Accessibility", "heading": "An experience designed for more people.",
+    "intro": "We aim to meet WCAG 2.2 Level AA and improve the website whenever we identify a real barrier.",
+    "updated": "Last updated: 23 September 2026",
+    "s1t": "Navigation and structure", "s1b": "The website uses semantic headings, regions and links, a skip link, a logical focus order and keyboard-operable navigation.",
+    "s2t": "Readability and contrast", "s2b": "Text size, contrast, focus states and resizing are designed to remain readable on phones, tablets and desktop screens.",
+    "s3t": "Motion", "s3b": "Reduced-motion preferences are respected. Important motion can be paused, and no essential video depends on sound.",
+    "s4t": "Languages and direction", "s4b": "Every page declares its language and reading direction. Hebrew and left-to-right languages use layouts adapted to them, not a simple visual flip.",
+    "s5t": "Known limitations", "s5b": "External portfolio websites are outside our control. Despite our checks, a problem may also appear on a particular device or assistive technology.",
+    "s6t": "Report a barrier", "s6b": "Tell us the page, the action you were trying to complete, your device and assistive technology. We will review the issue and seek a practical solution.",
+    "contactTitle": "Accessibility contact", "contactBody": "Email support@zoharai.com or call 055-562-6040."
+  },
+  "termsPage": {
+    "metaTitle": "Terms of use — ZOHAR AI", "metaDescription": "Terms governing use of the public ZOHAR AI website.",
+    "label": "Terms", "heading": "Website terms of use.",
+    "intro": "These terms apply to the public website. A client project is governed by its proposal and service agreement, which take precedence for that project.",
+    "updated": "Last updated: 23 September 2026",
+    "s1t": "Purpose of the website", "s1b": "The website presents ZOHAR’s current services, authorised work and a clearly labelled roadmap. It is not a promise that products marked as future or in development are available.",
+    "s2t": "Proposals and pricing", "s2b": "The displayed starting price is not a proposal. Scope, timing, languages, functionality, payments and responsibilities are defined in a separate proposal or agreement.",
+    "s3t": "Intellectual property", "s3b": "Unless stated otherwise, this website’s design, text, brand and code belong to ZOHAR or are used with permission. Rights delivered to a client are those defined in that project’s agreement.",
+    "s4t": "Portfolio and external links", "s4b": "Captures reflect projects when they were prepared. External destinations may change, become unavailable or apply their own terms.",
+    "s5t": "Acceptable use", "s5b": "You must not attempt to disrupt the website, bypass its protections, extract its content at scale or use the brand in a way likely to create confusion.",
+    "s6t": "Availability and liability", "s6b": "We work to keep information accurate and the website available, without guaranteeing uninterrupted operation or a particular business result. Project-specific limits are defined in its agreement.",
+    "contactTitle": "Contact us", "contactBody": "For a question about these terms, email support@zoharai.com."
   }
 }

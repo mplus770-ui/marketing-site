@@ -1,9 +1,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{{ strings.meta.title }}</title>
-{% if strings.meta.description %}<meta name="description" content="{{ strings.meta.description }}">{% endif %}
+{% set pageTitle = metaTitle or strings.meta.title %}
+{% set pageDescription = metaDescription or strings.meta.description %}
+<title>{{ pageTitle }}</title>
+{% if pageDescription %}<meta name="description" content="{{ pageDescription }}">{% endif %}
 
-{% set canonical = loc | absUrl(domains) %}
+{% set canonical = loc | absPageUrl(domains, pageSlug or "") %}
 {% set published = locales | publishable(domains) %}
 
 {# A held locale is a placeholder, not a publication surface. It emits no
@@ -26,8 +28,8 @@
    canonicalised to the Hebrew host. A held locale emits none of this. #}
 {% if publishes %}
 <link rel="canonical" href="{{ canonical }}">
-{% for l in published %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l | absUrl(domains) }}">
-{% endfor %}{% set xd = locales | xDefault(domains) %}{% if xd %}<link rel="alternate" hreflang="x-default" href="{{ xd }}">{% endif %}
+{% for l in published %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l | absPageUrl(domains, pageSlug or '') }}">
+{% endfor %}{% set xd = locales | xDefaultPage(domains, pageSlug or '') %}{% if xd %}<link rel="alternate" hreflang="x-default" href="{{ xd }}">{% endif %}
 <meta property="og:url" content="{{ canonical }}">
 <meta property="og:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
 <meta property="og:image:secure_url" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
@@ -40,8 +42,8 @@
 {% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.legalName }}">
-<meta property="og:title" content="{{ strings.meta.title }}">
-{% if strings.meta.description %}<meta property="og:description" content="{{ strings.meta.description }}">{% endif %}
+<meta property="og:title" content="{{ pageTitle }}">
+{% if pageDescription %}<meta property="og:description" content="{{ pageDescription }}">{% endif %}
 <meta property="og:locale" content="{{ loc.hreflang | replace('-','_') }}">
 <meta name="twitter:card" content="summary_large_image">
 

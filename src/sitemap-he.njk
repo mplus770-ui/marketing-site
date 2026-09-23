@@ -4,21 +4,21 @@ eleventyExcludeFromCollections: true
 ---
 {%- set hostLocales = locales | onHost("he") | publishable(domains) -%}
 {%- set all = locales | publishable(domains) -%}
-{%- set xd = locales | xDefault(domains) -%}
+{%- set pages = ["", "privacy", "accessibility", "terms"] -%}
 {%- if build.indexable and hostLocales | length -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.w3.org/1999/sitemaps/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{%- for l in hostLocales %}
+{%- for l in hostLocales %}{%- for page in pages %}
   <url>
-    <loc>{{ l | absUrl(domains) }}</loc>
+    <loc>{{ l | absPageUrl(domains, page) }}</loc>
     <lastmod>{{ build.builtAt | truncate(10, true, "") }}</lastmod>
-    <priority>1.0</priority>
+    <priority>{{ "1.0" if not page else "0.3" }}</priority>
     {%- for a in all %}
-    <xhtml:link rel="alternate" hreflang="{{ a.hreflang }}" href="{{ a | absUrl(domains) }}"/>
-    {%- endfor %}{% if xd %}
+    <xhtml:link rel="alternate" hreflang="{{ a.hreflang }}" href="{{ a | absPageUrl(domains, page) }}"/>
+    {%- endfor %}{% set xd = locales | xDefaultPage(domains, page) %}{% if xd %}
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ xd }}"/>{% endif %}
   </url>
-{%- endfor %}
+{%- endfor %}{%- endfor %}
 </urlset>
 {%- else -%}
 <?xml version="1.0" encoding="UTF-8"?>

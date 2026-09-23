@@ -377,20 +377,63 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .alt{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-block-start:26px}
 
 /* ── footer ── */
-.foot{border-block-start:1px solid var(--z-border);padding-block:44px;background:var(--z-surface-1)}
-.foot-in{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-/* Every entry is a 44px-high target, linked or not, so the row does not become
-   a field of 25px hit areas on a phone. */
+.foot{border-block-start:1px solid var(--z-border);padding-block:clamp(42px,6vw,72px) 28px;
+  background:linear-gradient(180deg,var(--z-surface-1),var(--z-canvas))}
+.foot-in{display:grid;grid-template-columns:minmax(220px,1.2fr) minmax(220px,.8fr) minmax(180px,.7fr);
+  gap:28px 5vw;align-items:start}
+.foot-brand{align-self:start}
+.foot-legal{display:grid;align-content:start;gap:4px}
+.foot-legal::before{content:attr(aria-label);margin-block-end:7px;font-size:.7rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--z-brass-400)}
+.foot-legal a,.foot-contact a{display:inline-flex;align-items:center;min-block-size:44px;width:max-content}
+.foot-contact{display:flex;flex-direction:column;align-items:flex-start}
+.foot-bottom{grid-column:1/-1;border-block-start:1px solid var(--z-border);padding-block-start:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.foot-bottom p{margin:0;color:var(--z-text-faint)}
 .foot-langs{display:flex;gap:4px;flex-wrap:wrap;font-size:var(--fs-xs)}
-.foot-langs a,.foot-langs span{display:inline-flex;align-items:center;
+.foot-langs a{display:inline-flex;align-items:center;
   min-block-size:44px;min-inline-size:44px;justify-content:center;padding-inline:10px;border-radius:10px}
 .foot-langs a{color:var(--z-text-mute);text-decoration:none}
 .foot-langs a:hover{color:var(--z-text-hi);background:var(--z-surface-2)}
-/* A held locale is not a link. Say so visibly, not only in a title attribute. */
-.foot-langs span{color:var(--z-text-faint);cursor:default}
-.foot-langs span::after{content:"";inline-size:5px;block-size:5px;border-radius:50%;
-  background:var(--z-text-faint);opacity:.55;margin-inline-start:6px}
-.foot-contact a{display:inline-flex;align-items:center;min-block-size:44px}
+@media(max-width:760px){
+  .foot-in{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1}
+}
+@media(max-width:520px){
+  .foot-in{grid-template-columns:1fr;gap:22px}
+  .foot-brand,.foot-bottom{grid-column:auto}
+  .foot-bottom{align-items:flex-start;flex-direction:column}
+}
+
+/* ── legal and accessibility pages ── */
+.legal-page{padding-block-end:clamp(56px,8vw,104px)}
+.legal-hero{position:relative;overflow:hidden;border-block-end:1px solid var(--z-border);
+  background:radial-gradient(circle at 82% 18%,rgba(52,227,155,.13),transparent 28%),
+    linear-gradient(145deg,var(--z-surface-2),var(--z-canvas) 62%)}
+[dir="rtl"] .legal-hero{background:radial-gradient(circle at 18% 18%,rgba(52,227,155,.13),transparent 28%),
+  linear-gradient(215deg,var(--z-surface-2),var(--z-canvas) 62%)}
+.legal-hero::after{content:"";position:absolute;inset-block:0;inset-inline-end:8%;inline-size:1px;
+  background:linear-gradient(transparent,var(--z-action-400),transparent);opacity:.55}
+.legal-hero-in{padding-block:clamp(64px,9vw,120px);position:relative;z-index:1}
+.legal-title{max-inline-size:14ch;margin-block:14px 20px}
+.legal-intro{max-inline-size:48rem}
+.legal-updated{margin-block-start:24px;color:var(--z-text-faint)}
+.legal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  margin-block:clamp(42px,6vw,76px);background:var(--z-border);border:1px solid var(--z-border);border-radius:18px;overflow:hidden}
+.legal-section{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:clamp(24px,4vw,42px);
+  min-block-size:220px;background:var(--z-surface-1)}
+.legal-number{font-family:var(--font-display);color:var(--z-brass-400);font-size:.84rem;letter-spacing:.08em}
+.legal-section h2{font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.55rem);color:var(--z-text-hi);line-height:1.25}
+.legal-section p{margin-block-start:12px;color:var(--z-text-mute);line-height:1.75;max-inline-size:42rem}
+.legal-contact{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(24px,4vw,38px);
+  border:1px solid var(--z-border-brass);border-radius:16px;background:linear-gradient(120deg,rgba(228,179,99,.08),rgba(52,227,155,.04))}
+.legal-contact p:last-child{margin-block-start:8px;color:var(--z-text-mute)}
+@media(max-width:700px){
+  .legal-grid{grid-template-columns:1fr}
+  .legal-section{min-block-size:0;grid-template-columns:34px 1fr;padding:24px 20px}
+  .legal-contact{align-items:flex-start;flex-direction:column}
+  .legal-contact .btn{inline-size:100%}
+}
 
 /* ── notices ── */
 .notice{background:rgba(228,179,99,.07);border:1px solid var(--z-border-brass);border-radius:12px;
@@ -662,9 +705,10 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
     background:linear-gradient(to top,rgba(4,21,15,.72),rgba(4,21,15,0));gap:8px}
   .hero-caption{font-size:12px;line-height:1.35;flex:1 1 180px;text-wrap:pretty}
   .hero-caption-chip{padding:3px 8px;margin-inline-end:5px}
-  html[lang="en"] .hero h1{font-size:clamp(2.38rem,10.7vw,2.85rem);line-height:1.01;
+  html[lang="en"] .hero h1,html[lang="fr"] .hero h1{font-size:clamp(2.38rem,10.7vw,2.85rem);line-height:1.01;
     max-inline-size:10.5ch;text-wrap:balance}
-  html[lang="en"] .hero .promise{font-size:1rem;line-height:1.3}
+  html[lang="en"] .hero .promise,html[lang="fr"] .hero .promise{font-size:1rem;line-height:1.3}
+  html[lang="fr"] .hero h1{font-size:clamp(2.05rem,9.6vw,2.6rem);max-inline-size:12.5ch}
 }
 /* Landscape phones: stacking is wrong here — there is width to spare and no
    height at all, so the copy returns to a column beside the stage and the
@@ -892,6 +936,7 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .u-label-gap{margin-block:26px 12px}
 .u-label-gap-end{margin-block-end:14px}
 .u-title-gap{margin-block:26px 14px}
+.u-404-title{margin-block:12px 14px}
 .u-ctas-center{justify-content:center;margin-block-start:30px}
 .u-inert-lg{min-block-size:56px}
 .u-full{inline-size:100%}

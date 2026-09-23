@@ -73,6 +73,33 @@ for (const loc of locales) {
   rows.push(`  ${loc.code.padEnd(3)} ${(loc.ready ? "published" : "held").padEnd(10)} ${present.length ? present.join(", ") : "no publication signals"}`);
 }
 
+// Trust pages are publication surfaces too. Each published locale must have
+// its own page-specific canonical and symmetric hreflang set, while homepage
+// FAQ/Organization schema must never leak onto policy content.
+const legalSlugs = ["privacy", "accessibility", "terms"];
+const publishedLocales = locales.filter((l) => l.ready);
+const originFor = (loc) => loc.origin === "he" ? canonical.he : canonical.international;
+const publicUrl = (loc, slug = "") =>
+  originFor(loc) + loc.canonicalPath.replace(/\/$/, "") + (slug ? `/${slug}/` : "/");
+for (const loc of publishedLocales) {
+  for (const slug of legalSlugs) {
+    const file = path.join(out, loc.buildPath.replace(/^\//, ""), slug, "index.html");
+    if (!fs.existsSync(file)) { bad.push(`${loc.code}/${slug}: page was not built`); continue; }
+    const html = fs.readFileSync(file, "utf8");
+    const want = publicUrl(loc, slug);
+    if (!html.includes(`<link rel="canonical" href="${want}">`))
+      bad.push(`${loc.code}/${slug}: canonical is not ${want}`);
+    if (!INDEXABLE.test(html)) bad.push(`${loc.code}/${slug}: is not index,follow`);
+    if (/application\/ld\+json/.test(html))
+      bad.push(`${loc.code}/${slug}: homepage structured data leaked onto a legal page`);
+    for (const alternate of publishedLocales) {
+      const alt = publicUrl(alternate, slug);
+      if (!html.includes(`hreflang="${alternate.hreflang}" href="${alt}"`))
+        bad.push(`${loc.code}/${slug}: missing ${alternate.hreflang} alternate ${alt}`);
+    }
+  }
+}
+
 // A held locale must also never appear in a sitemap or in any hreflang set.
 const sitemaps = ["sitemap.xml", "sitemap-he.xml"].map((f) => path.join(out, f));
 const heads = locales.filter((l) => l.ready)
@@ -84,6 +111,13 @@ for (const loc of locales.filter((l) => !l.ready)) {
   for (const h of heads)
     if (new RegExp(`hreflang="${loc.hreflang}"`).test(h))
       bad.push(`held locale ${loc.code} appears in a published page's hreflang set`);
+}
+for (const loc of publishedLocales) {
+  const sitemap = fs.readFileSync(path.join(out, loc.origin === "he" ? "sitemap-he.xml" : "sitemap.xml"), "utf8");
+  for (const slug of legalSlugs) {
+    const want = publicUrl(loc, slug);
+    if (!sitemap.includes(`<loc>${want}</loc>`)) bad.push(`${loc.code}/${slug}: absent from its host sitemap`);
+  }
 }
 
 fs.rmSync(out, { recursive: true, force: true });
