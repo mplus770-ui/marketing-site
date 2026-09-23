@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZOHAR AI">
-  <circle cx="32" cy="32" r="29.5" fill="#070B08"/>
-  <g fill="none" stroke="#F8F4EA" stroke-linecap="square" stroke-linejoin="miter">
-    <path d="M10.5 17.5H36.5L15.5 45.5H40" stroke-width="5.5"/>
-    <path d="M28.5 47L45.5 14L58 47M35.5 34H53" stroke-width="5.5"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZOHAR AI"><g fill="#F8F4EA"><path d="M8 13h32l-5 9H24l18 0-5 9H20l-9 11h29l-5 9H3l5-9 18-20H8Z"/><path fill-rule="evenodd" d="M40 10h11l12 41H52l-2.8-10H36.8L32 51H21L40 10Zm.8 22h6L44 20.5 40.8 32Z"/></g></svg>

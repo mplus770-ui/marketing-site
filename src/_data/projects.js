@@ -42,7 +42,7 @@ export default [
       he: "סדפרוניה — אתר מותג יין, אירוח ואקדמיה מהמערכת העסקית של זוהר.",
       en: "SADAFRONIA — a wine, hospitality and academy brand site from ZOHAR's own ecosystem.",
     },
-    focal: [0.5, 0.20],
+    focal: [0.5, 0.12],
     source: { repo: "mplus770-ui/sadafronia-website", ref: "main" },
     media: {
       card:     { avif: "/assets/work/sadafronia-card.avif",      webp: "/assets/work/sadafronia-card.webp" },
@@ -67,7 +67,7 @@ export default [
       he: "Better World — אתר תוכן קולנועי בעברית על עתיד האנושות.",
       en: "Better World — a cinematic Hebrew content site about humanity's future.",
     },
-    focal: [0.5, 0.18],
+    focal: [0.5, 0.12],
     source: { live: "https://www.alefbetcontent.com/", captured: "2026-09-22" },
     media: {
       card:     { avif: "/assets/work/better-world-card.avif",      webp: "/assets/work/better-world-card.webp" },
@@ -92,7 +92,7 @@ export default [
       he: "ייִן — מגזין יין דיגיטלי מהמערכת העסקית של זוהר.",
       en: "YAYIN — a digital wine magazine from ZOHAR's own ecosystem.",
     },
-    focal: [0.5, 0.30],
+    focal: [0.5, 0.22],
     source: { repo: "mplus770-ui/yayin-magazine-v01", ref: "main" },
     media: {
       card:     { avif: "/assets/work/yayin-card.avif",      webp: "/assets/work/yayin-card.webp" },
@@ -115,7 +115,7 @@ export default [
       he: "אתר ZOHAR — נוכחות עסקית בתהליך Done-For-You, בקוד שבבעלות הלקוח.",
       en: "ZOHAR — a Done-For-You business presence site, in code the owner keeps.",
     },
-    focal: [0.5, 0.18],
+    focal: [0.42, 0.50],
     source: { repo: "mplus770-ui/marketing-site", ref: "redesign/zohar-flagship-marketing-site" },
     media: {
       card:     { avif: "/assets/work/zohar-card.avif",      webp: "/assets/work/zohar-card.webp" },
