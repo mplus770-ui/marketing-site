@@ -6,15 +6,15 @@ import path from "node:path";
 export default function (eleventyConfig) {
   // ── Static passthrough ──────────────────────────────────────────────
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  // The approved Gate 2B/2C concept + brand review routes stay reachable on the
-  // branch preview. They carry their own noindex and are excluded in robots.txt.
-  eleventyConfig.addPassthroughCopy({ "public/concept-gate2": "concept-gate2" });
-  // Gate 3 review package: protected preview only, noindex, robots-disallowed.
-  eleventyConfig.addPassthroughCopy({ "public/review-gate3": "review-gate3" });
-  // The Codex hero-motion prototype stays exactly as delivered, reachable on
-  // the protected preview. Production uses its own copies in src/assets/motion.
-  eleventyConfig.addPassthroughCopy({ "public/hero-motion-review": "hero-motion-review" });
-  eleventyConfig.addPassthroughCopy({ "public/logo-review": "logo-review" });
+  // Review evidence remains available on branch previews, but is never copied
+  // into a production build. This removes ~37 MB of obsolete concepts and QA
+  // captures from the public artefact without deleting the review record.
+  if (process.env.VERCEL_ENV !== "production") {
+    eleventyConfig.addPassthroughCopy({ "public/concept-gate2": "concept-gate2" });
+    eleventyConfig.addPassthroughCopy({ "public/review-gate3": "review-gate3" });
+    eleventyConfig.addPassthroughCopy({ "public/hero-motion-review": "hero-motion-review" });
+    eleventyConfig.addPassthroughCopy({ "public/logo-review": "logo-review" });
+  }
 
   // ── Central origin resolver ─────────────────────────────────────────
   // One place decides canonical origin, absolute URL, alternates, x-default,
