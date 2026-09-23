@@ -21,12 +21,18 @@
      Nothing clickable is ever brass, and brass is never used for emphasis or
      as a third status. If a fifth use appears, extend this list or drop it. */
   --z-brass-400:#E4B363; --z-brass-600:#A97B36;
+  /* heritage gold — reserved for the ZOHAR studio identity and editorial
+     highlights. It warms the emerald system without competing with action. */
+  --z-gold-hi:#F7DA91; --z-gold:#D6B56F; --z-gold-deep:#875B22; --z-ivory:#F8F4EA;
+  --z-ink:#3D5148; --z-gold-border:rgba(214,181,111,.28);
+  --z-gold-border-soft:rgba(214,181,111,.24); --z-shadow-deep:rgba(0,0,0,.22);
   /* borders */
   --z-border:rgba(244,241,234,.10); --z-border-strong:rgba(52,227,155,.28);
   --z-border-brass:rgba(228,179,99,.24);
-  /* the only two gradients in the system */
+  /* controlled gradients */
   --z-grad-action:linear-gradient(135deg,#16A37B 0%,#34E39B 100%);
   --z-grad-dawn:radial-gradient(ellipse 70% 50% at 50% -10%,rgba(52,227,155,.10) 0%,transparent 70%);
+  --z-grad-gold:linear-gradient(135deg,#875B22 0%,#F7DA91 46%,#D6B56F 70%,#875B22 100%);
   /* elevation */
   --z-shadow-1:0 1px 2px rgba(0,0,0,.4);
   --z-shadow-2:0 8px 28px rgba(0,0,0,.45);

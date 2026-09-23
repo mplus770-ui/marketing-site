@@ -1,17 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-<!-- ZOHAR — zohar-appicon-512.svg. Master mark: Threshold. Gate 2C. -->
-<rect width="512" height="512" rx="114" fill="#04150F"/>
-<g transform="translate(106 106) scale(12.5)">
-<defs>
-<linearGradient id="fm" x1="4" y1="2.6" x2="20" y2="21.4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1AA97B"/><stop offset=".55" stop-color="#0F7154"/><stop offset="1" stop-color="#073F2C"/></linearGradient>
-<linearGradient id="fs" x1="14.8" y1="7.4" x2="14.8" y2="16.6" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EAFFF6"/><stop offset=".6" stop-color="#6FF3BC"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
-<linearGradient id="fb" x1="14.8" y1="16.1" x2="14" y2="21.4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B" stop-opacity=".9"/><stop offset="1" stop-color="#34E39B" stop-opacity=".12"/></linearGradient>
-<clipPath id="fc"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z"/></clipPath>
-<mask id="fk"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z" fill="#fff"/><rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="#000"/></mask>
-<mask id="fkf"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z" fill="#fff"/><rect x="13.2" y="6.9" width="3.2" height="10.2" rx="1.6" fill="#000"/></mask>
-</defs>
-<g mask="url(#fk)"><rect width="24" height="24" fill="url(#fm)"/></g>
-<g clip-path="url(#fc)"><path d="M13.5 16.1H16.1L16.9 21.4H11.1Z" fill="url(#fb)"/></g>
-<rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="url(#fs)"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ZOHAR AI">
+  <defs>
+    <radialGradient id="bg" cx="34%" cy="22%" r="85%"><stop stop-color="#17211B"/><stop offset="1" stop-color="#030504"/></radialGradient>
+    <linearGradient id="gold" x1="86" y1="64" x2="438" y2="450" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF0B5"/><stop offset=".32" stop-color="#D6B56F"/><stop offset=".68" stop-color="#875B22"/><stop offset="1" stop-color="#F7DA91"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="208" fill="none" stroke="#875B22" stroke-width="4"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="42" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M82 144H290L122 368H318"/>
+    <path d="M228 380L364 116L464 380M284 276H424"/>
+  </g>
 </svg>

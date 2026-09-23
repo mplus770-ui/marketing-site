@@ -102,7 +102,7 @@ export default [
     },
   },
   {
-    slug: "zohar", name: "ZOHAR", order: 4,
+    slug: "zohar", name: "ZOHAR", order: 7,
     own: true, verified: true, permission: true, published: true,
     url: "#method",                   // internal: the work this site demonstrates
     external: false,
@@ -125,7 +125,7 @@ export default [
     },
   },
   {
-    slug: "eco-tech-israel", name: "Eco-Tech Israel", order: 5,
+    slug: "eco-tech-israel", name: "Eco-Tech Israel", order: 4,
     own: false, verified: true, permission: true, published: true,
     url: "https://ecot.co.il/",
     urlVerifiedBy: "live-browser:2026-09-22",
@@ -149,7 +149,7 @@ export default [
     },
   },
   {
-    slug: "urban-fashion-store", name: "Urban Fashion Store", order: 6,
+    slug: "urban-fashion-store", name: "Urban Fashion Store", order: 5,
     own: false, verified: true, permission: true, published: true,
     url: "https://theme389-urban-fashion.myshopify.com/",
     urlVerifiedBy: "live-browser:2026-09-22",
@@ -173,7 +173,7 @@ export default [
     },
   },
   {
-    slug: "le-monde-sefarade", name: "Le Monde Séfarade", order: 7,
+    slug: "le-monde-sefarade", name: "Le Monde Séfarade", order: 6,
     own: false, verified: true, permission: true, published: true,
     url: "https://lemondesepharade.co.il/",
     urlVerifiedBy: "live-browser:2026-09-22",

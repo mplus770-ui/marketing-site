@@ -1,14 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-<!-- ZOHAR — zohar-symbol-light.svg. Master mark: Threshold. Gate 2C. -->
-<defs>
-<linearGradient id="em" x1="4" y1="2.6" x2="20" y2="21.4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#128F68"/><stop offset=".55" stop-color="#0A5B42"/><stop offset="1" stop-color="#063326"/></linearGradient>
-<linearGradient id="es" x1="14.8" y1="7.4" x2="14.8" y2="16.6" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#EAFFF6"/><stop offset=".6" stop-color="#6FF3BC"/><stop offset="1" stop-color="#34E39B"/></linearGradient>
-<linearGradient id="eb" x1="14.8" y1="16.1" x2="14" y2="21.4" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#34E39B" stop-opacity=".9"/><stop offset="1" stop-color="#34E39B" stop-opacity=".12"/></linearGradient>
-<clipPath id="ec"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z"/></clipPath>
-<mask id="ek"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z" fill="#fff"/><rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="#000"/></mask>
-<mask id="ekf"><path d="M9.4 2.6H18.4A1.5 1.5 0 0 1 19.9 4.1V19.9A1.5 1.5 0 0 1 18.4 21.4H5.6A1.5 1.5 0 0 1 4.1 19.9V10.6Z" fill="#fff"/><rect x="13.2" y="6.9" width="3.2" height="10.2" rx="1.6" fill="#000"/></mask>
-</defs>
-<g mask="url(#ek)"><rect width="24" height="24" fill="url(#em)"/></g>
-<g clip-path="url(#ec)"><path d="M13.5 16.1H16.1L16.9 21.4H11.1Z" fill="url(#eb)"/></g>
-<rect x="13.4" y="7.4" width="2.8" height="9.2" rx="1.4" fill="url(#es)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ZOHAR AI">
+  <circle cx="32" cy="32" r="29.5" fill="#F8F4EA" stroke="#D6B56F"/>
+  <g fill="none" stroke="#875B22" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M10.5 17.5H36.5L15.5 45.5H40" stroke-width="5.5"/>
+    <path d="M28.5 47L45.5 14L58 47M35.5 34H53" stroke-width="5.5"/>
+  </g>
 </svg>
