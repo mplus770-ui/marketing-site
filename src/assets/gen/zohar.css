@@ -756,6 +756,7 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .showcase-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;
   border:1px solid var(--z-gold-border);border-radius:16px;overflow:hidden;
   background:var(--z-ivory);box-shadow:0 18px 48px rgba(0,0,0,.2);
+  block-size:412px;
   backface-visibility:hidden;transform:translateZ(0);
   transition:border-color .2s,transform .2s,box-shadow .2s}
 .showcase-card:hover{border-color:var(--z-gold);transform:translateY(-3px)}
@@ -793,12 +794,17 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   .showcase-track{--rail-gap:14px;inline-size:max-content;animation-duration:52s}
   .showcase-item{inline-size:min(258px,74vw)}
   .showcase-media{aspect-ratio:16/9}
-  .showcase-body{min-block-size:132px;padding:12px 14px 13px}
+  .showcase-card{block-size:auto}
+  .showcase-body{block-size:132px;min-block-size:132px;padding:12px 14px 13px}
   .showcase-name{font-size:1.08rem}
   .showcase-sector{font-size:.78rem}
   .showcase-desc{display:none}
   .showcase-visit{padding-block-start:7px;font-size:.84rem}
   .showcase-btn{display:inline-flex}
+}
+@media(max-width:360px){
+  .nav-right .lang-btn{inline-size:44px;padding-inline:0;justify-content:center}
+  .nav-right .lang-btn span{display:none}
 }
 
 /* Reduced motion: automatic movement stops everywhere. The rail stays a
