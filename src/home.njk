@@ -276,18 +276,75 @@ schemaEnabled: true
       <h2 class="d2">{{ strings.brief.heading }}</h2>
       <p class="lead u-mi-auto">{{ strings.brief.lead }}</p>
     </div>
-    <form class="brief" id="briefForm" novalidate>
+    <form class="brief" id="briefForm" novalidate
+      data-whatsapp="{{ site.whatsapp }}" data-email="{{ site.email }}"
+      data-step-template="{{ strings.brief.stepTemplate }}"
+      data-review-label="{{ strings.brief.review }}"
+      data-message-title="{{ strings.brief.messageTitle }}"
+      data-email-subject="{{ strings.brief.emailSubject }}">
       <span class="chip chip-preview">{{ strings.brief.previewChip }}</span>
-      <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      <p class="label u-label-gap-end">{{ strings.brief.step }}</p>
-      <label class="d3" for="b1">{{ strings.brief.q1 }}</label>
-      <textarea id="b1" name="business" rows="4" placeholder="{{ strings.brief.placeholder }}"></textarea>
+      <div class="prog" role="progressbar" aria-label="{{ strings.brief.progressLabel }}"
+        aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <p class="label u-label-gap-end" id="briefStepLabel">{{ strings.brief.step }}</p>
+
+      <fieldset class="brief-step" data-brief-step>
+        <legend class="d3">{{ strings.brief.q1 }}</legend>
+        <label class="vh" for="b1">{{ strings.brief.q1 }}</label>
+        <textarea id="b1" name="business" rows="4" required data-minlength="12"
+          placeholder="{{ strings.brief.placeholder }}"></textarea>
+      </fieldset>
+      <fieldset class="brief-step" data-brief-step>
+        <legend class="d3">{{ strings.brief.q2 }}</legend>
+        <label class="vh" for="b2">{{ strings.brief.q2 }}</label>
+        <textarea id="b2" name="goal" rows="4" required data-minlength="8"
+          placeholder="{{ strings.brief.placeholder2 }}"></textarea>
+      </fieldset>
+      <fieldset class="brief-step" data-brief-step>
+        <legend class="d3">{{ strings.brief.q3 }}</legend>
+        <label class="vh" for="b3">{{ strings.brief.q3 }}</label>
+        <textarea id="b3" name="scope" rows="4" required data-minlength="8"
+          placeholder="{{ strings.brief.placeholder3 }}"></textarea>
+      </fieldset>
+      <fieldset class="brief-step" data-brief-step>
+        <legend class="d3">{{ strings.brief.q4 }}</legend>
+        <label class="vh" for="b4">{{ strings.brief.q4 }}</label>
+        <textarea id="b4" name="timing" rows="4" required data-minlength="5"
+          placeholder="{{ strings.brief.placeholder4 }}"></textarea>
+      </fieldset>
+      <fieldset class="brief-step" data-brief-step>
+        <legend class="d3">{{ strings.brief.q5 }}</legend>
+        <label class="vh" for="b5">{{ strings.brief.q5 }}</label>
+        <textarea id="b5" name="references" rows="4"
+          placeholder="{{ strings.brief.placeholder5 }}"></textarea>
+      </fieldset>
+
       <p class="err" data-show="0" role="status" aria-live="polite"
          data-empty="{{ strings.brief.errEmpty }}" data-short="{{ strings.brief.errShort }}"
          data-disabled="{{ strings.brief.disabled }}"></p>
-      <div class="brief-row">
-        <button class="btn btn-muted" type="submit" aria-describedby="briefSubmitNote">{{ strings.brief.continue }}</button>
-        <span class="xs" id="briefSubmitNote">{{ strings.brief.submitNote }}</span>
+      <div class="brief-row" data-brief-nav>
+        <button class="btn btn-ghost" type="button" data-brief-back hidden>{{ strings.brief.back }}</button>
+        <button class="btn btn-muted" type="button" data-brief-next>{{ strings.brief.continue }}</button>
+      </div>
+
+      <div class="brief-review" data-brief-review hidden>
+        <h3 class="d3">{{ strings.brief.reviewTitle }}</h3>
+        <ol>
+          <li><strong>{{ strings.brief.q1 }}</strong><span data-brief-answer="0"></span></li>
+          <li><strong>{{ strings.brief.q2 }}</strong><span data-brief-answer="1"></span></li>
+          <li><strong>{{ strings.brief.q3 }}</strong><span data-brief-answer="2"></span></li>
+          <li><strong>{{ strings.brief.q4 }}</strong><span data-brief-answer="3"></span></li>
+          <li><strong>{{ strings.brief.q5 }}</strong><span data-brief-answer="4"></span></li>
+        </ol>
+        <div class="brief-send">
+          <button class="btn btn-primary" type="button" data-brief-send="whatsapp">
+            <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.sendWhatsapp }}
+          </button>
+          <button class="btn btn-ghost" type="button" data-brief-send="email">{{ strings.brief.sendEmail }}</button>
+          <button class="brief-edit" type="button" data-brief-edit>{{ strings.brief.edit }}</button>
+        </div>
+        <p class="xs" id="briefSubmitNote">{{ strings.brief.submitNote }}</p>
       </div>
       <p class="brief-privacy">{{ strings.brief.privacy }} <a href="{{ (loc | absPageUrl(domains, 'privacy')) or (loc.buildPath ~ 'privacy/') }}">{{ strings.footer.privacy }}</a></p>
     </form>

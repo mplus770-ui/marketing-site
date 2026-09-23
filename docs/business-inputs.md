@@ -14,6 +14,7 @@ Everything the build needs from you. Each row maps to one field in
 | Published languages | Hebrew, English, French | Full homepage, portfolio copy, metadata and trust pages |
 | Approved web hosts | `www.zohar-ai.co.il` (HE), `zohar-ai.com` (EN/FR) | Canonical architecture is implemented but held until cutover |
 | Portfolio proof | ZOHAR, SADAFRONIA, Better World, YAYIN, Eco-Tech, Urban Fashion, Le Monde Séfarade | Local media, reviewed copy and outbound destinations |
+| Project brief delivery | Client-side WhatsApp/email handoff | Five-step brief; answers stay on-device until the visitor selects an app and confirms sending there |
 
 `m.plus770@gmail.com` is **not** present anywhere in the built HTML, schema,
 metadata or client-side JavaScript. Verified by grep on every build.
@@ -25,7 +26,7 @@ metadata or client-side JavaScript. Verified by grep on every build.
 | 1 | **DNS and TLS cutover evidence** | Attaching the approved hosts and enabling the SEO surface | After both hosts validate, set `ZOHAR_ORIGIN_HE=https://www.zohar-ai.co.il` and `ZOHAR_ORIGIN_INTL=https://zohar-ai.com`. Preview remains noindex until then. |
 | 2 | **Registered legal entity or approved public business name + country** | Final legal identification in schema and formal documents | Not to be inferred. The public privacy, accessibility and terms pages are deliberately factual and identify the approved contact, but do not invent a registered entity. |
 | 3 | **Service area** | `ProfessionalService.areaServed` | e.g. Israel, or a city list. |
-| 4 | **Approved form destination** | Project-brief submission | The UI and validation are built; `preventDefault` holds and nothing is transmitted or stored until an endpoint **and** its privacy handling are approved. |
+| 4 | **Optional CRM/form endpoint** | Future server-side lead capture and automation only | Not required for the live brief. The current flow reliably hands a formatted brief to WhatsApp or email without storing answers on the website. |
 | 5 | **Response-time promise** | Brief confirmation copy and the contact section | e.g. "within one business day". Currently null, so no promise is made. |
 | 6 | **Live recapture at cutover** | Final assurance that project media still matches each external destination | Existing captures are local and approved; re-verify every destination immediately before production. |
 | 7 | **Scheduler URL** | Consultation CTA | Currently renders as inert text. |

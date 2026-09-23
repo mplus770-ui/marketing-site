@@ -90,30 +90,118 @@
     }
   }
 
-  /* ── project brief: validation only. Nothing is transmitted or stored
-        until an endpoint and privacy handling are approved. ──────────── */
+  /* ── project brief ─────────────────────────────────────────────────────
+        Answers live only in the page. The visitor reviews them, then chooses
+        WhatsApp or email; the site never posts them to a server. Using a
+        same-tab location handoff (rather than window.open) keeps the action
+        reliable in iOS Safari and avoids popup blockers. ─────────────── */
   var brief = document.getElementById("briefForm");
   if (brief) {
-    var field = brief.querySelector("textarea");
+    var steps = Array.prototype.slice.call(brief.querySelectorAll("[data-brief-step]"));
+    var fields = steps.map(function (step) { return step.querySelector("textarea"); });
     var err = brief.querySelector(".err");
-    brief.addEventListener("submit", function (e) {
-      e.preventDefault();               // no transmission, by design
-      var v = (field.value || "").trim();
-      var msg = "";
-      if (!v) msg = err.dataset.empty;
-      else if (v.length < 12) msg = err.dataset.short;
-      if (msg) {
-        err.textContent = msg; err.dataset.show = "1";
-        field.setAttribute("aria-invalid", "true"); field.focus();
-      } else {
-        err.textContent = err.dataset.disabled; err.dataset.show = "1";
-        field.removeAttribute("aria-invalid");
-      }
+    var next = brief.querySelector("[data-brief-next]");
+    var back = brief.querySelector("[data-brief-back]");
+    var nav = brief.querySelector("[data-brief-nav]");
+    var review = brief.querySelector("[data-brief-review]");
+    var edit = brief.querySelector("[data-brief-edit]");
+    var stepLabel = document.getElementById("briefStepLabel");
+    var progress = brief.querySelector(".prog");
+    var bars = Array.prototype.slice.call(progress.querySelectorAll("i"));
+    var index = 0;
+
+    brief.dataset.enhanced = "true";
+
+    function stepText(current) {
+      return (brief.dataset.stepTemplate || "{current} / {total}")
+        .replace("{current}", String(current)).replace("{total}", String(steps.length));
+    }
+    function clearError(field) {
+      if (field) field.removeAttribute("aria-invalid");
+      err.textContent = ""; err.dataset.show = "0";
+    }
+    function showStep(n) {
+      index = Math.max(0, Math.min(n, steps.length - 1));
+      steps.forEach(function (step, i) { step.hidden = i !== index; });
+      review.hidden = true; nav.hidden = false;
+      back.hidden = index === 0;
+      next.textContent = index === steps.length - 1 ? next.dataset.reviewLabel : next.dataset.nextLabel;
+      stepLabel.textContent = stepText(index + 1);
+      progress.setAttribute("aria-valuenow", String(index + 1));
+      bars.forEach(function (bar, i) { bar.dataset.active = i <= index ? "true" : "false"; });
+      clearError(fields[index]);
+    }
+    function validCurrent() {
+      var field = fields[index];
+      var value = (field.value || "").trim();
+      var min = Number(field.dataset.minlength || 0);
+      var message = "";
+      if (field.required && !value) message = err.dataset.empty;
+      else if (value && value.length < min) message = err.dataset.short;
+      if (!message) { clearError(field); return true; }
+      err.textContent = message; err.dataset.show = "1";
+      field.setAttribute("aria-invalid", "true"); field.focus();
+      return false;
+    }
+    function labelsAndAnswers() {
+      return steps.map(function (step, i) {
+        return {
+          label: (step.querySelector("legend").textContent || "").trim(),
+          answer: (fields[i].value || "").trim() || "—"
+        };
+      });
+    }
+    function composeBrief() {
+      var blocks = labelsAndAnswers().map(function (item, i) {
+        return (i + 1) + ". " + item.label + "\n" + item.answer;
+      });
+      return brief.dataset.messageTitle + "\n\n" + blocks.join("\n\n");
+    }
+    function showReview() {
+      labelsAndAnswers().forEach(function (item, i) {
+        var target = review.querySelector('[data-brief-answer="' + i + '"]');
+        if (target) target.textContent = item.answer;
+      });
+      steps.forEach(function (step) { step.hidden = true; });
+      nav.hidden = true; review.hidden = false;
+      stepLabel.textContent = brief.querySelector("[data-brief-review] h3").textContent;
+      bars.forEach(function (bar) { bar.dataset.active = "true"; });
+      progress.setAttribute("aria-valuenow", String(steps.length));
+      review.querySelector("button").focus();
+    }
+
+    next.dataset.nextLabel = next.textContent;
+    next.dataset.reviewLabel = brief.dataset.reviewLabel;
+    showStep(0);
+    next.addEventListener("click", function () {
+      if (!validCurrent()) return;
+      if (index === steps.length - 1) showReview();
+      else { showStep(index + 1); fields[index].focus(); }
     });
-    field.addEventListener("input", function () {
-      if (field.getAttribute("aria-invalid") === "true" && field.value.trim()) {
-        field.removeAttribute("aria-invalid"); err.dataset.show = "0";
-      }
+    back.addEventListener("click", function () { showStep(index - 1); fields[index].focus(); });
+    edit.addEventListener("click", function () { showStep(0); fields[0].focus(); });
+    fields.forEach(function (field) {
+      field.addEventListener("input", function () {
+        if (field.getAttribute("aria-invalid") === "true" && field.value.trim()) clearError(field);
+      });
+    });
+    brief.addEventListener("submit", function (e) { e.preventDefault(); });
+    Array.prototype.forEach.call(brief.querySelectorAll("[data-brief-send]"), function (button) {
+      button.addEventListener("click", function () {
+        var message = composeBrief();
+        var destination = "";
+        if (button.dataset.briefSend === "whatsapp" && brief.dataset.whatsapp) {
+          destination = "https://wa.me/" + brief.dataset.whatsapp + "?text=" + encodeURIComponent(message);
+        } else if (button.dataset.briefSend === "email" && brief.dataset.email) {
+          destination = "mailto:" + brief.dataset.email + "?subject=" +
+            encodeURIComponent(brief.dataset.emailSubject) + "&body=" + encodeURIComponent(message);
+        }
+        if (destination) window.location.href = destination;
+        else {
+          err.textContent = err.dataset.disabled; err.dataset.show = "1";
+          button.focus();
+        }
+      });
     });
   }
 

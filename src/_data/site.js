@@ -21,7 +21,7 @@ export default {
   country: null,
   areaServed: null,         // service area — awaiting decision
   responseTime: null,       // response-time promise — awaiting decision
-  formEndpoint: null,       // brief endpoint — submission stays disabled until set
+  formEndpoint: null,       // optional future CRM endpoint; current brief hands off locally to WhatsApp/email
   schedulerUrl: null,       // consultation booking
   social: [],               // sameAs profiles
   founded: null,

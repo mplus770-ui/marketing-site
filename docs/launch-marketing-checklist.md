@@ -64,11 +64,12 @@ The language switch is explicit. There is no IP- or geolocation-based redirect.
 ## Conversion and measurement
 
 - Keep WhatsApp (`972555626040`) and `support@zoharai.com` as the only active
-  contact destinations until the brief endpoint and privacy handling exist.
+  contact destinations. The five-step brief hands its formatted answers to one
+  of those apps only after the visitor chooses it; the website stores nothing.
 - When measurement is approved, define the minimum event plan before adding a
   tag: primary WhatsApp click, email click, project-outbound click, brief start
-  and completed form delivery. Do not report a submitted lead while the form is
-  still intentionally disabled.
+  and completed brief handoff. Do not report a submitted lead until delivery in
+  WhatsApp or email is confirmed; opening an app is not the same as a sent lead.
 - Add analytics or advertising pixels only together with the necessary consent
   and privacy disclosure. No identifier is approved in the current build.
 - Establish a weekly launch review: indexed canonical pages, sitemap status,

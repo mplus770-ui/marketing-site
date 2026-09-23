@@ -362,19 +362,39 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .brief{padding:clamp(26px,4vw,44px);max-inline-size:760px;margin-inline:auto}
 .prog{display:flex;gap:6px;margin-block-end:22px}
 .prog i{block-size:3px;flex:1;border-radius:2px;background:var(--z-surface-3);display:block}
-.prog i:first-child{background:var(--z-action-400)}
+.prog i[data-active="true"]{background:var(--z-action-400)}
+.brief-step{border:0;padding:0;margin:0;min-inline-size:0}
+.brief-step legend{display:block;margin-block-end:10px;inline-size:100%}
 .brief label{display:block;margin-block-end:10px}
 .brief textarea{inline-size:100%;min-block-size:118px;background:var(--z-canvas);color:var(--z-text);
   border:1px solid var(--z-border);border-radius:12px;padding:15px 17px;font-size:1.0625rem;
-  resize:vertical;line-height:1.6}
+  resize:vertical;line-height:1.6;-webkit-appearance:none;appearance:none}
 .brief textarea::placeholder{color:var(--z-text-faint)}
 .brief textarea:focus-visible{outline:2px solid var(--z-action-400);outline-offset:1px;border-color:transparent}
 .brief textarea[aria-invalid="true"]{border-color:#E4B363}
 .err{display:none;color:var(--z-brass-400);font-size:var(--fs-xs);margin-block-start:10px}
 .err[data-show="1"]{display:block}
 .brief-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-block-start:22px}
+.brief-review{margin-block-start:4px}
+.brief-review ol{display:grid;gap:12px;margin-block:20px 24px;counter-reset:brief}
+.brief-review li{display:grid;gap:5px;padding:14px 16px;border:1px solid var(--z-border);
+  border-radius:12px;background:rgba(4,21,15,.48)}
+.brief-review strong{font-size:var(--fs-xs);color:var(--z-brass-400);font-weight:700}
+.brief-review span{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--z-text-hi)}
+.brief-send{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brief-send .btn{min-block-size:48px}
+.brief-edit{border:0;background:transparent;color:var(--z-text-mute);text-decoration:underline;
+  text-underline-offset:4px;min-block-size:44px;padding-inline:8px;cursor:pointer}
+.brief-review .xs{margin-block-start:14px;max-inline-size:38rem}
 .brief-privacy{font-size:var(--fs-xs);color:var(--z-text-faint);margin-block-start:18px;line-height:1.55}
 .alt{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-block-start:26px}
+
+@media(max-width:560px){
+  .brief{padding:24px 18px}
+  .brief-row,.brief-send{align-items:stretch}
+  .brief-row .btn,.brief-send .btn{inline-size:100%;justify-content:center}
+  .brief-edit{inline-size:100%;text-align:center}
+}
 
 /* ── footer ── */
 .foot{border-block-start:1px solid var(--z-border);padding-block:clamp(42px,6vw,72px) 28px;
