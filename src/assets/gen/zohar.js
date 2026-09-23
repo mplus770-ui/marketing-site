@@ -163,8 +163,14 @@
     }
     function stop() { if (!vid.paused) vid.pause(); }
 
-    vid.addEventListener("ended", function () { ended = true; sync(); });
-    vid.addEventListener("playing", function () { stage.setAttribute("data-playing", "1"); sync(); });
+    vid.addEventListener("ended", function () {
+      ended = true; stage.removeAttribute("data-playing");
+      stage.setAttribute("data-ended", "1"); sync();
+    });
+    vid.addEventListener("playing", function () {
+      stage.removeAttribute("data-ended");
+      stage.setAttribute("data-playing", "1"); sync();
+    });
     vid.addEventListener("pause", function () { stage.removeAttribute("data-playing"); sync(); });
     vid.addEventListener("error", function () { stage.removeAttribute("data-playing"); });
 
@@ -175,7 +181,7 @@
          plays the motion, and nothing is fetched before that. */
       btn.addEventListener("click", function () {
         if (!wanted) { wanted = true; paused = false; ended = false; start(); }
-        else if (ended) { ended = false; paused = false; vid.currentTime = 0; start(); }
+        else if (ended) { ended = false; paused = false; stage.removeAttribute("data-ended"); vid.currentTime = 0; start(); }
         else if (vid.paused) { paused = false; start(); }
         else { paused = true; stop(); }
         sync();

@@ -387,6 +387,7 @@
    wins. Do not remove without re-measuring LCP. */
 .hero-stage-video{z-index:1;inset:1px;opacity:0;transition:opacity .5s ease}
 .hero-stage[data-playing="1"] .hero-stage-video{opacity:1}
+.hero-stage[data-ended="1"] .hero-stage-video{display:none}
 /* NOT mirrored. The film carries real words in the visitor's own language, so
    a scaleX flip would reverse every glyph in it. Each direction is composed
    separately in tools/hero-film and selected at build time; the quiet side
