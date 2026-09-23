@@ -29,7 +29,14 @@
 {% for l in published %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l | absUrl(domains) }}">
 {% endfor %}{% set xd = locales | xDefault(domains) %}{% if xd %}<link rel="alternate" hreflang="x-default" href="{{ xd }}">{% endif %}
 <meta property="og:url" content="{{ canonical }}">
-<meta property="og:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.svg' }}">
+<meta property="og:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
+<meta property="og:image:secure_url" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ strings.meta.shareImageAlt }}">
+<meta name="twitter:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
+<meta name="twitter:image:alt" content="{{ strings.meta.shareImageAlt }}">
 {% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.legalName }}">
@@ -39,7 +46,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="/assets/brand/zohar-favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/brand/zohar-appicon-512.svg">
+<link rel="apple-touch-icon" href="/assets/brand/zohar-appicon-512.png">
 <meta name="theme-color" content="#04150F">
 
 {# Three preloads: this locale's display face, its body regular and its body

@@ -47,6 +47,9 @@
   block-size:72px;display:flex;align-items:center;gap:clamp(14px,3vw,40px)}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;
   min-block-size:44px}
+/* Keep the ZA signature on the same visual side in both locales. The page
+   direction may change, but the approved lockup does not. */
+[dir="rtl"] .nav-logo{flex-direction:row-reverse}
 .wm-lock{display:flex;flex-direction:column;line-height:1}
 .nav-logo .wm{font-family:var(--font-display);font-weight:600;font-size:1.22rem;letter-spacing:.11em;color:var(--z-ivory);white-space:nowrap}
 .nav-logo .wm b{font-family:var(--font-sans);font-size:.66em;font-weight:700;letter-spacing:.08em;color:var(--z-gold)}
@@ -402,9 +405,9 @@
    sized for a photographic frame that was bright edge to edge, and over an
    authored composition it only made the surfaces read as ghosts. */
 .hero-scrim-edge{background:linear-gradient(to left,
-  rgba(4,21,15,.96) 0,rgba(4,21,15,.88) 26rem,rgba(4,21,15,.42) 37rem,rgba(4,21,15,0) 50rem)}
+  rgba(4,21,15,.91) 0,rgba(4,21,15,.80) 25rem,rgba(4,21,15,.30) 36rem,rgba(4,21,15,0) 47rem)}
 [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,
-  rgba(4,21,15,.96) 0,rgba(4,21,15,.88) 26rem,rgba(4,21,15,.42) 37rem,rgba(4,21,15,0) 50rem)}
+  rgba(4,21,15,.91) 0,rgba(4,21,15,.80) 25rem,rgba(4,21,15,.30) 36rem,rgba(4,21,15,0) 47rem)}
 .hero-scrim-foot{background:linear-gradient(to bottom,transparent 70%,rgba(4,21,15,.5) 88%,var(--z-canvas) 100%)}
 
 .hero-inner{position:relative;z-index:3;inline-size:100%;
@@ -429,14 +432,14 @@
    masked without touching the type. A hard top edge with a rounded corner read
    as a card sitting on a picture; the copy has to feel printed into the frame. */
 .hero-copy::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to left,rgba(4,21,15,.93) 0,
-    rgba(4,21,15,.93) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%);
+  background:linear-gradient(to left,rgba(4,21,15,.86) 0,
+    rgba(4,21,15,.86) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%);
   -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
     #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%);
   mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
     #000 calc(100% - var(--hero-vpad)),rgba(0,0,0,0) 100%)}
-[dir="rtl"] .hero-copy::after{background:linear-gradient(to left,rgba(4,21,15,.93) 0,
-  rgba(4,21,15,.93) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%)}
+[dir="rtl"] .hero-copy::after{background:linear-gradient(to left,rgba(4,21,15,.86) 0,
+  rgba(4,21,15,.86) calc(100% - var(--hero-fade)),rgba(4,21,15,0) 100%)}
 .hero-copy .lead{max-inline-size:33rem}
 
 /* The luminous edge runs from the copy into the stage: one authored system
@@ -489,7 +492,7 @@
      LENGTH-based fade, confined to the trailing padding — a percentage fade
      put the soft end under the reassurance line and measured 1.15:1. */
   .hero-copy{--hero-vpad:10px}
-  .hero-copy::after,[dir="rtl"] .hero-copy::after{background:rgba(4,21,15,.9);
+  .hero-copy::after,[dir="rtl"] .hero-copy::after{background:rgba(4,21,15,.85);
     -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
       #000 calc(100% - 22px),rgba(0,0,0,0) 100%);
     mask-image:linear-gradient(to bottom,rgba(0,0,0,0) 0,#000 var(--hero-vpad),
@@ -498,8 +501,8 @@
      made the exposed band read as an almost-black strip: the film was there
      and two gradients were painting over it. */
   .hero-scrim-edge,[dir="rtl"] .hero-scrim-edge{background:linear-gradient(to bottom,
-    rgba(4,21,15,.9) 0%,rgba(4,21,15,.86) 34%,rgba(4,21,15,.54) 48%,
-    rgba(4,21,15,.14) 60%,rgba(4,21,15,.06) 100%)}
+    rgba(4,21,15,.88) 0%,rgba(4,21,15,.81) 34%,rgba(4,21,15,.44) 48%,
+    rgba(4,21,15,.10) 60%,rgba(4,21,15,.03) 100%)}
   .hero-scrim-foot{background:linear-gradient(to bottom,transparent 84%,rgba(4,21,15,.42) 94%,var(--z-canvas) 100%)}
   .hero-inner{justify-content:flex-start;gap:12px}
   /* The caption sits on the stage, not in the panel, so it carries its own
@@ -525,8 +528,8 @@
   .hero-ctas .btn-lg{min-block-size:52px;inline-size:100%;font-size:1rem}
   .hero-brief-link{min-block-size:36px;font-size:.875rem}
   .hero-scrim-edge,[dir="rtl"] .hero-scrim-edge{background:linear-gradient(to bottom,
-    rgba(4,21,15,.94) 0%,rgba(4,21,15,.9) 31%,rgba(4,21,15,.58) 43%,
-    rgba(4,21,15,.12) 55%,rgba(4,21,15,0) 68%)}
+    rgba(4,21,15,.90) 0%,rgba(4,21,15,.84) 31%,rgba(4,21,15,.48) 43%,
+    rgba(4,21,15,.08) 55%,rgba(4,21,15,0) 66%)}
   .hero-scrim-foot{background:linear-gradient(to bottom,transparent 88%,rgba(4,21,15,.38) 96%,var(--z-canvas) 100%)}
   .hero-stage-poster img,.hero-stage-video{object-position:center 64%}
   /* The honesty caption never shortens, so it gets the width instead: the
