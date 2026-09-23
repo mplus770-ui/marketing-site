@@ -9,7 +9,7 @@
         <source type="image/avif" srcset="{{ p.media.card.avif }} 1x, {{ p.media.card2x.avif }} 2x">
         <source type="image/webp" srcset="{{ p.media.card.webp }} 1x, {{ p.media.card2x.webp }} 2x">
         <img src="{{ p.media.card.webp }}" alt="{% if clone %}{% else %}{{ p.alt[loc.code] }}{% endif %}"
-             width="800" height="500" loading="lazy" decoding="async"
+             width="800" height="500" loading="eager" fetchpriority="low" decoding="async"
              class="focal-{{ p.slug }}">
       </picture>
     </span>
