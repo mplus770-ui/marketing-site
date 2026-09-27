@@ -18,6 +18,22 @@ import { execFileSync } from "node:child_process";
 import { canonical, rules, hosts, MAX_REDIRECTS, sitemapByHost } from "../src/_data/hostMap.js";
 import locales from "../src/_data/locales.js";
 
+// Guard the deployed Vercel syntax as well as the abstract host-map model.
+// `Host` is a dedicated conditional type; treating it as an ordinary request
+// header does not match at the edge and silently serves the default locale.
+const vercelConfig = JSON.parse(
+  fs.readFileSync(new URL("../vercel.json", import.meta.url), "utf8")
+);
+for (const rule of [...(vercelConfig.redirects || []), ...(vercelConfig.rewrites || [])]) {
+  for (const condition of rule.has || []) {
+    if (condition.key?.toLowerCase() === "host") {
+      throw new Error(
+        `Invalid Vercel host condition in ${rule.source}: use { "type": "host", "value": ... }`
+      );
+    }
+  }
+}
+
 const WALK_LIMIT = 6; // walk far enough to SEE an over-budget chain and name it
 
 // ── rule engine ────────────────────────────────────────────────────────────
