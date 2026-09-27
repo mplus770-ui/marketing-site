@@ -31,13 +31,13 @@
 {% for l in published %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ l | absPageUrl(domains, pageSlug or '') }}">
 {% endfor %}{% set xd = locales | xDefaultPage(domains, pageSlug or '') %}{% if xd %}<link rel="alternate" hreflang="x-default" href="{{ xd }}">{% endif %}
 <meta property="og:url" content="{{ canonical }}">
-<meta property="og:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
-<meta property="og:image:secure_url" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-site-social-1200x630.jpg?v=20260927' }}">
+<meta property="og:image:secure_url" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-site-social-1200x630.jpg?v=20260927' }}">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{{ strings.meta.shareImageAlt }}">
-<meta name="twitter:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-social-1200x630.png' }}">
+<meta name="twitter:image" content="{{ (loc | originOf(domains)) + '/assets/brand/zohar-site-social-1200x630.jpg?v=20260927' }}">
 <meta name="twitter:image:alt" content="{{ strings.meta.shareImageAlt }}">
 {% endif %}
 <meta property="og:type" content="website">

@@ -42,9 +42,9 @@ const SIGNALS = {
   "og:image": /<meta property="og:image"/,
   "ld+json": /application\/ld\+json/,
 };
-const SOCIAL_IMAGE = /<meta property="og:image" content="https:\/\/[^\"]+\/assets\/brand\/zohar-social-1200x630\.png">/;
+const SOCIAL_IMAGE = /<meta property="og:image" content="https:\/\/[^\"]+\/assets\/brand\/zohar-site-social-1200x630\.jpg\?v=20260927">/;
 const SOCIAL_DIMENSIONS = /<meta property="og:image:width" content="1200">[\s\S]*<meta property="og:image:height" content="630">/;
-const TWITTER_IMAGE = /<meta name="twitter:image" content="https:\/\/[^\"]+\/assets\/brand\/zohar-social-1200x630\.png">/;
+const TWITTER_IMAGE = /<meta name="twitter:image" content="https:\/\/[^\"]+\/assets\/brand\/zohar-site-social-1200x630\.jpg\?v=20260927">/;
 const INDEXABLE = /<meta name="robots" content="index,follow/;
 const NOINDEX = /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/;
 
@@ -60,7 +60,7 @@ for (const loc of locales) {
     if (!INDEXABLE.test(html)) bad.push(`${loc.code} is published but is not index,follow`);
     for (const k of Object.keys(SIGNALS))
       if (!present.includes(k)) bad.push(`${loc.code} is published but emits no ${k}`);
-    if (!SOCIAL_IMAGE.test(html)) bad.push(`${loc.code} published Open Graph image is not the share-ready PNG`);
+    if (!SOCIAL_IMAGE.test(html)) bad.push(`${loc.code} published Open Graph image is not the share-ready site capture`);
     if (!SOCIAL_DIMENSIONS.test(html)) bad.push(`${loc.code} published Open Graph image has no 1200x630 dimensions`);
     if (!TWITTER_IMAGE.test(html)) bad.push(`${loc.code} published page has no Twitter share image`);
     const want = (loc.origin === "he" ? canonical.he : canonical.international) + loc.canonicalPath;
