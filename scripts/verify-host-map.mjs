@@ -17,6 +17,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { canonical, rules, hosts, MAX_REDIRECTS, sitemapByHost } from "../src/_data/hostMap.js";
 import locales from "../src/_data/locales.js";
+import { routeRequest } from "../middleware.js";
 
 // Guard the deployed Vercel syntax as well as the abstract host-map model.
 // `Host` is a dedicated conditional type; treating it as an ordinary request
@@ -31,6 +32,28 @@ for (const rule of [...(vercelConfig.redirects || []), ...(vercelConfig.rewrites
         `Invalid Vercel host condition in ${rule.source}: use { "type": "host", "value": ... }`
       );
     }
+  }
+}
+
+const middlewareChecks = [
+  ["https://zohar-ai.com/", "rewrite", "https://zohar-ai.com/en/"],
+  ["https://zohar-ai.com/privacy/", "rewrite", "https://zohar-ai.com/en/privacy/"],
+  ["https://www.zohar-ai.com/fr/?a=1", "redirect", "https://zohar-ai.com/fr/?a=1"],
+  ["https://zohar-ai.com/he/", "redirect", "https://www.zohar-ai.co.il/"],
+  ["https://www.zohar-ai.co.il/", "next", null],
+  ["https://zohar-ai.co.il/about/?a=1", "redirect", "https://www.zohar-ai.co.il/about/?a=1"],
+  ["https://www.zohar-ai.co.il/en/", "redirect", "https://zohar-ai.com/"],
+  ["https://www.zohar-ai.co.il/fr/", "redirect", "https://zohar-ai.com/fr/"],
+  ["https://www.zohar-ai.co.il/robots.txt", "rewrite", "https://www.zohar-ai.co.il/robots-he.txt"],
+  ["https://preview.vercel.app/", "next", null]
+];
+for (const [input, action, expectedUrl] of middlewareChecks) {
+  const result = routeRequest(input);
+  if (result.action !== action || (expectedUrl && result.url.toString() !== expectedUrl)) {
+    throw new Error(
+      `Routing Middleware mismatch for ${input}: got ${result.action} ${result.url || ""}, ` +
+      `expected ${action} ${expectedUrl || ""}`
+    );
   }
 }
 
