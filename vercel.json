@@ -7,6 +7,36 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/en/:path*",
+      "has": [{ "type": "header", "key": "host", "value": "zohar-ai.com" }],
+      "destination": "https://zohar-ai.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/he/:path*",
+      "has": [{ "type": "header", "key": "host", "value": "zohar-ai.com" }],
+      "destination": "https://www.zohar-ai.co.il/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(en|fr|es|ru|ar)/:path*",
+      "has": [{ "type": "header", "key": "host", "value": "www.zohar-ai.co.il" }],
+      "destination": "https://zohar-ai.com/:lang/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "header", "key": "host", "value": "zohar-ai.co.il" }],
+      "destination": "https://www.zohar-ai.co.il/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "header", "key": "host", "value": "www.zohar-ai.com" }],
+      "destination": "https://zohar-ai.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
@@ -35,6 +65,23 @@
       "source": "/builder.html",
       "destination": "/#vision",
       "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "header", "key": "host", "value": "zohar-ai.com" }],
+      "destination": "/en/"
+    },
+    {
+      "source": "/:page(privacy|accessibility|terms)/",
+      "has": [{ "type": "header", "key": "host", "value": "zohar-ai.com" }],
+      "destination": "/en/:page/"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [{ "type": "header", "key": "host", "value": "www.zohar-ai.co.il" }],
+      "destination": "/robots-he.txt"
     }
   ],
   "headers": [

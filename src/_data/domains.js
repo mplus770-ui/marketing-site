@@ -2,8 +2,10 @@
 //   he            → Israel / Hebrew canonical host
 //   international → English + every future locale
 //
-// Both are null until the domains are verified and the cutover is approved.
-// While null the build emits no canonical, hreflang, schema or sitemap entry.
+// The owner verified both domains and approved the production cutover on
+// 2026-09-27. These canonical origins are therefore explicit build inputs;
+// previews intentionally point search metadata at production, never at a
+// vercel.app hostname.
 //
 // HARD GUARD: an origin must be an absolute https:// URL on a real custom
 // domain. A preview, vercel.app, localhost or http origin FAILS THE BUILD
@@ -33,6 +35,6 @@ function check(value, label) {
 }
 
 export default {
-  he:            check(process.env.ZOHAR_ORIGIN_HE,   "he"),            // e.g. https://www.zohar-ai.co.il
-  international: check(process.env.ZOHAR_ORIGIN_INTL, "international"), // e.g. https://zohar-ai.com
+  he:            check(process.env.ZOHAR_ORIGIN_HE || "https://www.zohar-ai.co.il", "he"),
+  international: check(process.env.ZOHAR_ORIGIN_INTL || "https://zohar-ai.com", "international"),
 };
