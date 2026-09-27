@@ -21,7 +21,7 @@
 // misleading card.
 // See docs/project-media-spec.md for the capture and export specification.
 
-export default [
+const projects = [
   {
     slug: "sadafronia", name: "SADAFRONIA", order: 1,
     own: true, verified: true, permission: true, published: true,
@@ -220,3 +220,46 @@ export default [
     focal: [0.5, 0.18], source: { legacy: "mplus770-ui/zohar-ai-site" }, media: null,
   },
 ];
+
+const localized = {
+  sadafronia: {
+    es:["Nuestra marca de vino, hostelería y academia","De nuestro ecosistema empresarial, creado y mantenido internamente.","SADAFRONIA — sitio de vino, hostelería y academia del ecosistema ZOHAR."],
+    ru:["Наш бренд вина, гостеприимства и академии","Проект нашей бизнес-экосистемы, созданный и поддерживаемый внутри команды.","SADAFRONIA — сайт винного бренда, гостеприимства и академии из экосистемы ZOHAR."],
+    ar:["علامتنا للنبيذ والضيافة والأكاديمية","من منظومتنا التجارية، بُني ويُدار داخلياً.","SADAFRONIA — موقع للنبيذ والضيافة والأكاديمية من منظومة ZOHAR."]},
+  "better-world": {
+    es:["Universo editorial de ciencia ficción","Sitio cinematográfico para una serie de libros y una visión del futuro humano.","Better World — sitio editorial cinematográfico en hebreo sobre el futuro de la humanidad."],
+    ru:["Научно-фантастическая медиавселенная","Кинематографический сайт для серии книг и видения будущего человечества.","Better World — кинематографический сайт на иврите о будущем человечества."],
+    ar:["عالم محتوى للخيال العلمي","موقع سينمائي لسلسلة كتب ورؤية لمستقبل البشرية.","Better World — موقع محتوى سينمائي بالعبرية عن مستقبل البشرية."]},
+  yayin: {
+    es:["Nuestra revista digital de vino","De nuestro ecosistema empresarial, creada y mantenida internamente.","YAYIN — revista digital de vino del ecosistema ZOHAR."],
+    ru:["Наш цифровой журнал о вине","Проект нашей бизнес-экосистемы, созданный и поддерживаемый внутри команды.","YAYIN — цифровой винный журнал из экосистемы ZOHAR."],
+    ar:["مجلة النبيذ الرقمية الخاصة بنا","من منظومتنا التجارية، بُنيت وتُدار داخلياً.","YAYIN — مجلة نبيذ رقمية من منظومة ZOHAR."]},
+  zohar: {
+    es:["Nuestro proyecto insignia","Este sitio, reconstruido públicamente como primera prueba de BUILD.","ZOHAR — presencia empresarial llave en mano con código propiedad del cliente."],
+    ru:["Наш флагманский проект","Этот сайт, публично перестроенный как первое доказательство BUILD.","ZOHAR — присутствие бизнеса под ключ на коде владельца."],
+    ar:["مشروعنا الرئيسي","هذا الموقع، أعيد بناؤه علناً كأول إثبات لـ BUILD.","ZOHAR — حضور تجاري متكامل بكود يملكه العميل."]},
+  "eco-tech-israel": {
+    es:["Energía solar y comercio","Sitio comercial de energía solar con cálculo de ahorro y tienda.","Eco-Tech Israel — sitio solar con sistema de tejado, ahorro y solicitud de oferta."],
+    ru:["Солнечная энергетика и торговля","Коммерческий сайт о солнечной энергии с расчётом экономии и магазином.","Eco-Tech Israel — сайт о солнечных системах, экономии и запросе предложения."],
+    ar:["الطاقة الشمسية والتجارة","موقع تجاري للطاقة الشمسية مع إرشاد للتوفير ومتجر.","Eco-Tech Israel — موقع شمسي يعرض نظام سطح وتوفيراً وطلب عرض."]},
+  "urban-fashion-store": {
+    es:["Proyecto de comercio electrónico","Tienda de moda con catálogo, promociones, variantes y recorrido de compra.","Urban Fashion — tienda en línea con imágenes de campaña y llamada a comprar."],
+    ru:["Проект электронной торговли","Магазин моды с каталогом, акциями, вариантами товара и сценарием покупки.","Urban Fashion — интернет-магазин с кампанией и призывом к покупке."],
+    ar:["مشروع تجارة إلكترونية","متجر أزياء مع كتالوج وعروض وخيارات ومسار شراء.","Urban Fashion — متجر أزياء إلكتروني بصور حملة ودعوة للشراء."]},
+  "le-monde-sefarade": {
+    es:["Sitio cultural y comunitario","Revista multilingüe sobre cultura, patrimonio y comunidades sefardíes.","Le Monde Séfarade — revista azul y dorada sobre cultura y patrimonio sefardí."],
+    ru:["Культурный и общественный сайт","Мультиязычный журнал о сефардской культуре, наследии и сообществах.","Le Monde Séfarade — сине-золотой журнал о сефардской культуре и наследии."],
+    ar:["موقع ثقافي ومجتمعي","مجلة متعددة اللغات للثقافة والتراث والمجتمعات السفاردية.","Le Monde Séfarade — موقع مجلة أزرق وذهبي للثقافة والتراث السفاردي."]}
+};
+
+for (const project of projects) {
+  const copy = localized[project.slug];
+  if (!copy) continue;
+  for (const locale of ["es", "ru", "ar"]) {
+    project.category[locale] = copy[locale][0];
+    project.description[locale] = copy[locale][1];
+    project.alt[locale] = copy[locale][2];
+  }
+}
+
+export default projects;

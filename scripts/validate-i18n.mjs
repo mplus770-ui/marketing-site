@@ -14,7 +14,7 @@ const get = (o, k) => k.split(".").reduce((a, b) => (a == null ? a : a[b]), o);
 
 const en = load("en");
 const ref = new Set(keys(en));
-const PLACEHOLDER = /X{4,}|TODO|CHANGEME|Lorem ipsum/i;
+const PLACEHOLDER = /X{4,}|^(?:TODO|CHANGEME|Lorem ipsum)$/i;
 const SCRIPT = { hebrew: /[֐-׿]/, arabic: /[؀-ۿ]/, han: /[一-鿿]/, cyrillic: /[Ѐ-ӿ]/ };
 const ALLOW_SAME = new Set([
   "ZOHAR", "ZOHAR AI", "ZOHAR BUILD", "Done For You", "AWS", "WhatsApp", "V12", "V13", "V14",

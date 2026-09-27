@@ -359,8 +359,10 @@ schemaEnabled: true
       {% if site.email %}
         <a class="btn btn-ghost" href="mailto:{{ site.email }}">{{ strings.contact.email }}</a>
       {% endif %}
-      {% if site.schedulerUrl %}
-        <a class="btn btn-ghost" href="{{ site.schedulerUrl }}" rel="noopener">{{ strings.brief.altConsult }}</a>
+      {% set consultWa = site.whatsapp | waLink(strings.contact.consultPrefill) %}
+      {% if consultWa %}
+        <a class="btn btn-ghost" href="{{ consultWa }}" rel="noopener">
+          <svg width="19" height="19" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.brief.altConsult }}</a>
       {% else %}
         <span class="inert">{{ strings.brief.altConsult }} — {{ strings.brief.unavailable }}</span>
       {% endif %}
