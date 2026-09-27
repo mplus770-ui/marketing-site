@@ -21,10 +21,10 @@
    needed (near the viewport, tab visible). Reduced motion, Save-Data and no-JS
    therefore cost zero video bytes rather than "load, then stop".
 
-   The poster IS the film's last frame, rendered from the same scene at the
-   same timestamp, so the resting state and the finished state can never drift
-   apart. The film does NOT loop: it plays once and comes to rest on that
-   frame, and the control becomes a replay.
+   The approved studio poster is also the film's first and last frame, so the
+   resting state, first paint and finished state stay continuous. The film does
+   NOT loop: it plays once and returns to the poster, and the control becomes a
+   replay.
 
    The poster <img> carries intrinsic width/height inside a sized stage, so
    there is no black frame, no blank frame and no layout shift. The video sits

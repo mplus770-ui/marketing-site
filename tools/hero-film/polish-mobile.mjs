@@ -1,6 +1,7 @@
-/* Build the launch hero film from four approved, local portfolio captures.
-   Each project receives its own full 16:10 frame. The first scene is repeated
-   at the end, so restarting the file is visually seamless. */
+/* Build the launch hero film from five approved, local portfolio captures.
+   Each project receives its own full 16:10 frame. The approved studio poster
+   opens and closes the film, so the resting image, first paint and ending are
+   visually continuous. */
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -16,17 +17,26 @@ const ffmpeg = process.env.FFMPEG || "ffmpeg";
 const run = (args) => execFileSync(ffmpeg, ["-y", "-loglevel", "error", ...args], { stdio: "inherit" });
 
 const projects = [
+  ["sadafronia-card@2x.webp", "0xE4B363"],
   ["better-world-card@2x.webp", "0xE4B363"],
   ["eco-tech-israel-card@2x.webp", "0x34E39B"],
   ["yayin-card@2x.webp", "0xE4B363"],
-  ["le-monde-sefarade-card@2x.webp", "0xE4B363"],
+  ["le-monde-sefarade-card@2x.webp", "0xE4B363", "wide"],
 ];
 
-function framedCapture(source, accent, width, height, output) {
-  const frameW = Math.floor(width * (width > height ? 0.82 : 0.89) / 2) * 2;
-  const frameH = Math.ceil((frameW * 0.625) / 2) * 2;
+function framedCapture(source, accent, width, height, output, layout = "landscape") {
+  const portrait = layout === "portrait";
+  const wide = layout === "wide";
+  const frameH = portrait
+    ? Math.floor(height * (width > height ? 0.86 : 0.76) / 2) * 2
+    : Math.ceil(((Math.floor(width * (wide ? 0.96 : (width > height ? 0.82 : 0.89)) / 2) * 2) * 0.625) / 2) * 2;
+  const frameW = portrait
+    ? Math.floor((frameH * 0.8) / 2) * 2
+    : Math.floor(width * (wide ? 0.96 : (width > height ? 0.82 : 0.89)) / 2) * 2;
   const x = Math.round((width - frameW) / 2);
-  const y = Math.round((height - frameH) / 2);
+  const y = height > width
+    ? Math.round((height * 0.62) - (frameH / 2))
+    : Math.round((height - frameH) / 2);
   run(["-i", source, "-filter_complex",
     `[0:v]split=2[base][shot];` +
     `[base]scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height},boxblur=18:3,eq=brightness=-0.48:saturation=0.50[bg];` +
@@ -36,22 +46,24 @@ function framedCapture(source, accent, width, height, output) {
 }
 
 function buildVariant(id, width, height) {
-  const frames = projects.map(([name, accent], index) => {
+  const frames = projects.map(([name, accent, layout], index) => {
     const out = path.join(tmp, `${id}-${index}.png`);
-    framedCapture(path.join(work, name), accent, width, height, out);
+    framedCapture(path.join(work, name), accent, width, height, out, layout);
     return out;
   });
-  const sequence = [...frames, frames[0]];
+  const poster = path.join(motion, `zohar-hero-master-${id}.webp`);
+  const sequence = [poster, ...frames, poster];
   const inputs = sequence.flatMap((input) => ["-loop", "1", "-t", "3", "-i", input]);
-  const filters = [
-    ...sequence.map((_, i) => `[${i}:v]fps=25,scale=${width}:${height},format=yuv420p[s${i}]`),
-    "[s0][s1]xfade=transition=fade:duration=0.55:offset=2.45[x1]",
-    "[x1][s2]xfade=transition=fade:duration=0.55:offset=4.90[x2]",
-    "[x2][s3]xfade=transition=fade:duration=0.55:offset=7.35[x3]",
-    "[x3][s4]xfade=transition=fade:duration=0.55:offset=9.80[out]",
-  ].join(";");
+  const filters = sequence.map((_, i) =>
+    `[${i}:v]fps=25,scale=${width}:${height},format=yuv420p[s${i}]`);
+  for (let i = 1; i < sequence.length; i += 1) {
+    const previous = i === 1 ? "s0" : `x${i - 1}`;
+    const output = i === sequence.length - 1 ? "out" : `x${i}`;
+    filters.push(`[${previous}][s${i}]xfade=transition=fade:duration=0.55:offset=${(2.45 * i).toFixed(2)}[${output}]`);
+  }
   const intermediate = path.join(tmp, `${id}.mp4`);
-  run([...inputs, "-filter_complex", filters, "-map", "[out]", "-t", "12.25", "-an",
+  const duration = 2.45 * (sequence.length - 1) + 0.55;
+  run([...inputs, "-filter_complex", filters.join(";"), "-map", "[out]", "-t", duration.toFixed(2), "-an",
     "-c:v", "libx264", "-crf", "27", "-preset", "slow", "-profile:v", "main",
     "-pix_fmt", "yuv420p", "-movflags", "+faststart", intermediate]);
   run(["-i", intermediate, "-c:v", "copy", "-movflags", "+faststart", "-an",
@@ -59,8 +71,6 @@ function buildVariant(id, width, height) {
   run(["-i", intermediate, "-c:v", "libvpx-vp9", "-crf", "40", "-b:v", "0",
     "-row-mt", "1", "-deadline", "good", "-cpu-used", "3", "-an",
     path.join(motion, `zohar-hero-master-${id}.webm`)]);
-  run(["-i", frames[0], "-c:v", "libwebp", "-quality", "82", "-compression_level", "6",
-    "-frames:v", "1", path.join(motion, `zohar-hero-master-${id}.webp`)]);
 }
 
 try {
