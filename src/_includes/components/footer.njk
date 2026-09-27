@@ -18,7 +18,7 @@
     </div>
     <div class="foot-bottom">
       <nav class="foot-langs" aria-label="{{ strings.nav.language }}">
-        {% for l in locales %}{% if l.ready %}{% set localPage = l.buildPath ~ (pageSlug ~ '/' if pageSlug else '') %}<a href="{{ (l | absPageUrl(domains, pageSlug or '')) or localPage }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a>{% endif %}{% endfor %}
+        {% for l in locales %}{% if l.ready %}{% set localPage = l.buildPath ~ (pageSlug ~ '/' if pageSlug else '') %}<a href="{{ (l | absPageUrl(domains, pageSlug or '')) or localPage }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}"{% if l.code == loc.code %} aria-current="page"{% endif %}>{{ l.endonym }}</a>{% endif %}{% endfor %}
       </nav>
       <p class="xs">© 2026 {{ site.brand }}. {{ strings.footer.rights }}</p>
     </div>
