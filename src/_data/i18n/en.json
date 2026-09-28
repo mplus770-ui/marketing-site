@@ -43,7 +43,7 @@
   "pillars": {
     "label": "The method",
     "heading": "Four layers. One outcome: a business presence that works.",
-    "lead": "Today, we deliver BUILD. GROW and PROVE are foundations prepared inside every project; MEMORY is the future vision. Every layer states clearly what is available now and what is still ahead.",
+    "lead": "Today we deliver both BUILD and human-led, managed GROW services: website, content, photography, social media and campaigns. Only automation and self-service products remain on the future roadmap.",
     "governing": "Future-ready, not future-built.",
     "statusNow": "Available now",
     "statusFoundation": "Foundations we prepare today",
@@ -55,8 +55,8 @@
     },
     "grow": {
       "title": "Grow",
-      "body": "We build growth-ready foundations — structure for search and for AI answers, speed, and a clear conversion path — and we support growth with human work, not software.",
-      "note": "There is no automated Growth Engine today. The productised Growth Engine is roadmap V13."
+      "body": "We already provide managed marketing services: strategy, content, photography, social media operations, campaigns and measurement — delivered for you by our team.",
+      "note": "The human service is available now. Only future automation tools that clients may operate themselves remain on the roadmap."
     },
     "prove": {
       "title": "Prove",
@@ -95,10 +95,10 @@
     "futureNote": "A future option, not an alternative you can choose today. No price, no purchase and no date.",
     "ctaWa": "Talk on WhatsApp",
     "ctaBrief": "or look through the brief questions",
-    "growthStatus": "Available today",
-    "growthName": "Presence and Growth Engine",
-    "growthBody": "Strategy, brand direction, photography, content production, social media operations, campaigns and measurement — working as one system around the business.",
-    "growthNote": "This is a separate ongoing service, scoped and priced after a short discovery. Choose a website only or the complete operating layer."
+    "growthStatus": "Available now",
+    "growthName": "Managed marketing and content services",
+    "growthBody": "We actively manage strategy, brand direction, photography, content production, social media, campaigns and measurement for you.",
+    "growthNote": "Choose a website only or ongoing marketing support. This is a service our team delivers today — not a system clients need to operate themselves."
   },
   "process": {
     "label": "How it works",
@@ -134,8 +134,8 @@
     "v10b": "Where we are. Done-For-You presence, built properly.",
     "v12": "Connect + Measure",
     "v12b": "The integrated proof layer. In development.",
-    "v13": "Growth Engine",
-    "v13b": "Productised growth. In development.",
+    "v13": "Marketing automation tools",
+    "v13b": "Future self-service tools. Separate from the managed marketing services already available today.",
     "v14": "Controlled & Autonomous Business Agents",
     "v14b": "Long-term vision. Not a product."
   },

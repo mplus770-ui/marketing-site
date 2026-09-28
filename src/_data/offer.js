@@ -20,7 +20,7 @@ export default {
     { id: "premium", status: "now", public: false, from: 7900 },
     { id: "tailored", status: "now", public: false, from: null },
   ],
-  // In development — no price, no purchase control, no link.
+  // Future self-service and automation products — no price, purchase control or link.
   future: [
     { id: "build",   status: "development", roadmap: null  },
     { id: "connect", status: "development", roadmap: "V12" },
@@ -29,7 +29,7 @@ export default {
   ],
   pillars: [
     { id: "build",  status: "now" },
-    { id: "grow",   status: "foundation", roadmap: "V13" },
+    { id: "grow",   status: "now" },
     { id: "prove",  status: "foundation", roadmap: "V12" },
     { id: "memory", status: "vision",     roadmap: "V14" },
   ],

@@ -27,7 +27,7 @@
   },
   "pillars": {
     "label": "La méthode", "heading": "Quatre couches. Un seul résultat : une présence d’entreprise efficace.",
-    "lead": "Aujourd’hui, nous livrons BUILD. GROW et PROVE sont des fondations préparées dans chaque projet ; MEMORY représente la vision future. Chaque couche indique clairement ce qui est disponible maintenant et ce qui reste à venir.",
+    "lead": "Aujourd’hui, nous proposons BUILD ainsi qu’un accompagnement GROW humain et géré : site, contenus, photographie, réseaux sociaux et campagnes. Seuls les produits d’automatisation et de libre-service restent sur la feuille de route.",
     "governing": "Prêt pour l’avenir, sans prétendre l’avoir déjà construit.",
     "statusNow": "Disponible aujourd’hui", "statusFoundation": "Fondations préparées aujourd’hui",
     "statusDevelopment": "En développement", "statusVision": "Vision future",
@@ -37,8 +37,8 @@
     },
     "grow": {
       "title": "Développer",
-      "body": "Nous posons des fondations prêtes pour la croissance — structure pour la recherche et les réponses IA, rapidité et parcours de conversion clair — puis nous accompagnons la croissance par un travail humain, pas par un logiciel.",
-      "note": "Il n’existe pas encore de moteur de croissance automatisé. Le Growth Engine industrialisé est prévu pour la version V13."
+      "body": "Nous proposons déjà des services marketing gérés : stratégie, contenus, photographie, animation des réseaux sociaux, campagnes et mesure — réalisés concrètement par notre équipe.",
+      "note": "Le service humain est disponible maintenant. Seuls les futurs outils automatisés que le client pourra utiliser lui-même restent sur la feuille de route."
     },
     "prove": {
       "title": "Prouver",
@@ -71,10 +71,10 @@
     "futureBody": "ZOHAR BUILD est en développement. Aujourd’hui, chaque site ZOHAR est créé dans le cadre de notre processus premium clés en main.",
     "futureNote": "Une option future, pas une alternative disponible aujourd’hui. Aucun prix, aucun achat et aucune date.",
     "ctaWa": "Parler sur WhatsApp", "ctaBrief": "ou parcourir les questions du brief",
-    "growthStatus": "Disponible aujourd’hui",
-    "growthName": "Moteur de présence et de croissance",
-    "growthBody": "Stratégie, identité, photographie, production de contenus, animation des réseaux sociaux, campagnes et mesure — réunies autour de l’activité.",
-    "growthNote": "Il s’agit d’un service continu distinct, défini et chiffré après un court cadrage. Vous pouvez choisir le site seul ou l’accompagnement complet."
+    "growthStatus": "Disponible maintenant",
+    "growthName": "Services marketing et contenus gérés",
+    "growthBody": "Nous gérons concrètement pour vous la stratégie, l’identité, la photographie, la production de contenus, les réseaux sociaux, les campagnes et la mesure.",
+    "growthNote": "Choisissez le site seul ou un accompagnement marketing continu. Ce service est assuré aujourd’hui par notre équipe — ce n’est pas un système que le client doit exploiter lui-même."
   },
   "process": {
     "label": "Comment ça marche", "heading": "De l’intention à une présence qui continue de grandir.",
@@ -96,7 +96,7 @@
     "lead": "Nous la publions pour que rien sur cette page ne suggère davantage que ce qui existe réellement.",
     "v10": "Fondation BUILD", "v10b": "Notre position actuelle. Une présence clés en main, réalisée correctement.",
     "v12": "Connect + Measure", "v12b": "La couche intégrée de preuve. En développement.",
-    "v13": "Growth Engine", "v13b": "La croissance transformée en produit. En développement.",
+    "v13": "Outils d’automatisation marketing", "v13b": "Futurs outils en libre-service, distincts des services marketing gérés déjà disponibles aujourd’hui.",
     "v14": "Agents d’entreprise contrôlés et autonomes", "v14b": "Vision à long terme. Ce n’est pas un produit."
   },
   "trust": {
