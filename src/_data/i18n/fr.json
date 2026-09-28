@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "ZOHAR — Ne construisez pas un site. Construisez une entreprise.",
-    "description": "ZOHAR conçoit des sites premium clés en main, dans un code qui vous appartient — pensés pour être trouvés, convertir et être mesurés. Multilingue et RTL inclus.",
+    "description": "ZOHAR construit une présence numérique complète : site premium, identité, contenus, photo, réseaux sociaux et mesure — clés en main, dans un code qui vous appartient.",
     "shareImageAlt": "ZOHAR AI — sites premium et studio d’expérience numérique"
   },
   "nav": {
@@ -10,10 +10,10 @@
     "skip": "Aller au contenu", "home": "Accueil ZOHAR"
   },
   "hero": {
-    "eyebrow": "Des sites qui vous appartiennent vraiment",
+    "eyebrow": "Une présence numérique qui vous appartient vraiment",
     "h1a": "Ne construisez pas un site.", "h1b": "Construisez une entreprise.",
-    "promise": "De l’intention commerciale à une présence qui agit.",
-    "lead": "De vrais sites, dans un code qui vous appartient — conçus pour être trouvés, convertir et être mesurés.",
+    "promise": "De la marque et du site aux contenus, au marketing et à la croissance.",
+    "lead": "Nous réunissons site premium, contenus, photo et réseaux sociaux dans un système conçu pour être trouvé, convertir et être mesuré.",
     "ctaPrimary": "Parler sur WhatsApp", "ctaSecondary": "Parcourir les questions du brief",
     "reassure1": "Processus transparent", "reassure2": "Aperçu avant mise en ligne", "reassure3": "Code qui vous appartient",
     "demoLabel": "Démonstration conceptuelle", "demoCaption": "Une vision d’une présence numérique complète.",
@@ -53,7 +53,7 @@
   },
   "offer": {
     "label": "Ce que vous pouvez acheter aujourd’hui",
-    "heading": "Une seule façon de travailler avec nous : l’exigence premium.",
+    "heading": "Commencez par le site. Déployez ensuite une présence complète.",
     "entryName": "Présence d’entreprise ciblée",
     "dfyLead": "Nous concevons, rédigeons, développons et mettons en ligne. Vous validez, puis vous lancez.",
     "startAt": "Projets à partir de {price}",
@@ -70,14 +70,18 @@
     "futureName": "ZOHAR BUILD", "futureStatus": "En développement",
     "futureBody": "ZOHAR BUILD est en développement. Aujourd’hui, chaque site ZOHAR est créé dans le cadre de notre processus premium clés en main.",
     "futureNote": "Une option future, pas une alternative disponible aujourd’hui. Aucun prix, aucun achat et aucune date.",
-    "ctaWa": "Parler sur WhatsApp", "ctaBrief": "ou parcourir les questions du brief"
+    "ctaWa": "Parler sur WhatsApp", "ctaBrief": "ou parcourir les questions du brief",
+    "growthStatus": "Disponible aujourd’hui",
+    "growthName": "Moteur de présence et de croissance",
+    "growthBody": "Stratégie, identité, photographie, production de contenus, animation des réseaux sociaux, campagnes et mesure — réunies autour de l’activité.",
+    "growthNote": "Il s’agit d’un service continu distinct, défini et chiffré après un court cadrage. Vous pouvez choisir le site seul ou l’accompagnement complet."
   },
   "process": {
-    "label": "Comment ça marche", "heading": "D’une phrase à une présence en ligne.",
-    "s1t": "Brief", "s1b": "Vous décrivez l’entreprise avec vos mots. Nous posons les questions qui comptent.",
-    "s2t": "Direction", "s2b": "Nous validons la structure, le message et l’univers visuel avant de développer.",
-    "s3t": "Réalisation", "s3b": "Nous concevons et rédigeons, puis développons dans un code propre qui vous appartiendra.",
-    "s4t": "Mise en ligne", "s4b": "Vous consultez l’aperçu, nous corrigeons, puis le site est publié sur votre propre domaine."
+    "label": "Comment ça marche", "heading": "De l’intention à une présence qui continue de grandir.",
+    "s1t": "Stratégie", "s1b": "Nous définissons le public, le message, les objectifs et les canaux adaptés à l’activité.",
+    "s2t": "Marque et plan", "s2b": "Nous validons le langage, la structure, les contenus et le plan de diffusion avant la production.",
+    "s3t": "Création et production", "s3b": "Nous construisons le site et produisons les contenus, photos et ressources nécessaires à chaque canal.",
+    "s4t": "Lancement et croissance", "s4b": "Nous publions, diffusons, mesurons et améliorons. Avec une gestion mensuelle, le système continue d’agir et de progresser."
   },
   "work": {
     "label": "Réalisations choisies", "heading": "Uniquement de vrais projets.",
@@ -120,25 +124,25 @@
     "a6": "Non. Nous construisons la structure qui rend les résultats possibles et préparons la mesure qui permettra de les vérifier. Garantir un chiffre avant de connaître votre marché serait une supposition.",
     "q7": "Quel est le prix et comment s’effectue le paiement ?",
     "a7": "La proposition finale est définie après un brief court et dépend du périmètre, des langues et des fonctionnalités. Les boutiques en ligne, sites multilingues et systèmes sur mesure sont chiffrés séparément. Le paiement s’effectue à 50 % au démarrage et à 50 % avant la mise en production. Le domaine et les services tiers payants ne sont pas inclus.",
-    "q8": "ZOHAR BUILD est-il disponible ?",
-    "a8": "Pas encore. Il est en développement. Aujourd’hui, chaque site ZOHAR est réalisé dans le cadre du processus clés en main et nous n’acceptons aucun paiement pour une offre qui n’est pas prête.",
+    "q8": "Pouvez-vous aussi gérer les contenus, la photo et les réseaux sociaux ?",
+    "a8": "Oui. Vous pouvez commander uniquement un site ou un accompagnement complet : stratégie, identité, photographie, montage de contenus, réseaux sociaux, campagnes et mesure. La mise en place est chiffrée séparément de la gestion mensuelle, après définition commune du périmètre.",
     "q9": "Que devient l’hébergement après la première année ?",
     "a9": "La première année d’hébergement statique sécurisé et géré est incluse dans la limite d’un usage raisonnable. Les domaines, services tiers payants, trafic anormal et fonctions serveur payantes restent séparés. Ensuite, vous pouvez renouveler l’hébergement et la gestion de base pour 600 ₪ par an ou déplacer le code vers votre propre compte : le code vous appartient, vous ne dépendez donc pas de nous."
   },
   "brief": {
-    "label": "Commencez ici", "heading": "Expliquez-nous ce que fait votre entreprise.",
-    "lead": "Une phrase suffit pour commencer. Cinq questions courtes, environ deux minutes.",
+    "label": "Commencez ici", "heading": "Dites-nous ce que vous voulez construire et développer.",
+    "lead": "Un site seul ou un accompagnement complet en contenus et marketing — cinq questions courtes, environ deux minutes.",
     "step": "Étape 1 sur 5", "stepTemplate": "Étape {current} sur {total}",
     "progressLabel": "Progression du brief projet", "q1": "Que fait votre entreprise ?",
     "placeholder": "Nous sommes un domaine viticole familial en Galilée et vendons directement aux visiteurs et aux restaurants…",
-    "q2": "Quel résultat le site doit-il apporter à l’entreprise ?",
-    "placeholder2": "Obtenir des demandes qualifiées, vendre en ligne, expliquer le service ou renforcer la confiance…",
-    "q3": "De quelles pages ou fonctionnalités avez-vous besoin ?",
-    "placeholder3": "Accueil, services, réalisations, boutique, formulaire, plusieurs langues…",
-    "q4": "Dans quelles langues et quand souhaitez-vous lancer le site ?",
-    "placeholder4": "Français et anglais, idéalement au cours du mois prochain…",
-    "q5": "Existe-t-il un site, des contenus ou une direction visuelle à nous montrer ?",
-    "placeholder5": "Une URL existante, des marques que vous appréciez, des contenus déjà prêts — ou laissez vide.",
+    "q2": "Quel résultat votre présence numérique doit-elle apporter à l’activité ?",
+    "placeholder2": "Obtenir des demandes qualifiées, développer une audience, vendre, expliquer le service ou renforcer la confiance…",
+    "q3": "De quel accompagnement avez-vous besoin ?",
+    "placeholder3": "Site, identité, photographie, vidéos, réseaux sociaux, campagnes, boutique ou plusieurs langues…",
+    "q4": "Quelles langues, quels canaux et quel calendrier souhaitez-vous ?",
+    "placeholder4": "Français et anglais, site et Instagram, avec une séance photo et un lancement le mois prochain…",
+    "q5": "Existe-t-il un site, des profils sociaux, des contenus ou une direction visuelle à nous montrer ?",
+    "placeholder5": "Liens existants, marques que vous appréciez et contenus déjà prêts — ou laissez vide.",
     "continue": "Continuer", "review": "Vérifier les réponses", "back": "Retour",
     "privacy": "Vos réponses restent sur cet appareil jusqu’à ce que vous choisissiez WhatsApp ou l’e-mail. Elles sont alors transférées vers l’application choisie et envoyées uniquement après votre confirmation.",
     "disabled": "Impossible d’ouvrir l’application choisie. Utilisez les liens WhatsApp ou e-mail sous le brief.",
@@ -165,7 +169,7 @@
     "cta": "Continue in English", "ctaHe": "המשיכו בעברית"
   },
   "contact": {
-    "waPrefill": "Bonjour, je viens du site ZOHAR et je souhaite parler d’un nouveau projet.",
+    "waPrefill": "Bonjour, je viens du site ZOHAR et je souhaite parler d’un projet de site, de contenus ou de marketing.",
     "consultPrefill": "Bonjour, je souhaite planifier un entretien de conseil avec ZOHAR AI.",
     "email": "Nous écrire"
   },
@@ -174,11 +178,11 @@
     "line": "La lumière devient direction, puis la direction devient présence. Le nouveau monogramme réunit Z et A dans une signature dorée — la mémoire du studio où tout a commencé."
   },
   "cap": {
-    "label": "Compétences", "heading": "Ce que nous réalisons vraiment aujourd’hui.",
-    "lead": "Chaque élément présenté ici provient d’une interface réelle d’un de nos projets — ni maquette, ni tableau de bord, ni produit futur.",
+    "label": "Compétences", "heading": "Ce que nous construisons et opérons réellement aujourd’hui.",
+    "lead": "Les sites premium sont la base. Autour d’eux, nous pouvons aussi construire contenus, photographie, diffusion et parcours de conversion — sans présenter un produit futur comme s’il existait déjà.",
     "responsive": "Réalisation responsive premium", "rtl": "Hébreu et RTL intégrés dès le départ",
-    "editorial": "Expériences éditoriales et magazines", "commerce": "Interfaces prêtes pour le commerce en ligne",
-    "multilingual": "Architecture multilingue", "conversion": "Parcours de conversion et WhatsApp",
+    "editorial": "Systèmes de contenus, photographie et édition", "commerce": "Interfaces prêtes pour le commerce en ligne",
+    "multilingual": "Architecture multilingue", "conversion": "Réseaux, campagnes et parcours de conversion",
     "seo": "Bases SEO et AEO", "seoNote": "Schéma, hreflang et structure des titres sont intégrés à la construction, pas ajoutés après coup.",
     "code": "Code propre et portable", "codeNote": "HTML, CSS et JavaScript standards. Aucun constructeur de pages, aucune dépendance fournisseur."
   },
