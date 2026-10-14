@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071b16"/><stop offset="1" stop-color="#0b3026"/></linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#34e39b"/><stop offset="1" stop-color="#e4b363"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="28" flood-color="#00110c" flood-opacity=".55"/></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1420" cy="100" r="370" fill="#34e39b" opacity=".055"/>
+  <circle cx="210" cy="940" r="420" fill="#e4b363" opacity=".04"/>
+  <g filter="url(#shadow)">
+    <rect x="70" y="60" width="1460" height="880" rx="34" fill="#0a241d" stroke="#2d6c58" stroke-width="2"/>
+    <rect x="70" y="60" width="1460" height="92" rx="34" fill="#0c2b22"/>
+    <path d="M70 118h1460v34H70z" fill="#0c2b22"/>
+    <rect x="70" y="150" width="236" height="790" fill="#081e18"/>
+  </g>
+  <g font-family="Arial,DejaVu Sans,sans-serif">
+    <circle cx="120" cy="106" r="22" fill="url(#brand)"/>
+    <path d="M109 117l11-24 7 13h12l-16 17z" fill="#073126" opacity=".9"/>
+    <text x="157" y="114" fill="#f4f1ea" font-size="31" font-weight="700" letter-spacing="4">ZOHAR CRM</text>
+    <rect x="1272" y="84" width="202" height="45" rx="22" fill="#113b2f" stroke="#34e39b" stroke-opacity=".55"/>
+    <circle cx="1302" cy="106" r="6" fill="#34e39b"/>
+    <text x="1321" y="113" fill="#c6f7e3" font-size="17">מערכת פעילה</text>
+
+    <text x="266" y="206" text-anchor="end" fill="#718f84" font-size="15">מרכז עבודה</text>
+    <g fill="#d7e8e1" font-size="20" text-anchor="end">
+      <rect x="91" y="230" width="194" height="54" rx="13" fill="#123c30"/>
+      <rect x="91" y="230" width="5" height="54" rx="2" fill="#34e39b"/>
+      <text x="264" y="264">לוח בקרה</text>
+      <text x="264" y="328">לידים ומכירות</text>
+      <text x="264" y="382">לקוחות</text>
+      <text x="264" y="436">משימות</text>
+      <text x="264" y="490">אוטומציות</text>
+      <text x="264" y="544">דוחות</text>
+    </g>
+    <rect x="95" y="814" width="184" height="88" rx="16" fill="#0e3328" stroke="#285d4c"/>
+    <text x="256" y="846" text-anchor="end" fill="#e4b363" font-size="13">הדגמת יכולת</text>
+    <text x="256" y="875" text-anchor="end" fill="#abc4ba" font-size="14">נתונים סינתטיים בלבד</text>
+
+    <text x="1465" y="215" text-anchor="end" fill="#f4f1ea" font-size="34" font-weight="700">בוקר טוב. העסק בשליטה.</text>
+    <text x="1465" y="249" text-anchor="end" fill="#91aea3" font-size="17">כל הלידים, המשימות והביצועים — במסך אחד.</text>
+    <rect x="338" y="280" width="270" height="142" rx="19" fill="#0d3026" stroke="#285f4d"/>
+    <rect x="630" y="280" width="270" height="142" rx="19" fill="#0d3026" stroke="#285f4d"/>
+    <rect x="922" y="280" width="270" height="142" rx="19" fill="#0d3026" stroke="#285f4d"/>
+    <rect x="1214" y="280" width="270" height="142" rx="19" fill="#0d3026" stroke="#285f4d"/>
+    <g text-anchor="end">
+      <text x="575" y="319" fill="#8ba99d" font-size="15">משימות פתוחות</text><text x="575" y="374" fill="#f4f1ea" font-size="40" font-weight="700">18</text><text x="575" y="402" fill="#e4b363" font-size="14">4 להיום</text>
+      <text x="867" y="319" fill="#8ba99d" font-size="15">שיחות שנקבעו</text><text x="867" y="374" fill="#f4f1ea" font-size="40" font-weight="700">12</text><text x="867" y="402" fill="#34e39b" font-size="14">↑ השבוע</text>
+      <text x="1159" y="319" fill="#8ba99d" font-size="15">עסקאות בתהליך</text><text x="1159" y="374" fill="#f4f1ea" font-size="40" font-weight="700">27</text><text x="1159" y="402" fill="#34e39b" font-size="14">6 חדשות</text>
+      <text x="1451" y="319" fill="#8ba99d" font-size="15">לידים חדשים</text><text x="1451" y="374" fill="#f4f1ea" font-size="40" font-weight="700">34</text><text x="1451" y="402" fill="#34e39b" font-size="14">↑ 18%</text>
+    </g>
+
+    <rect x="338" y="448" width="780" height="440" rx="21" fill="#0c2b22" stroke="#285f4d"/>
+    <text x="1078" y="493" text-anchor="end" fill="#f4f1ea" font-size="22" font-weight="700">צינור המכירות</text>
+    <g font-size="14" text-anchor="end">
+      <rect x="367" y="525" width="168" height="331" rx="15" fill="#0a241d"/><text x="508" y="558" fill="#8ba99d">חדש · 8</text>
+      <rect x="556" y="525" width="168" height="331" rx="15" fill="#0a241d"/><text x="697" y="558" fill="#8ba99d">שיחה · 7</text>
+      <rect x="745" y="525" width="168" height="331" rx="15" fill="#0a241d"/><text x="886" y="558" fill="#8ba99d">הצעה · 5</text>
+      <rect x="934" y="525" width="155" height="331" rx="15" fill="#0a241d"/><text x="1062" y="558" fill="#8ba99d">סגירה · 3</text>
+    </g>
+    <g>
+      <rect x="383" y="582" width="136" height="70" rx="11" fill="#123c30"/><circle cx="403" cy="603" r="6" fill="#34e39b"/><path d="M421 603h72M398 628h95" stroke="#78998d" stroke-width="7" stroke-linecap="round"/>
+      <rect x="383" y="668" width="136" height="70" rx="11" fill="#123c30"/><circle cx="403" cy="689" r="6" fill="#e4b363"/><path d="M421 689h63M398 714h95" stroke="#78998d" stroke-width="7" stroke-linecap="round"/>
+      <rect x="572" y="582" width="136" height="82" rx="11" fill="#123c30"/><circle cx="592" cy="603" r="6" fill="#34e39b"/><path d="M610 603h72M587 628h95M587 647h54" stroke="#78998d" stroke-width="7" stroke-linecap="round"/>
+      <rect x="761" y="582" width="136" height="92" rx="11" fill="#123c30"/><circle cx="781" cy="603" r="6" fill="#e4b363"/><path d="M799 603h72M776 628h95M776 650h74" stroke="#78998d" stroke-width="7" stroke-linecap="round"/>
+      <rect x="950" y="582" width="123" height="76" rx="11" fill="#144b3b" stroke="#34e39b" stroke-opacity=".45"/><circle cx="970" cy="603" r="6" fill="#34e39b"/><path d="M988 603h60M965 629h83" stroke="#9bc8b7" stroke-width="7" stroke-linecap="round"/>
+    </g>
+
+    <rect x="1142" y="448" width="342" height="440" rx="21" fill="#0c2b22" stroke="#285f4d"/>
+    <text x="1450" y="493" text-anchor="end" fill="#f4f1ea" font-size="22" font-weight="700">פעילות אחרונה</text>
+    <g fill="#b9cec5" font-size="14" text-anchor="end">
+      <circle cx="1190" cy="548" r="17" fill="#164738"/><text x="1450" y="544">ליד חדש נקלט מהאתר</text><text x="1450" y="565" fill="#6f9285" font-size="12">לפני 4 דקות</text>
+      <path d="M1190 565v47" stroke="#285f4d"/>
+      <circle cx="1190" cy="626" r="17" fill="#3c3322"/><text x="1450" y="622">נשלחה הצעת מחיר</text><text x="1450" y="643" fill="#6f9285" font-size="12">לפני 18 דקות</text>
+      <path d="M1190 643v47" stroke="#285f4d"/>
+      <circle cx="1190" cy="704" r="17" fill="#164738"/><text x="1450" y="700">נקבעה שיחת המשך</text><text x="1450" y="721" fill="#6f9285" font-size="12">לפני 36 דקות</text>
+    </g>
+    <rect x="1172" y="788" width="282" height="62" rx="15" fill="url(#brand)"/>
+    <text x="1313" y="827" text-anchor="middle" fill="#08261d" font-size="18" font-weight="700">פתיחת משימה חדשה</text>
+  </g>
+</svg>

@@ -19,7 +19,7 @@
       <span class="showcase-desc">{{ p.description[loc.code] }}</span>
       {# An internal destination must not promise an external visit. #}
       <span class="showcase-visit">
-        {% if p.external %}{{ strings.work.visit }}{% else %}{{ strings.work.visitInternal }}{% endif %}
+        {% if p.cta %}{{ p.cta[loc.code] }}{% elif p.external %}{{ strings.work.visit }}{% else %}{{ strings.work.visitInternal }}{% endif %}
         {% if p.external %}<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"
           class="showcase-ext"><path d="M4.2 1.6h6.2v6.2M10.4 1.6 5 7M8.4 7.6v2.8H1.6V3.6h2.8"
           fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endif %}

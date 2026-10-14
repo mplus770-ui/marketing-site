@@ -1,4 +1,6 @@
-// PROOF RULE — only work ZOHAR owns or is explicitly permitted to display.
+// PROOF RULE — only work ZOHAR owns or is explicitly permitted to display,
+// plus original ZOHAR capability showcases that are explicitly labelled as
+// concepts and use synthetic data.
 //
 //   own        : part of the ZOHAR business ecosystem (not external client work)
 //   verified   : confirmed as genuine ZOHAR work
@@ -105,6 +107,55 @@ const projects = [
       card2x:   { avif: "/assets/work/yayin-card@2x.avif",   webp: "/assets/work/yayin-card@2x.webp" },
       mobile:   { avif: "/assets/work/yayin-mobile.avif",    webp: "/assets/work/yayin-mobile.webp" },
       mobile2x: { avif: "/assets/work/yayin-mobile@2x.avif", webp: "/assets/work/yayin-mobile@2x.webp" },
+    },
+  },
+  {
+    slug: "zohar-crm", name: "ZOHAR CRM", order: 4,
+    own: true, verified: true, permission: true, published: true,
+    // An original capability showcase built for this site. It uses synthetic
+    // data and is labelled as a concept in every published language; it is not
+    // presented as a client deployment or testimonial.
+    url: "#crm-offer",
+    external: false,
+    category: {
+      he: "הדגמת יכולת למערכת עסקית",
+      en: "Business-system capability showcase",
+      fr: "Démonstration de savoir-faire CRM",
+      es: "Demostración de capacidad CRM",
+      ru: "Демонстрация возможностей CRM",
+      ar: "عرض توضيحي لقدرات نظام CRM",
+    },
+    description: {
+      he: "קונספט מקורי של ZOHAR לניהול לידים, לקוחות, משימות, אוטומציות ומדדים.",
+      en: "An original ZOHAR concept for leads, customers, tasks, automations and metrics.",
+      fr: "Un concept original ZOHAR pour les prospects, clients, tâches, automatisations et indicateurs.",
+      es: "Concepto original de ZOHAR para leads, clientes, tareas, automatizaciones y métricas.",
+      ru: "Оригинальная концепция ZOHAR для лидов, клиентов, задач, автоматизаций и метрик.",
+      ar: "تصور أصلي من ZOHAR لإدارة العملاء المحتملين والعملاء والمهام والأتمتة والمؤشرات.",
+    },
+    alt: {
+      he: "הדגמת יכולת של ZOHAR CRM — מסך ניהול עסקי עם צינור מכירות, משימות ומדדים המבוססים על נתונים סינתטיים.",
+      en: "ZOHAR CRM capability showcase — a business dashboard with pipeline, tasks and synthetic metrics.",
+      fr: "Démonstration ZOHAR CRM — tableau de bord avec pipeline, tâches et données synthétiques.",
+      es: "Demostración ZOHAR CRM — panel empresarial con pipeline, tareas y datos sintéticos.",
+      ru: "Демонстрация ZOHAR CRM — бизнес-панель с воронкой, задачами и синтетическими данными.",
+      ar: "عرض ZOHAR CRM — لوحة أعمال تضم مسار المبيعات والمهام وبيانات تجريبية.",
+    },
+    cta: {
+      he: "גלו את שירות ה־CRM",
+      en: "Explore the CRM service",
+      fr: "Découvrir le service CRM",
+      es: "Descubrir el servicio CRM",
+      ru: "Подробнее об услуге CRM",
+      ar: "اكتشف خدمة CRM",
+    },
+    focal: [0.5, 0.5],
+    source: { concept: "original-zohar-capability-showcase", data: "synthetic" },
+    media: {
+      card:     { avif: "/assets/work/zohar-crm-card.avif",      webp: "/assets/work/zohar-crm-card.webp" },
+      card2x:   { avif: "/assets/work/zohar-crm-card@2x.avif",   webp: "/assets/work/zohar-crm-card@2x.webp" },
+      mobile:   { avif: "/assets/work/zohar-crm-mobile.avif",    webp: "/assets/work/zohar-crm-mobile.webp" },
+      mobile2x: { avif: "/assets/work/zohar-crm-mobile@2x.avif", webp: "/assets/work/zohar-crm-mobile@2x.webp" },
     },
   },
   {

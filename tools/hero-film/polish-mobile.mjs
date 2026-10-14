@@ -20,6 +20,7 @@ const projects = [
   ["sadafronia-mobile@2x.webp", "0xE4B363", "portrait", "sadafronia-card@2x.webp", "wide"],
   ["better-world-card@2x.webp", "0xE4B363"],
   ["eco-tech-israel-card@2x.webp", "0x34E39B"],
+  ["zohar-crm-mobile@2x.webp", "0xE4B363", null, "zohar-crm-card@2x.webp", "wide"],
   ["yayin-card@2x.webp", "0xE4B363"],
   ["le-monde-sefarade-card@2x.webp", "0xE4B363", "wide"],
 ];

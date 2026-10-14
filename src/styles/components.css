@@ -166,13 +166,21 @@
 .rail-dots button[aria-current="true"] i{background:var(--z-action-400);inline-size:20px}
 
 /* ── offer ── */
-/* The sellable offer takes the full measure. The unavailable future product is
-   a band below it, never a second card of comparable weight. */
+/* The two sellable services carry equal structural weight. CRM receives a
+   restrained gold/green distinction without changing the visual language. */
 .panel{padding:clamp(24px,3vw,34px);position:relative}
 .panel-now{border-color:var(--z-border-strong)}
 .panel-now::after{content:"";position:absolute;inset-block-start:-1px;inset-inline-start:-1px;inline-size:44%;
   block-size:2px;border-radius:2px;background:linear-gradient(to right,var(--z-action-400),rgba(52,227,155,0))}
 .offer-lead{padding:clamp(28px,3.4vw,44px)}
+.offer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.offer-grid .offer-lead{display:flex;flex-direction:column}
+.offer-grid .offer-actions{margin-block-start:auto;padding-block-start:26px}
+.offer-crm{border-color:rgba(228,179,99,.52);background:
+  radial-gradient(circle at 92% 8%,rgba(228,179,99,.12),transparent 34%),
+  linear-gradient(145deg,rgba(52,227,155,.055),var(--z-surface-1) 58%)}
+.offer-crm::after{inline-size:68%;background:linear-gradient(to right,var(--z-gold),var(--z-action-400),rgba(52,227,155,0))}
+.offer-crm .price{color:var(--z-action-300)}
 .offer-lead-line{max-inline-size:40rem;margin-block-start:6px}
 .offer-note{color:var(--z-text-mute);margin-block-start:4px;max-inline-size:40rem}
 .inc-two{grid-template-columns:1fr;column-gap:36px}
@@ -361,6 +369,7 @@
   .rail-ctl{display:none} .rail-dots{display:flex}
   .roadmap{grid-template-columns:repeat(2,1fr)}
 }
+@media(max-width:819px){.offer-grid{grid-template-columns:1fr}}
 @media(max-width:768px){
   .hero-ctas .btn{inline-size:100%}
   .hero-ctas{gap:10px}

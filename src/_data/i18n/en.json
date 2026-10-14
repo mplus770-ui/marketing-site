@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "ZOHAR — Don't build a website. Build a business.",
-    "description": "ZOHAR builds complete digital presence systems: premium websites, brand direction, content, photography, social media and measurement — Done-For-You, in code you own.",
+    "description": "ZOHAR builds premium websites, CRM systems and business apps, with brand, content and marketing — Done-For-You, in code you own.",
     "shareImageAlt": "ZOHAR AI — premium websites and digital experience studio"
   },
   "nav": {
@@ -21,8 +21,8 @@
     "eyebrow": "A digital presence that is actually yours",
     "h1a": "Don’t build a website.",
     "h1b": "Build a business.",
-    "promise": "From brand and website to content, marketing and growth.",
-    "lead": "We connect a premium website, content, photography and social media into one system built to be found, to convert and to be measured.",
+    "promise": "From website and brand to CRM, apps, marketing and growth.",
+    "lead": "We build the presence and the system behind it: premium websites, CRM and business apps, content and marketing — connected to do real work.",
     "ctaPrimary": "Talk on WhatsApp",
     "ctaSecondary": "Look through the brief questions",
     "reassure1": "Transparent process",
@@ -71,7 +71,7 @@
   },
   "offer": {
     "label": "What you can buy today",
-    "heading": "Start with the website. Grow into a complete presence.",
+    "heading": "Build the website. Connect the system. Grow the business.",
     "entryName": "Focused Business Presence",
     "dfyLead": "We design it, write it, build it and launch it. You approve and go live.",
     "startAt": "Projects start at {price}",
@@ -98,7 +98,22 @@
     "growthStatus": "Available now",
     "growthName": "Managed marketing and content services",
     "growthBody": "We actively manage strategy, brand direction, photography, content production, social media, campaigns and measurement for you.",
-    "growthNote": "Choose a website only or ongoing marketing support. This is a service our team delivers today — not a system clients need to operate themselves."
+    "growthNote": "Choose a website only or ongoing marketing support. This is a service our team delivers today — not a system clients need to operate themselves.",
+    "crmStatus": "Available now",
+    "crmName": "CRM systems and business apps",
+    "crmLead": "One system for leads, customers, tasks, automations and reporting — shaped around the way your business actually works.",
+    "crmQualifier": "The final price depends on discovery, user count, integrations and automation workflows.",
+    "crmIncludesLabel": "What we can build",
+    "crmInc": {
+      "pipeline": "Lead and sales pipelines",
+      "records": "Customer records and documents",
+      "tasks": "Tasks, reminders and permissions",
+      "automations": "Automations and integrations",
+      "dashboards": "Dashboards and reporting",
+      "mobile": "Mobile-ready interface or app"
+    },
+    "crmScope": "Every system starts with focused discovery. Integrations, native apps and complex development are quoted according to scope.",
+    "crmCta": "Let's define your system"
   },
   "process": {
     "label": "How it works",
@@ -114,8 +129,8 @@
   },
   "work": {
     "label": "Selected work",
-    "heading": "Real projects only.",
-    "lead": "These three are our own projects, from ZOHAR's business ecosystem. The captures are real, taken from each project's own source. They are not client projects and not testimonials.",
+    "heading": "Real work. Clear capabilities.",
+    "lead": "Completed projects appear alongside an original ZOHAR capability showcase, clearly labelled and never presented as client work.",
     "placeholder": "Internal placeholder — not for production",
     "prev": "Previous project",
     "next": "Next project",
@@ -232,6 +247,7 @@
   },
   "contact": {
     "waPrefill": "Hello, I came from the ZOHAR website and would like to discuss a website, content or marketing project.",
+    "crmPrefill": "Hello, I came from the ZOHAR website and would like to define a CRM system or business app.",
     "consultPrefill": "Hello, I would like to schedule a consultation with ZOHAR AI.",
     "email": "Email us"
   },
@@ -242,7 +258,7 @@
   "cap": {
     "label": "Capabilities",
     "heading": "What we actually build and operate today.",
-    "lead": "Premium websites are the foundation. Around them, we can also build content, photography, distribution and conversion journeys — without presenting a future product as if it already exists.",
+    "lead": "Premium websites, CRM systems and business apps are available today. Around them, we connect content, photography, distribution and conversion journeys.",
     "responsive": "Premium responsive implementation",
     "rtl": "Hebrew and RTL from the ground up",
     "editorial": "Content, photography and editorial systems",

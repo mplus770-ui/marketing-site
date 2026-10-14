@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "ZOHAR — Ne construisez pas un site. Construisez une entreprise.",
-    "description": "ZOHAR construit une présence numérique complète : site premium, identité, contenus, photo, réseaux sociaux et mesure — clés en main, dans un code qui vous appartient.",
+    "description": "ZOHAR crée des sites premium, systèmes CRM et applications métier, avec identité, contenus et marketing — clés en main, dans un code qui vous appartient.",
     "shareImageAlt": "ZOHAR AI — sites premium et studio d’expérience numérique"
   },
   "nav": {
@@ -12,8 +12,8 @@
   "hero": {
     "eyebrow": "Une présence numérique qui vous appartient vraiment",
     "h1a": "Ne construisez pas un site.", "h1b": "Construisez une entreprise.",
-    "promise": "De la marque et du site aux contenus, au marketing et à la croissance.",
-    "lead": "Nous réunissons site premium, contenus, photo et réseaux sociaux dans un système conçu pour être trouvé, convertir et être mesuré.",
+    "promise": "Du site et de la marque au CRM, aux applications, au marketing et à la croissance.",
+    "lead": "Nous construisons la présence et le système qui la soutient : site premium, CRM, applications métier, contenus et marketing — reliés pour produire des résultats concrets.",
     "ctaPrimary": "Parler sur WhatsApp", "ctaSecondary": "Parcourir les questions du brief",
     "reassure1": "Processus transparent", "reassure2": "Aperçu avant mise en ligne", "reassure3": "Code qui vous appartient",
     "demoLabel": "Démonstration conceptuelle", "demoCaption": "Une vision d’une présence numérique complète.",
@@ -53,7 +53,7 @@
   },
   "offer": {
     "label": "Ce que vous pouvez acheter aujourd’hui",
-    "heading": "Commencez par le site. Déployez ensuite une présence complète.",
+    "heading": "Construisez le site. Connectez le système. Développez l’entreprise.",
     "entryName": "Présence d’entreprise ciblée",
     "dfyLead": "Nous concevons, rédigeons, développons et mettons en ligne. Vous validez, puis vous lancez.",
     "startAt": "Projets à partir de {price}",
@@ -74,7 +74,22 @@
     "growthStatus": "Disponible maintenant",
     "growthName": "Services marketing et contenus gérés",
     "growthBody": "Nous gérons concrètement pour vous la stratégie, l’identité, la photographie, la production de contenus, les réseaux sociaux, les campagnes et la mesure.",
-    "growthNote": "Choisissez le site seul ou un accompagnement marketing continu. Ce service est assuré aujourd’hui par notre équipe — ce n’est pas un système que le client doit exploiter lui-même."
+    "growthNote": "Choisissez le site seul ou un accompagnement marketing continu. Ce service est assuré aujourd’hui par notre équipe — ce n’est pas un système que le client doit exploiter lui-même.",
+    "crmStatus": "Disponible maintenant",
+    "crmName": "Systèmes CRM et applications métier",
+    "crmLead": "Un seul système pour les prospects, clients, tâches, automatisations et rapports — adapté au fonctionnement réel de votre entreprise.",
+    "crmQualifier": "Le prix final dépend du cadrage, du nombre d’utilisateurs, des intégrations et des automatisations.",
+    "crmIncludesLabel": "Ce que nous pouvons construire",
+    "crmInc": {
+      "pipeline": "Pipelines de prospects et de ventes",
+      "records": "Fiches clients et documents",
+      "tasks": "Tâches, rappels et autorisations",
+      "automations": "Automatisations et intégrations",
+      "dashboards": "Tableaux de bord et rapports",
+      "mobile": "Interface mobile ou application"
+    },
+    "crmScope": "Chaque système commence par un cadrage précis. Les intégrations, applications natives et développements complexes sont chiffrés selon le périmètre.",
+    "crmCta": "Cadrons votre système"
   },
   "process": {
     "label": "Comment ça marche", "heading": "De l’intention à une présence qui continue de grandir.",
@@ -84,8 +99,8 @@
     "s4t": "Lancement et croissance", "s4b": "Nous publions, diffusons, mesurons et améliorons. Avec une gestion mensuelle, le système continue d’agir et de progresser."
   },
   "work": {
-    "label": "Réalisations choisies", "heading": "Uniquement de vrais projets.",
-    "lead": "Des projets réellement réalisés par ZOHAR, présentés avec des captures issues de leurs propres sites. Aucun faux témoignage, aucune maquette présentée comme un résultat.",
+    "label": "Réalisations choisies", "heading": "Des réalisations réelles. Des capacités claires.",
+    "lead": "Les projets réalisés côtoient une démonstration originale du savoir-faire ZOHAR, clairement identifiée et jamais présentée comme un projet client.",
     "placeholder": "Emplacement interne — pas pour la production", "prev": "Projet précédent", "next": "Projet suivant",
     "carousel": "Réalisations choisies de ZOHAR", "of": "sur", "visit": "Visiter le site",
     "pauseMotion": "Mettre le défilement en pause", "playMotion": "Relancer le défilement",
@@ -170,6 +185,7 @@
   },
   "contact": {
     "waPrefill": "Bonjour, je viens du site ZOHAR et je souhaite parler d’un projet de site, de contenus ou de marketing.",
+    "crmPrefill": "Bonjour, je viens du site ZOHAR et je souhaite cadrer un système CRM ou une application métier.",
     "consultPrefill": "Bonjour, je souhaite planifier un entretien de conseil avec ZOHAR AI.",
     "email": "Nous écrire"
   },
@@ -179,7 +195,7 @@
   },
   "cap": {
     "label": "Compétences", "heading": "Ce que nous construisons et opérons réellement aujourd’hui.",
-    "lead": "Les sites premium sont la base. Autour d’eux, nous pouvons aussi construire contenus, photographie, diffusion et parcours de conversion — sans présenter un produit futur comme s’il existait déjà.",
+    "lead": "Sites premium, systèmes CRM et applications métier sont disponibles aujourd’hui. Nous y relions contenus, photographie, diffusion et parcours de conversion.",
     "responsive": "Réalisation responsive premium", "rtl": "Hébreu et RTL intégrés dès le départ",
     "editorial": "Systèmes de contenus, photographie et édition", "commerce": "Interfaces prêtes pour le commerce en ligne",
     "multilingual": "Architecture multilingue", "conversion": "Réseaux, campagnes et parcours de conversion",

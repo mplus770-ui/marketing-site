@@ -1,9 +1,9 @@
 // The single source of truth for what ZOHAR sells today.
-// Only `public: true` tiers may be rendered with a figure. Nothing with a
+// Only `public: true` offers may be rendered with a figure. Nothing with a
 // status other than "now" may carry a price or a purchase path.
 export default {
   currency: "ILS",
-  // ── Entry tier — the only figure shown publicly ──────────────────────
+  // ── Published services ───────────────────────────────────────────────
   entry: {
     id: "focused", status: "now", public: true, priceApproved: true,
     from: 4900,
@@ -13,6 +13,13 @@ export default {
     includes: [
       "pages", "oneLanguage", "design", "responsive",
       "seoAeo", "revisions", "hosting", "ownership",
+    ],
+  },
+  crm: {
+    id: "crm", status: "now", public: true, priceApproved: true,
+    from: 7000,
+    includes: [
+      "pipeline", "records", "tasks", "automations", "dashboards", "mobile",
     ],
   },
   // ── Internal architecture. NOT rendered with figures. ────────────────

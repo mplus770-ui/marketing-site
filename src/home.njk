@@ -109,7 +109,8 @@ schemaEnabled: true
 </section>
 
 {# ══ 5 · COMMERCIAL OFFER ══
-   One approved figure, shown once. No pricing table, no second public tier. #}
+   Two distinct services that can be commissioned today. Each starting figure
+   is qualified in place; future products remain visually subordinate. #}
 <section class="sec" id="offer">
   <div class="wrap">
     <div class="sec-head edge">
@@ -117,8 +118,7 @@ schemaEnabled: true
       <h2 class="d2">{{ strings.offer.heading }}</h2>
     </div>
 
-    {# The thing you can buy gets the full measure and all the visual weight.
-       The thing you cannot buy is a band underneath, not a second card. #}
+    <div class="offer-grid">
     <div class="panel panel-now offer-lead">
       <span class="chip chip-now">{{ strings.pillars.statusNow }}</span>
       <h3 class="d3">{{ strings.offer.entryName }}</h3>
@@ -147,6 +147,35 @@ schemaEnabled: true
         {% endif %}
         <a class="offer-brief-link" href="#brief">{{ strings.offer.ctaBrief }}</a>
       </div>
+    </div>
+
+    <div class="panel panel-now offer-lead offer-crm" id="crm-offer">
+      <span class="chip chip-now">{{ strings.offer.crmStatus }}</span>
+      <h3 class="d3">{{ strings.offer.crmName }}</h3>
+      <p class="lead offer-lead-line">{{ strings.offer.crmLead }}</p>
+
+      {% if offer.crm.public and offer.crm.priceApproved %}
+      <p class="price">{{ strings.offer.startAt | replace("{price}", "₪" + (offer.crm.from | num(loc.code))) }}</p>
+      <p class="sm offer-note">{{ strings.offer.crmQualifier }}</p>
+      {% endif %}
+
+      <p class="label u-label-gap">{{ strings.offer.crmIncludesLabel }}</p>
+      <ul class="inc inc-two">
+        {% for k in offer.crm.includes %}
+        <li><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>{{ strings.offer.crmInc[k] }}</li>
+        {% endfor %}
+      </ul>
+
+      <p class="sm offer-qualifier">{{ strings.offer.crmScope }}</p>
+
+      <div class="offer-actions">
+        {% if site.whatsapp %}
+        <a class="btn btn-primary" href="{{ site.whatsapp | waLink(strings.contact.crmPrefill) }}" rel="noopener">
+          <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>{{ strings.offer.crmCta }}</a>
+        {% endif %}
+        <a class="offer-brief-link" href="#brief">{{ strings.offer.ctaBrief }}</a>
+      </div>
+    </div>
     </div>
 
     <aside class="roadmap-band growth-band" aria-label="{{ strings.offer.growthName }}">
