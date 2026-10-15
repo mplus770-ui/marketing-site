@@ -4,6 +4,16 @@
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  /* Preview deployments contain every locale on one Vercel hostname. Keep
+     language changes inside that deployment so review never jumps to the
+     older production domains. Production links remain absolute and keep the
+     approved two-domain locale architecture unchanged. */
+  if (/\.vercel\.app$/i.test(window.location.hostname)) {
+    Array.prototype.forEach.call(document.querySelectorAll("a[data-preview-href]"), function (link) {
+      link.setAttribute("href", link.getAttribute("data-preview-href"));
+    });
+  }
+
   /* ── menu sheet: focus trap, scroll lock, Escape ───────────────────── */
   var burger = document.getElementById("burger");
   var sheet = document.getElementById("sheet");

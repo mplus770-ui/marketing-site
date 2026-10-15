@@ -42,7 +42,7 @@
       <li><a href="{{ sectionBase }}#vision">{{ strings.nav.vision }}</a></li>
       <li><a href="{{ sectionBase }}#brief">{{ strings.nav.contact }}</a></li>
       {% endif %}
-      {% for l in locales %}{% if l.ready %}{% set localPage = l.buildPath ~ (pageSlug ~ '/' if pageSlug else '') %}<li><a href="{{ (l | absPageUrl(domains, pageSlug or '')) or localPage }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a></li>{% endif %}{% endfor %}
+      {% for l in locales %}{% if l.ready %}{% set localPage = l.buildPath ~ (pageSlug ~ '/' if pageSlug else '') %}<li><a href="{{ (l | absPageUrl(domains, pageSlug or '')) or localPage }}" data-preview-href="{{ localPage }}" lang="{{ l.code }}" hreflang="{{ l.hreflang }}">{{ l.endonym }}</a></li>{% endif %}{% endfor %}
     </ul>
   </nav>
   {% if loc.ready %}
