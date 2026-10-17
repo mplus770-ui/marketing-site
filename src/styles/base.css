@@ -33,12 +33,15 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
 .wide{max-width:var(--maxw-wide);margin-inline:auto;padding-inline:var(--gutter)}
 
+/* Display tracking: Fraunces at 600 closes up fast, and at -.02em full stops
+   and word spaces collapsed ("work.Clear"). Slightly less negative tracking and
+   a hair of word space keep the headline dense without letting words touch. */
 .d1{font-family:var(--font-display);font-weight:600;font-size:var(--fs-d1);line-height:var(--lh-d1);
-  letter-spacing:-.02em;color:var(--z-text-hi);text-wrap:balance}
+  letter-spacing:-.014em;word-spacing:var(--ws-display);color:var(--z-text-hi);text-wrap:balance}
 .d2{font-family:var(--font-display);font-weight:600;font-size:var(--fs-d2);line-height:var(--lh-d2);
-  letter-spacing:-.015em;color:var(--z-text-hi);text-wrap:balance}
+  letter-spacing:-.01em;word-spacing:var(--ws-display);color:var(--z-text-hi);text-wrap:balance}
 .d3{font-family:var(--font-display);font-weight:600;font-size:var(--fs-d3);line-height:1.25;
-  letter-spacing:-.01em;color:var(--z-text-hi)}
+  letter-spacing:-.01em;word-spacing:var(--ws-display);color:var(--z-text-hi)}
 :lang(he) .d1,:lang(he) .d2,:lang(he) .d3,:lang(ar) .d1,:lang(ar) .d2,:lang(ar) .d3{
   letter-spacing:0;font-weight:700}
 .lead{font-size:var(--fs-lead);line-height:1.6;color:var(--z-text);max-inline-size:38rem;text-wrap:pretty}

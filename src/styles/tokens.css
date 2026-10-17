@@ -26,6 +26,21 @@
   --z-gold-hi:#F7DA91; --z-gold:#D6B56F; --z-gold-deep:#875B22; --z-ivory:#F8F4EA;
   --z-ink:#3D5148; --z-gold-border:rgba(214,181,111,.28);
   --z-gold-border-soft:rgba(214,181,111,.24); --z-shadow-deep:rgba(0,0,0,.22);
+  /* METALLIC GOLD — the price figure only. Drawn from the logo's gold, it is
+     the one place the heritage gold becomes a material rather than a colour.
+     Every stop stays light: the darkest (#BE8B42) still measures 4.8:1 on the
+     brightest panel it sits on, so the figure never depends on the sheen to be
+     read. --z-gold-metal-flat is the solid fallback where text clipping is not
+     supported. Never apply this to buttons, links, headings or body copy. */
+  --z-gold-metal:linear-gradient(104deg,#C99A4C 0%,#F4D893 18%,#FFF1CC 30%,#E8C47A 44%,
+    #BE8B42 60%,#E9C77E 76%,#FBE6B0 88%,#D1A55A 100%);
+  --z-gold-metal-flat:#E9C77E;
+  --z-gold-rule:linear-gradient(to right,rgba(214,181,111,.62),rgba(214,181,111,.14) 60%,rgba(214,181,111,0));
+  --z-ink-gold:#875B22; /* gold text on ivory: 5.4:1 */
+  /* motion and focus */
+  --z-ease-out:cubic-bezier(.2,.7,.2,1);
+  --z-focus-ring:0 0 0 2px var(--z-canvas),0 0 0 4px var(--z-action-400);
+  --z-shadow-card:0 1px 0 rgba(155,250,210,.05) inset,0 28px 70px -36px rgba(0,0,0,.72);
   /* borders */
   --z-border:rgba(244,241,234,.10); --z-border-strong:rgba(52,227,155,.28);
   --z-border-brass:rgba(228,179,99,.24);
@@ -46,6 +61,10 @@
   --fs-d3:clamp(1.25rem,2vw,1.5rem);
   --fs-lead:1.25rem; --fs-body:1.0625rem; --fs-sm:.9375rem; --fs-xs:.875rem; --fs-label:.875rem;
   --lh-d1:1.05; --lh-d2:1.12; --lh-body:1.65;
+  /* Fraunces ships a 0.15em word space (Georgia: 0.25em). Under negative
+     tracking, words in display settings touched ("FocusedBusiness"). Every
+     Fraunces setting adds this so the space reads at ~0.24em. */
+  --ws-display:.09em;
   /* space */
   --gutter:clamp(20px,5vw,80px); --maxw:1200px; --maxw-wide:1440px;
   --sec-pad:clamp(4rem,8vw,7rem);
@@ -55,4 +74,5 @@
 :root:lang(he),:root:lang(ar){
   --font-display:"Frank Ruhl Libre","Noto Serif Hebrew",Georgia,serif;
   --lh-d1:1.18; --lh-d2:1.25; --lh-body:1.8;
+  --ws-display:normal;
 }

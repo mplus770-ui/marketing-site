@@ -111,7 +111,7 @@ schemaEnabled: true
 {# ══ 5 · COMMERCIAL OFFER ══
    Two distinct services that can be commissioned today. Each starting figure
    is qualified in place; future products remain visually subordinate. #}
-<section class="sec" id="offer">
+<section class="sec sec-offer" id="offer">
   <div class="wrap">
     <div class="sec-head edge">
       <p class="label">{{ strings.offer.label }}</p>
@@ -125,8 +125,14 @@ schemaEnabled: true
       <p class="lead offer-lead-line">{{ strings.offer.dfyLead }}</p>
 
       {% if offer.entry.public and offer.entry.priceApproved %}
-      <p class="price">{{ strings.offer.startAt | replace("{price}", "₪" + (offer.entry.from | num(loc.code))) }}</p>
-      <p class="sm offer-note">{{ strings.offer.qualifier }}</p>
+      {% set priceParts = strings.offer.startAt.split("{price}") %}
+      {# The figure is set apart from its sentence so it can carry the metallic
+         treatment, but the paragraph's text is still exactly the approved
+         string: no whitespace is added between the parts. #}
+      <div class="price-block">
+        <p class="price">{% if priceParts[0] %}<span class="price-label">{{ priceParts[0] }}</span>{% endif %}<span class="price-amount"><bdi>₪{{ offer.entry.from | num(loc.code) }}</bdi></span>{% if priceParts[1] %}<span class="price-label">{{ priceParts[1] }}</span>{% endif %}</p>
+        <p class="sm offer-note">{{ strings.offer.qualifier }}</p>
+      </div>
       {% endif %}
 
       <p class="label u-label-gap">{{ strings.offer.includesLabel }}</p>
@@ -155,8 +161,11 @@ schemaEnabled: true
       <p class="lead offer-lead-line">{{ strings.offer.crmLead }}</p>
 
       {% if offer.crm.public and offer.crm.priceApproved %}
-      <p class="price">{{ strings.offer.startAt | replace("{price}", "₪" + (offer.crm.from | num(loc.code))) }}</p>
-      <p class="sm offer-note">{{ strings.offer.crmQualifier }}</p>
+      {% set priceParts = strings.offer.startAt.split("{price}") %}
+      <div class="price-block">
+        <p class="price">{% if priceParts[0] %}<span class="price-label">{{ priceParts[0] }}</span>{% endif %}<span class="price-amount"><bdi>₪{{ offer.crm.from | num(loc.code) }}</bdi></span>{% if priceParts[1] %}<span class="price-label">{{ priceParts[1] }}</span>{% endif %}</p>
+        <p class="sm offer-note">{{ strings.offer.crmQualifier }}</p>
+      </div>
       {% endif %}
 
       <p class="label u-label-gap">{{ strings.offer.crmIncludesLabel }}</p>
