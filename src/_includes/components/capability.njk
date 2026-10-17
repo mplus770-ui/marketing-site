@@ -19,11 +19,11 @@
           {id:"multilingual",shape:"wide", lift:0},
           {id:"conversion",  shape:"tall", lift:1}
         ] %}
-        <li class="cap-item cap-{{ f.shape }}{% if f.lift %} cap-lift{% endif %}">
+        <li class="cap-item cap-{{ f.shape }} cap-{{ f.id }}{% if f.lift %} cap-lift{% endif %}">
           <figure class="cap-frame">
             <picture>
-              <source type="image/avif" srcset="/assets/capability/{{ f.id }}.avif">
-              <img src="/assets/capability/{{ f.id }}.webp"
+              {% if f.id != "multilingual" %}<source type="image/avif" srcset="/assets/capability/{{ f.id }}.avif">{% endif %}
+              <img src="/assets/capability/{{ "multilingual-complete" if f.id == "multilingual" else f.id }}.webp"
                    alt="{% if n == 2 %}{% else %}{{ strings.cap[f.id] }}{% endif %}"
                    width="{{ 640 if f.shape == 'wide' else 460 }}"
                    height="{{ 480 if f.shape == 'wide' else 613 }}"
