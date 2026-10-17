@@ -793,16 +793,11 @@
   .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:1898px}
 }
 
-/* The resting poster fills the desktop hero. Only the playing film uses a
-   side stage, opposite the locale copy, to keep complete captures readable. */
+/* Full-bleed desktop stage. Copy follows the locale direction; the film
+   retains its approved scale and fills the hero rather than a smaller panel. */
 @media(min-width:1001px){
   .hero-copy{max-inline-size:48%;padding-inline-end:24px;--hero-fade:20px}
   .hero-foot{max-inline-size:48%}
-  .hero-stage-video{inset-block:1px;inset-inline-start:auto;inset-inline-end:1px;
-    inline-size:calc(52% - 2px);block-size:calc(100% - 2px);
-    object-fit:contain;object-position:center;-webkit-mask-image:none;mask-image:none}
-  .hero-stage-poster{transition:opacity .5s ease}
-  .hero-stage[data-playing="1"] .hero-stage-poster{opacity:0}
   .hero-copy::after{background:linear-gradient(to right,rgba(4,21,15,.72),rgba(4,21,15,.62) calc(100% - var(--hero-fade)),transparent)}
   .hero-scrim-edge{background:linear-gradient(to right,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
   [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
