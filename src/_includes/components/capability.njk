@@ -27,7 +27,7 @@
                    alt="{% if n == 2 %}{% else %}{{ strings.cap[f.id] }}{% endif %}"
                    width="{{ 640 if f.shape == 'wide' else 460 }}"
                    height="{{ 480 if f.shape == 'wide' else 613 }}"
-                   loading="lazy" decoding="async">
+                   loading="eager" decoding="async">
             </picture>
             <figcaption class="cap-cap">{{ strings.cap[f.id] }}</figcaption>
           </figure>

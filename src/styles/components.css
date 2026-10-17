@@ -610,10 +610,7 @@
      inside the trailing padding. A percentage fade put the soft end underneath
      the headline, which is how a 1.10:1 H1 survived at 1920. */
   --hero-fade:clamp(30px,6vw,120px)}
-/* The approved master frame deliberately reserves its right-hand side for
-   copy. Keep both writing directions in that quiet zone; LTR text remains
-   left-aligned inside the right-hand column. */
-[dir="ltr"] .hero-copy,[dir="ltr"] .hero-foot{margin-inline-start:auto}
+/* Copy follows the document direction: left in LTR, right in RTL. */
 /* The panel is a pseudo-element, not the element's own background, so it can be
    masked without touching the type. A hard top edge with a rounded corner read
    as a card sitting on a picture; the copy has to feel printed into the frame. */
@@ -796,6 +793,21 @@
   .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:1898px}
 }
 
+/* Keep readable portfolio captures beside the desktop copy. The video contains
+   real lettering: move its box, never mirror its pixels or cover-crop it. */
+@media(min-width:1001px){
+  .hero-copy{max-inline-size:48%;padding-inline-end:24px;--hero-fade:20px}
+  .hero-foot{max-inline-size:48%}
+  .hero-stage-poster,.hero-stage-video{
+    inset-inline-start:auto;inset-inline-end:0;inline-size:52%;
+    -webkit-mask-image:none;mask-image:none}
+  .hero-stage-poster img,.hero-stage-video{object-fit:contain;object-position:center}
+  .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:calc(52% - 2px);block-size:calc(100% - 2px)}
+  .hero-copy::after{background:linear-gradient(to right,rgba(4,21,15,.72),rgba(4,21,15,.62) calc(100% - var(--hero-fade)),transparent)}
+  .hero-scrim-edge{background:linear-gradient(to right,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
+  [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-stage-video{display:none}
   .hero-motion-btn{display:none!important}
@@ -904,7 +916,7 @@
    register: smaller fragments, varied shape and vertical offset, a slower
    pass, and the opposite direction so the page never reads as two identical
    rails stacked on each other. */
-.cap{position:relative;overflow:hidden;
+.cap{position:relative;overflow:hidden;padding-block:24px 36px;
   -webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);
   mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
 .cap-track{display:flex;inline-size:max-content;gap:18px;margin:0;padding:0;list-style:none;
@@ -923,6 +935,7 @@
 
 .cap-frame{margin:0;position:relative;border:1px solid var(--z-gold-border-soft);border-radius:14px;
   overflow:hidden;background:var(--z-ivory);box-shadow:0 18px 45px var(--z-shadow-deep)}
+.cap-frame picture{display:block;inline-size:100%;block-size:100%}
 .cap-frame img{display:block;inline-size:100%;block-size:100%;object-fit:cover}
 .cap-wide .cap-frame{inline-size:340px;aspect-ratio:4/3}
 .cap-tall .cap-frame{inline-size:212px;aspect-ratio:3/4}
