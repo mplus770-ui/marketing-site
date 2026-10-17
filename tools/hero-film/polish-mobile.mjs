@@ -14,7 +14,7 @@ const motion = path.join(root, "src/assets/motion");
 const work = path.join(root, "src/assets/work");
 const tmp = mkdtempSync(path.join(tmpdir(), "zohar-hero-film-"));
 const ffmpeg = process.env.FFMPEG || "ffmpeg";
-const run = (args) => execFileSync(ffmpeg, ["-y", "-loglevel", "error", ...args], { stdio: "inherit" });
+const run = (args) => execFileSync(ffmpeg, ["-y", "-loglevel", "error", "-filter_complex_threads", "2", ...args], { stdio: "inherit" });
 
 const projects = [
   ["sadafronia-mobile@2x.webp", "0xE4B363", "portrait", "sadafronia-card@2x.webp", "wide"],
@@ -28,20 +28,28 @@ const projects = [
 function framedCapture(source, accent, width, height, output, layout = "landscape") {
   const portrait = layout === "portrait";
   const wide = layout === "wide";
-  const frameH = portrait
+  const desiredFrameH = portrait
     ? Math.floor(height * (width > height ? 0.88 : 0.82) / 2) * 2
     : Math.ceil(((Math.floor(width * (wide ? 0.96 : (width > height ? 0.88 : 0.94)) / 2) * 2) * 0.625) / 2) * 2;
   const frameW = portrait
-    ? Math.floor((frameH * 0.5625) / 2) * 2
+    ? Math.floor((desiredFrameH * 0.5625) / 2) * 2
     : Math.floor(width * (wide ? 0.96 : (width > height ? 0.88 : 0.94)) / 2) * 2;
+  // Keep the existing large frame. A 96%-wide desktop frame used to be
+  // taller than the film itself; only its height is bounded to the canvas.
+  const frameH = Math.min(desiredFrameH, height - 16);
   const x = Math.round((width - frameW) / 2);
-  const y = height > width
+  const desiredY = height > width
     ? Math.round((height * 0.62) - (frameH / 2))
     : Math.round((height - frameH) / 2);
+  const y = Math.max(8, Math.min(desiredY, height - frameH - 8));
+  // Phone heroes cover-crop the 4:5 film to a tall viewport. Fit the capture
+  // into the central visible window, then pad back to the ORIGINAL frame.
+  // The frame, background, poster, timing and hero layout stay unchanged.
+  const captureW = height > width ? Math.min(frameW, Math.floor(width * 0.62 / 2) * 2) : frameW;
   run(["-i", source, "-filter_complex",
     `[0:v]split=2[base][shot];` +
     `[base]scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height},boxblur=16:2,eq=brightness=-0.18:saturation=0.88:contrast=1.03[bg];` +
-    `[shot]scale=${frameW}:${frameH}:force_original_aspect_ratio=decrease,eq=brightness=0.045:saturation=1.12:contrast=1.04,pad=${frameW}:${frameH}:(ow-iw)/2:(oh-ih)/2:color=0x09291F[site];` +
+    `[shot]scale=${captureW}:${frameH}:force_original_aspect_ratio=decrease,eq=brightness=0.045:saturation=1.12:contrast=1.04,pad=${frameW}:${frameH}:(ow-iw)/2:(oh-ih)/2:color=0x09291F[site];` +
     `[bg][site]overlay=${x}:${y},drawbox=x=${x - 2}:y=${y - 2}:w=${frameW + 4}:h=${frameH + 4}:color=${accent}@0.78:t=2,format=yuv420p[out]`,
     "-map", "[out]", "-frames:v", "1", output]);
 }
@@ -67,12 +75,12 @@ function buildVariant(id, width, height) {
   const intermediate = path.join(tmp, `${id}.mp4`);
   const duration = 2.45 * (sequence.length - 1) + 0.55;
   run([...inputs, "-filter_complex", filters.join(";"), "-map", "[out]", "-t", duration.toFixed(2), "-an",
-    "-c:v", "libx264", "-crf", "27", "-preset", "slow", "-profile:v", "main",
+    "-c:v", "libx264", "-threads", "2", "-crf", "25", "-preset", "veryfast", "-profile:v", "main",
     "-pix_fmt", "yuv420p", "-movflags", "+faststart", intermediate]);
   run(["-i", intermediate, "-c:v", "copy", "-movflags", "+faststart", "-an",
     path.join(motion, `zohar-hero-master-${id}.mp4`)]);
   run(["-i", intermediate, "-c:v", "libvpx-vp9", "-crf", "40", "-b:v", "0",
-    "-row-mt", "1", "-deadline", "good", "-cpu-used", "3", "-an",
+    "-threads", "2", "-row-mt", "1", "-deadline", "realtime", "-cpu-used", "8", "-an",
     path.join(motion, `zohar-hero-master-${id}.webm`)]);
 }
 
