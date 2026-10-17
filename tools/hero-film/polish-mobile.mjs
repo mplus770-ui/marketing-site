@@ -37,20 +37,20 @@ function framedCapture(source, accent, width, height, output, layout = "landscap
   // Keep the existing large frame. A 96%-wide desktop frame used to be
   // taller than the film itself; only its height is bounded to the canvas.
   const frameH = Math.min(desiredFrameH, height - 16);
-  const x = Math.round((width - frameW) / 2);
   const desiredY = height > width
     ? Math.round((height * 0.62) - (frameH / 2))
     : Math.round((height - frameH) / 2);
   const y = Math.max(8, Math.min(desiredY, height - frameH - 8));
-  // Phone heroes cover-crop the 4:5 film to a tall viewport. Fit the capture
-  // into the central visible window, then pad back to the ORIGINAL frame.
-  // The frame, background, poster, timing and hero layout stay unchanged.
+  // Phone heroes cover-crop the 4:5 film to a tall viewport. Keep the complete
+  // capture in that visible window. Draw the edge ON the capture itself:
+  // there is no padded outer panel, so every image fills its own frame.
+  // Capture size/centre, background, poster, timing and hero layout are kept.
   const captureW = height > width ? Math.min(frameW, Math.floor(width * 0.62 / 2) * 2) : frameW;
   run(["-i", source, "-filter_complex",
     `[0:v]split=2[base][shot];` +
     `[base]scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height},boxblur=16:2,eq=brightness=-0.18:saturation=0.88:contrast=1.03[bg];` +
-    `[shot]scale=${captureW}:${frameH}:force_original_aspect_ratio=decrease,eq=brightness=0.045:saturation=1.12:contrast=1.04,pad=${frameW}:${frameH}:(ow-iw)/2:(oh-ih)/2:color=0x09291F[site];` +
-    `[bg][site]overlay=${x}:${y},drawbox=x=${x - 2}:y=${y - 2}:w=${frameW + 4}:h=${frameH + 4}:color=${accent}@0.78:t=2,format=yuv420p[out]`,
+    `[shot]scale=${captureW}:${frameH}:force_original_aspect_ratio=decrease,eq=brightness=0.045:saturation=1.12:contrast=1.04,drawbox=x=0:y=0:w=iw:h=ih:color=${accent}@0.78:t=2[site];` +
+    `[bg][site]overlay=x=(W-w)/2:y=${y}+(${frameH}-h)/2,format=yuv420p[out]`,
     "-map", "[out]", "-frames:v", "1", output]);
 }
 
