@@ -8,12 +8,10 @@
    surfaces, readiness — and not a licensed architectural scene that read as a
    property campaign.
 
-   FOUR VARIANTS, ONE DOWNLOAD. The film carries real words, so it cannot be
-   mirrored with a CSS transform the way an abstract frame could: each
-   direction is composed, not flipped. The locale is known at build time, so
-   only that locale's pair is ever referenced, and orientation picks one of the
-   two within it. Portrait phones get the 4:5 cut, whose action sits in the
-   band left exposed below the copy; everything else gets the 16:9 cut.
+   Desktop LTR locales use the right-composed poster and the same full-size
+   project sequence, with matching opening/closing frames. RTL keeps its
+   approved originals. Portrait phones retain the approved mobile cut.
+   Media is never mirrored: embedded words retain their original direction.
 
    Poster-first by construction: the <source> elements carry data-src, not src,
    so a <video autoplay> with no resolvable source downloads NOTHING until JS
@@ -33,6 +31,8 @@
    therefore always wins LCP. Do not remove that inset without re-measuring. #}
 <div class="hero-stage" data-hero-motion aria-hidden="true">
   <picture class="hero-stage-poster">
+    {% if loc.dir == "ltr" %}<source media="(min-width:1001px)"
+            srcset="/assets/motion/zohar-hero-poster-desktop-ltr.svg" type="image/svg+xml">{% endif %}
     <source media="(max-width:860px) and (orientation:portrait)"
             srcset="/assets/motion/zohar-hero-master-mobile.webp" type="image/webp">
     <img src="/assets/motion/zohar-hero-master-desktop.webp" alt=""
@@ -43,11 +43,11 @@
          disablepictureinpicture disableremoteplayback tabindex="-1">
     <source media="(max-width:860px) and (orientation:portrait)"
             data-src="/assets/motion/zohar-hero-master-mobile.webm" type="video/webm">
-    {% if loc.dir == "rtl" %}<source media="(min-width:1001px)" data-src="/assets/motion/zohar-hero-master-desktop-rtl.webm" type="video/webm">{% endif %}
+    {% if loc.dir == "ltr" %}<source media="(min-width:1001px)" data-src="/assets/motion/zohar-hero-master-desktop-ltr.webm" type="video/webm">{% endif %}
     <source data-src="/assets/motion/zohar-hero-master-desktop.webm" type="video/webm">
     <source media="(max-width:860px) and (orientation:portrait)"
             data-src="/assets/motion/zohar-hero-master-mobile.mp4" type="video/mp4">
-    {% if loc.dir == "rtl" %}<source media="(min-width:1001px)" data-src="/assets/motion/zohar-hero-master-desktop-rtl.mp4" type="video/mp4">{% endif %}
+    {% if loc.dir == "ltr" %}<source media="(min-width:1001px)" data-src="/assets/motion/zohar-hero-master-desktop-ltr.mp4" type="video/mp4">{% endif %}
     <source data-src="/assets/motion/zohar-hero-master-desktop.mp4" type="video/mp4">
   </video>
 
