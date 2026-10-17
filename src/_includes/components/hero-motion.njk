@@ -43,9 +43,11 @@
          disablepictureinpicture disableremoteplayback tabindex="-1">
     <source media="(max-width:860px) and (orientation:portrait)"
             data-src="/assets/motion/zohar-hero-master-mobile.webm" type="video/webm">
+    {% if loc.dir == "rtl" %}<source media="(min-width:1001px)" data-src="/assets/motion/zohar-hero-master-desktop-rtl.webm" type="video/webm">{% endif %}
     <source data-src="/assets/motion/zohar-hero-master-desktop.webm" type="video/webm">
     <source media="(max-width:860px) and (orientation:portrait)"
             data-src="/assets/motion/zohar-hero-master-mobile.mp4" type="video/mp4">
+    {% if loc.dir == "rtl" %}<source media="(min-width:1001px)" data-src="/assets/motion/zohar-hero-master-desktop-rtl.mp4" type="video/mp4">{% endif %}
     <source data-src="/assets/motion/zohar-hero-master-desktop.mp4" type="video/mp4">
   </video>
 

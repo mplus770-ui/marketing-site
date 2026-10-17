@@ -25,7 +25,18 @@ const projects = [
   ["le-monde-sefarade-card@2x.webp", "0xE4B363", "wide"],
 ];
 
-function framedCapture(source, accent, width, height, output, layout = "landscape") {
+function framedCapture(source, accent, width, height, output, layout = "landscape", rtlDesktop = false) {
+  if (rtlDesktop) {
+    // Keep the full-bleed field; pan the large portfolio capture towards the
+    // left so its own Hebrew heading is clear of the fixed right-hand copy.
+    run(["-i", source, "-filter_complex",
+      `[0:v]split=2[base][shot];` +
+      `[base]scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height},boxblur=16:2,eq=brightness=-0.18:saturation=0.88:contrast=1.03[bg];` +
+      `[shot]scale=920:704:force_original_aspect_ratio=decrease,eq=brightness=0.045:saturation=1.12:contrast=1.04[site];` +
+      `[bg][site]overlay=x=-260:y=(H-h)/2,format=yuv420p[out]`,
+      "-map", "[out]", "-frames:v", "1", output]);
+    return;
+  }
   const portrait = layout === "portrait";
   const wide = layout === "wide";
   const desiredFrameH = portrait
@@ -54,15 +65,15 @@ function framedCapture(source, accent, width, height, output, layout = "landscap
     "-map", "[out]", "-frames:v", "1", output]);
 }
 
-function buildVariant(id, width, height) {
+function buildVariant(id, width, height, rtlDesktop = false) {
   const frames = projects.map(([name, accent, layout, desktopName, desktopLayout], index) => {
     const out = path.join(tmp, `${id}-${index}.png`);
-    const sourceName = id === "desktop" && desktopName ? desktopName : name;
-    const sourceLayout = id === "desktop" && desktopLayout ? desktopLayout : layout;
-    framedCapture(path.join(work, sourceName), accent, width, height, out, sourceLayout);
+    const sourceName = id.startsWith("desktop") && desktopName ? desktopName : name;
+    const sourceLayout = id.startsWith("desktop") && desktopLayout ? desktopLayout : layout;
+    framedCapture(path.join(work, sourceName), accent, width, height, out, sourceLayout, rtlDesktop);
     return out;
   });
-  const poster = path.join(motion, `zohar-hero-master-${id}.webp`);
+  const poster = path.join(motion, `zohar-hero-master-${rtlDesktop ? "desktop" : id}.webp`);
   const sequence = [poster, ...frames, poster];
   const inputs = sequence.flatMap((input) => ["-loop", "1", "-t", "3", "-i", input]);
   const filters = sequence.map((_, i) =>
@@ -85,8 +96,12 @@ function buildVariant(id, width, height) {
 }
 
 try {
-  buildVariant("mobile", 720, 900);
-  buildVariant("desktop", 1280, 720);
+  if (process.argv.includes("--rtl-desktop")) {
+    buildVariant("desktop-rtl", 1280, 720, true);
+  } else {
+    buildVariant("mobile", 720, 900);
+    buildVariant("desktop", 1280, 720);
+  }
 } finally {
   rmSync(tmp, { recursive: true, force: true });
 }

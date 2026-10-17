@@ -793,8 +793,7 @@
   .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:1898px}
 }
 
-/* Full-bleed desktop stage. Copy follows the locale direction; the film
-   retains its approved scale and fills the hero rather than a smaller panel. */
+/* Full-bleed hero media; only the copy alignment follows the locale. */
 @media(min-width:1001px){
   .hero-copy{max-inline-size:48%;padding-inline-end:24px;--hero-fade:20px}
   .hero-foot{max-inline-size:48%}
