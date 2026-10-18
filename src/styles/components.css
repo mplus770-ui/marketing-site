@@ -791,7 +791,10 @@
   .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:1898px}
 }
 
-/* Full-bleed hero media; only the copy alignment follows the locale. */
+.hero-projects{display:none}
+/* The studio poster still fills the stage. During desktop playback, complete
+   project captures occupy the clear side of that same stage. No cover crop,
+   mirrored lettering, extra frame or copy scrim crosses the captures. */
 @media(min-width:1001px){
   .hero-copy{max-inline-size:48%;padding-inline-end:24px;--hero-fade:20px}
   .hero-foot{max-inline-size:48%}
@@ -799,6 +802,14 @@
   .hero-copy::after{background:linear-gradient(to right,rgba(4,21,15,.72),rgba(4,21,15,.62) calc(100% - var(--hero-fade)),transparent)}
   .hero-scrim-edge{background:linear-gradient(to right,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
   [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
+  .hero-projects{display:block;position:absolute;inset:0;z-index:3;opacity:0;
+    pointer-events:none;background:radial-gradient(ellipse at 50% 52%,var(--z-surface-2),var(--z-canvas) 76%)}
+  .hero-projects-stage{position:absolute;inset-block:32px;
+    inset-inline-start:calc(50% + 12px);inset-inline-end:clamp(20px,2vw,48px)}
+  .hero-projects-stage img{position:absolute;inset:0;inline-size:100%;block-size:100%;
+    object-fit:contain;opacity:0;filter:drop-shadow(0 18px 32px rgba(0,0,0,.24))}
+  .hero-stage[data-full-projects="1"] .hero-stage-video{opacity:0!important}
+  .hero-stage:not([data-playing="1"]) .hero-projects{opacity:0!important}
 }
 
 @media(prefers-reduced-motion:reduce){

@@ -51,6 +51,19 @@
     <source data-src="/assets/motion/zohar-hero-master-desktop.mp4" type="video/mp4">
   </video>
 
+  {# Desktop captures are composed responsively outside the copy column.
+     The video remains the playback clock; fitting the original captures here
+     avoids baking a viewport-dependent crop or a text collision into a film.
+     Images load only when desktop motion is permitted and requested. #}
+  <div class="hero-projects" data-hero-projects>
+    <div class="hero-projects-stage">
+      {% for project in ["sadafronia", "better-world", "eco-tech-israel", "zohar-crm", "yayin", "le-monde-sefarade"] %}
+      <img data-project-src="/assets/work/{{ project }}-card@2x.webp"
+           alt="" width="1600" height="1000" decoding="async">
+      {% endfor %}
+    </div>
+  </div>
+
   {# Two scrims: one along the copy edge for contrast, one at the foot so the
      stage resolves into the page instead of ending on a hard line. #}
   <span class="hero-scrim-edge"></span>

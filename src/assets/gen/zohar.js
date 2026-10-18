@@ -232,6 +232,60 @@
     var wanted = !reduce.matches && !saveData;
     var armed = false, paused = false, ended = false;
 
+    // The complete desktop captures follow the existing film's crossfades.
+    // Their responsive box sits beside the copy, independently of the video's
+    // cover-fit background. Mobile keeps its approved film and poster.
+    var desktopMotion = window.matchMedia("(min-width:1001px)");
+    var projects = stage.querySelector("[data-hero-projects]");
+    var shots = projects ? Array.prototype.slice.call(projects.querySelectorAll("img")) : [];
+    var shotsRequested = false, shotsReady = false, compositionFrame = 0;
+    function paintProjects() {
+      compositionFrame = 0;
+      if (!shotsReady || !desktopMotion.matches) return;
+      var time = vid.currentTime;
+      // The poster occupies both ends; the same 550ms fade joins every shot.
+      var fade = .55, step = 2.45, finish = step * (shots.length + 1);
+      var visibility = Math.max(0, Math.min(1, (time - step) / fade, (finish + fade - time) / fade));
+      projects.style.opacity = String(visibility);
+      shots.forEach(function (shot, i) {
+        var start = step * (i + 1), end = start + step;
+        var alpha = Math.max(0, Math.min(1, (time - start) / fade, (end + fade - time) / fade));
+        // The parent supplies the first/last fade against the studio poster.
+        if (i === 0 && time < start + fade) alpha = 1;
+        if (i === shots.length - 1 && time >= end) alpha = 1;
+        shot.style.opacity = String(alpha);
+      });
+      if (!vid.paused && !vid.ended) compositionFrame = requestAnimationFrame(paintProjects);
+    }
+    function refreshComposition() {
+      if (compositionFrame) cancelAnimationFrame(compositionFrame);
+      compositionFrame = 0;
+      paintProjects();
+    }
+    function prepareProjects() {
+      if (!desktopMotion.matches || shotsRequested || !shots.length) return;
+      shotsRequested = true;
+      Promise.all(shots.map(function (shot) {
+        return new Promise(function (resolve, reject) {
+          shot.onload = function () { resolve(); };
+          shot.onerror = reject;
+          shot.src = shot.dataset.projectSrc;
+        });
+      })).then(function () {
+        shotsReady = true;
+        stage.setAttribute("data-full-projects", "1");
+        refreshComposition();
+      }).catch(function () { /* Keep the original film if a capture fails. */ });
+    }
+    desktopMotion.addEventListener("change", function () {
+      if (armed) prepareProjects();
+      refreshComposition();
+    });
+    vid.addEventListener("playing", refreshComposition);
+    vid.addEventListener("seeked", refreshComposition);
+    vid.addEventListener("pause", refreshComposition);
+    vid.addEventListener("ended", refreshComposition);
+
     /* The film plays ONCE and comes to rest on its final frame. That frame is
        also the poster, rendered from the same scene at the same timestamp, so
        when the video fades out at the end the image underneath is identical
@@ -248,6 +302,7 @@
     function arm() {
       if (armed) return;
       armed = true;
+      prepareProjects();
       Array.prototype.forEach.call(vid.querySelectorAll("source[data-src]"), function (el) {
         el.setAttribute("src", el.dataset.src);
       });
