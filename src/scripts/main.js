@@ -249,7 +249,9 @@
       projects.style.opacity = String(visibility);
       shots.forEach(function (shot, i) {
         var start = step * (i + 1), end = start + step;
-        var alpha = Math.max(0, Math.min(1, (time - start) / fade, (end + fade - time) / fade));
+        // Keep the outgoing shot opaque underneath the incoming one. Fading
+        // both at once exposes the dark canvas and causes a brightness dip.
+        var alpha = time < end + fade ? Math.max(0, Math.min(1, (time - start) / fade)) : 0;
         // The parent supplies the first/last fade against the studio poster.
         if (i === 0 && time < start + fade) alpha = 1;
         if (i === shots.length - 1 && time >= end) alpha = 1;
