@@ -2,6 +2,7 @@
 :root{
   /* dark backgrounds */
   --z-canvas:#04150F; --z-surface-1:#07201A; --z-surface-2:#0A2B22; --z-surface-3:#0F3A2E;
+  --z-canvas-desktop:#061C16;
   --z-glass:rgba(7,32,26,.74);
   /* emerald */
   --z-emerald-700:#0B5C43; --z-emerald-600:#10795A; --z-emerald-500:#16A37B;

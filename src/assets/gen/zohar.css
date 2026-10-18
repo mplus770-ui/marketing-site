@@ -2,6 +2,7 @@
 :root{
   /* dark backgrounds */
   --z-canvas:#04150F; --z-surface-1:#07201A; --z-surface-2:#0A2B22; --z-surface-3:#0F3A2E;
+  --z-canvas-desktop:#061C16;
   --z-glass:rgba(7,32,26,.74);
   /* emerald */
   --z-emerald-700:#0B5C43; --z-emerald-600:#10795A; --z-emerald-500:#16A37B;
@@ -114,6 +115,9 @@ ul,ol{list-style:none}
 body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas);color:var(--z-text);
   font-size:var(--fs-body);line-height:var(--lh-body);-webkit-font-smoothing:antialiased;
   overflow-x:hidden;text-rendering:optimizeLegibility}
+/* The desktop page field needs a clearer emerald undertone. Keep the approved
+   phone canvas and all media/card colours independent of this correction. */
+@media(min-width:1001px){body:has(.hero){background-color:var(--z-canvas-desktop)}}
 ::selection{background:var(--z-action-400);color:var(--z-text-on-light)}
 :focus-visible{outline:2px solid var(--z-action-400);outline-offset:2px;border-radius:3px}
 .skip{position:absolute;inset-block-start:0;inset-inline-start:0;z-index:200;
@@ -725,10 +729,8 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 .hero-stage-video{z-index:1;inset:1px;opacity:0;transition:opacity .5s ease}
 .hero-stage[data-playing="1"] .hero-stage-video{opacity:1}
 .hero-stage[data-ended="1"] .hero-stage-video{display:none}
-/* NOT mirrored. The film carries real words in the visitor's own language, so
-   a scaleX flip would reverse every glyph in it. Each direction is composed
-   separately in tools/hero-film and selected at build time; the quiet side
-   still lands behind the copy, because the composition puts it there. */
+/* Media is never mirrored. LTR desktop artwork is translated in its own
+   poster composition; the full-screen project footage retains readable text. */
 
 .hero-scrim-edge,.hero-scrim-foot{position:absolute;inset:0;z-index:2;pointer-events:none}
 /* LENGTH-based stops, not percentages. A percentage scrim tracks the viewport
@@ -758,10 +760,7 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
      inside the trailing padding. A percentage fade put the soft end underneath
      the headline, which is how a 1.10:1 H1 survived at 1920. */
   --hero-fade:clamp(30px,6vw,120px)}
-/* The approved master frame deliberately reserves its right-hand side for
-   copy. Keep both writing directions in that quiet zone; LTR text remains
-   left-aligned inside the right-hand column. */
-[dir="ltr"] .hero-copy,[dir="ltr"] .hero-foot{margin-inline-start:auto}
+/* Copy follows the document direction: left in LTR, right in RTL. */
 /* The panel is a pseudo-element, not the element's own background, so it can be
    masked without touching the type. A hard top edge with a rounded corner read
    as a card sitting on a picture; the copy has to feel printed into the frame. */
@@ -944,6 +943,27 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
   .hero-stage-video{inset-block:1px;inset-inline-end:1px;inline-size:1898px}
 }
 
+.hero-projects{display:none}
+/* The studio poster still fills the stage. During desktop playback, complete
+   project captures occupy the clear side of that same stage. No cover crop,
+   mirrored lettering, extra frame or copy scrim crosses the captures. */
+@media(min-width:1001px){
+  .hero-copy{max-inline-size:48%;padding-inline-end:24px;--hero-fade:20px}
+  .hero-foot{max-inline-size:48%}
+  [dir="ltr"] .hero-stage-poster img{object-position:right center}
+  .hero-copy::after{background:linear-gradient(to right,rgba(4,21,15,.72),rgba(4,21,15,.62) calc(100% - var(--hero-fade)),transparent)}
+  .hero-scrim-edge{background:linear-gradient(to right,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
+  [dir="rtl"] .hero-scrim-edge{background:linear-gradient(to left,var(--z-canvas),rgba(4,21,15,.80) 37%,transparent 56%)}
+  .hero-projects{display:block;position:absolute;inset:0;z-index:3;opacity:0;
+    pointer-events:none;background:radial-gradient(ellipse at 50% 52%,var(--z-surface-2),var(--z-canvas) 76%)}
+  .hero-projects-stage{position:absolute;inset-block:32px;
+    inset-inline-start:calc(50% + 12px);inset-inline-end:clamp(20px,2vw,48px)}
+  .hero-projects-stage img{position:absolute;inset:0;inline-size:100%;block-size:100%;
+    object-fit:contain;opacity:0}
+  .hero-stage[data-full-projects="1"] .hero-stage-video{opacity:0!important}
+  .hero-stage:not([data-playing="1"]) .hero-projects{opacity:0!important}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-stage-video{display:none}
   .hero-motion-btn{display:none!important}
@@ -1052,7 +1072,7 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
    register: smaller fragments, varied shape and vertical offset, a slower
    pass, and the opposite direction so the page never reads as two identical
    rails stacked on each other. */
-.cap{position:relative;overflow:hidden;
+.cap{position:relative;overflow:hidden;padding-block:24px 36px;
   -webkit-mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);
   mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
 .cap-track{display:flex;inline-size:max-content;gap:18px;margin:0;padding:0;list-style:none;
@@ -1071,6 +1091,8 @@ body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas
 
 .cap-frame{margin:0;position:relative;border:1px solid var(--z-gold-border-soft);border-radius:14px;
   overflow:hidden;background:var(--z-ivory);box-shadow:0 18px 45px var(--z-shadow-deep)}
+.cap-frame picture{display:block;inline-size:100%;block-size:100%}
+.cap-multilingual .cap-frame img{object-fit:contain}
 .cap-frame img{display:block;inline-size:100%;block-size:100%;object-fit:cover}
 .cap-wide .cap-frame{inline-size:340px;aspect-ratio:4/3}
 .cap-tall .cap-frame{inline-size:212px;aspect-ratio:3/4}

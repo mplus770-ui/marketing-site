@@ -1,4 +1,4 @@
-/* Build the launch hero film from five approved, local portfolio captures.
+/* Build the launch hero film from six approved, local portfolio captures.
    Each project receives its own full 16:10 frame. The approved studio poster
    opens and closes the film, so the resting image, first paint and ending are
    visually continuous. */
@@ -57,12 +57,12 @@ function framedCapture(source, accent, width, height, output, layout = "landscap
 function buildVariant(id, width, height) {
   const frames = projects.map(([name, accent, layout, desktopName, desktopLayout], index) => {
     const out = path.join(tmp, `${id}-${index}.png`);
-    const sourceName = id === "desktop" && desktopName ? desktopName : name;
-    const sourceLayout = id === "desktop" && desktopLayout ? desktopLayout : layout;
+    const sourceName = id.startsWith("desktop") && desktopName ? desktopName : name;
+    const sourceLayout = id.startsWith("desktop") && desktopLayout ? desktopLayout : layout;
     framedCapture(path.join(work, sourceName), accent, width, height, out, sourceLayout);
     return out;
   });
-  const poster = path.join(motion, `zohar-hero-master-${id}.webp`);
+  const poster = path.join(motion, id === "desktop-ltr" ? "zohar-hero-poster-desktop-ltr.svg" : `zohar-hero-master-${id}.webp`);
   const sequence = [poster, ...frames, poster];
   const inputs = sequence.flatMap((input) => ["-loop", "1", "-t", "3", "-i", input]);
   const filters = sequence.map((_, i) =>
@@ -85,8 +85,12 @@ function buildVariant(id, width, height) {
 }
 
 try {
-  buildVariant("mobile", 720, 900);
-  buildVariant("desktop", 1280, 720);
+  if (process.argv.includes("--ltr-desktop")) {
+    buildVariant("desktop-ltr", 1280, 720);
+  } else {
+    buildVariant("mobile", 720, 900);
+    buildVariant("desktop", 1280, 720);
+  }
 } finally {
   rmSync(tmp, { recursive: true, force: true });
 }
