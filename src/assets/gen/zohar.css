@@ -2,6 +2,7 @@
 :root{
   /* dark backgrounds */
   --z-canvas:#04150F; --z-surface-1:#07201A; --z-surface-2:#0A2B22; --z-surface-3:#0F3A2E;
+  --z-canvas-desktop:#061C16;
   --z-glass:rgba(7,32,26,.74);
   /* emerald */
   --z-emerald-700:#0B5C43; --z-emerald-600:#10795A; --z-emerald-500:#16A37B;
@@ -114,6 +115,9 @@ ul,ol{list-style:none}
 body{font-family:var(--font-body),"Assistant Fallback";background:var(--z-canvas);color:var(--z-text);
   font-size:var(--fs-body);line-height:var(--lh-body);-webkit-font-smoothing:antialiased;
   overflow-x:hidden;text-rendering:optimizeLegibility}
+/* The desktop page field needs a clearer emerald undertone. Keep the approved
+   phone canvas and all media/card colours independent of this correction. */
+@media(min-width:1001px){body:has(.hero){background-color:var(--z-canvas-desktop)}}
 ::selection{background:var(--z-action-400);color:var(--z-text-on-light)}
 :focus-visible{outline:2px solid var(--z-action-400);outline-offset:2px;border-radius:3px}
 .skip{position:absolute;inset-block-start:0;inset-inline-start:0;z-index:200;
