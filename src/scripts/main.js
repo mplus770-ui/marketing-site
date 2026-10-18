@@ -269,7 +269,12 @@
       shotsRequested = true;
       Promise.all(shots.map(function (shot) {
         return new Promise(function (resolve, reject) {
-          shot.onload = function () { resolve(); };
+          shot.onload = function () {
+            // Keep the studio poster until every foreground image is decoded,
+            // not merely downloaded; the first visible frame must be ready.
+            if (shot.decode) shot.decode().then(resolve, reject);
+            else resolve();
+          };
           shot.onerror = reject;
           shot.src = shot.dataset.projectSrc;
         });
